@@ -13,7 +13,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * @author Wils Iglesias <wiglesias83@gmail.com>
  * @Gedmo\SoftDeleteable(fieldName="removedAt", timeAware=false)
  */
-class AbstractBase
+abstract class AbstractBase
 {
     /**
      * @var integer
