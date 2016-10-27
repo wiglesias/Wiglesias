@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Title Trait
  *
- * @category Trait
+ * @category trait
  * @package AppBundle\Entity\Traits
  * @author wils Iglesias <wiglesias83@gmail.com>
  */

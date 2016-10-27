@@ -2,14 +2,20 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Entity\Traits\DescriptionTrait;
+use AppBundle\Entity\Traits\SlugTrait;
+use AppBundle\Entity\Traits\TitleTrait;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
- * Class Post
+ * Post
  *
  * @category Entity
  * @package AppBundle\Entity
@@ -17,10 +23,15 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PostRepository")
- * @Vich\Uploadable("title")
+ * @Vich\Uploadable
+ * @UniqueEntity("title")
  */
 class Post extends AbstractBase
 {
+    use TitleTrait;
+    use SlugTrait;
+    use DescriptionTrait;
+
     /**
      * @var string
      *
@@ -70,6 +81,14 @@ class Post extends AbstractBase
     private $metaDescription;
 
     /**
+     * @var ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="Tag", inversedBy="posts")
+     * @ORM\JoinColumn(name="tag_id", referencedColumnName="id")
+     */
+    private $tags;
+
+    /**
      *
      *
      * Methods
@@ -77,12 +96,17 @@ class Post extends AbstractBase
      *
      */
 
+    /**
+     * Post constructor
+     */
     public function __construct()
     {
-
+        $this->tags = new ArrayCollection();
     }
 
     /**
+     * Get slug
+     *
      * @return string
      */
     public function getSlug()
@@ -91,18 +115,8 @@ class Post extends AbstractBase
     }
 
     /**
-     * @param string $slug
+     * Get publisedAt
      *
-     * @return Post
-     */
-    public function setSlug($slug)
-    {
-        $this->slug = $slug;
-
-        return $this;
-    }
-
-    /**
      * @return \DateTime
      */
     public function getPublishedAt()
@@ -111,17 +125,23 @@ class Post extends AbstractBase
     }
 
     /**
+     * Set publisedAt
+     *
      * @param \DateTime $publishedAt
+     *
      * @return Post
      */
     public function setPublishedAt(\DateTime $publishedAt)
     {
         $this->publishedAt = $publishedAt;
+
         return $this;
     }
 
     /**
-     * @return File
+     * Get imageFile
+     *
+     * @return File|UploadedFile
      */
     public function getImageFile()
     {
@@ -129,8 +149,11 @@ class Post extends AbstractBase
     }
 
     /**
-     * @param File $imageFile
-     * @return Post
+     * Set imageFile
+     *
+     * @param File|UploadedFile $imageFile
+     *
+     * @return $this
      */
     public function setImageFile(File $imageFile = null)
     {
@@ -138,12 +161,15 @@ class Post extends AbstractBase
         if ($imageFile){
             // It is required that at least one field changes if you are using doctrine
             // otherwise the event listeners won't be called and the file is lost
-            $this->updatedAt;
+            $this->updatedAt = new \DateTime('now');
         }
+
         return $this;
     }
 
     /**
+     * Get imagename
+     *
      * @return string
      */
     public function getImageName()
@@ -152,16 +178,22 @@ class Post extends AbstractBase
     }
 
     /**
+     * Set imageName
+     *
      * @param string $imageName
-     * @return Post
+     *
+     * @return $this
      */
     public function setImageName($imageName)
     {
         $this->imageName = $imageName;
+
         return $this;
     }
 
     /**
+     * Get MetaKeywords
+     *
      * @return string
      */
     public function getMetakeywords()
@@ -170,16 +202,22 @@ class Post extends AbstractBase
     }
 
     /**
+     * Set MetaKeywords
+     *
      * @param string $metakeywords
+     *
      * @return Post
      */
     public function setMetakeywords($metakeywords)
     {
         $this->metakeywords = $metakeywords;
+
         return $this;
     }
 
     /**
+     * Get MetaDescription
+     *
      * @return string
      */
     public function getMetaDescription()
@@ -188,12 +226,75 @@ class Post extends AbstractBase
     }
 
     /**
+     * Set MetaDescription
+     *
      * @param string $metaDescription
-     * @return Post
+     *
+     * @return $this
      */
     public function setMetaDescription($metaDescription)
     {
         $this->metaDescription = $metaDescription;
+
         return $this;
+    }
+
+    /**
+     * Get tags
+     *
+     * @return ArrayCollection
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    /**
+     * Set tags
+     *
+     * @param ArrayCollection $tags
+     *
+     * @return $this
+     */
+    public function setTags($tags)
+    {
+        $this->tags = $tags;
+
+        return $this;
+    }
+
+    /**
+     * Add tag
+     *
+     * @param Tag $tag
+     *
+     * @return $this
+     */
+    public function addTag(Tag $tag)
+    {
+        $tag->addPost($this);
+        $this->tags[] = $tag;
+
+        return $this;
+    }
+
+    /**
+     * Remove tag
+     *
+     * @param Tag $tag
+     */
+    public function removeTag(Tag $tag)
+    {
+        $this->tags->removeElement($tag);
+    }
+
+    /**
+     * To string
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->id ? $this->getPublishedAt()->format('d/m/Y') . ' · ' . $this->getTitle() : '---';
     }
 }

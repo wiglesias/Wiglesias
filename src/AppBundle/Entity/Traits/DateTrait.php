@@ -5,7 +5,7 @@ namespace AppBundle\Entity\Traits;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Date Trait
+ * Date trait
  *
  * @category Trait
  * @package AppBundle\Entity\Traits
