@@ -5,7 +5,7 @@ namespace AppBundle\Entity\Traits;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class Title Trait
+ * Title Trait
  *
  * @category Trait
  * @package AppBundle\Entity\Traits
