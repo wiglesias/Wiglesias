@@ -44,6 +44,11 @@ Trait DateTrait
         return $this;
     }
 
+    /**
+     * Get Date
+     *
+     * @return string
+     */
     public function getDateString()
     {
         return $this->getDate()->format('d/m/Y');
