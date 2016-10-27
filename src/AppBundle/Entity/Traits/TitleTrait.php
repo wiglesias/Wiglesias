@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @package AppBundle\Entity\Traits
  * @author wils Iglesias <wiglesias83@gmail.com>
  */
-class TitleTrait
+Trait TitleTrait
 {
     /**
      * @var string
