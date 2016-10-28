@@ -2,6 +2,7 @@
 
 namespace AppBundle\Admin;
 
+use AppBundle\Manager\RepositoriesManager;
 use Liip\ImagineBundle\Imagine\Cache\CacheManager;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Route\RouteCollection;
@@ -153,5 +154,4 @@ abstract class AbstractBaseAdmin extends AbstractAdmin
                 '480xY'
             ) . '" class="admin-preview img-responsive" alt="thumbnail"/>' : '' : '') . '<span style="width:100%;display:block;">mida 780x1168px (màx. 10MB amb GIF)</span>';
     }
-
 }
