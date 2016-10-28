@@ -9,7 +9,7 @@ use Doctrine\ORM\EntityRepository;
  *
  * @category Repository
  * @package  AppBundle\Repository
- * @author   Anton Serra <aserratorta@gmail.com>
+ * @author   Wils Iglesias <wiglesias83@gmail.com>
  */
 class UserRepository extends EntityRepository
 {
