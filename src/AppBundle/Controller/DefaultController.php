@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\BrowserKit\Response;
 use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
@@ -17,5 +18,17 @@ class DefaultController extends Controller
         return $this->render('default/index.html.twig', array(
             'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
         ));
+    }
+
+    /**
+     * @Route("/blog", name="front_log")
+     *
+     * @return Response
+     */
+    public function blogAction()
+    {
+        return $this->render(':Fronend:blog/list.html.twig',
+            ['post' => $post]
+        );
     }
 }
