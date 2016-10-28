@@ -4,13 +4,14 @@ namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
     /**
      * @Route("/", name="front_homepage")
+     *
      *
      * @param Request $request
      *
@@ -24,11 +25,10 @@ class DefaultController extends Controller
     /**
      * @Route("/contacto", name="front_contact")
      *
-     * @param Request $request
      *
      * @return Response
      */
-    public function contactAction(Request $request)
+    public function contactAction()
     {
         return $this->render(':FrontEnd:contact.html.twig');
     }
