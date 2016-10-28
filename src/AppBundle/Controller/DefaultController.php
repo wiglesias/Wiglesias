@@ -4,20 +4,21 @@ namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\BrowserKit\Response;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("/", name="front_homepage")
+     *
+     * @param Request $request
+     *
+     * @return Response
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', array(
-            'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-        ));
+        return $this->render(':FrontEnd:homepage.html.twig', array());
     }
 
     /**
@@ -27,8 +28,6 @@ class DefaultController extends Controller
      */
     public function blogAction()
     {
-        return $this->render(':Fronend:blog/list.html.twig',
-            ['post' => $post]
-        );
+        return $this->render(':FrontEnd/Blog:list.html.twig', array());
     }
 }
