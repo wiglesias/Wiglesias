@@ -1,0 +1,20 @@
+# Posts
+AppBundle\Entity\Post:
+  post{1..10}:
+    publishedAt: <dateTimeThisMonth()>
+    title: <sentence()>
+    description: <paragraph()>
+    metaKeywords: <word()>
+    metaDescription: <sentence()>
+    createdAt: <dateTimeBetween('-2 months', '-1 months')>
+    updatedAt: <dateTimeThisMonth()>
+    enabled: <boolean(70)>
+    tags: [ @tag1 ]
+
+# Tags
+AppBundle\Entity\Tag:
+  tag{1..5}:
+    title: <sentence()>
+    createdAt: <dateTimeBetween('-2 months', '-1 months')>
+    updatedAt: <dateTimeThisMonth()>
+    enabled: <boolean(70)>
