@@ -5,17 +5,31 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("/", name="front_homepage")
+     *
+     *
+     * @param Request $request
+     *
+     * @return Response
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', array(
-            'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-        ));
+        return $this->render(':FrontEnd:homepage.html.twig');
+    }
+
+    /**
+     * @Route("/contacto", name="front_contact")
+     *
+     *
+     * @return Response
+     */
+    public function contactAction()
+    {
+        return $this->render(':FrontEnd:contact.html.twig');
     }
 }
