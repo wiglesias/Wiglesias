@@ -18,16 +18,18 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        return $this->render(':FrontEnd:homepage.html.twig', array());
+        return $this->render(':FrontEnd:homepage.html.twig');
     }
 
     /**
-     * @Route("/blog", name="front_log")
+     * @Route("/contacto", name="front_contact")
+     *
+     * @param Request $request
      *
      * @return Response
      */
-    public function blogAction()
+    public function contactAction(Request $request)
     {
-        return $this->render(':FrontEnd/Blog:list.html.twig', array());
+        return $this->render(':FrontEnd:contact.html.twig');
     }
 }
