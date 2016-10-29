@@ -4,6 +4,7 @@ namespace AppBundle\Admin;
 
 use AppBundle\Repository\TagRepository;
 use Doctrine\ORM\QueryBuilder;
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
