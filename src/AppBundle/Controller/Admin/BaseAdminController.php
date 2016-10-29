@@ -15,11 +15,11 @@ use Symfony\Component\HttpFoundation\Request;
 abstract class BaseAdminController extends Controller
 {
     /**
-     * @param Request $request
+     * @param Request|null $request
      *
      * @return Request
      */
-    protected function resolveRequest(Request $request)
+    protected function resolveRequest(Request $request = null)
     {
         if (null === $request){
             return $this->getRequest();
