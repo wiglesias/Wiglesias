@@ -35,7 +35,7 @@ class Post extends AbstractBase
     /**
      * @var string
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=255)
      * @Gedmo\Slug(fields={"title"})
      */
     private $slug;
@@ -55,7 +55,7 @@ class Post extends AbstractBase
      *     maxSize="10M",
      *     mimeTypes={"image/jpg", "image/jpeg", "image/png", "image/gif"}
      * )
-     * @Assert\Image(minWidth="1200")
+     * @Assert\Image(minWidth=1200)
      */
     private $imageFile;
 
@@ -71,7 +71,7 @@ class Post extends AbstractBase
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $metakeywords;
+    private $metaKeywords;
 
     /**
      * @var string
@@ -115,17 +115,7 @@ class Post extends AbstractBase
     }
 
     /**
-     * Get publisedAt
-     *
-     * @return \DateTime
-     */
-    public function getPublishedAt()
-    {
-        return $this->publishedAt;
-    }
-
-    /**
-     * Set publisedAt
+     * Set publishedAt
      *
      * @param \DateTime $publishedAt
      *
@@ -139,13 +129,13 @@ class Post extends AbstractBase
     }
 
     /**
-     * Get imageFile
+     * Get publishedAt
      *
-     * @return File|UploadedFile
+     * @return \DateTime
      */
-    public function getImageFile()
+    public function getPublishedAt()
     {
-        return $this->imageFile;
+        return $this->publishedAt;
     }
 
     /**
@@ -158,7 +148,7 @@ class Post extends AbstractBase
     public function setImageFile(File $imageFile = null)
     {
         $this->imageFile = $imageFile;
-        if ($imageFile){
+        if ($imageFile) {
             // It is required that at least one field changes if you are using doctrine
             // otherwise the event listeners won't be called and the file is lost
             $this->updatedAt = new \DateTime('now');
@@ -168,13 +158,13 @@ class Post extends AbstractBase
     }
 
     /**
-     * Get imagename
+     * Get imageFile
      *
-     * @return string
+     * @return File|UploadedFile
      */
-    public function getImageName()
+    public function getImageFile()
     {
-        return $this->imageName;
+        return $this->imageFile;
     }
 
     /**
@@ -192,37 +182,37 @@ class Post extends AbstractBase
     }
 
     /**
-     * Get MetaKeywords
+     * Get imageName
      *
      * @return string
      */
-    public function getMetakeywords()
+    public function getImageName()
     {
-        return $this->metakeywords;
+        return $this->imageName;
     }
 
     /**
      * Set MetaKeywords
      *
-     * @param string $metakeywords
+     * @param string $metaKeywords
      *
-     * @return Post
+     * @return $this
      */
-    public function setMetakeywords($metakeywords)
+    public function setMetaKeywords($metaKeywords)
     {
-        $this->metakeywords = $metakeywords;
+        $this->metaKeywords = $metaKeywords;
 
         return $this;
     }
 
     /**
-     * Get MetaDescription
+     * Get MetaKeywords
      *
      * @return string
      */
-    public function getMetaDescription()
+    public function getMetaKeywords()
     {
-        return $this->metaDescription;
+        return $this->metaKeywords;
     }
 
     /**
@@ -240,13 +230,13 @@ class Post extends AbstractBase
     }
 
     /**
-     * Get tags
+     * Get MetaDescription
      *
-     * @return ArrayCollection
+     * @return string
      */
-    public function getTags()
+    public function getMetaDescription()
     {
-        return $this->tags;
+        return $this->metaDescription;
     }
 
     /**
@@ -261,6 +251,16 @@ class Post extends AbstractBase
         $this->tags = $tags;
 
         return $this;
+    }
+
+    /**
+     * Get tags
+     *
+     * @return ArrayCollection
+     */
+    public function getTags()
+    {
+        return $this->tags;
     }
 
     /**
