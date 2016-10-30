@@ -110,47 +110,6 @@ sonata_admin:
         use_select2:    true
         pager_links:    10
     persist_filters: true
-    templates:
-        layout: "::Admin/layout.html.twig"
-        show:   "::Admin/show.html.twig"
-    dashboard:
-        groups:
-            Blog:
-                icon: "<i class='fa fa-chrome'></i>"
-            Coworkers:
-                icon: "<i class='fa fa-users'></i>"
-            Activitats:
-                icon: "<i class='fa fa-calendar-times-o'></i>"
-            Contactes:
-                icon: "<i class='fa fa-envelope'></i>"
-            Usuaris:
-                icon: "<i class='fa fa-user'></i>"
-        blocks:
-            -
-                position: top
-                type: sonata.block.service.text
-                class: col-md-12
-                settings:
-                    content: >
-                        <h1 style="margin-top:0">Content Management System</h1>
-            -
-                position: top
-                type: sonata.admin.block.admin_list
-                class: col-md-6
-                settings:
-                    groups: [ Blog ]
-            -
-                position: top
-                type: sonata.admin.block.admin_list
-                class: col-md-6
-                settings:
-                    groups: [ Contactos ]
-            -
-                position: top
-                type: sonata.admin.block.admin_list
-                class: col-md-6
-                settings:
-                    groups: [ Usuarios ]
 
 # CKEditor
 ivory_ck_editor:
