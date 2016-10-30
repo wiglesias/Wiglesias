@@ -2,6 +2,8 @@
 
 namespace AppBundle\Repository;
 
+use Doctrine\ORM\EntityRepository;
+
 /**
  * Class ContactMessageRepository
  *
@@ -9,7 +11,7 @@ namespace AppBundle\Repository;
  * @package AppBundle\Repository
  * @autor Wils Iglesias <wiglesias83@gmail.com>
  */
-class ContactMessageRepository
+class ContactMessageRepository extends EntityRepository
 {
 
 }
