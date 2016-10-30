@@ -3,6 +3,7 @@
 namespace AppBundle\Controller\Admin;
 
 use AppBundle\Entity\ContactMessage;
+use AppBundle\Form\Type\ContactMessageAnswerType;
 use Symfony\Component\HttpFoundation\File\Exception\AccessDeniedException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,7 +16,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  * @package AppBundle\Controller\Admin
  * @author Wils Iglesias <wiglesias83@gmail.com>
  */
-class ContactMessageAdminController
+class ContactMessageAdminController extends BaseAdminController
 {
     /**
      * Show action
