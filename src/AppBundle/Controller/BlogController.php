@@ -15,6 +15,6 @@ class BlogController extends Controller
      */
     public function indexAction()
     {
-        return $this->render(':FrontEnd/Blog:list.html.twig');
+        return $this->render(':Frontend/Blog:list.html.twig');
     }
 }
