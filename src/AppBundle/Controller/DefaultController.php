@@ -12,24 +12,24 @@ class DefaultController extends Controller
     /**
      * @Route("/", name="front_homepage")
      *
-     *
      * @param Request $request
      *
      * @return Response
      */
     public function indexAction(Request $request)
     {
-        return $this->render(':FrontEnd:homepage.html.twig');
+        return $this->render(':Frontend:homepage.html.twig', array());
     }
 
     /**
      * @Route("/contacto", name="front_contact")
      *
+     * @param Request $request
      *
      * @return Response
      */
-    public function contactAction()
+    public function contactAction(Request $request)
     {
-        return $this->render(':FrontEnd:contact.html.twig');
+        return $this->render(':Frontend:contact.html.twig', array());
     }
 }
