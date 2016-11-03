@@ -14,6 +14,7 @@
     "require": {
         "doctrine/orm": "^2.4.8",
         "doctrine/doctrine-bundle": "~1.4",
+        "doctrine/doctrine-fixtures-bundle": "^2.3",
         "egeloen/ckeditor-bundle": "^4.0",
         "hautelook/alice-bundle": "^1.0",
         "incenteev/composer-parameter-handler": "~2.0",
