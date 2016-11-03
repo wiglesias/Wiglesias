@@ -4,6 +4,7 @@ namespace AppBundle\Admin;
 
 use AppBundle\Repository\TagRepository;
 use Doctrine\ORM\QueryBuilder;
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -18,7 +19,7 @@ use Sonata\AdminBundle\Route\RouteCollection;
  */
 class PostAdmin extends AbstractBaseAdmin
 {
-    protected $classnameLabel = 'Article';
+    protected $classnameLabel = 'Articulos';
     protected $baseRoutePattern = 'web/post';
     protected $datagridValues = array(
         '_sort_by'    => 'publishedAt',

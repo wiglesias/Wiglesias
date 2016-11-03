@@ -34,6 +34,9 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    form_themes:
+        - "bootstrap_3_layout.html.twig"
+        - "SonataCoreBundle:Form:datepicker.html.twig"
 
 # Doctrine Configuration
 doctrine:
@@ -93,8 +96,9 @@ sonata_block:
     default_contexts: [cms]
     blocks:
         # enable the SonataAdminBundle block
-        sonata.admin.block.admin_list:
-            contexts: [admin]
+        sonata.admin.block.admin_list:  ~
+        sonata.user.block.menu:         ~
+        sonata.block.service.text:      ~
 
 # Admin
 sonata_admin:
@@ -106,6 +110,13 @@ sonata_admin:
         use_select2:    true
         pager_links:    10
     persist_filters: true
+
+# CKEditor
+ivory_ck_editor:
+    inline: false
+    configs:
+        my_config:
+            toolbar: standard
 
 # Vich Configuration
 vich_uploader:
