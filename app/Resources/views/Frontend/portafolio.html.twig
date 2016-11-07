@@ -1,0 +1,19 @@
+{% extends ':Frontend:base.html.twig' %}
+
+{% block title %}Portafolio{% endblock %}
+
+{% block main %}
+    <div class="row">
+        <div class="col-xs-12">
+            <h2 class="text-center fresh-talent-ad">Events</h2>
+            <table class="table table-bordered">
+                {% for portafolio in portafolios %}
+                    {#<a href="{{ path('front_event_detail', {id: event.id}) }}">{{ event.title }}</a>#}
+                    {{ portafolio.id }}
+                    {{ portafolio.title }}
+                    {{ portafolio.type }}
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock %}

@@ -16,14 +16,10 @@ AppBundle\Entity\ContactMessage:
 # Portafolio
 AppBundle\Entity\Portafolio:
   portafolio{1..10}:
-    publishedAt: <dateTimeThisMonth()>
     title: <sentence()>
     description: <paragraph()>
-    metaKeywords: <word()>
-    metaDescription: <sentence()>
-    createdAt: <dateTimeBetween('-2 months', '-1 months')>
-    updatedAt: <dateTimeThisMonth()>
-    enabled: <boolean(70)>
+    type: <word()>
+    date: <dateTimeThisMonth()>
 
 # Posts
 AppBundle\Entity\Post:

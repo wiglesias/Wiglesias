@@ -2,16 +2,17 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Entity\Traits\DateTrait;
 use AppBundle\Entity\Traits\DescriptionTrait;
 use AppBundle\Entity\Traits\SlugTrait;
 use AppBundle\Entity\Traits\TitleTrait;
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Portafolio
@@ -28,8 +29,9 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 class Portafolio extends AbstractBase
 {
     use TitleTrait;
-    use SlugTrait;
     use DescriptionTrait;
+    use DateTrait;
+    use SlugTrait;
 
     /**
      * @var string
@@ -40,16 +42,16 @@ class Portafolio extends AbstractBase
     private $slug;
 
     /**
-     * @var \DateTime
+     * @var string
      *
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="string", length=255)
      */
-    private $publishedAt;
+    private $type;
 
     /**
      * @var File
      *
-     * @Vich\UploadableField(mapping="post", fileNameProperty="imageName")
+     * @Vich\UploadableField(mapping="event", fileNameProperty="imageName")
      * @Assert\File(
      *     maxSize="10M",
      *     mimeTypes={"image/jpg", "image/jpeg", "image/png", "image/gif"}
@@ -64,20 +66,6 @@ class Portafolio extends AbstractBase
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $imageName;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $metaKeywords;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $metaDescription;
 
     /**
      *
@@ -98,27 +86,23 @@ class Portafolio extends AbstractBase
     }
 
     /**
-     * Set publishedAt
-     *
-     * @param \DateTime $publishedAt
-     *
-     * @return $this
+     * @return string
      */
-    public function setPublishedAt(\DateTime $publishedAt)
+    public function getType()
     {
-        $this->publishedAt = $publishedAt;
-
-        return $this;
+        return $this->type;
     }
 
     /**
-     * Get publishedAt
+     * @param string $type
      *
-     * @return \DateTime
+     * @return $this
      */
-    public function getPublishedAt()
+    public function setType($type)
     {
-        return $this->publishedAt;
+        $this->type = $type;
+
+        return $this;
     }
 
     /**
@@ -175,60 +159,12 @@ class Portafolio extends AbstractBase
     }
 
     /**
-     * Set MetaKeywords
-     *
-     * @param string $metaKeywords
-     *
-     * @return $this
-     */
-    public function setMetaKeywords($metaKeywords)
-    {
-        $this->metaKeywords = $metaKeywords;
-
-        return $this;
-    }
-
-    /**
-     * Get MetaKeywords
-     *
-     * @return string
-     */
-    public function getMetaKeywords()
-    {
-        return $this->metaKeywords;
-    }
-
-    /**
-     * Set MetaDescription
-     *
-     * @param string $metaDescription
-     *
-     * @return $this
-     */
-    public function setMetaDescription($metaDescription)
-    {
-        $this->metaDescription = $metaDescription;
-
-        return $this;
-    }
-
-    /**
-     * Get MetaDescription
-     *
-     * @return string
-     */
-    public function getMetaDescription()
-    {
-        return $this->metaDescription;
-    }
-
-    /**
      * To string
      *
      * @return string
      */
     public function __toString()
     {
-        return $this->id ? $this->getPublishedAt()->format('d/m/Y') . ' · ' . $this->getTitle() : '---';
+        return $this->id ? $this->getDate()->format('d/m/Y') . ' · ' . $this->getTitle() : '---';
     }
 }

@@ -2,7 +2,6 @@
 
 namespace AppBundle\Repository;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityRepository;
 
 /**
@@ -14,18 +13,13 @@ use Doctrine\ORM\EntityRepository;
  */
 class PortafolioRepository extends EntityRepository
 {
-    /**
-     * @return ArrayCollection
-     */
-    public function getAllEnabledSortedByPublishedDate()
+    public function findAllEnabledSortedByDate()
     {
-        $query = $this->createQueryBuilder('p')
-            ->where('p.enabled = :enabled')
+        $query = $this->createQueryBuilder('e')
+            ->where('e.enabled = :enabled')
             ->setParameter('enabled', true)
-            ->orderBy('p.publishedAt', 'DESC')
-            ->addOrderBy('p.title', 'ASC')
-            ->getQuery();
+            ->orderBy('e.date', 'DESC');
 
-        return $query->getResult();
+        return $query->getQuery()->getResult();
     }
 }
