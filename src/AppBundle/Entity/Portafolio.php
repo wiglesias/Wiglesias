@@ -66,4 +66,18 @@ class Portafolio extends AbstractBase
      */
     private $imageName;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $metaKeywords;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $metaDescription;
+
 }
