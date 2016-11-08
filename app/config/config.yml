@@ -37,6 +37,9 @@ twig:
     form_themes:
         - "bootstrap_3_layout.html.twig"
         - "SonataCoreBundle:Form:datepicker.html.twig"
+    globals:
+        admin_tag_version:        "v1.0.0"
+
 
 # Doctrine Configuration
 doctrine:
@@ -102,7 +105,7 @@ sonata_block:
 
 # Admin
 sonata_admin:
-    title: "Backend Wiglesias"
+    title: "Wiglesias"
 #   title_logo: "/bundles/app/img/logo-espai-kowo-backend.png"
     options:
         html5_validate: true
@@ -110,6 +113,50 @@ sonata_admin:
         use_select2:    true
         pager_links:    10
     persist_filters: true
+    templates:
+        layout: "::Admin/layout.html.twig"
+    dashboard:
+        groups:
+            Portafolio:
+                icon: "<i class='fa fa-briefcase'></i>"
+            Blog:
+                icon: "<i class='fa fa-chrome'></i>"
+            Contactos:
+                icon: "<i class='fa fa-envelope'></i>"
+            Usuarios:
+                icon: "<i class='fa fa-user'></i>"
+        blocks:
+            -
+                position: top
+                type: sonata.block.service.text
+                class: col-md-12
+                settings:
+                    content: >
+                        <h1 style="margin-top:0">Content Management System</h1>
+            -
+                position: top
+                type: sonata.admin.block.admin_list
+                class: col-md-6
+                settings:
+                    groups: [ Portafolio ]
+            -
+                position: top
+                type: sonata.admin.block.admin_list
+                class: col-md-6
+                settings:
+                    groups: [ Blog ]
+            -
+                position: top
+                type: sonata.admin.block.admin_list
+                class: col-md-6
+                settings:
+                    groups: [ Contactos ]
+            -
+                position: top
+                type: sonata.admin.block.admin_list
+                class: col-md-6
+                settings:
+                    groups: [ Usuarios ]
 
 # CKEditor
 ivory_ck_editor:

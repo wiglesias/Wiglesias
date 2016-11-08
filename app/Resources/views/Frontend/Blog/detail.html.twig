@@ -3,14 +3,16 @@
 {% block title %}Blog{% endblock %}
 
 {% block main %}
-    <div class="row">
-        <div class="col-xs-12">
-            <h2 class="text-center">Post detail</h2>
-            <h5>{{ post.title }}</h5>
-            <h5>{{ post.slug }}</h5>
-            <h5>{{ post.description }}</h5>
-            <h5>{{ post.publishedAt|date('d/m/Y') }}</h5>
-            <a href="{{ path('front_blog') }}">Llista d'Articles</a>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="text-center">Post detail</h2>
+                <h5>{{ post.title }}</h5>
+                <h5>{{ post.slug }}</h5>
+                <h5>{{ post.description }}</h5>
+                <h5>{{ post.publishedAt|date('d/m/Y') }}</h5>
+                <a href="{{ path('front_blog') }}">Llista d'Articles</a>
+            </div>
         </div>
     </div>
 {% endblock %}

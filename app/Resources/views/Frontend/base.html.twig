@@ -8,7 +8,7 @@
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/wiglesias.css') }}">
+        <link rel="stylesheet" href="{{ asset('bundles/app/css/wiglesias.css') }}">
     {% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
@@ -16,27 +16,27 @@
 {% block body %}{% endblock %}
 
 {% block header %}
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="{{ path('front_homepage') }}">Wiglesias</a>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="{{ path('front_homepage') }}">Home</a></li>
-                    <li><a href="#">Sobre mi</a></li>
-                    <li><a href="{{ path('front_portafolio') }}">Portafolio</a></li>
-                    <li><a href="{{ path('front_blog') }}">Blog</a></li>
-                    <li><a href="{{ path('front_contact') }}">Contacte</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{ path('sonata_admin_dashboard') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                </ul>
+    <nav class="navbar navbar-default navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{{ path('front_homepage') }}">Wiglesias</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a href="{{ path('front_homepage') }}"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+                        <li><a href="{{ path('front_sobre_me') }}"><i class="fa fa-meh-o"></i> Sobre mi</a></li>
+                        <li><a href="{{ path('front_portafolio') }}"><i class="fa fa-briefcase"></i> Portafolio</a></li>
+                        <li><a href="{{ path('front_blog') }}"><i class="fa fa-coffee"></i> Blog</a></li>
+                        <li><a href="{{ path('front_contact') }}"><i class="fa fa-envelope"></i> Contacte</a></li>
+                        <li><a href="{{ path('sonata_admin_dashboard') }}"><i class="fa fa-sign-in"></i> Login</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </nav>
@@ -47,7 +47,7 @@
 
 {% block footer %}
     <footer class="container-fluid text-center">
-        <p>Wiglesias<i class="fa fa-copyright" aria-hidden="true"></i> {{ "now" | date("Y") }}</p>
+        <p>Wiglesias <i class="fa fa-copyright" aria-hidden="true"></i> {{ "now" | date("Y") }}</p>
     </footer>
 {% endblock %}
 

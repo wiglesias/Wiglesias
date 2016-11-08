@@ -32,4 +32,14 @@ class DefaultController extends Controller
     {
         return $this->render(':Frontend:contact.html.twig', array());
     }
+
+    /**
+     * @Route("/sobre-me", name="front_sobre_me")
+     *
+     * @return Response
+     */
+    public function aboutAction()
+    {
+        return $this->render(':Frontend:about_me.html.twig', array());
+    }
 }

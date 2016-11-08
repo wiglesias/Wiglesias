@@ -1,10 +1,12 @@
 {% extends ':Frontend:base.html.twig' %}
 
 {% block main %}
-    <h1>Aquesta és la homepage</h1>
-    <div class="row">
-        <div class="col-md-3 col-sm-4 col-xs-6">
-            <a href="{{ path('front_blog') }}">Llista d'Articles</a>
+    <div class="container">
+        <h1>Aquesta és la homepage</h1>
+        <div class="row">
+            <div class="col-md-3 col-sm-4 col-xs-6">
+                <a href="{{ path('front_blog') }}">Llista d'Articles</a>
+            </div>
         </div>
     </div>
 {% endblock %}
