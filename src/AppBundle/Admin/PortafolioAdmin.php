@@ -16,7 +16,7 @@ use Sonata\AdminBundle\Route\RouteCollection;
  */
 class PortafolioAdmin extends AbstractBaseAdmin
 {
-    protected $classnameLabel = 'Activity';
+    protected $classnameLabel = 'Portafolio';
     protected $baseRoutePattern = 'activitats/activitat';
     protected $datagridValues = array(
         '_sort_by'    => 'date',
