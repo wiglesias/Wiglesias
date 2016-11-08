@@ -13,6 +13,14 @@ AppBundle\Entity\ContactMessage:
     updatedAt: <dateTimeThisMonth()>
     enabled: true
 
+# Portafolio
+AppBundle\Entity\Portafolio:
+  portafolio{1..10}:
+    title: <sentence()>
+    description: <paragraph()>
+    type: <word()>
+    date: <dateTimeThisMonth()>
+
 # Posts
 AppBundle\Entity\Post:
   post{1..10}:
