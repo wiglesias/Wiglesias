@@ -16,7 +16,7 @@ use Sonata\AdminBundle\Show\ShowMapper;
  */
 class ContactMessageAdmin extends AbstractBaseAdmin
 {
-    protected $classnameLabel = 'Contact Message';
+    protected $classnameLabel = 'Contacto Mensaje';
     protected $baseRoutePattern = 'contact/message';
     protected $datagridValues = array(
         '_sort_by'    => 'createdAt',
