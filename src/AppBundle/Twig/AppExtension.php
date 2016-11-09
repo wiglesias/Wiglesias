@@ -79,7 +79,7 @@ class AppExtension extends \Twig_Extension
             /** @var string $role */
             foreach ($object->getRoles() as $role) {
                 if ($role == UserRolesEnum::ROLE_USER) {
-                    $span .= '<span class="label label-info" style="margin-right:10px">usuari</span>';
+                    $span .= '<span class="label label-info" style="margin-right:10px">usuario</span>';
                 } else if ($role == UserRolesEnum::ROLE_CMS) {
                     $span .= '<span class="label label-warning" style="margin-right:10px">editor</span>';
                 } else if ($role == UserRolesEnum::ROLE_ADMIN) {
