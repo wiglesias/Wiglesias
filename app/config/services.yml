@@ -22,7 +22,7 @@ services:
             - { name: sonata.admin, manager_type: orm, label: "Etiquetas", group: "Blog" }
     admin.contactmessage:
         class: AppBundle\Admin\ContactMessageAdmin
-        arguments: [ ~, AppBundle\Entity\ContactMessage, AppBundle:Admin\ContactMessageAdmin, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
+        arguments: [ ~, AppBundle\Entity\ContactMessage, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
         tags:
             - { name: sonata.admin, manager_type: orm, label: "Mensaje de Contacto", group: "Contactos" }
     admin.user:
