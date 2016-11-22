@@ -6,9 +6,9 @@
     <meta name="author" content="www.wiglesias.com">
     <title>{% block title %}Wiglesias{% endblock %}</title>
     {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('bundles/app/css/font-awesome.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('bundles/app/css/wiglesias.css') }}">
+        {% stylesheets filter="cssrewrite,less" '@mycss' %}
+        <link rel="stylesheet" type="text/css" href="{{ asset_url }}"/>
+        {% endstylesheets %}
     {% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
@@ -28,7 +28,7 @@
                     <a class="navbar-brand" href="{{ path('front_homepage') }}">Wiglesias</a>
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
-                    {{ knp_menu_render('top', {currentClass: 'active'}) }}
+                    {{ knp_menu_render('top', {currentClass: 'active', allow_safe_labels: true}) }}
                 </div>
             </div>
         </div>
@@ -45,8 +45,9 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
+    {% javascripts '@myjs' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}
 </body>
 </html>

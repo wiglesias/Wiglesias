@@ -74,9 +74,10 @@ class FrontendMenuBuilder
         $menu->addChild(
             'front_portafolio',
             array(
-                'label'   => 'frontend.menu.portafolio',
+                'label'   => '<i class="fa fa-exchange" aria-hidden="true"></i> Portafolio',
                 'route'   => 'front_portafolio',
                 'current' => $route == 'front_portafolio',
+                'extras' => array('safe_label' => true),
             )
         );
         $menu->addChild(
