@@ -6,9 +6,9 @@
     <meta name="author" content="www.wiglesias.com">
     <title>{% block title %}Wiglesias{% endblock %}</title>
     {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('bundles/app/css/font-awesome.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('bundles/app/css/wiglesias.css') }}">
+        {% stylesheets filter="cssrewrite,less" '@mycss' %}
+        <link rel="stylesheet" type="text/css" href="{{ asset_url }}"/>
+        {% endstylesheets %}
     {% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
@@ -18,18 +18,16 @@
 {% block header %}
     <nav class="navbar navbar-default navbar-inverse" role="navigation">
         <div class="container">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="{{ path('front_homepage') }}">Wiglesias</a>
-                </div>
-                <div class="collapse navbar-collapse" id="myNavbar">
-                    {{ knp_menu_render('top', {currentClass: 'active'}) }}
-                </div>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ path('front_homepage') }}">Wiglesias</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                {{ knp_menu_render('top', {currentClass: 'active', allow_safe_labels: true}) }}
             </div>
         </div>
     </nav>
@@ -37,16 +35,23 @@
 
 {#<!-- Main content -->#}
 {% block main %}{% endblock %}
-
+{#<!-- Scroll-Top effect -->#}
+<div class="scroll-top-wrapper"><span class="scroll-top-inner"><i class="fa fa-2x fa-chevron-up"></i></span></div>
+{#<!-- Footer -->#}
 {% block footer %}
-    <footer class="container-fluid text-center">
+    <footer class="container-fluid text-center footer">
         <p>Wiglesias <i class="fa fa-copyright" aria-hidden="true"></i> {{ "now" | date("Y") }}</p>
     </footer>
 {% endblock %}
-
+{#<!-- Javascripts -->#}
 {% block javascripts %}
-    <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
+    {% javascripts '@myjs' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+{% block scroll_top %}
+    {#<!-- Scroll-Top effect JS -->#}
+    {% include ':Frontend/includes:scroll-to-top-js.html.twig' %}
 {% endblock %}
 </body>
 </html>
