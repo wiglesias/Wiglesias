@@ -19,6 +19,7 @@
         "hautelook/alice-bundle": "^1.0",
         "incenteev/composer-parameter-handler": "~2.0",
         "liip/imagine-bundle": "^1.6",
+        "knplabs/knp-menu-bundle": "^2.0",
         "php": ">=5.3.9",
         "symfony/symfony": "2.8.*",
         "symfony/swiftmailer-bundle": "~2.3",

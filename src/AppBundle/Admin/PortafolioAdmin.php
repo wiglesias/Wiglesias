@@ -41,19 +41,19 @@ class PortafolioAdmin extends AbstractBaseAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('Activitats', $this->getFormMdSuccessBoxArray(8))
+            ->with('Proyectos', $this->getFormMdSuccessBoxArray(8))
             ->add(
                 'title',
                 null,
                 array(
-                    'label' => 'Activitat',
+                    'label' => 'backend.admin.portafolio.project',
                 )
             )
             ->add(
                 'description',
                 'ckeditor',
                 array(
-                    'label'       => 'Descripció',
+                    'label'       => 'backend.admin.portafolio.description',
                     'config_name' => 'my_config',
                     'required'    => true,
                 )
@@ -62,25 +62,25 @@ class PortafolioAdmin extends AbstractBaseAdmin
                 'imageFile',
                 'file',
                 array(
-                    'label'    => 'Imatge',
+                    'label'    => 'backend.admin.portafolio.image',
                     'help'     => $this->getImageHelperFormMapperWithThumbnail(),
                     'required' => false,
                 )
             )
             ->end()
-            ->with('Controls', $this->getFormMdSuccessBoxArray(4))
+            ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(4))
             ->add(
                 'type',
                 null,
                 array(
-                    'label' => 'Tipus',
+                    'label' => 'backend.admin.portafolio.category',
                 )
             )
             ->add(
                 'date',
                 'sonata_type_date_picker',
                 array(
-                    'label'    => 'Data',
+                    'label'    => 'backend.admin.portafolio.date',
                     'format'   => 'd/M/y',
                     'required' => true,
                 )
@@ -89,7 +89,7 @@ class PortafolioAdmin extends AbstractBaseAdmin
                 'enabled',
                 'checkbox',
                 array(
-                    'label'    => 'Actiu',
+                    'label'    => 'backend.admin.enabled',
                     'required' => false,
                 )
             )
@@ -105,37 +105,30 @@ class PortafolioAdmin extends AbstractBaseAdmin
                 'date',
                 'doctrine_orm_date',
                 array(
-                    'label'      => 'Data',
+                    'label'      => 'backend.admin.portafolio.date',
                     'field_type' => 'sonata_type_date_picker',
                     'format'     => 'd-m-Y',
-                )
-            )
-            ->add(
-                'type',
-                null,
-                array(
-                    'label' => 'Tipus',
                 )
             )
             ->add(
                 'title',
                 null,
                 array(
-                    'label' => 'Activitat',
+                    'label' => 'backend.admin.portafolio.project',
                 )
             )
             ->add(
                 'description',
                 null,
                 array(
-                    'label' => 'Descripció',
+                    'label' => 'backend.admin.portafolio.description',
                 )
             )
             ->add(
                 'enabled',
                 null,
                 array(
-                    'label' => 'Actiu',
+                    'label' => 'backend.admin.enabled',
                     'editable' => true,
                 )
             );
@@ -152,7 +145,7 @@ class PortafolioAdmin extends AbstractBaseAdmin
                 'image',
                 null,
                 array(
-                    'label'    => 'Imatge',
+                    'label'    => 'backend.admin.portafolio.image',
                     'template' => '::Admin/Cells/list__cell_image_field.html.twig'
                 )
             )
@@ -160,16 +153,8 @@ class PortafolioAdmin extends AbstractBaseAdmin
                 'date',
                 'date',
                 array(
-                    'label'    => 'Data',
+                    'label'    => 'backend.admin.portafolio.date',
                     'format'   => 'd/m/Y',
-                    'editable' => true,
-                )
-            )
-            ->add(
-                'type',
-                null,
-                array(
-                    'label' => 'Tipus',
                     'editable' => true,
                 )
             )
@@ -177,7 +162,7 @@ class PortafolioAdmin extends AbstractBaseAdmin
                 'title',
                 null,
                 array(
-                    'label' => 'Activitat',
+                    'label' => 'backend.admin.portafolio.project',
                     'editable' => true,
                 )
             )
@@ -185,7 +170,7 @@ class PortafolioAdmin extends AbstractBaseAdmin
                 'enabled',
                 null,
                 array(
-                    'label' => 'Actiu',
+                    'label' => 'backend.admin.enabled',
                     'editable' => true,
                 )
             )
@@ -193,7 +178,7 @@ class PortafolioAdmin extends AbstractBaseAdmin
                 '_action',
                 'actions',
                 array(
-                    'label'   => 'Accions',
+                    'label'   => 'backend.admin.actions',
                     'actions' => array(
                         'edit'   => array('template' => '::Admin/Buttons/list__action_edit_button.html.twig'),
                         'delete' => array('template' => '::Admin/Buttons/list__action_delete_button.html.twig'),

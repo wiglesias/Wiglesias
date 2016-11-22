@@ -1,3 +1,10 @@
+frontend:
+    menu:
+        about: Sobre mi
+        portafolio: Portafolio
+        blog: Blog
+        contact: Contacto
+        cms: "[ CMS ]"
 backend:
     admin:
         actions: Acciones
@@ -7,42 +14,50 @@ backend:
         enabled: Activo
         submit: Enviar
         published_date: Fecha de publicación
-    contact:
-        name: Nombre
-        email: Correu electronico
-        checked: Leido
-        date: Fecha
-        subject: Tema
-        answered: Contestado
-        answer: Respuesta
-        message: Mensaje
-        description: Descripción
-        user_question: Pregunta del usuario
-        your_answer: Tu respuesta
-    post:
-        post: Articulo
-        image: Imagen color
-        imageBW: Imagen blanco y negro
-        title: Título
-        tags: Etiquetas
-        description: Descripción
-        metakeywords: Palabras clave
-        metadescription: Metadescripción
-        metakeywordshelp: Separados por coma
-        content: Contenido
-    tag:
-        tag: Etiqueta
-        title: Título
-        posts_amount: Artículos vinculados
-        posts: Artículos
-    user:
-        user: Usuario
-        editor: Editor
-        admin: Administrador
-        superadmin: Superadministrador
-        firstname: Nombre
-        lastname: Apellidos
-        username: Nombre usuario
-        email: Correo electronico
-        plain_password: Contraseña
-        roles: Roles
+        contact:
+            name: Nombre
+            email: Correu electronico
+            checked: Leido
+            date: Fecha
+            subject: Tema
+            answered: Contestado
+            answer: Respuesta
+            message: Mensaje
+            description: Descripción
+            user_question: Pregunta del usuario
+            your_answer: Tu respuesta
+        portafolio:
+            project: Proyecto
+            category: Categoria
+            title: Título
+            description: Descripción
+            type: Tipo
+            date: Fecha
+            image: Imagen
+        post:
+            post: Articulo
+            image: Imagen color
+            imageBW: Imagen blanco y negro
+            title: Título
+            tags: Etiquetas
+            description: Descripción
+            metakeywords: Palabras clave
+            metadescription: Metadescripción
+            metakeywordshelp: Separados por coma
+            content: Contenido
+        tag:
+            tag: Etiqueta
+            title: Título
+            posts_amount: Artículos vinculados
+            posts: Artículos
+        user:
+            user: Usuario
+            editor: Editor
+            admin: Administrador
+            superadmin: Superadministrador
+            firstname: Nombre
+            lastname: Apellidos
+            username: Nombre usuario
+            email: Correo electronico
+            plain_password: Contraseña
+            roles: Roles
