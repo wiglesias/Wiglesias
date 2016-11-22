@@ -66,15 +66,16 @@ class FrontendMenuBuilder
         $menu->addChild(
             'front_about',
             array(
-                'label'   => 'frontend.menu.about',
+                'label'   => '<i class="fa fa-smile-o" aria-hidden="true"></i> Sobre mi',
                 'route'   => 'front_about',
                 'current' => $route == 'front_about',
+                'extras'  => array('safe_label' => true),
             )
         );
         $menu->addChild(
             'front_portafolio',
             array(
-                'label'   => '<i class="fa fa-exchange" aria-hidden="true"></i> Portafolio',
+                'label'   => '<i class="fa fa-folder" aria-hidden="true"></i> Portafolio',
                 'route'   => 'front_portafolio',
                 'current' => $route == 'front_portafolio',
                 'extras' => array('safe_label' => true),
@@ -83,16 +84,18 @@ class FrontendMenuBuilder
         $menu->addChild(
             'front_blog',
             array(
-                'label' => 'frontend.menu.blog',
+                'label' => '<i class="fa fa-comment" aria-hidden="true"></i> Blog',
                 'route' => 'front_blog',
                 'current' => $route == 'front_blog' || $route == 'front_blog_detail',
+                'extras'  => array('safe_label' => true),
             )
         );
         $menu->addChild(
             'front_contact',
             array(
-                'label'   => 'frontend.menu.contact',
+                'label'   => '<i class="fa fa-info" aria-hidden="true"></i> Contacto',
                 'route'   => 'front_contact',
+                'extras' => array('safe_label' => true),
             )
         );
 

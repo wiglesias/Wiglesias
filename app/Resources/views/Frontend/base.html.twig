@@ -38,8 +38,11 @@
 {#<!-- Main content -->#}
 {% block main %}{% endblock %}
 
+{#<!-- Scroll-Top effect -->#}
+<div class="scroll-top-wrapper"><span class="scroll-top-inner"><i class="fa fa-2x fa-chevron-up"></i></span></div>
+
 {% block footer %}
-    <footer class="container-fluid text-center">
+    <footer class="container-fluid text-center footer">
         <p>Wiglesias <i class="fa fa-copyright" aria-hidden="true"></i> {{ "now" | date("Y") }}</p>
     </footer>
 {% endblock %}
