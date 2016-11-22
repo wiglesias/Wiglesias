@@ -37,3 +37,14 @@ services:
         public: false
         tags:
             - { name: twig.extension }
+
+# Menu
+    app.frontend_menu_builder:
+        class: AppBundle\Menu\FrontendMenuBuilder
+        arguments: [ "@knp_menu.factory", "@security.authorization_checker" ]
+    app.frontend_top_menu:
+        class: Knp\Menu\MenuItem
+        factory: [ "@app.frontend_menu_builder", createTopMenu ]
+        arguments: [ "@request_stack" ]
+        tags:
+            - { name: knp_menu.menu, alias: top }

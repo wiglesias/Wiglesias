@@ -28,14 +28,7 @@
                     <a class="navbar-brand" href="{{ path('front_homepage') }}">Wiglesias</a>
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="active"><a href="{{ path('front_homepage') }}"><i class="fa fa-home" aria-hidden="true"></i></a></li>
-                        <li><a href="{{ path('front_sobre_me') }}"><i class="fa fa-meh-o"></i> Sobre mi</a></li>
-                        <li><a href="{{ path('front_portafolio') }}"><i class="fa fa-briefcase"></i> Portafolio</a></li>
-                        <li><a href="{{ path('front_blog') }}"><i class="fa fa-coffee"></i> Blog</a></li>
-                        <li><a href="{{ path('front_contact') }}"><i class="fa fa-envelope"></i> Contacte</a></li>
-                        <li><a href="{{ path('sonata_admin_dashboard') }}"><i class="fa fa-sign-in"></i> Login</a></li>
-                    </ul>
+                    {{ knp_menu_render('top', {currentClass: 'active'}) }}
                 </div>
             </div>
         </div>
