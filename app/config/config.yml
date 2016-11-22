@@ -5,8 +5,8 @@ imports:
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
-parameters:
-    locale: en
+#parameters:
+#    locale: es
 
 framework:
     #esi:             ~
@@ -40,6 +40,25 @@ twig:
     globals:
         admin_tag_version:        "v1.0.0"
 
+# Assetic
+assetic:
+    debug:          "%kernel.debug%"
+    use_controller: false
+    java:           "%path_java%"
+    node:           "%path_node%"
+    filters:
+        cssrewrite: ~
+        less:
+            node:       "%path_node%"
+            node_paths: [ "%path_node_modules%" ]
+    assets:
+        mycss:
+            inputs:
+                - "@AppBundle/Resources/public/css/frontend.less"
+        myjs:
+            inputs:
+                - "%kernel.root_dir%/../vendor/components/jquery/jquery.js"
+                - "%kernel.root_dir%/../vendor/twbs/bootstrap/dist/js/bootstrap.js"
 
 # Doctrine Configuration
 doctrine:

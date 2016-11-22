@@ -9,6 +9,7 @@
                 <h2 class="text-center">Projectes realitzats</h2>
                 {% for portafolio in portafolios %}
                     <h5><a href="#">{{ portafolio.title }}</a></h5>
+                    <img src="..." alt="..." class="img-rounded">
                     <h5>{{ portafolio.date|date("d/m/Y") }}</h5>
                 {% endfor %}
             </div>

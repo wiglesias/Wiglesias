@@ -34,7 +34,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/sobre-me", name="front_sobre_me")
+     * @Route("/sobre-mi", name="front_about")
      *
      * @return Response
      */
