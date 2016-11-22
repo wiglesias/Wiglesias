@@ -66,7 +66,7 @@ class FrontendMenuBuilder
         $menu->addChild(
             'front_about',
             array(
-                'label'   => '<i class="fa fa-smile-o" aria-hidden="true"></i> Sobre mi',
+                'label'   => '<i class="fa fa-user" aria-hidden="true"></i> Sobre mi',
                 'route'   => 'front_about',
                 'current' => $route == 'front_about',
                 'extras'  => array('safe_label' => true),
