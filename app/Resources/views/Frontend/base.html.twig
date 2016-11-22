@@ -37,20 +37,23 @@
 
 {#<!-- Main content -->#}
 {% block main %}{% endblock %}
-
 {#<!-- Scroll-Top effect -->#}
 <div class="scroll-top-wrapper"><span class="scroll-top-inner"><i class="fa fa-2x fa-chevron-up"></i></span></div>
-
+{#<!-- Footer -->#}
 {% block footer %}
     <footer class="container-fluid text-center footer">
         <p>Wiglesias <i class="fa fa-copyright" aria-hidden="true"></i> {{ "now" | date("Y") }}</p>
     </footer>
 {% endblock %}
-
+{#<!-- Javascripts -->#}
 {% block javascripts %}
     {% javascripts '@myjs' %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
+{% endblock %}
+{% block scroll_top %}
+    {#<!-- Scroll-Top effect JS -->#}
+    {% include ':Frontend/includes:scroll-to-top-js.html.twig' %}
 {% endblock %}
 </body>
 </html>
