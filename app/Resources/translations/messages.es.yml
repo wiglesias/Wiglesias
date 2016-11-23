@@ -5,6 +5,12 @@ frontend:
         blog: Blog
         contact: Contacto
         cms: "[ CMS ]"
+    forms:
+        name: "Nombre *"
+        phone: Teléfono
+        email: "Email *"
+        message: "Mensaje *"
+        send: Enviar
 backend:
     admin:
         actions: Acciones

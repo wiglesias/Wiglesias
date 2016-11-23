@@ -5,12 +5,18 @@
 {% block main %}
     <div class="container container-main">
         <div class="row">
-            <h1 class="no-m-top">Contacto</h1>
-            <div class="col-sm-7 col-md-8">
-                {% include ':Frontend/includes:notice_flash.html.twig' %}
+            <h1 class="no-m-top text-center">Contacto</h1>
+            <div class="col-sm-4 col-md-6">
             </div>
-            <div class="col-sm-5 col-md-4">
-
+            <div class="col-sm-8 col-md-6">
+                {% include ':Frontend/includes:notice_flash.html.twig' %}
+                {{ form_start(formContact) }}
+                    {{ form_row(formContact.name) }}
+                    {{ form_row(formContact.phone) }}
+                    {{ form_row(formContact.email) }}
+                    {{ form_row(formContact.message) }}
+                    {{ form_rest(formContact) }}
+                {{ form_end(formContact) }}
             </div>
         </div>
     </div>

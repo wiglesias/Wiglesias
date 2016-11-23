@@ -7,7 +7,7 @@ namespace AppBundle\Service;
  *
  * @category Service
  * @package  AppBundle\Service
- * @author   David Romaní <david@flux.cat>
+ * @author   Wils <wiglesias83@gmail.com>
  */
 class CourierService
 {
