@@ -3,15 +3,25 @@
 {% block title %}Portafolio{% endblock %}
 
 {% block main %}
-    <div class="container">
+    <div class="container container-main">
         <div class="row">
             <div class="col-xs-12">
                 <h2 class="text-center">Projectes realitzats</h2>
-                {% for portafolio in portafolios %}
-                    <h5><a href="#">{{ portafolio.title }}</a></h5>
-                    <img src="..." alt="..." class="img-rounded">
-                    <h5>{{ portafolio.date|date("d/m/Y") }}</h5>
-                {% endfor %}
+                {% if portafolios | length > 0 %}
+                    {% for portafolio in portafolios %}
+                        <div class="caption">
+                            <h4>{{ portafolio.title }}</h4>
+                            <h6 class="text-muted">{{ portafolio.date | date('d/m/Y') }}</h6>
+                            <p>{{ portafolio.description |truncate(100) | raw }}</p>
+                        </div>
+                        {% if loop.index is divisible by (4) %}
+                            </div>
+                            <div class="row extra-m-top">
+                        {% endif %}
+                    {% endfor %}
+                                {% else %}
+                                    {% include ':Frontend/includes:under_construciton_warning.html.twig' %}
+                                {% endif %}
             </div>
         </div>
     </div>

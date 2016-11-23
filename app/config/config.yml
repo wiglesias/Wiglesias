@@ -2,6 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
+    - { resource: media.yml }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -183,10 +184,6 @@ ivory_ck_editor:
     configs:
         my_config:
             toolbar: standard
-
-# Vich Configuration
-vich_uploader:
-    db_driver: orm # or mongodb or propel or phpcr
 
 # Swiftmailer Configuration
 swiftmailer:
