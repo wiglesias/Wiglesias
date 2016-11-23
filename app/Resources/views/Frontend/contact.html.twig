@@ -3,10 +3,22 @@
 {% block title %}Contacto{% endblock %}
 
 {% block main %}
-    <div class="container">
+    <div class="container container-main">
         <div class="row">
-            <div class="col-xs-12">
-                <h1>Aquest és l'apartat de contacte</h1>
+            <h1 class="no-m-top text-center extra-m-bottom">Contacto</h1>
+            <div class="col-sm-4 col-md-6">
+                <h3>Cuéntame tu idea</h3>
+                <p>Bién, cuéntame cuales son tus propuestas, ideas o necesidades para tu negocio. Estoy aquí para aconsejarte y acompañarte durante el proceso de tu proyecto y hacerlo realidad....</p>
+            </div>
+            <div class="col-sm-8 col-md-6">
+                {% include ':Frontend/includes:notice_flash.html.twig' %}
+                {{ form_start(formContact) }}
+                    {{ form_row(formContact.name) }}
+                    {{ form_row(formContact.phone) }}
+                    {{ form_row(formContact.email) }}
+                    {{ form_row(formContact.message) }}
+                    {{ form_rest(formContact) }}
+                {{ form_end(formContact) }}
             </div>
         </div>
     </div>
