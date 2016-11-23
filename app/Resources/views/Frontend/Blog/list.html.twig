@@ -8,12 +8,14 @@
             <div class="col-xs-9">
                 {% if posts | length > 0 %}
                     {% for post in posts %}
-                        <img src="..." alt="photo">
+                        {% if post.imageName is not null %}
+                            <img src="{{ vich_uploader_asset(post, 'imageFile') | imagine_filter('60x60') }}" class="img-responsive" alt="photo">
+                        {% endif %}
                         <div class="caption">
                             <h4>{{ post.title }}</h4>
                             <h6 class="text-muted">{{ post.publishedAt | date('d/m/Y') }}</h6>
                             <p>{{ post.description | truncate(100) | raw }}</p>
-                            <p><a href="{{ path('front_blog_detail', {slug: post.slug, year: post.publishedAt | date('Y'), month: post.publishedAt | date('m'), day: post.publishedAt | date('d') }) }}" class="btn btn-wi" role="button">Leer más</a></p>
+                            <p><a href="{{ path('front_blog_detail', {slug: post.slug, year: post.publishedAt | date('Y'), month: post.publishedAt | date('m'), day: post.publishedAt | date('d') }) }}" class="btn btn-wi extra-m-bottom" role="button">Leer más</a></p>
                         </div>
                     {% endfor %}
                 {% endif %}

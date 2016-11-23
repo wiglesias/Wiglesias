@@ -20,7 +20,9 @@
         <div class="row">
             <div class="col-md-4">
                 {# left side #}
-                <img src="..." alt="#" class="thumbnail">
+                {% if post.imageName is not null %}
+                    <img src="{{ vich_uploader_asset(post, 'imageFile') | imagine_filter('780xY') }}" class="img-responsive" alt="photo">
+                {% endif %}
             </div>
             <div class="col-md-8">
                 <h2 class="no-m-top">{{ post.title }}</h2>
