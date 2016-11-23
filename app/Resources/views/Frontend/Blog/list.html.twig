@@ -3,16 +3,33 @@
 {% block title %}Blog{% endblock %}
 
 {% block main %}
-    <div class="container">
+    <div class="container container-main">
         <div class="row">
-            <div class="col-xs-12">
-                <h2 class="text-center">LListat del blog</h2>
-                {% for post in posts %}
-                    <h5><a href="{{ path('front_blog_detail', {slug: post.slug }) }}">{{ post.title }}</a></h5>
-                    <h5>{{ post.publishedAt|date('d/m/Y') }}</h5>
-                {% endfor %}
-                <a href="{{ path('front_homepage') }}">Homepage</a>
+            <div class="col-xs-9">
+                {% if posts | length > 0 %}
+                    {% for post in posts %}
+                        {% if post.imageName is not null %}
+                            <img src="{{ vich_uploader_asset(post, 'imageFile') | imagine_filter('60x60') }}" class="img-responsive" alt="photo">
+                        {% endif %}
+                        <div class="caption">
+                            <h4>{{ post.title }}</h4>
+                            <h6 class="text-muted">{{ post.publishedAt | date('d/m/Y') }}</h6>
+                            <p>{{ post.description | truncate(100) | raw }}</p>
+                            <p><a href="{{ path('front_blog_detail', {slug: post.slug, year: post.publishedAt | date('Y'), month: post.publishedAt | date('m'), day: post.publishedAt | date('d') }) }}" class="btn btn-wi extra-m-bottom" role="button">Leer más</a></p>
+                        </div>
+                    {% endfor %}
+                {% endif %}
             </div>
+            <div class="col-xs-3 sidebar-offcanvas" id="sidebar">
+                <div class="list-group">
+                    <a class="list-group-item text-center active">Categorias</a>
+                    <a href="#" class="list-group-item">Linux</a>
+                    <a href="#" class="list-group-item">PHP</a>
+                    <a href="#" class="list-group-item">Symfony</a>
+                    <a href="#" class="list-group-item">Python</a>
+                    <a href="#" class="list-group-item">Programación</a>
+                </div>
+            </div>{#<!--/.sidebar-offcanvas-->#}
         </div>
     </div>
 {% endblock %}

@@ -2,6 +2,7 @@
 @import "../../../../../vendor/twbs/bootstrap/less/bootstrap.less";
 @import "../../../../../vendor/components/font-awesome/less/font-awesome.less";
 @import "colors.less";
+@import "buttons";
 
 // Fonts
 @icon-font-path: "/bundles/app/fonts/";
@@ -23,10 +24,10 @@
 @wi-font-size-small: ceil((@font-size-base * 0.95));
 
 // Custom Navbar
-@navbar-inverse-bg: @wi-c-blue;
+@navbar-inverse-bg: @wi-c-blue-bg;
 @navbar-inverse-link-active-bg: @wi-c-black;
-@navbar-inverse-link-hover-bg: darken(@wi-c-blue, 10%);
-@navbar-height: 110px;
+@navbar-inverse-link-hover-bg: darken(@wi-c-blue-bg, 10%);
+//@navbar-height: 110px;
 @navbar-border-radius: 0;
 @navbar-inverse-link-active-color: @wi-c-white;
 @navbar-inverse-link-color: @wi-c-white;
@@ -46,6 +47,9 @@
 .navbar-logo {
   margin-top: -25px;
 }
+
+// Custom buttons
+.wi-button-mixin(btn-wi, @wi-c-white, @wi-c-blue-bg);
 
 // Custom anchors
 .underlined-anchors {
@@ -93,7 +97,7 @@
 
 // Custom alerts
 .alert-green {
-  .alert-variant(@wi-c-green; @wi-c-green; @body-bg);
+  .alert-variant(@wi-c-blue-bg; @wi-c-blue-bg; @body-bg);
   @media(max-width: @screen-xs-max) {
     h4 { font-size: 1em; }
   }
@@ -199,17 +203,17 @@ div.subtitle-background {
     font-size: 18px;
     margin-top: 5px;
   }
-  button.btn-kowo.btn-lg { font-size: 11px; }
+  button.btn-wi.btn-lg { font-size: 11px; }
   @media(min-width: @screen-xs-max) {
     padding: @wi-s-base 0;
     margin-top: -132px;
     h2 { font-size: 25px; }
-    button.btn-kowo.btn-lg { font-size: 14px; }
+    button.btn-wi.btn-lg { font-size: 14px; }
   }
   @media(min-width: @screen-sm-max) {
     margin-top: -160px;
     h2 { font-size: 45px; }
-    button.btn-kowo.btn-lg { font-size: 18px; }
+    button.btn-wi.btn-lg { font-size: 18px; }
   }
   p {
     text-align: right;
@@ -228,7 +232,7 @@ footer {
     color: @wi-c-white;
     &:hover {
       text-decoration: none;
-      color: @wi-c-green;
+      color: @wi-c-blue-bg;
     }
   }
 }
@@ -240,7 +244,7 @@ footer {
 }
 
 .text-title {
-  color: @wi-c-green;
+  color: @wi-c-blue-bg;
 }
 
 .under-construction-warning {
