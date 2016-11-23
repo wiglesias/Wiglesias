@@ -2,6 +2,7 @@
 @import "../../../../../vendor/twbs/bootstrap/less/bootstrap.less";
 @import "../../../../../vendor/components/font-awesome/less/font-awesome.less";
 @import "colors.less";
+@import "buttons";
 
 // Fonts
 @icon-font-path: "/bundles/app/fonts/";
@@ -46,6 +47,9 @@
 .navbar-logo {
   margin-top: -25px;
 }
+
+// Custom buttons
+.wi-button-mixin(btn-wi, @wi-c-white, @wi-c-blue-bg);
 
 // Custom anchors
 .underlined-anchors {
@@ -199,17 +203,17 @@ div.subtitle-background {
     font-size: 18px;
     margin-top: 5px;
   }
-  button.btn-kowo.btn-lg { font-size: 11px; }
+  button.btn-wi.btn-lg { font-size: 11px; }
   @media(min-width: @screen-xs-max) {
     padding: @wi-s-base 0;
     margin-top: -132px;
     h2 { font-size: 25px; }
-    button.btn-kowo.btn-lg { font-size: 14px; }
+    button.btn-wi.btn-lg { font-size: 14px; }
   }
   @media(min-width: @screen-sm-max) {
     margin-top: -160px;
     h2 { font-size: 45px; }
-    button.btn-kowo.btn-lg { font-size: 18px; }
+    button.btn-wi.btn-lg { font-size: 18px; }
   }
   p {
     text-align: right;
