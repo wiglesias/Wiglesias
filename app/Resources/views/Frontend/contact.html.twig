@@ -3,10 +3,14 @@
 {% block title %}Contacto{% endblock %}
 
 {% block main %}
-    <div class="container">
+    <div class="container container-main">
         <div class="row">
-            <div class="col-xs-12">
-                <h1>Aquest és l'apartat de contacte</h1>
+            <h1 class="no-m-top">Contacto</h1>
+            <div class="col-sm-7 col-md-8">
+                {% include ':Frontend/includes:notice_flash.html.twig' %}
+            </div>
+            <div class="col-sm-5 col-md-4">
+
             </div>
         </div>
     </div>
