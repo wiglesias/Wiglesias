@@ -2,6 +2,9 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\ContactMessage;
+use AppBundle\Form\Type\ContactMessageType;
+use AppBundle\Service\NotificationService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -30,7 +33,33 @@ class DefaultController extends Controller
      */
     public function contactAction(Request $request)
     {
-        return $this->render(':Frontend:contact.html.twig', array());
+        $contactMessage = new ContactMessage();
+        $form = $this->createForm(ContactMessageType::class, $contactMessage);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Set frontend flash message
+            $this->addFlash(
+                'notice',
+                'Tu mensaje se ha enviado correctamente'
+            );
+            // Persist new contact message into DB
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($contactMessage);
+            $em->flush();
+            // Send email notifications
+            /** @var NotificationService $messenger */
+            $messenger = $this->get('app.notification');
+            $messenger->sendCommonUserNotification($contactMessage);
+            $messenger->sendContactAdminNotification($contactMessage);
+            // Clean up new form
+            $contactMessage = new ContactMessage();
+            $form = $this->createForm(ContactMessageType::class, $contactMessage);
+        }
+
+        return $this->render(':Frontend:contact.html.twig', array(
+            'formContact' => $form->createView(),
+        ));
     }
 
     /**

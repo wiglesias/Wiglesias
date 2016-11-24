@@ -3,16 +3,27 @@
 {% block title %}Portafolio{% endblock %}
 
 {% block main %}
-    <div class="container">
+    <div class="container container-main">
         <div class="row">
-            <div class="col-xs-12">
-                <h2 class="text-center">Projectes realitzats</h2>
+            {% if portafolios | length > 0 %}
                 {% for portafolio in portafolios %}
-                    <h5><a href="#">{{ portafolio.title }}</a></h5>
-                    <img src="..." alt="..." class="img-rounded">
-                    <h5>{{ portafolio.date|date("d/m/Y") }}</h5>
+                <div class="col-md-4">
+                        {% if portafolio.imageName is not null %}
+                            <img src="{{ vich_uploader_asset(portafolio, 'imageFile') | imagine_filter('480xY') }}" class="img-responsive" alt="photo">
+                        {% endif %}
+                        <div class="caption">
+                            <h4>{{ portafolio.title }}</h4>
+                            <p>{{ portafolio.description |truncate(100) | raw }}</p>
+                        </div>
+                    </div>
+                {% if loop.index is divisible by(3) %}
+                    </div>
+                    <div class="row extra-m-top">
+                {% endif %}
                 {% endfor %}
-            </div>
+            {% else %}
+                {% include ':Frontend/includes:under_construciton_warning.html.twig' %}
+            {% endif %}
         </div>
     </div>
 {% endblock %}
