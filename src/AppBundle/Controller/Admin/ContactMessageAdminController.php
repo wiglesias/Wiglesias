@@ -106,7 +106,7 @@ class ContactMessageAdminController extends BaseAdminController
         }
 
         return $this->render(
-            '::Admin/ContactMessage/answer_form.html.twig',
+            ':Admin/ContactMassage:answer_form.html.twig',
             array(
                 'action'   => 'answer',
                 'object'   => $object,
