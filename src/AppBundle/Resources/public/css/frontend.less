@@ -25,12 +25,16 @@
 
 // Custom Navbar
 @navbar-inverse-bg: @wi-c-blue-bg;
-@navbar-inverse-link-active-bg: @wi-c-black;
-@navbar-inverse-link-hover-bg: darken(@wi-c-blue-bg, 10%);
+@navbar-inverse-link-active-bg: @wi-c-white;
+@navbar-inverse-link-hover-bg: @wi-c-white;
 //@navbar-height: 110px;
 @navbar-border-radius: 0;
-@navbar-inverse-link-active-color: @wi-c-white;
+@navbar-inverse-link-active-color: @wi-c-blue-bg;
+@navbar-inverse-link-hover-color: @wi-c-blue-bg;
 @navbar-inverse-link-color: @wi-c-white;
+
+// Custom btn-default
+@btn-default-color: @wi-c-blue-bg;
 
 .navbar {
   margin-bottom: 0;
@@ -218,6 +222,15 @@ div.subtitle-background {
   p {
     text-align: right;
   }
+}
+
+// Jumbotron
+.jumbotron {
+  color: @wi-c-white;
+  background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  -webkit-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
 }
 
 // Footer
