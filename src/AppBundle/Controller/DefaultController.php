@@ -61,14 +61,4 @@ class DefaultController extends Controller
             'formContact' => $form->createView(),
         ));
     }
-
-    /**
-     * @Route("/sobre-mi", name="front_about")
-     *
-     * @return Response
-     */
-    public function aboutAction()
-    {
-        return $this->render(':Frontend:about_me.html.twig', array());
-    }
 }
