@@ -21,7 +21,26 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        return $this->render(':Frontend:homepage.html.twig', array());
+        $contact = new ContactMessage();
+        $form = $this->createForm(ContactMessageType::class, $contact);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $messenger = $this->get('app.notification');
+            // Set frontend flash message
+            $this->addFlash(
+                'notice',
+                'Te contestaré lo más pronto posible. Gracias. '
+            );
+            // Send email notifications
+            $messenger->sendCommonUserNotification($contact);
+            // Clean up new form
+            $form = $this->createForm(ContactMessageType::class);
+        }
+
+        return $this->render(':Frontend:homepage.html.twig', array(
+            'formHomepage' => $form->createView(),
+        ));
     }
 
     /**

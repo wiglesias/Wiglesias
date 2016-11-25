@@ -41,4 +41,35 @@
             </div>
         </div>
     </div>
+    {#<!-- Modal -->#}
+    <div class="modal fade" id="form_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content text-left">
+                <div class="modal-header blue-background-light">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Deixa'ns les teves dades i t'ho explicarem tot amb més detall</h4>
+                </div>
+                <div class="modal-body">
+                    {{ form_start(formHomepage) }}
+                        {{ form_row(formHomepage.name) }}
+                        {{ form_row(formHomepage.phone) }}
+                        {{ form_row(formHomepage.email) }}
+                        {{ form_rest(formHomepage) }}
+                    {{ form_end(formHomepage) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include ':Frontend/includes:notice_flash.html.twig' %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% if not formHomepage.vars.valid %}
+        <script type="text/javascript">
+            jQuery(document).ready(function () {
+                jQuery('#form_modal').modal('show');
+            });
+        </script>
+    {% endif %}
 {% endblock %}
