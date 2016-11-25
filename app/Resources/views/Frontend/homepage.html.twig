@@ -2,11 +2,36 @@
 
 {% block main %}
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 text-center">
             <div class="jumbotron blue-background">
                 <div class="container">
                     <h1>{{ words(1) }}</h1>
                     <h2>{{ words(2) }}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    {#<!-- Container (Services Section) -->#}
+    <div id="services" class="p-vertical container text-center">
+        <div class="row">
+            <h2>Servicios</h2>
+            <h4>{{ words(3) }}</h4>
+            <br>
+            <div class="row">
+                <div class="col-sm-4">
+                    <span class="glyphicon glyphicon-off logo-small"></span>
+                    <h4>{{ words(1) }}</h4>
+                    <p>{{ sentences(1) }}</p>
+                </div>
+                <div class="col-sm-4">
+                    <span class="glyphicon glyphicon-heart logo-small"></span>
+                    <h4>{{ words(1) }}</h4>
+                    <p>{{ sentences(1) }}</p>
+                </div>
+                <div class="col-sm-4">
+                    <span class="glyphicon glyphicon-lock logo-small"></span>
+                    <h4>{{ words(1) }}</h4>
+                    <p>{{ sentences(1) }}</p>
                 </div>
             </div>
         </div>
