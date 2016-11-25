@@ -9,7 +9,9 @@
                 {% if posts | length > 0 %}
                     {% for post in posts %}
                         {% if post.imageName is not null %}
-                            <img src="{{ vich_uploader_asset(post, 'imageFile') | imagine_filter('60x60') }}" class="img-responsive" alt="photo">
+                            <a href="{{ path('front_blog_detail', {slug: post.slug, year: post.publishedAt | date('Y'), month: post.publishedAt | date('m'), day: post.publishedAt | date('d') }) }}">
+                                <img src="{{ vich_uploader_asset(post, 'imageFile') | imagine_filter('60x60') }}" class="img-responsive" alt="photo">
+                            </a>
                         {% endif %}
                         <div class="caption">
                             <h4>{{ post.title }}</h4>

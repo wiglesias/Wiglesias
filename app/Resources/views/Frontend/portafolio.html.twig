@@ -9,7 +9,7 @@
                 {% for portafolio in portafolios %}
                 <div class="col-md-4">
                         {% if portafolio.imageName is not null %}
-                            <img src="{{ vich_uploader_asset(portafolio, 'imageFile') | imagine_filter('480xY') }}" class="img-responsive" alt="photo">
+                            <img src="{{ vich_uploader_asset(portafolio, 'imageFile') | imagine_filter('480xY') }}" class="img-responsive" alt="{{ portafolio.title }} photo">
                         {% endif %}
                         <div class="caption">
                             <h4>{{ portafolio.title }}</h4>

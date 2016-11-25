@@ -51,7 +51,7 @@ class Portafolio extends AbstractBase
     /**
      * @var File
      *
-     * @Vich\UploadableField(mapping="event", fileNameProperty="imageName")
+     * @Vich\UploadableField(mapping="portafolio", fileNameProperty="imageName")
      * @Assert\File(
      *     maxSize="10M",
      *     mimeTypes={"image/jpg", "image/jpeg", "image/png", "image/gif"}

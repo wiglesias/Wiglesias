@@ -64,15 +64,6 @@ class FrontendMenuBuilder
             );
         }
         $menu->addChild(
-            'front_about',
-            array(
-                'label'   => '<i class="fa fa-user" aria-hidden="true"></i> Sobre mi',
-                'route'   => 'front_about',
-                'current' => $route == 'front_about',
-                'extras'  => array('safe_label' => true),
-            )
-        );
-        $menu->addChild(
             'front_portafolio',
             array(
                 'label'   => '<i class="fa fa-folder" aria-hidden="true"></i> Portafolio',
