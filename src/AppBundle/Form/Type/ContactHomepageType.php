@@ -2,9 +2,9 @@
 
 namespace AppBundle\Form\Type;
 
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class ContactHomepageType
@@ -31,6 +31,16 @@ class ContactHomepageType extends ContactNewsletterType
                     'required' => false,
                     'attr'     => array(
                         'placeholder' => 'frontend.forms.phone',
+                    ),
+                )
+            )
+            ->add(
+                'send',
+                SubmitType::class,
+                array(
+                    'label' => 'frontend.forms.send',
+                    'attr'  => array(
+                        'class' => 'btn-kowo',
                     ),
                 )
             );
