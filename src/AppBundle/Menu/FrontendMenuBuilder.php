@@ -84,7 +84,7 @@ class FrontendMenuBuilder
         $menu->addChild(
             'front_contact',
             array(
-                'label'   => '<i class="fa fa-info" aria-hidden="true"></i> Contacto',
+                'label'   => '<i class="fa fa-envelope" aria-hidden="true"></i> Contacto',
                 'route'   => 'front_contact',
                 'extras' => array('safe_label' => true),
             )
