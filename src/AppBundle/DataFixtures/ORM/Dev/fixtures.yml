@@ -26,6 +26,7 @@ AppBundle\Entity\Post:
   post{1..10}:
     publishedAt: <dateTimeThisMonth()>
     title: <sentence()>
+    shortDescription: <paragraph()>
     description: <paragraph()>
     metaKeywords: <word()>
     metaDescription: <sentence()>

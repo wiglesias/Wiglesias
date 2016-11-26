@@ -18,6 +18,7 @@ AppBundle\Entity\Post:
   post{1..2}:
     publishedAt: <dateTimeThisMonth()>
     title: <sentence()>
+    shortDescription: <paragraph()>
     description: <paragraph()>
     metaKeywords: <word()>
     metaDescription: <sentence()>
@@ -28,6 +29,7 @@ AppBundle\Entity\Post:
   post3:
     publishedAt: '2008-04-25 08:37:17'
     title: my title
+    shortDescription: <paragraph()>
     description: <paragraph()>
     metaKeywords: <word()>
     metaDescription: <sentence()>
