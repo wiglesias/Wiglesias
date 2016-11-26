@@ -5,33 +5,30 @@
 {% block main %}
     <div class="container container-main">
         <div class="row">
-            <div class="col-xs-9">
-                {% if posts | length > 0 %}
-                    {% for post in posts %}
+            {% if pagination.getTotalItemCount > 0 %}
+                {% for post in pagination %}
+                    <div class="col-md-4">
                         {% if post.imageName is not null %}
                             <a href="{{ path('front_blog_detail', {slug: post.slug, year: post.publishedAt | date('Y'), month: post.publishedAt | date('m'), day: post.publishedAt | date('d') }) }}">
-                                <img src="{{ vich_uploader_asset(post, 'imageFile') | imagine_filter('60x60') }}" class="img-responsive" alt="photo">
+                                <img src="{{ vich_uploader_asset(post, 'imageFile') | imagine_filter('780xY') }}" class="img-responsive" alt="photo">
                             </a>
                         {% endif %}
                         <div class="caption">
                             <h4>{{ post.title }}</h4>
                             <h6 class="text-muted">{{ post.publishedAt | date('d/m/Y') }}</h6>
                             <p>{{ post.description | truncate(100) | raw }}</p>
-                            <p><a href="{{ path('front_blog_detail', {slug: post.slug, year: post.publishedAt | date('Y'), month: post.publishedAt | date('m'), day: post.publishedAt | date('d') }) }}" class="btn btn-wi extra-m-bottom" role="button">Leer más</a></p>
+                            <p><a href="{{ path('front_blog_detail', {slug: post.slug, year: post.publishedAt | date('Y'), month: post.publishedAt | date('m'), day: post.publishedAt | date('d') }) }}" class="btn btn-wi" role="button">Leer más</a></p>
                         </div>
-                    {% endfor %}
-                {% endif %}
-            </div>
-            <div class="col-xs-3 sidebar-offcanvas" id="sidebar">
-                <div class="list-group">
-                    <a class="list-group-item text-center active">Categorias</a>
-                    <a href="#" class="list-group-item">Linux</a>
-                    <a href="#" class="list-group-item">PHP</a>
-                    <a href="#" class="list-group-item">Symfony</a>
-                    <a href="#" class="list-group-item">Python</a>
-                    <a href="#" class="list-group-item">Programación</a>
-                </div>
-            </div>{#<!--/.sidebar-offcanvas-->#}
+                    </div>
+                    {% if loop.index is divisible by(3) %}
+                        </div>
+                        <div class="row extra-m-top">
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+                {% include ':Frontend/includes:under_construciton_warning.html.twig' %}
+            {% endif %}
         </div>
+        {% include ':Frontend/includes:paginator_buttons_bar.html.twig' %}
     </div>
 {% endblock %}
