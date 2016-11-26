@@ -1,28 +1,18 @@
 {% extends ':Frontend:base.html.twig' %}
 
-{% block title %}Blog{% endblock %}
+{% block title %}{{ post.title }} · Blog{% endblock %}
 
 {% block main %}
-{#    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <h2 class="text-center">Post detail</h2>
-                <h5>{{ post.title }}</h5>
-                <h5>{{ post.slug }}</h5>
-                <h5>{{ post.description }}</h5>
-                <h5>{{ post.publishedAt|date('d/m/Y') }}</h5>
-                <a href="{{ path('front_blog') }}">Llista d'Articles</a>
-            </div>
-        </div>
-    </div>
-#}
     <div class="container container-main">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4 extra-m-bottom">
                 {# left side #}
-                {% if post.imageName is not null %}
-                    <img src="{{ vich_uploader_asset(post, 'imageFile') | imagine_filter('780xY') }}" class="img-responsive" alt="photo">
-                {% endif %}
+                {# {% if post.imageName is not null %} #}
+                <a href="{{ path('front_blog_detail', {slug: post.slug, year: post.publishedAt | date('Y'), month: post.publishedAt | date('m'), day: post.publishedAt | date('d') }) }}">
+                    {# <img src="{{ vich_uploader_asset(post, 'imageFile') | imagine_filter('780xY') }}" class="img-responsive" alt="photo"> #}
+                    {% include ':Frontend/includes:image_detail.html.twig' with {object: post, filter: '780xY'} %}
+                </a>
+                {# {% endif %} #}
             </div>
             <div class="col-md-8">
                 <h2 class="no-m-top">{{ post.title }}</h2>

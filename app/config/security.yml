@@ -4,23 +4,23 @@ security:
 
     acl:
         connection: default
-#    role_hierarchy:
-#        ROLE_SONATA_CMS:
-#            - ROLE_ADMIN_CONTACTMESSAGE_ALL
-#            - ROLE_ADMIN_COWORKER_ALL
-#            - ROLE_ADMIN_CATEGORY_ALL
-#        ROLE_SONATA_MANAGER:
-#            - ROLE_ADMIN_USER_ALL
-#        ROLE_CMS:
-#            - ROLE_USER
-#            - ROLE_SONATA_CMS
-#            - ROLE_SONATA_ADMIN
-#        ROLE_ADMIN:
-#            - ROLE_CMS
-#            - ROLE_SONATA_MANAGER
-#        ROLE_SUPER_ADMIN:
-#            - ROLE_ADMIN
-#            - ROLE_ALLOWED_TO_SWITCH
+    role_hierarchy:
+        ROLE_SONATA_CMS:
+            - ROLE_ADMIN_CONTACTMESSAGE_ALL
+            - ROLE_ADMIN_COWORKER_ALL
+            - ROLE_ADMIN_CATEGORY_ALL
+        ROLE_SONATA_MANAGER:
+            - ROLE_ADMIN_USER_ALL
+        ROLE_CMS:
+            - ROLE_USER
+            - ROLE_SONATA_CMS
+            - ROLE_SONATA_ADMIN
+        ROLE_ADMIN:
+            - ROLE_CMS
+            - ROLE_SONATA_MANAGER
+        ROLE_SUPER_ADMIN:
+            - ROLE_ADMIN
+            - ROLE_ALLOWED_TO_SWITCH
     access_decision_manager:
         strategy: unanimous
     providers:

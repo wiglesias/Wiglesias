@@ -1,44 +1,15 @@
 {% extends ':Frontend:base.html.twig' %}
 
 {% block main %}
-    <div class="row">
-        <div class="col-md-12 text-center">
-            <div class="jumbotron blue-background">
-                <div class="container">
-                    <h1>{{ words(1) }}</h1>
-                    <h2>{{ words(2) }}</h2>
-                    <p>
-                        <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#form_modal">
-                            <i class="fa fa-paper-plane" aria-hidden="true"></i> Cuéntame...
-                        </button>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    {#<!-- Container (Services Section) -->#}
-    <div id="services" class="p-vertical container text-center">
-        <div class="row">
-            <h2>Servicios</h2>
-            <h4>{{ words(3) }}</h4>
-            <br>
-            <div class="row">
-                <div class="col-sm-4">
-                    <i class="small-m-bottom c-blue fa fa-desktop fa-5x" aria-hidden="true"></i>
-                    <h4>{{ words(1) }}</h4>
-                    <p>{{ sentences(1) }}</p>
-                </div>
-                <div class="col-sm-4">
-                    <i class="small-m-bottom c-blue fa fa-cog fa-5x" aria-hidden="true"></i>
-                    <h4>{{ words(1) }}</h4>
-                    <p>{{ sentences(1) }}</p>
-                </div>
-                <div class="col-sm-4">
-                    <i class="small-m-bottom c-blue fa fa-sliders fa-5x" aria-hidden="true"></i>
-                    <h4>{{ words(1) }}</h4>
-                    <p>{{ sentences(1) }}</p>
-                </div>
-            </div>
+    <div class="jumbotron blue-background text-center">
+        <div class="container">
+            <h1>{{ words(1) }}</h1>
+            <h2>{{ words(2) }}</h2>
+            <p>
+                <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#form_modal">
+                    <i class="fa fa-paper-plane" aria-hidden="true"></i> Contacta conmigo
+                </button>
+            </p>
         </div>
     </div>
     {#<!-- Modal -->#}
@@ -47,20 +18,45 @@
             <div class="modal-content text-left">
                 <div class="modal-header blue-background-light">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Deixa'ns les teves dades i t'ho explicarem tot amb més detall</h4>
+                    <h4 class="modal-title" id="myModalLabel">Formulario de contacto</h4>
                 </div>
                 <div class="modal-body">
                     {{ form_start(formHomepage) }}
-                        {{ form_row(formHomepage.name) }}
-                        {{ form_row(formHomepage.phone) }}
-                        {{ form_row(formHomepage.email) }}
-                        {{ form_rest(formHomepage) }}
+                    {{ form_row(formHomepage.name) }}
+                    {{ form_row(formHomepage.phone) }}
+                    {{ form_row(formHomepage.email) }}
+                    {{ form_rest(formHomepage) }}
                     {{ form_end(formHomepage) }}
                 </div>
             </div>
         </div>
     </div>
     {% include ':Frontend/includes:notice_flash.html.twig' %}
+    {# Services #}
+    <div class="p-vertical container text-center">
+        <div class="row">
+            <h2>Servicios</h2>
+            <h4>{{ words(3) }}</h4>
+            <br>
+            <div class="row">
+                <div class="col-sm-4">
+                    <i class="small-m-bottom c-blue fa fa-desktop fa-5x" aria-hidden="true"></i>
+                    <h4>Diseño Web</h4>
+                    <p>{{ sentences(1) }}</p>
+                </div>
+                <div class="col-sm-4">
+                    <i class="small-m-bottom c-blue fa fa-cog fa-5x" aria-hidden="true"></i>
+                    <h4>Desarrollo Frontend y Backend</h4>
+                    <p>{{ sentences(1) }}</p>
+                </div>
+                <div class="col-sm-4">
+                    <i class="small-m-bottom c-blue fa fa-sliders fa-5x" aria-hidden="true"></i>
+                    <h4>Customización CMS</h4>
+                    <p>{{ sentences(1) }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block javascripts %}

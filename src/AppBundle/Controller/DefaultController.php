@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\ContactMessage;
+use AppBundle\Form\Type\ContactHomepageType;
 use AppBundle\Form\Type\ContactMessageType;
 use AppBundle\Service\NotificationService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -22,10 +23,11 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
         $contact = new ContactMessage();
-        $form = $this->createForm(ContactMessageType::class, $contact);
+        $form = $this->createForm(ContactHomepageType::class, $contact);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var NotificationService $messenger */
             $messenger = $this->get('app.notification');
             // Set frontend flash message
             $this->addFlash(
@@ -34,8 +36,9 @@ class DefaultController extends Controller
             );
             // Send email notifications
             $messenger->sendCommonUserNotification($contact);
+            $messenger->sendCommonAdminNotification($contact);
             // Clean up new form
-            $form = $this->createForm(ContactMessageType::class);
+            $form = $this->createForm(ContactHomepageType::class);
         }
 
         return $this->render(':Frontend:homepage.html.twig', array(
