@@ -200,4 +200,3 @@ knp_paginator:
         page_name: pagina
     template:
         pagination: "::Pagination/custom_pagination.html.twig"
-
