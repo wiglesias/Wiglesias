@@ -34,6 +34,10 @@ class DefaultController extends Controller
                 'notice',
                 'Te contestaré lo más pronto posible. Gracias. '
             );
+            // Persist new contact message into DB
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($contact);
+            $em->flush();
             // Send email notifications
             $messenger->sendCommonUserNotification($contact);
             $messenger->sendCommonAdminNotification($contact);

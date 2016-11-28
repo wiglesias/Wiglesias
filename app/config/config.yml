@@ -39,6 +39,8 @@ twig:
         - "bootstrap_3_layout.html.twig"
         - "SonataCoreBundle:Form:datepicker.html.twig"
     globals:
+        google_analytics_enabled: "%google_analytics_enabled%"
+        google_analytics_account: "%google_analytics_account%"
         admin_tag_version:        "v1.0.0"
 
 # Assetic
@@ -200,4 +202,3 @@ knp_paginator:
         page_name: pagina
     template:
         pagination: "::Pagination/custom_pagination.html.twig"
-

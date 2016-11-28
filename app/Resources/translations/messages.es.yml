@@ -49,6 +49,7 @@ backend:
             imageBW: Imagen blanco y negro
             title: Título
             tags: Etiquetas
+            shortdescription: Descripción breve
             description: Descripción
             metakeywords: Palabras clave
             metadescription: Metadescripción

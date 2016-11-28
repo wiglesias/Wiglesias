@@ -40,7 +40,7 @@ class ContactHomepageType extends ContactNewsletterType
                 array(
                     'label' => 'frontend.forms.send',
                     'attr'  => array(
-                        'class' => 'btn-kowo',
+                        'class' => 'btn-wi',
                     ),
                 )
             );
