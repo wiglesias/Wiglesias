@@ -87,4 +87,14 @@ class DefaultController extends Controller
             'formContact' => $form->createView(),
         ));
     }
+
+    /**
+     * @Route("/credits", name="front_credits")
+     *
+     * @return Response
+     */
+    public function creditsAction()
+    {
+        return $this->render(':Frontend:credits.html.twig');
+    }
 }
