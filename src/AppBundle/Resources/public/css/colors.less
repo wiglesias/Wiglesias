@@ -3,21 +3,29 @@
 @wi-c-black:      #000000;
 @wi-c-black-f:    #303C42;
 @wi-c-black-bg:   #37424B;
-@wi-c-blue:       #2196F3;
+@wi-c-blue-md:    #03A9F4;
+@wi-c-blue-md-f:  #489fDF;
 @wi-c-blue-bg:    #337AB7;
 @wi-c-green:      #A1C548;
+@wi-c-green-wi:   #1fa67a;
+@wi-c-green-light:#C7E7DC;
 @wi-c-orange:     #E27436;
 @wi-c-violet:     #40315F;
 @wi-c-magenta:    #AF1F69;
 @wi-c-dark-cyan:  #5E9B9A;
 @wi-c-grey:       #808080;
+@wi-c-grey-wi:    #DDDDDD;
 @wi-c-ligth-grey: #EEEEEE;
 
-.c-blue   { color: @wi-c-blue-bg; }
-.c-white  { color: @wi-c-white;  }
-.c-green  { color: @wi-c-green;  }
-.c-orange { color: @wi-c-orange; }
-.c-grey   { color: @wi-c-grey;   }
+.c-blue     { color: @wi-c-blue-bg; }
+.c-blue-wi  { color: @wi-c-blue-md-f}
+.c-blue-md  { color: @wi-c-blue-md; }
+.c-white    { color: @wi-c-white;  }
+.c-green-md { color: @wi-c-green-wi;}
+.c-green    { color: @wi-c-green;  }
+.c-orange   { color: @wi-c-orange; }
+.c-grey     { color: @wi-c-grey;   }
+.c-grey-wi  { color: @wi-c-grey-wi;}
 
 .white-background { background-color: @wi-c-white;      }
 .grey-background  { background-color: @wi-c-ligth-grey; }
@@ -26,5 +34,6 @@
 .black-background-bg { background-color: lighten(@wi-c-black-bg, 15%); }
 .blue-background { background-color: @wi-c-blue-bg; }
 .green-background-dark  { background-color: darken(@wi-c-green, 15%);  }
+.green-background-md { background-color: @wi-c-green-wi; }
 .blue-background-light { background-color: lighten(@wi-c-blue-bg, 35%); }
 .orange-background { background-color: @wi-c-orange; }

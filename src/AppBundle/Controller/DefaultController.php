@@ -10,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class DefaultController extends Controller
 {
@@ -85,6 +86,35 @@ class DefaultController extends Controller
 
         return $this->render(':Frontend:contact.html.twig', array(
             'formContact' => $form->createView(),
+        ));
+    }
+
+    /**
+     * @Route("/credits", name="front_credits")
+     *
+     * @return Response
+     */
+    public function creditsAction()
+    {
+        return $this->render(':Frontend:credits.html.twig');
+    }
+
+    /**
+     * @Route("/test-mail", name="front_test_email")
+     *
+     * @return Response
+     * @throws NotFoundHttpException
+     */
+    public function testEmailAction()
+    {
+        if ($this->container->get('kernel')->getEnvironment() == 'prod') {
+            throw new NotFoundHttpException();
+        }
+
+        $contactMessage = $this->getDoctrine()->getRepository('AppBundle:ContactMessage')->find(1);
+
+        return $this->render(':Mails:user_backend_answer_notification.html.twig', array(
+            'contact' => $contactMessage
         ));
     }
 }

@@ -5,16 +5,11 @@
 {% block main %}
     <div class="container container-main">
         <div class="row">
-            <div class="col-md-4 extra-m-bottom">
-                {# left side #}
-                {# {% if post.imageName is not null %} #}
-                <a href="{{ path('front_blog_detail', {slug: post.slug, year: post.publishedAt | date('Y'), month: post.publishedAt | date('m'), day: post.publishedAt | date('d') }) }}">
-                    {# <img src="{{ vich_uploader_asset(post, 'imageFile') | imagine_filter('780xY') }}" class="img-responsive" alt="photo"> #}
-                    {% include ':Frontend/includes:image_detail.html.twig' with {object: post, filter: '780xY'} %}
-                </a>
-                {# {% endif %} #}
+            {# left side #}
+            <div class="col-sm-4 extra-m-bottom">
+                {% include ':Frontend/includes:image_detail.html.twig' with {object: post, filter: '780xY'} %}
             </div>
-            <div class="col-md-8">
+            <div class="col-sm-8">
                 <h2 class="no-m-top">{{ post.title }}</h2>
                 <h4 class="text-muted">{{ post.publishedAt | date('d/m/Y') }}</h4>
                 <h4 class="c-blue">{{ post.tags | join(', ')  }}</h4>
