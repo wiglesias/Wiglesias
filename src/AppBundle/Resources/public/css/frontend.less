@@ -252,6 +252,22 @@ footer {
   }
 }
 
+// Custom btn-my
+.btn{
+  border: none; /*Quita los bordes asperos que tienen los botones por defecto*/
+  background-color: #2196F3;
+  margin: .5rem;
+  position: relative;
+  transform: rotateZ(360deg);
+  transition: all .2s ease;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 3px 5px rgba(0,0,0,.4);
+}
+
+.btn:hover, .btn:active {
+  box-shadow: 0 4px 7px rgba(0, 0, 0, .4);
+}
 // Other customizations
 .content {
   margin: @wi-s-base-plus 0;
