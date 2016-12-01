@@ -252,7 +252,8 @@ footer {
   }
 }
 
-// Custom btn-my
+// Custom buttons Wiglesias
+
 .btn{
   border: none; /*Quita los bordes asperos que tienen los botones por defecto*/
   background-color: @wi-c-blue-md;
@@ -262,12 +263,67 @@ footer {
   transition: all .2s ease;
   overflow: hidden;
   cursor: pointer;
-  box-shadow: 0 3px 5px rgba(0,0,0,.4);
+}
+.btn-rectangle {
+  border-radius: 2px;
+  padding: .5rem 1.5rem;
+}
+.btn-raised {
+  color: #FFFFFF;
+  box-shadow: 0 4px 5px rgba(0,0,0,.4);
+}
+.btn-raised:hover, .btn-raised:active {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, .4);
+}
+.ripple-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  background: transparent;
+}
+.ripple-effect {
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+}
+.ripple-container.ripple-effect-animation .ripple-effect {
+  -webkit-animation: ripple .4s ease-in;
+  animation: ripple .4s ease-in;
+}
+@-webkit-keyframes ripple {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    padding-bottom: 200%;
+    width: 200%;
+  }
+}
+@keyframes ripple {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    padding-bottom: 200%;
+    width: 200%;
+  }
 }
 
-.btn:hover, .btn:active {
-  box-shadow: 0 4px 7px rgba(0, 0, 0, .4);
-}
 // Other customizations
 .content {
   margin: @wi-s-base-plus 0;
