@@ -20,12 +20,15 @@ class BlogController extends Controller
      */
     public function indexAction($pagina = 1)
     {
+        $tags = $this->getDoctrine()->getRepository('AppBundle:Tag')->getAllEnabledSortedByTitle();
         $posts = $this->getDoctrine()->getRepository('AppBundle:Post')->getAllEnabledSortedByPublishedDateWithJoinUntilNow();
+
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate($posts, $pagina, 9);
 
         return $this->render(':Frontend/Blog:list.html.twig', [
             'pagination' => $pagination,
+            'tags' => $tags,
         ]);
     }
 
@@ -58,5 +61,37 @@ class BlogController extends Controller
         return $this->render('Frontend/Blog/detail.html.twig',
             [ 'post' => $post ]
         );
+    }
+
+    /**
+     * @Route("/blog/categoria/{slug}/{pagina}", name="front_blog_tag_detail")
+     * @param string $slug
+     * @param int $pagina
+     *
+     * @return Response
+     * @throws EntityNotFoundException
+     */
+    public function tagDetailAction($slug, $pagina = 1)
+    {
+        $tags = $this->getDoctrine()->getRepository('AppBundle:Tag')->getAllEnabledSortedByTitle();
+        $tag = $this->getDoctrine()->getRepository('AppBundle:Tag')->findOneBy(
+            array(
+                'slug' => $slug,
+            )
+        );
+
+        if (!$tag) {
+            throw new EntityNotFoundException();
+        }
+        $posts = $this->getDoctrine()->getRepository('AppBundle:Post')->getPostsByTagEnabledSortedByPublishedDate($tag);
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate($posts, $pagina, 9);
+
+        return $this->render(':Frontend/Blog:tag_detail.html.twig', [
+            'tags' => $tags,
+            'tag' => $tag,
+            'pagination' => $pagination,
+        ]);
     }
 }
