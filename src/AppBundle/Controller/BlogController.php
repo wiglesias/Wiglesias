@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Post;
+use AppBundle\Entity\Tag;
 use Doctrine\ORM\EntityNotFoundException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -74,6 +75,7 @@ class BlogController extends Controller
     public function tagDetailAction($slug, $pagina = 1)
     {
         $tags = $this->getDoctrine()->getRepository('AppBundle:Tag')->getAllEnabledSortedByTitle();
+        /** @var Tag $tag */
         $tag = $this->getDoctrine()->getRepository('AppBundle:Tag')->findOneBy(
             array(
                 'slug' => $slug,

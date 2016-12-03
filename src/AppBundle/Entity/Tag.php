@@ -2,9 +2,11 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Entity\Traits\SlugTrait;
 use AppBundle\Entity\Traits\TitleTrait;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
@@ -20,6 +22,15 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 class Tag extends AbstractBase
 {
     use TitleTrait;
+    use SlugTrait;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255)
+     * @Gedmo\Slug(fields={"title"})
+     */
+    private $slug;
 
     /**
      * @var ArrayCollection
@@ -55,7 +66,7 @@ class Tag extends AbstractBase
     /**
      * @param ArrayCollection $posts
      *
-     * @return Tag
+     * @return $this
      */
     public function setPosts($posts)
     {
@@ -92,8 +103,13 @@ class Tag extends AbstractBase
         return $this;
     }
 
-    public function __toString()
-    {
+    /**
+     * To string
+     *
+     * @return string
+     */
+    public function __toString() {
+
         return $this->getTitle() ? $this->getTitle() : '---';
     }
 }
