@@ -3,27 +3,55 @@
 {% block title %}Blog{% endblock %}
 
 {% block main %}
+    {#<div class="container container-top">#}
+        {#<div class="row">#}
+            {#{% if pagination.getTotalItemCount > 0 %}#}
+                {#{% for post in pagination %}#}
+                    {#<div class="col-md-4">#}
+                        {# {% if post.imageName is not null %} #}
+                            {#<a href="{{ path('front_blog_detail', {slug: post.slug, year: post.publishedAt | date('Y'), month: post.publishedAt | date('m'), day: post.publishedAt | date('d') }) }}">#}
+                                {# <img src="{{ vich_uploader_asset(post, 'imageFile') | imagine_filter('780xY') }}" class="img-responsive" alt="photo"> #}
+                                {#{% include ':Frontend/includes:image_detail.html.twig' with {object: post, filter: '780xY'} %}#}
+                            {#</a>#}
+                        {# {% endif %} #}
+                        {#<div class="caption">#}
+                            {#<h4>{{ post.title }}</h4>#}
+                            {#<h6 class="text-muted">{{ post.publishedAt | date('d/m/Y') }}</h6>#}
+                            {#<p>{{ post.shortDescription }}</p>#}
+                            {#<p><a href="{{ path('front_blog_detail', {slug: post.slug, year: post.publishedAt | date('Y'), month: post.publishedAt | date('m'), day: post.publishedAt | date('d') }) }}" class="btn btn-rectangle btn-raised btn-wi" role="button">Leer más</a></p>#}
+                        {#</div>#}
+                    {#</div>#}
+                    {#{% if loop.index is divisible by(3) %}#}
+                        {#</div>#}
+                        {#<div class="row extra-m-top">#}
+                    {#{% endif %}#}
+                {#{% endfor %}#}
+            {#{% else %}#}
+                {#{% include ':Frontend/includes:under_construciton_warning.html.twig' %}#}
+            {#{% endif %}#}
+        {#</div>#}
+        {#{% include ':Frontend/includes:paginator_buttons_bar.html.twig' %}#}
+    {#</div>#}
     <div class="container container-top">
         <div class="row">
             {% if pagination.getTotalItemCount > 0 %}
                 {% for post in pagination %}
-                    <div class="col-md-4">
-                        {# {% if post.imageName is not null %} #}
-                            <a href="{{ path('front_blog_detail', {slug: post.slug, year: post.publishedAt | date('Y'), month: post.publishedAt | date('m'), day: post.publishedAt | date('d') }) }}">
-                                {# <img src="{{ vich_uploader_asset(post, 'imageFile') | imagine_filter('780xY') }}" class="img-responsive" alt="photo"> #}
-                                {% include ':Frontend/includes:image_detail.html.twig' with {object: post, filter: '780xY'} %}
-                            </a>
-                        {# {% endif %} #}
-                        <div class="caption">
-                            <h4>{{ post.title }}</h4>
-                            <h6 class="text-muted">{{ post.publishedAt | date('d/m/Y') }}</h6>
-                            <p>{{ post.shortDescription }}</p>
-                            <p><a href="{{ path('front_blog_detail', {slug: post.slug, year: post.publishedAt | date('Y'), month: post.publishedAt | date('m'), day: post.publishedAt | date('d') }) }}" class="btn btn-rectangle btn-raised btn-wi" role="button">Leer más</a></p>
-                        </div>
+                    {# Left side #}
+                    <div class="col-xs-3 extra-m-bottom">
+                        <a href="{{ path('front_blog_detail', {slug: post.slug, year: post.publishedAt | date('Y'), month: post.publishedAt | date('m'), day: post.publishedAt | date('d') }) }}">
+                            {% include ':Frontend/includes:image_detail.html.twig' with {object: post, filter: '780xY'} %}
+                        </a>
+                     {# Right side #}
                     </div>
-                    {% if loop.index is divisible by(3) %}
+                    <div class="col-xs-6">
+                        <h4 class="no-m-top">{{ post.title }}</h4>
+                        <h6 class="text-muted">{{ post.publishedAt | date('d/m/Y') }}</h6>
+                        <p>{{ post.shortDescription}}</p>
+                        <p><a href="{{ path('front_blog_detail', {slug: post.slug, year: post.publishedAt | date('Y'), month: post.publishedAt | date('m'), day: post.publishedAt | date('d') }) }}" class="btn btn-wi extra-m-bottom" role="button">Leer más</a></p>
+                    </div>
+                    {% if loop.index is divisible by(1) %}
                         </div>
-                        <div class="row extra-m-top">
+                        <div class="row exta-m-top">
                     {% endif %}
                 {% endfor %}
             {% else %}
