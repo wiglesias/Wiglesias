@@ -24,14 +24,14 @@
 @wi-font-size-small: ceil((@font-size-base * 0.95));
 
 // Custom Navbar
-@navbar-inverse-bg: @wi-c-blue-md;
-@navbar-inverse-link-active-bg: @wi-c-white;
-@navbar-inverse-link-hover-bg: @wi-c-white;
+@navbar-default-bg: @wi-c-blue-md;
+@navbar-default-link-active-bg: @wi-c-white;
+@navbar-default-link-hover-bg: @wi-c-white;
 //@navbar-height: 110px;
 @navbar-border-radius: 0;
-@navbar-inverse-link-active-color: @wi-c-blue-md;
-@navbar-inverse-link-hover-color: @wi-c-blue-md;
-@navbar-inverse-link-color: @wi-c-white;
+@navbar-default-link-active-color: @wi-c-blue-md;
+@navbar-default-link-hover-color: @wi-c-blue-md;
+@navbar-default-link-color: @wi-c-white;
 
 // Custom btn-default
 @btn-default-color: @wi-c-blue-md;
@@ -69,6 +69,12 @@ body {
   }
 }
 
+// Custom top container
+.container-top {
+  min-height: 400px;
+  padding-top: 100px;
+  padding-bottom: 40px;
+}
 // Custom main container
 .container-main {
   min-height: 400px;
@@ -153,7 +159,7 @@ body {
 // Pagination
 ul.pagination {
   li.active {
-    span.c-green {
+    span.c-blue-md {
       background-color: @wi-c-blue-md;
       border-color: @wi-c-blue-md;
     }
@@ -235,6 +241,7 @@ div.subtitle-background {
 .jumbotron {
   font-family: 'roboto', sans-serif;
   color: @wi-c-green-light;
+  padding: 100px 25px;
   background-size: 100% 100%;
   -moz-background-size: 100% 100%;
   -webkit-background-size: 100% 100%;
