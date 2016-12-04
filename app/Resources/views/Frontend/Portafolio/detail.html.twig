@@ -1,0 +1,21 @@
+{% extends ':Frontend:base.html.twig' %}
+
+{% block title %}{{ portafolio.title }} · Portafolio{% endblock %}
+
+{% block main %}
+    <div class="container container-top">
+        <div class="row">
+            {# Left side #}
+            <div class="col-sm-4 extra-m-bottom">
+                {% include ':Frontend/includes:image_detail.html.twig' with {object: event, filter: '780xY'} %}
+            </div>
+            {# Right side #}
+            <div class="col-sm-8">
+                <h2 class="no-m-top">{{ portafolio.title }}</h2>
+                <div class="p-vertical underlined-anchors">
+                    {{ portafolio.description | raw }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

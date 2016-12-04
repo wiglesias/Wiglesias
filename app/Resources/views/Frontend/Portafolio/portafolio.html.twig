@@ -3,10 +3,10 @@
 {% block title %}Portafolio{% endblock %}
 
 {% block main %}
-    <div class="container container-main">
+    <div class="container container-top">
         <div class="row">
-            {% if portafolios | length > 0 %}
-                {% for portafolio in portafolios %}
+            {% if allPortafolios | length > 0 %}
+                {% for portafolio in allPortafolios %}
                 <div class="col-md-4">
                     {% include ':Frontend/includes:image_detail.html.twig' with {object: portafolio, filter: '780xY'} %}
                     <div class="caption">

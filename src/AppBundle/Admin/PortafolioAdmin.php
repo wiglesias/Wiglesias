@@ -17,7 +17,7 @@ use Sonata\AdminBundle\Route\RouteCollection;
 class PortafolioAdmin extends AbstractBaseAdmin
 {
     protected $classnameLabel = 'Portafolio';
-    protected $baseRoutePattern = 'activitats/activitat';
+    protected $baseRoutePattern = 'portafolios/portafolio';
     protected $datagridValues = array(
         '_sort_by'    => 'date',
         '_sort_order' => 'desc',
@@ -31,7 +31,6 @@ class PortafolioAdmin extends AbstractBaseAdmin
     protected function configureRoutes(RouteCollection $collection)
     {
         $collection
-            ->remove('show')
             ->remove('batch');
     }
 
@@ -41,7 +40,7 @@ class PortafolioAdmin extends AbstractBaseAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('Proyectos', $this->getFormMdSuccessBoxArray(8))
+            ->with('backend.admin.portafolio.project', $this->getFormMdSuccessBoxArray(8))
             ->add(
                 'title',
                 null,
@@ -69,13 +68,6 @@ class PortafolioAdmin extends AbstractBaseAdmin
             )
             ->end()
             ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(4))
-            ->add(
-                'type',
-                null,
-                array(
-                    'label' => 'backend.admin.portafolio.category',
-                )
-            )
             ->add(
                 'date',
                 'sonata_type_date_picker',
@@ -180,6 +172,7 @@ class PortafolioAdmin extends AbstractBaseAdmin
                 array(
                     'label'   => 'backend.admin.actions',
                     'actions' => array(
+                        'show'   => array('template' => '::Admin/Buttons/list__action_show_button.html.twig'),
                         'edit'   => array('template' => '::Admin/Buttons/list__action_edit_button.html.twig'),
                         'delete' => array('template' => '::Admin/Buttons/list__action_delete_button.html.twig'),
                     )

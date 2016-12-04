@@ -15,10 +15,30 @@ class PortafolioController extends Controller
      */
     public function listAction()
     {
-        $portafolios = $this->getDoctrine()->getRepository('AppBundle:Portafolio')->findAll();
+        $allPortafolios = $this->getDoctrine()->getRepository('AppBundle:Portafolio')->findAllEnabledSortedByDate();
 
-        return $this->render(':Frontend:portafolio.html.twig', [
-            'portafolios' => $portafolios
+        return $this->render(':Frontend/Portafolio:portafolio.html.twig', [
+            'allPortafolios' => $allPortafolios,
         ]);
+    }
+
+    /**
+     * @Route("/portafolio/{slug}", name="front_portafolio_detail")
+     *
+     * @param string $slug
+     *
+     * @return Response
+     */
+    public function detailAction($slug)
+    {
+        $portafolio = $this->getDoctrine()->getRepository('AppBundle:Portafolio')->findAll(
+            array(
+                'slug' => $slug,
+            )
+        );
+
+        return $this->render(':Frontend/Portafolio:detail.html.twig', array(
+            'portafolio' => $portafolio,
+        ));
     }
 }

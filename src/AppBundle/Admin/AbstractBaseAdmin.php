@@ -27,16 +27,6 @@ abstract class AbstractBaseAdmin extends AbstractAdmin
     private $lis;
 
     /**
-     * @var array
-     */
-    protected $perPageOptions = array(25, 50, 100, 200);
-
-    /**
-     * @var int
-     */
-    protected $maxPerPage = 25;
-
-    /**
      * @param string              $code
      * @param string              $class
      * @param string              $baseControllerName
@@ -49,6 +39,16 @@ abstract class AbstractBaseAdmin extends AbstractAdmin
         $this->vus = $vus;
         $this->lis = $lis;
     }
+
+    /**
+     * @var array
+     */
+    protected $perPageOptions = array(25, 50, 100, 200);
+
+    /**
+     * @var int
+     */
+    protected $maxPerPage = 25;
 
     /**
      * Configure route collection
