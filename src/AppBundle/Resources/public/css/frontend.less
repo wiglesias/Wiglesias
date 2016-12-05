@@ -24,6 +24,7 @@
 @wi-font-size-small: ceil((@font-size-base * 0.95));
 
 // Custom Navbar
+@navbar-default-color: @wi-c-white;
 @navbar-default-bg: @wi-c-blue-md;
 @navbar-default-link-active-bg: @wi-c-white;
 @navbar-default-link-hover-bg: @wi-c-white;
@@ -40,7 +41,7 @@
   margin-bottom: 0;
   border: 0;
   .navbar li a:hover{
-    background-color: @wi-c-black;
+    background-color: @wi-c-blue-md;
   }
 }
 
@@ -55,8 +56,7 @@
 // Custom Body
 body {
   font-family: 'roboto', sans-serif;
-  background: #fafafa;
-  box-sizing: border-box;
+  padding-top: 40px;
 }
 
 // Custom buttons
@@ -69,16 +69,10 @@ body {
   }
 }
 
-// Custom top container
-.container-top {
-  min-height: 400px;
-  padding-top: 100px;
-  padding-bottom: 40px;
-}
 // Custom main container
 .container-main {
   min-height: 400px;
-  padding-top: 40px;
+  padding-top: 70px;
   padding-bottom: 40px;
 }
 
@@ -240,8 +234,8 @@ div.subtitle-background {
 // Jumbotron
 .jumbotron {
   font-family: 'roboto', sans-serif;
+  padding: 70px;
   color: @wi-c-green-light;
-  padding: 100px 25px;
   background-size: 100% 100%;
   -moz-background-size: 100% 100%;
   -webkit-background-size: 100% 100%;
@@ -249,7 +243,8 @@ div.subtitle-background {
   box-shadow: 0 4px 5px rgba(0,0,0,.4);
 }
 
-.margin {margin-bottom: 45px;}
+.margin {
+  margin-bottom: 45px;}
 
 // Footer
 footer {
