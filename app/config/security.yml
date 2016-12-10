@@ -1,7 +1,6 @@
 # To get started with security, check out the documentation:
 # http://symfony.com/doc/current/book/security.html
 security:
-
     acl:
         connection: default
     role_hierarchy:
@@ -28,13 +27,11 @@ security:
             id: fos_user.user_provider.username_email
     encoders:
         FOS\UserBundle\Model\UserInterface: bcrypt
-
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-
         admin:
             pattern: /admin(.*)
             context: user

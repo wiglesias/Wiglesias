@@ -24,23 +24,24 @@
 @wi-font-size-small: ceil((@font-size-base * 0.95));
 
 // Custom Navbar
-@navbar-inverse-bg: @wi-c-blue-md-f;
-@navbar-inverse-link-active-bg: @wi-c-white;
-@navbar-inverse-link-hover-bg: @wi-c-white;
+@navbar-default-color: @wi-c-white;
+@navbar-default-bg: @wi-c-blue-md;
+@navbar-default-link-active-bg: @wi-c-white;
+@navbar-default-link-hover-bg: @wi-c-white;
 //@navbar-height: 110px;
 @navbar-border-radius: 0;
-@navbar-inverse-link-active-color: @wi-c-blue-md-f;
-@navbar-inverse-link-hover-color: @wi-c-blue-md-f;
-@navbar-inverse-link-color: @wi-c-white;
+@navbar-default-link-active-color: @wi-c-blue-md;
+@navbar-default-link-hover-color: @wi-c-blue-md;
+@navbar-default-link-color: @wi-c-white;
 
 // Custom btn-default
-@btn-default-color: @wi-c-blue-md-f;
+@btn-default-color: @wi-c-blue-md;
 
 .navbar {
   margin-bottom: 0;
   border: 0;
   .navbar li a:hover{
-    background-color: @wi-c-black;
+    background-color: @wi-c-blue-md;
   }
 }
 
@@ -52,8 +53,14 @@
   margin-top: -25px;
 }
 
+// Custom Body
+body {
+  font-family: 'roboto', sans-serif;
+  padding-top: 40px;
+}
+
 // Custom buttons
-.wi-button-mixin(btn-wi, @wi-c-white, @wi-c-blue-md-f);
+.wi-button-mixin(btn-wi, @wi-c-white, @wi-c-blue-md);
 
 // Custom anchors
 .underlined-anchors {
@@ -65,7 +72,7 @@
 // Custom main container
 .container-main {
   min-height: 400px;
-  padding-top: 40px;
+  padding-top: 70px;
   padding-bottom: 40px;
 }
 
@@ -146,7 +153,7 @@
 // Pagination
 ul.pagination {
   li.active {
-    span.c-green {
+    span.c-blue-md {
       background-color: @wi-c-blue-md;
       border-color: @wi-c-blue-md;
     }
@@ -167,20 +174,20 @@ ul.categories-selector {
   overflow: hidden;
   text-align: center;
   z-index: 2000;
-  background-color: @wi-c-blue-md-f;
+  background-color: @wi-c-blue-md;
   color: @wi-c-white;
   width: 50px;
-  height: 48px;
+  height: 50px;
   line-height: 42px;
   right: 15px;
   bottom: 15px;
   padding-top: 2px;
-  border-radius: 4px;
+  border-radius: 50%;
   .transition (all 0.5s ease-in-out);
   &.show {
     visibility: visible;
     cursor: pointer;
-    opacity: 0.85;
+    opacity: 100;
   }
   i.fa {
     line-height: inherit;
@@ -226,14 +233,18 @@ div.subtitle-background {
 
 // Jumbotron
 .jumbotron {
+  font-family: 'roboto', sans-serif;
+  padding: 70px;
   color: @wi-c-green-light;
   background-size: 100% 100%;
   -moz-background-size: 100% 100%;
   -webkit-background-size: 100% 100%;
   -o-background-size: 100% 100%;
+  box-shadow: 0 4px 5px rgba(0,0,0,.4);
 }
 
-.margin {margin-bottom: 45px;}
+.margin {
+  margin-bottom: 45px;}
 
 // Footer
 footer {
@@ -247,8 +258,80 @@ footer {
     color: @wi-c-white;
     &:hover {
       text-decoration: none;
-      color: @wi-c-blue-md-f;
+      color: @wi-c-blue-md;
     }
+  }
+}
+
+// Custom buttons Wiglesias
+
+.btn{
+  border: none; /*Quita los bordes asperos que tienen los botones por defecto*/
+  background-color: @wi-c-blue-md;
+  margin: .5rem;
+  position: relative;
+  transform: rotateZ(360deg);
+  transition: all .2s ease;
+  overflow: hidden;
+  cursor: pointer;
+}
+.btn-rectangle {
+  border-radius: 2px;
+  padding: .5rem 1.5rem;
+}
+.btn-raised {
+  color: #FFFFFF;
+  box-shadow: 0 4px 5px rgba(0,0,0,.4);
+}
+.btn-raised:hover, .btn-raised:active {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, .4);
+}
+.ripple-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  background-color: transparent;
+}
+.ripple-effect {
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background-color: rgba(255,255,255,0.4);
+}
+.ripple-container.ripple-effect-animation .ripple-effect {
+  -webkit-animation: ripple .4s ease-in;
+  animation: ripple .4s ease-in;
+}
+@-webkit-keyframes ripple {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    padding-bottom: 200%;
+    width: 200%;
+  }
+}
+@keyframes ripple {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    padding-bottom: 200%;
+    width: 200%;
   }
 }
 
@@ -259,7 +342,7 @@ footer {
 }
 
 .text-title {
-  color: @wi-c-blue-md-f;
+  color: @wi-c-blue-md;
 }
 
 .under-construction-warning {

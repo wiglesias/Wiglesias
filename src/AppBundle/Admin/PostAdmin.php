@@ -19,7 +19,7 @@ use Sonata\AdminBundle\Route\RouteCollection;
  */
 class PostAdmin extends AbstractBaseAdmin
 {
-    protected $classnameLabel = 'Articulos';
+    protected $classnameLabel = 'Articulo';
     protected $baseRoutePattern = 'web/post';
     protected $datagridValues = array(
         '_sort_by'    => 'publishedAt',

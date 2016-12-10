@@ -39,7 +39,7 @@ class ContactMessageAnswerType extends ContactMessageType
                 array(
                     'label'    => 'backend.admin.submit',
                     'attr'  => array(
-                        'class' => 'btn-primary',
+                        'class' => 'btn-primary btn-wi btn-cercle btn-raised',
                     ),
                 )
             );

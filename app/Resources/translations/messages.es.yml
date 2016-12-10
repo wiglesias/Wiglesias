@@ -37,7 +37,6 @@ backend:
             your_answer: Tu respuesta
         portafolio:
             project: Proyecto
-            category: Categoria
             title: Título
             description: Descripción
             type: Tipo

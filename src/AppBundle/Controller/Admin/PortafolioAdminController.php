@@ -2,22 +2,20 @@
 
 namespace AppBundle\Controller\Admin;
 
-use AppBundle\Entity\Post;
-use Sonata\AdminBundle\Controller\CRUDController as Controller;
+use AppBundle\Entity\Portafolio;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-
 /**
- * Class PostAdminController
+ * Class PortafolioAdminController
  *
  * @category Controller
  * @package AppBundle\Controller\Admin
- * @author Wils Iglesias <wiglesias83@gmail.com>
+ * @author wils Iglesias <wiglesias83@gmail.com>
  */
-class PostAdminController extends Controller
+class PortafolioAdminController extends BaseAdminController
 {
     /**
      * Custom show action redirect to public frontend view
@@ -34,7 +32,7 @@ class PostAdminController extends Controller
         $request = $this->resolveRequest($request);
         $id = $request->get($this->admin->getIdParameter());
 
-        /** @var Post $object */
+        /** @var Portafolio $object */
         $object = $this->admin->getObject($id);
 
         if (!$object) {
@@ -42,22 +40,10 @@ class PostAdminController extends Controller
         }
 
         return $this->redirectToRoute(
-            'front_blog_detail',
+            'front_portafolio_detail',
             array(
-                'year'  => $object->getPublishedAt()->format('Y'),
-                'month' => $object->getPublishedAt()->format('m'),
-                'day'   => $object->getPublishedAt()->format('d'),
-                'slug'  => $object->getSlug(),
+                'slug' => $object->getSlug(),
             )
         );
-    }
-
-    private function resolveRequest(Request $request = null)
-    {
-        if (null === $request) {
-            return $this->getRequest();
-        }
-
-        return $request;
     }
 }

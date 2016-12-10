@@ -7,7 +7,7 @@ services:
 # Sonata Admin
     admin.portafolio:
         class: AppBundle\Admin\PortafolioAdmin
-        arguments: [ ~, AppBundle\Entity\Portafolio, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
+        arguments: [ ~, AppBundle\Entity\Portafolio, AppBundle:Admin\PortafolioAdmin, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
         tags:
             - { name: sonata.admin, manager_type: orm, label: "Portafolio", group: "Portafolio" }
     admin.post:
@@ -30,6 +30,7 @@ services:
         arguments: [ ~, AppBundle\Entity\User, ~, "@fos_user.user_manager" ]
         tags:
             - { name: sonata.admin, manager_type: orm, label: "Usuario", group: "Usuarios" }
+
 # Messaging
     app.courier:
         class: AppBundle\Service\CourierService
@@ -37,13 +38,6 @@ services:
     app.notification:
         class: AppBundle\Service\NotificationService
         arguments: [ "@app.courier", "@twig", "%mailer_destination%", "%mailer_url_base%" ]
-
-# Twig
-    app.twig_extension:
-        class: AppBundle\Twig\AppExtension
-        public: false
-        tags:
-            - { name: twig.extension }
 
 # Menu
     app.frontend_menu_builder:
@@ -55,3 +49,10 @@ services:
         arguments: [ "@request_stack" ]
         tags:
             - { name: knp_menu.menu, alias: top }
+
+# Twig
+    app.twig_extension:
+        class: AppBundle\Twig\AppExtension
+        public: false
+        tags:
+            - { name: twig.extension }
