@@ -9,6 +9,7 @@ imports:
 #parameters:
 #    locale: es
 
+# Symfony
 framework:
     #esi:             ~
     translator:      { fallbacks: ["%locale%"] }
@@ -31,7 +32,7 @@ framework:
     fragments:       ~
     http_method_override: true
 
-# Twig Configuration
+# Twig
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
@@ -63,10 +64,10 @@ assetic:
                 - "%kernel.root_dir%/../vendor/components/jquery/jquery.js"
                 - "%kernel.root_dir%/../vendor/twbs/bootstrap/dist/js/bootstrap.js"
 
-# Doctrine Configuration
+# Doctrine
 doctrine:
     dbal:
-        driver:   pdo_mysql
+        driver:   "pdo_mysql"
         host:     "%database_host%"
         port:     "%database_port%"
         dbname:   "%database_name%"
@@ -87,6 +88,10 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
+        dql:
+            datetime_functions:
+                month: DoctrineExtensions\Query\Mysql\Month
+                day: DoctrineExtensions\Query\Mysql\Day
 
 # Stof Doctrine Extensions
 stof_doctrine_extensions:
