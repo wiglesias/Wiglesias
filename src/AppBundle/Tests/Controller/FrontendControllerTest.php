@@ -4,9 +4,8 @@ namespace AppBundle\Tests\controller;
 
 use AppBundle\Tests\AbstractBaseTest;
 
-
 /**
- * Class FrontendController
+ * Class FrontendControllerTest
  *
  * @category Test
  * @package AppBundle\Tests\controller
@@ -38,15 +37,12 @@ class FrontendControllerTest extends AbstractBaseTest
         return array(
             array('/'),
             array('/blog'),
-            array('/blog/2008/04/25/my-title'),
-            array('/contacte'),
-            array('/politica-de-privacitat'),
+            array('/contacto'),
+//            array('/politica-de-privacitat'),
             array('/credits'),
             array('/test-email'),
-            array('/activitats'),
-            array('/activitat/cata-de-vins'),
-            array('/activitat/categoria/salut'),
-            array('/sitemap/sitemap.default.xml'),
+            array('/portafolio'),
+//            array('/sitemap/sitemap.default.xml'),
         );
     }
 

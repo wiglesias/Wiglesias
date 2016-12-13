@@ -1,8 +1,8 @@
 <?php
 
-namespace AppBundle\Tests\Controller;
+namespace AppBundle\Tests;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Liip\FunctionalTestBundle\Test\WebTestCase;
 
 /**
  * Class AbstractBaseTest
@@ -11,13 +11,13 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
  * @package AppBundle\Tests
  * @author Wils Iglesias <wiglesias83@gmail.com>
  */
-class AbstractBaseTest extends WebTestCase
+abstract class AbstractBaseTest extends WebTestCase
 {
+    /**
+     * set up test
+     */
     public function setUp()
     {
-        /**
-         * set up test
-         */
         $this->runCommand('hautelook_alice:doctrine:fixtures:load');
     }
 }

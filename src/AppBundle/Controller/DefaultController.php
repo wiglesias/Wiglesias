@@ -100,7 +100,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/test-mail", name="front_test_email")
+     * @Route("/test-email", name="front_test_email")
      *
      * @return Response
      * @throws NotFoundHttpException
