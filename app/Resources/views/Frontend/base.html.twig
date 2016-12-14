@@ -50,19 +50,34 @@
 <div class="scroll-top-wrapper"><span class="scroll-top-inner"><i class="fa fa-2x fa-chevron-up"></i></span></div>
 {#<!-- Footer -->#}
 {% block footer %}
-    <footer class="footer">
+    <footer class="page-footer">
         <div class="container">
             <div class="row">
-                <div class="col-sm-6">
-                    <p>Wiglesias <i class="fa fa-copyright" aria-hidden="true"></i> {{ "now" | date("Y") }}</p>
-                    <ul class="list-inline">
-                        <li><a href="{{ path('front_credits') }}">crédito</a></li>|<li><a href="#">privacidad</a></li>
+                <div class="col-xs-6">
+                    <h5>Visión</h5>
+                    <p>{{ sentences(2) }}</p>
+                </div>
+                <div class="col-xs-3 extra-m-bottom">
+                    <h5>Enlaces</h5>
+                    <ul>
+                        <li><a href="{{ path('front_portafolio') }}">Portafolio</a></li>
+                        <li><a href="{{ path('front_blog') }}">Blog</a></li>
+                        <li><a href="{{ path('front_contact') }}">Contacto</a></li>
+                        <li><a href="{{ path('front_credits') }}">Crédito</a></li>
+                        <li><a href="http://symfony.com/">Symfony</a></li>
                     </ul>
                 </div>
-                <div class="col-sm-6 text-right">
+                <div class="col-xs-3">
+                    <h5>Conectar</h5>
                     <a href="https://twitter.com/wils_83"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></a>
                     <a href="https://github.com/wiglesias"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://es.linkedin.com/in/wils-iglesias-3b99b940"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>
                 </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                <p>Wiglesias <i class="fa fa-copyright" aria-hidden="true"></i> {{ "now" | date("Y") }}</p>
             </div>
         </div>
     </footer>

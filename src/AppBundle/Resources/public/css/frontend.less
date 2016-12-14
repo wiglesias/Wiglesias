@@ -40,6 +40,7 @@
 .navbar {
   margin-bottom: 0;
   border: 0;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
   .navbar li a:hover{
     background-color: @wi-c-blue-md;
   }
@@ -234,25 +235,24 @@ div.subtitle-background {
 // Jumbotron
 .jumbotron {
   font-family: 'roboto', sans-serif;
-  padding: 70px;
+  padding: 60px;
   color: @wi-c-green-light;
   background-size: 100% 100%;
   -moz-background-size: 100% 100%;
   -webkit-background-size: 100% 100%;
   -o-background-size: 100% 100%;
-  box-shadow: 0 4px 5px rgba(0,0,0,.4);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  .margin {
+    margin-bottom: 40px;}
 }
-
-.margin {
-  margin-bottom: 45px;}
 
 // Footer
 footer {
-  color: @wi-c-white;
-  padding: 40px 0;
-  margin: 0;
-  &.footer {
-    background-color: @wi-c-black-f;
+  display: block;
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
   a {
     color: @wi-c-white;
@@ -262,6 +262,38 @@ footer {
     }
   }
 }
+
+footer.page-footer {
+  margin-top: 20px;
+  padding-top: 20px;
+  color: @wi-c-white;
+  background-color: #37474F;
+}
+footer.page-footer .footer-copyright {
+  overflow: hidden;
+  height: 50px;
+  line-height: 50px;
+  color: rgba(255, 255, 255, 0.8);
+  background-color: @wi-c-black-md;
+}
+.light, footer.page-footer .footer-copyright {
+  font-weight: 300;
+}
+//footer {
+//  color: @wi-c-white;
+//  padding: 40px 0;
+//  margin: 0;
+//  &.footer {
+//    background-color: @wi-c-black-f;
+//  }
+//  a {
+//    color: @wi-c-white;
+//    &:hover {
+//      text-decoration: none;
+//      color: @wi-c-blue-md;
+//    }
+//  }
+//}
 
 // Custom buttons Wiglesias
 .btn{
