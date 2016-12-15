@@ -24,10 +24,15 @@
 @wi-font-size-small: ceil((@font-size-base * 0.95));
 
 // Custom Navbar
+@navbar-height: 64px;
 @navbar-default-color: @wi-c-white;
 @navbar-default-bg: @wi-c-blue-md;
 @navbar-default-link-active-bg: @wi-c-white;
 @navbar-default-link-hover-bg: @wi-c-white;
+@navbar-default-toggle-icon-bar-bg:@wi-c-white;
+@navbar-default-toggle-hover-bg:lighten(@wi-c-blue-md, 15%);;
+@navbar-default-toggle-border-color: @wi-c-white;
+
 //@navbar-height: 110px;
 @navbar-border-radius: 0;
 @navbar-default-link-active-color: @wi-c-blue-md;
@@ -38,8 +43,10 @@
 @btn-default-color: @wi-c-blue-md;
 
 .navbar {
+  line-height: 64px;
   margin-bottom: 0;
   border: 0;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
   .navbar li a:hover{
     background-color: @wi-c-blue-md;
   }
@@ -48,7 +55,9 @@
 .navbar-brand-logo {
   padding: 20px 15px;
 }
-
+.navbar-brand {
+  font-size: 25px;
+}
 .navbar-logo {
   margin-top: -25px;
 }
@@ -234,25 +243,24 @@ div.subtitle-background {
 // Jumbotron
 .jumbotron {
   font-family: 'roboto', sans-serif;
-  padding: 70px;
+  padding: 60px;
   color: @wi-c-green-light;
   background-size: 100% 100%;
   -moz-background-size: 100% 100%;
   -webkit-background-size: 100% 100%;
   -o-background-size: 100% 100%;
-  box-shadow: 0 4px 5px rgba(0,0,0,.4);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  .margin {
+    margin-bottom: 40px;}
 }
-
-.margin {
-  margin-bottom: 45px;}
 
 // Footer
 footer {
-  color: @wi-c-white;
-  padding: 40px 0;
-  margin: 0;
-  &.footer {
-    background-color: @wi-c-black-f;
+  display: block;
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
   a {
     color: @wi-c-white;
@@ -263,8 +271,24 @@ footer {
   }
 }
 
-// Custom buttons Wiglesias
+footer.page-footer {
+  margin-top: 20px;
+  padding-top: 20px;
+  color: @wi-c-white;
+  background-color: #37474F;
+}
+footer.page-footer .footer-copyright {
+  overflow: hidden;
+  height: 50px;
+  line-height: 50px;
+  color: rgba(255, 255, 255, 0.8);
+  background-color: @wi-c-black-md;
+}
+.light, footer.page-footer .footer-copyright {
+  font-weight: 300;
+}
 
+// Custom buttons Wiglesias
 .btn{
   border: none; /*Quita los bordes asperos que tienen los botones por defecto*/
   background-color: @wi-c-blue-md;
@@ -280,11 +304,15 @@ footer {
   padding: .5rem 1.5rem;
 }
 .btn-raised {
-  color: #FFFFFF;
-  box-shadow: 0 4px 5px rgba(0,0,0,.4);
+  color: @wi-c-white;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+              0 1px 5px 0 rgba(0, 0, 0, 0.12),
+              0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
 .btn-raised:hover, .btn-raised:active {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, .4);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+              0 1px 5px 0 rgba(0, 0, 0, 0.12),
+              0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
 .ripple-container {
   position: absolute;

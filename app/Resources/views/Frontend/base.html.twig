@@ -50,13 +50,36 @@
 <div class="scroll-top-wrapper"><span class="scroll-top-inner"><i class="fa fa-2x fa-chevron-up"></i></span></div>
 {#<!-- Footer -->#}
 {% block footer %}
-    <footer class="container-fluid text-center footer">
-        <p>Wiglesias <i class="fa fa-copyright" aria-hidden="true"></i> {{ "now" | date("Y") }}</p>
-        <a href="https://twitter.com/wils_83"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></a>
-        <a href="https://github.com/wiglesias"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
-        <ul class="list-inline">
-            <li><a href="{{ path('front_credits') }}">crédito</a></li>|<li><a href="#">privacidad</a></li>
-        </ul>
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-xs-12 extra-m-bottom">
+                    <h4>Visión</h4>
+                    <p>{{ sentences(2) }}</p>
+                </div>
+                <div class="col-md-3 col-xs-12 extra-m-bottom">
+                    <h4>Enlaces</h4>
+                    <ul>
+                        <li><a href="{{ path('front_portafolio') }}">Portafolio</a></li>
+                        <li><a href="{{ path('front_blog') }}">Blog</a></li>
+                        <li><a href="{{ path('front_contact') }}">Contacto</a></li>
+                        <li><a href="{{ path('front_credits') }}">Crédito</a></li>
+                        <li><a href="http://symfony.com/">Symfony</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-xm-12 extra-m-bottom">
+                    <h4>Conectar</h4>
+                    <a href="https://twitter.com/wils_83"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://github.com/wiglesias"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://es.linkedin.com/in/wils-iglesias-3b99b940"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright text-center">
+            <div class="container">
+                <p>Wiglesias <i class="fa fa-copyright" aria-hidden="true"></i> {{ "now" | date("Y") }}</p>
+            </div>
+        </div>
     </footer>
 {% endblock %}
 {#<!-- Javascripts -->#}

@@ -34,14 +34,6 @@ class Portafolio extends AbstractBase
     use SlugTrait;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255)
-     * @Gedmo\Slug(fields={"title"})
-     */
-    private $slug;
-
-    /**
      * @var File
      *
      * @Vich\UploadableField(mapping="portafolio", fileNameProperty="imageName")
