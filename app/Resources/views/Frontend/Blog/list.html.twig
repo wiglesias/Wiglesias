@@ -3,19 +3,6 @@
 {% block title %}Blog{% endblock %}
 
 {% block main %}
-    <div class="p-vertical-small grey-background">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
-                    <ul class="list-inline no-m-buttom  categories-selector">
-                        {% for tag in tags if tag.posts | length > 0 %}
-                            <li><a href="{{ path('front_blog_tag_detail', {slug: tag.slug}) }}">{{ tag.title }}</a></li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="container container-main">
         <div class="row">
             {% if pagination.getTotalItemCount > 0 %}
