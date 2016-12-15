@@ -33,14 +33,6 @@ class Post extends AbstractBase
     use DescriptionTrait;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255)
-     * @Gedmo\Slug(fields={"title"})
-     */
-    private $slug;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(type="date")
