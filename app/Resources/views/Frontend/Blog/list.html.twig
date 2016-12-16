@@ -40,10 +40,10 @@
                     <h3>Categorías</h3>
                     <hr>
                     <div class="sidebox-content">
-                        <ul class="list-unstyled">
-                            <li><a href="#">PHP</a></li>
-                            <li><a href="#">Symfony</a></li>
-                            <li><a href="#">Linux</a></li>
+                        <ul class="list-unstyled categories-selector">
+                            {% for tag in tags if tag.posts | length > 0 %}
+                                <li><a href="{{ path('front_blog_tag_detail', {slug: tag.slug}) }}">{{ tag.title }}</a></li>
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>
