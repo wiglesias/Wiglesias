@@ -5,8 +5,10 @@
 {% block main %}
     <div class="container container-main">
         <div class="row">
-            {% if pagination.getTotalItemCount > 0 %}
-                {% for post in pagination %}
+            <div class="col-md-9">
+                <div class="row">
+                    {% if pagination.getTotalItemCount > 0 %}
+                    {% for post in pagination %}
                     <div class="col-md-4">
                         <div class="thumbnail">
                             <a href="{{ path('front_blog_detail', {slug: post.slug, year: post.publishedAt | date('Y'), month: post.publishedAt | date('m'), day: post.publishedAt | date('d') }) }}">
@@ -15,20 +17,37 @@
                             <div class="caption">
                                 <h4 class="no-m-top">{{ post.title }}</h4>
                                 <h6 class="text-muted">{{ post.publishedAt | date('d/m/Y') }}</h6>
-                                <p>{{ post.shortDescription}}</p>
-                                <p><a href="{{ path('front_blog_detail', {slug: post.slug, year: post.publishedAt | date('Y'), month: post.publishedAt | date('m'), day: post.publishedAt | date('d') }) }}" class="btn btn-wi btn-rectangle btn-raised" role="button">Leer más</a></p>
+                                <p>{{ post.shortDescription }}</p>
+                                <p>
+                                    <a href="{{ path('front_blog_detail', {slug: post.slug, year: post.publishedAt | date('Y'), month: post.publishedAt | date('m'), day: post.publishedAt | date('d') }) }}"
+                                       class="btn btn-wi btn-rectangle btn-raised" role="button">Leer más</a></p>
                             </div>
                         </div>
                     </div>
                     {% if loop.index is divisible by(3) %}
-                        </div>
-                        <div class="row extra-m-top">
+                </div>
+                <div class="row extra-m-top">
                     {% endif %}
-                {% endfor %}
-            {% else %}
-                {% include ':Frontend/includes:under_construciton_warning.html.twig' %}
-            {% endif %}
-        {% include ':Frontend/includes:paginator_buttons_bar.html.twig' %}
+                    {% endfor %}
+                    {% else %}
+                        {% include ':Frontend/includes:under_construciton_warning.html.twig' %}
+                    {% endif %}
+                    {% include ':Frontend/includes:paginator_buttons_bar.html.twig' %}
+                </div>
+            </div>
+            <div class="col-md-3 pull-right">
+                <div class="blog-sidebox">
+                    <h3>Categorías</h3>
+                    <hr>
+                    <div class="sidebox-content">
+                        <ul class="list-unstyled">
+                            <li><a href="#">PHP</a></li>
+                            <li><a href="#">Symfony</a></li>
+                            <li><a href="#">Linux</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
