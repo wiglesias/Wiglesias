@@ -20,7 +20,7 @@
                                 <p>{{ post.shortDescription }}</p>
                                 <p>
                                     <a href="{{ path('front_blog_detail', {slug: post.slug, year: post.publishedAt | date('Y'), month: post.publishedAt | date('m'), day: post.publishedAt | date('d') }) }}"
-                                       class="btn btn-wi btn-rectangle btn-raised" role="button">Leer más</a></p>
+                                       class="btn-wi btn-rectangle btn-raised" role="button">Leer más</a></p>
                             </div>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                     {% include ':Frontend/includes:paginator_buttons_bar.html.twig' %}
                 </div>
             </div>
-            <div class="col-md-3 pull-right">
+            <div class="col-md-3">
                 <div class="blog-sidebox">
                     <h3>Categorías</h3>
                     <hr>
