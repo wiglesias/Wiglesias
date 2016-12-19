@@ -26,21 +26,21 @@
 // Custom Navbar
 @navbar-height: 64px;
 @navbar-default-color: @wi-c-white;
-@navbar-default-bg: @wi-c-blue-md;
+@navbar-default-bg: @wi-c-light-blue-500;
 @navbar-default-link-active-bg: @wi-c-white;
 @navbar-default-link-hover-bg: @wi-c-white;
 @navbar-default-toggle-icon-bar-bg:@wi-c-white;
-@navbar-default-toggle-hover-bg:lighten(@wi-c-blue-md, 15%);;
+@navbar-default-toggle-hover-bg:lighten(@wi-c-light-blue-500, 15%);;
 @navbar-default-toggle-border-color: @wi-c-white;
 
 //@navbar-height: 110px;
 @navbar-border-radius: 0;
-@navbar-default-link-active-color: @wi-c-blue-md;
-@navbar-default-link-hover-color: @wi-c-blue-md;
+@navbar-default-link-active-color: @wi-c-light-blue-500;
+@navbar-default-link-hover-color: @wi-c-light-blue-500;
 @navbar-default-link-color: @wi-c-white;
 
 // Custom btn-default
-@btn-default-color: @wi-c-blue-md;
+@btn-default-color: @wi-c-light-blue-500;
 
 .navbar {
   line-height: 64px;
@@ -48,7 +48,7 @@
   border: 0;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
   .navbar li a:hover{
-    background-color: @wi-c-blue-md;
+    background-color: @wi-c-light-blue-500;
   }
 }
 
@@ -69,7 +69,7 @@ body {
 }
 
 // Custom buttons
-.wi-button-mixin(btn-wi, @wi-c-white, @wi-c-blue-md);
+.wi-button-mixin(btn-wi, @wi-c-white, @wi-c-light-blue-500);
 
 // Custom anchors
 .underlined-anchors {
@@ -163,8 +163,8 @@ body {
 ul.pagination {
   li.active {
     span.c-blue-md {
-      background-color: @wi-c-blue-md;
-      border-color: @wi-c-blue-md;
+      background-color: @wi-c-light-blue-500;
+      border-color: @wi-c-light-blue-500;
     }
   }
 }
@@ -183,7 +183,7 @@ ul.categories-selector {
   overflow: hidden;
   text-align: center;
   z-index: 2000;
-  background-color: @wi-c-blue-md;
+  background-color: @wi-c-light-blue-500;
   color: @wi-c-white;
   width: 50px;
   height: 50px;
@@ -245,6 +245,7 @@ div.subtitle-background {
   font-family: 'roboto', sans-serif;
   padding: 60px;
   color: @wi-c-green-light;
+  background-color: @wi-c-teal-400;
   background-size: 100% 100%;
   -moz-background-size: 100% 100%;
   -webkit-background-size: 100% 100%;
@@ -299,7 +300,7 @@ footer {
     color: @wi-c-white;
     &:hover {
       text-decoration: none;
-      color: @wi-c-blue-md;
+      color: @wi-c-light-blue-500;
     }
   }
 }
@@ -308,14 +309,14 @@ footer.page-footer {
   margin-top: 20px;
   padding-top: 20px;
   color: @wi-c-white;
-  background-color: #37474F;
+  background-color: @wi-c-blue-grey-600;
 }
 footer.page-footer .footer-copyright {
   overflow: hidden;
   height: 50px;
   line-height: 50px;
   color: rgba(255, 255, 255, 0.8);
-  background-color: @wi-c-black-md;
+  background-color: @wi-c-blue-grey-800;
 }
 .light, footer.page-footer .footer-copyright {
   font-weight: 300;
@@ -324,13 +325,21 @@ footer.page-footer .footer-copyright {
 // Custom buttons Wiglesias
 .btn{
   border: none; /*Quita los bordes asperos que tienen los botones por defecto*/
-  background-color: @wi-c-blue-md;
+  background-color: @wi-c-light-blue-500;
   margin: .5rem;
   position: relative;
   transform: rotateZ(360deg);
   transition: all .2s ease;
   overflow: hidden;
   cursor: pointer;
+}
+.btn-large {
+  height: 54px;
+  line-height: 54px;
+}
+
+.btn-large i {
+  font-size: 1.6rem;
 }
 .btn-rectangle {
   border-radius: 2px;
@@ -403,7 +412,7 @@ footer.page-footer .footer-copyright {
 }
 
 .text-title {
-  color: @wi-c-blue-md;
+  color: @wi-c-light-blue-500;
 }
 
 .under-construction-warning {
