@@ -45,6 +45,7 @@ class BlogController extends Controller
      */
     public function postDetailAction($year, $month, $day, $slug)
     {
+        $tags = $this->getDoctrine()->getRepository('AppBundle:Tag')->getAllEnabledSortedByTitle();
         $date = \DateTime::createFromFormat('Y-m-d', $year . '-' . $month . '-' . $day);
 
         /** @var Post $post */
@@ -59,8 +60,10 @@ class BlogController extends Controller
             throw new EntityNotFoundException();
         }
 
-        return $this->render('Frontend/Blog/detail.html.twig',
-            [ 'post' => $post ]
+        return $this->render('Frontend/Blog/detail.html.twig', [
+                'post' => $post,
+                'tags' => $tags,
+            ]
         );
     }
 
