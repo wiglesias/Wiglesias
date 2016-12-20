@@ -77,7 +77,7 @@ class FrontendMenuBuilder
             array(
                 'label' => '<i class="fa fa-comment" aria-hidden="true"></i> Blog',
                 'route' => 'front_blog',
-                'current' => $route == 'front_blog' || $route == 'front_blog_detail',
+                'current' => $route == 'front_blog' || $route == 'front_blog_detail' || $route == 'front_blog_tag_detail',
                 'extras'  => array('safe_label' => true),
             )
         );
