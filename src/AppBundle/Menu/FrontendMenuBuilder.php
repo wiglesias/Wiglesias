@@ -66,27 +66,24 @@ class FrontendMenuBuilder
         $menu->addChild(
             'front_portafolio',
             array(
-                'label'   => '<i class="fa fa-folder" aria-hidden="true"></i> Portafolio',
+                'label' => 'frontend.menu.portafolio',
                 'route'   => 'front_portafolio',
                 'current' => $route == 'front_portafolio',
-                'extras' => array('safe_label' => true),
             )
         );
         $menu->addChild(
             'front_blog',
             array(
-                'label' => '<i class="fa fa-comment" aria-hidden="true"></i> Blog',
+                'label' => 'frontend.menu.blog',
                 'route' => 'front_blog',
-                'current' => $route == 'front_blog' || $route == 'front_blog_detail',
-                'extras'  => array('safe_label' => true),
+                'current' => $route == 'front_blog' || $route == 'front_blog_detail' || $route == 'front_blog_tag_detail',
             )
         );
         $menu->addChild(
             'front_contact',
             array(
-                'label'   => '<i class="fa fa-envelope" aria-hidden="true"></i> Contacto',
+                'label' => 'frontend.menu.contact',
                 'route'   => 'front_contact',
-                'extras' => array('safe_label' => true),
             )
         );
 
