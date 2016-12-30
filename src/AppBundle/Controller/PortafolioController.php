@@ -28,34 +28,34 @@ class PortafolioController extends Controller
         ]);
     }
 
-    /**
-     * @Route("/portafolio/{year}/{month}/{day}/{slug}", name="front_portafolio_detail")
-     *
-     * @param $year
-     * @param $month
-     * @param $day
-     * @param string $slug
-     *
-     * @return Response
-     * @throws EntityNotFoundException
-     */
-    public function detailAction($year, $month, $day, $slug)
-    {
-        $date = \DateTime::createFromFormat('Y-m-d', $year . '-' . $month - '-' . $day);
-
-        $portafolio = $this->getDoctrine()->getRepository('AppBundle:Portafolio')->findAll(
-            array(
-                'publishedAt' => $date,
-                'slug' => $slug,
-            )
-        );
-
-        if (!$portafolio) {
-            throw new EntityNotFoundException();
-        }
-
-        return $this->render(':Frontend/Portafolio:detail.html.twig', array(
-            'portafolio' => $portafolio,
-        ));
-    }
+//    /**
+//     * @Route("/portafolio/{year}/{month}/{day}/{slug}", name="front_portafolio_detail")
+//     *
+//     * @param $year
+//     * @param $month
+//     * @param $day
+//     * @param string $slug
+//     *
+//     * @return Response
+//     * @throws EntityNotFoundException
+//     */
+//    public function detailAction($year, $month, $day, $slug)
+//    {
+//        $date = \DateTime::createFromFormat('Y-m-d', $year . '-' . $month - '-' . $day);
+//
+//        $portafolio = $this->getDoctrine()->getRepository('AppBundle:Portafolio')->findAll(
+//            array(
+//                'publishedAt' => $date,
+//                'slug' => $slug,
+//            )
+//        );
+//
+//        if (!$portafolio) {
+//            throw new EntityNotFoundException();
+//        }
+//
+//        return $this->render(':Frontend/Portafolio:detail.html.twig', array(
+//            'portafolio' => $portafolio,
+//        ));
+//    }
 }

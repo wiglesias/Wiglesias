@@ -43,7 +43,7 @@ class FrontendControllerTest extends AbstractBaseTest
             array('/credits'),
             array('/test-email'),
             array('/portafolio'),
-//            array('/sitemap/sitemap.default.xml'),
+            array('/sitemap/sitemap.default.xml'),
         );
     }
 
