@@ -1,5 +1,7 @@
 {% extends 'TwigBundle:Exception:error.html.twig' %}
 
+{% block body_id 'error' %}
+
 {% block title %}Error 404 · {{ parent() }}{% endblock %}
 
 {% block error_text %}Error 404 · Página no encontrada{% endblock %}

@@ -1,5 +1,7 @@
 {% extends 'TwigBundle:Exception:error.html.twig' %}
 
+{% block body_id 'error' %}
+
 {% block title %}Error 500 · {{ parent() }}{% endblock %}
 
 {% block error_text %}Error 500 · Error Interno de Servidor{% endblock %}

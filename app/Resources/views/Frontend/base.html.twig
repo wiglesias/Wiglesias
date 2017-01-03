@@ -21,7 +21,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body>
+<body id="{% block body_id %}{% endblock %}">
 {% block body_class %}{% endblock %}
 {# Head content #}
 {% block header %}
