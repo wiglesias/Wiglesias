@@ -19,7 +19,7 @@ services:
         class: AppBundle\Admin\TagAdmin
         arguments: [ ~, AppBundle\Entity\Tag, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: "Etiquetas", group: "Blog" }
+            - { name: sonata.admin, manager_type: orm, label: "Categorías", group: "Blog" }
     admin.contactmessage:
         class: AppBundle\Admin\ContactMessageAdmin
         arguments: [ ~, AppBundle\Entity\ContactMessage, AppBundle:Admin\ContactMessageAdmin, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
@@ -42,7 +42,7 @@ services:
 # Menu
     app.frontend_menu_builder:
         class: AppBundle\Menu\FrontendMenuBuilder
-        arguments: [ "@knp_menu.factory", "@security.authorization_checker" ]
+        arguments: [ "@knp_menu.factory", "@security.authorization_checker", "@security.token_storage" ]
     app.frontend_top_menu:
         class: Knp\Menu\MenuItem
         factory: [ "@app.frontend_menu_builder", createTopMenu ]

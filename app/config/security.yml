@@ -6,7 +6,6 @@ security:
     role_hierarchy:
         ROLE_SONATA_CMS:
             - ROLE_ADMIN_CONTACTMESSAGE_ALL
-            - ROLE_ADMIN_COWORKER_ALL
             - ROLE_ADMIN_CATEGORY_ALL
         ROLE_SONATA_MANAGER:
             - ROLE_ADMIN_USER_ALL
