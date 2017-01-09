@@ -5,14 +5,14 @@
 {% block main %}
     <div class="container container-main">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-8">
                 <div class="row">
                     {% if pagination.getTotalItemCount > 0 %}
                     {% for post in pagination %}
-                    <div class="col-md-4">
+                    <div class="col-md-12">
                         <div class="thumbnail">
                             <a href="{{ path('front_blog_detail', {slug: post.slug, year: post.publishedAt | date('Y'), month: post.publishedAt | date('m'), day: post.publishedAt | date('d') }) }}">
-                                {% include ':Frontend/includes:image_detail.html.twig' with {object: post, filter: '780xY'} %}
+                                {% include ':Frontend/includes:image_detail.html.twig' with {object: post, filter: '750x250'} %}
                             </a>
                             <div class="caption">
                                 <h4 class="no-m-top">{{ post.title }}</h4>
@@ -23,7 +23,7 @@
                             </div>
                         </div>
                     </div>
-                    {% if loop.index is divisible by(3) %}
+                    {% if loop.index is divisible by(1) %}
                 </div>
                 <div class="row extra-m-top">
                     {% endif %}
@@ -34,7 +34,7 @@
                     {% include ':Frontend/includes:paginator_buttons_bar.html.twig' %}
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="blog-sidebox grey-background">
                     <h3 class="no-m-top">Categorias</h3>
                     <hr>
