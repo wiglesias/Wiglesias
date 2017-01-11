@@ -68,6 +68,10 @@ class SitemapListener implements SitemapListenerInterface
             $event
                 ->getUrlContainer()
                 ->addUrl($this->makeUrlConcrete($url), 'default');
+            $url = $this->makeUrl('front_about');
+            $event
+                ->getUrlContainer()
+                ->addUrl($this->makeUrlConcrete($url), 'default');
             $url = $this->makeUrl('front_portafolio');
             $event
                 ->getUrlContainer()
