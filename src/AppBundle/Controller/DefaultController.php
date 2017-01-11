@@ -52,6 +52,14 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/sobre-mi", name="front_about")
+     */
+    public function aboutAction()
+    {
+        return $this->render(':Frontend:about.html.twig');
+    }
+
+    /**
      * @Route("/contacto", name="front_contact")
      *
      * @param Request $request
@@ -90,7 +98,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/credits", name="front_credits")
+     * @Route("/creditos", name="front_credits")
      *
      * @return Response
      */

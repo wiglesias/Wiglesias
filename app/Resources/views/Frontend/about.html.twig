@@ -1,0 +1,29 @@
+{% extends ':Frontend:base.html.twig' %}
+
+{% block main %}
+    <div class="p-vertical container text-center">
+        <div class="row">
+            <div class="col-xs-12 extra-m-bottom">
+                <h2>Sobre mi</h2>
+                <h4>A lo que me dedico con una buena taza de café</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <i class="small-m-bottom c-blue-md fa fa-user fa-5x" aria-hidden="true"></i>
+                <h4>Quien soy</h4>
+                <p>{{ sentences(2) }}</p>
+            </div>
+            <div class="col-sm-4">
+                <i class="small-m-bottom c-blue-md fa fa-code fa-5x" aria-hidden="true"></i>
+                <h4>Habilidades</h4>
+                <p>{{ sentences(2) }}</p>
+            </div>
+            <div class="col-sm-4">
+                <i class="small-m-bottom c-blue-md fa fa-flag fa-5x" aria-hidden="true"></i>
+                <h4>Objetivos</h4>
+                <p>{{ sentences(2) }}</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
