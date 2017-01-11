@@ -3,7 +3,17 @@
 {% block title %}Portafolio{% endblock %}
 
 {% block main %}
-    <div class="container container-main">
+    <div class="p-vertical text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2>Portafolio</h2>
+                    <h4>Aquí se encuentran todos mis trabajos y colaboraciones realizados con otros proyectos.</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
         <div class="row">
             {% if allPortafolios | length > 0 %}
                 {% for portafolio in allPortafolios %}

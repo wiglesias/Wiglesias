@@ -1,7 +1,7 @@
 {% extends ':Frontend:base.html.twig' %}
 
 {% block main %}
-    <div class="p-vertical container text-center">
+    <div class="p-vertical text-center">
         <div class="row">
             <div class="col-xs-12 extra-m-bottom">
                 <h2>Sobre mi</h2>
@@ -11,17 +11,41 @@
         <div class="row">
             <div class="col-sm-4">
                 <i class="small-m-bottom c-blue-md fa fa-user fa-5x" aria-hidden="true"></i>
-                <h4>Quien soy</h4>
+                <h3>Quién soy?</h3>
                 <p>{{ sentences(2) }}</p>
             </div>
             <div class="col-sm-4">
                 <i class="small-m-bottom c-blue-md fa fa-code fa-5x" aria-hidden="true"></i>
-                <h4>Habilidades</h4>
-                <p>{{ sentences(2) }}</p>
+                <h3>Habilidades</h3>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">PHP
+                        <span class="sr-only">60% Complete</span>
+                    </div>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">Symfony
+                        <span class="sr-only">40% Complete (success)</span>
+                    </div>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">HTML
+                        <span class="sr-only">80% Complete (warning)</span>
+                    </div>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">CSS
+                        <span class="sr-only">70% Complete (danger)</span>
+                    </div>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%">JS
+                        <span class="sr-only">30% Complete (warning)</span>
+                    </div>
+                </div>
             </div>
             <div class="col-sm-4">
                 <i class="small-m-bottom c-blue-md fa fa-flag fa-5x" aria-hidden="true"></i>
-                <h4>Objetivos</h4>
+                <h3>Objetivos</h3>
                 <p>{{ sentences(2) }}</p>
             </div>
         </div>

@@ -3,7 +3,17 @@
 {% block title %}Categoría {{ tag.title }}{% endblock %}
 
 {% block main %}
-    <div class="container container-main">
+    <div class="p-vertical text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2>Blog</h2>
+                    <h4>Este es mi apartado favorito, ya que en ello se encuentran todos mis conocimiento y curiosidades que iré compartiendo con vosotros</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
         <div class="row">
             <div class="col-md-8">
                 <div class="row">
@@ -43,7 +53,7 @@
                             {% for item in tags if item.posts | length > 0 %}
                                 {% if item.slug != tag.slug %}
                                     <li>
-                                        <a href="{{ path('front_blog_tag_detail', {slug: item.slug}) }}">{{ item.title }}</a>
+                                        <a href="{{ path('front_blog_tag_detail', {slug: item.slug}) }}"><i class="fa fa-folder-open-o" aria-hidden="true"></i> {{ item.title }}</a>
                                     </li>
                                 {% else %}
                                     <li class="active">{{ item.title }}</li>
