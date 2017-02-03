@@ -17,7 +17,6 @@ AppBundle\Entity\ContactMessage:
 AppBundle\Entity\Portafolio:
   portafolio{1..2}:
     title: <sentence()>
-    shortDescription: <paragraph()>
     description: <paragraph()>
     date: <dateTimeThisMonth()>
 
