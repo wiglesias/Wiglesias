@@ -134,7 +134,7 @@ sonata_block:
 # Admin
 sonata_admin:
     title: "Wiglesias"
-#   title_logo: "/bundles/app/img/logo-espai-kowo-backend.png"
+#   title_logo: "/bundles/app/img/logo-wiglesias-backend.png"
     options:
         html5_validate: true
         confirm_exit:   true
