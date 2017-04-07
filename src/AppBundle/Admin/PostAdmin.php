@@ -14,8 +14,8 @@ use Sonata\AdminBundle\Route\RouteCollection;
  * Class PostAdmin
  *
  * @category Admin
- * @package AppBundle\Admin
- * @author Wils Iglesias <wiglesias83@gmail.com>
+ * @package  AppBundle\Admin
+ * @author   Wils Iglesias <wiglesias83@gmail.com>
  */
 class PostAdmin extends AbstractBaseAdmin
 {
