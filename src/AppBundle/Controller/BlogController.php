@@ -25,7 +25,7 @@ class BlogController extends Controller
         $posts = $this->getDoctrine()->getRepository('AppBundle:Post')->getAllEnabledSortedByPublishedDateWithJoinUntilNow();
 
         $paginator = $this->get('knp_paginator');
-        $pagination = $paginator->paginate($posts, $pagina, 9);
+        $pagination = $paginator->paginate($posts, $pagina, 5);
 
         return $this->render(':Frontend/Blog:list.html.twig', [
             'pagination' => $pagination,
@@ -91,7 +91,7 @@ class BlogController extends Controller
         $posts = $this->getDoctrine()->getRepository('AppBundle:Post')->getPostsByTagEnabledSortedByPublishedDate($tag);
 
         $paginator = $this->get('knp_paginator');
-        $pagination = $paginator->paginate($posts, $pagina, 9);
+        $pagination = $paginator->paginate($posts, $pagina, 5);
 
         return $this->render(':Frontend/Blog:tag_detail.html.twig', [
             'tags' => $tags,
