@@ -10,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class DefaultController extends Controller
@@ -121,7 +122,7 @@ class DefaultController extends Controller
 
         $contactMessage = $this->getDoctrine()->getRepository('AppBundle:ContactMessage')->find(1);
 
-        return $this->render(':Mails:user_backend_answer_notification.html.twig', array(
+        return $this->render(':Mails:contact_form_admin_notification.html.twig', array(
             'contact' => $contactMessage
         ));
     }

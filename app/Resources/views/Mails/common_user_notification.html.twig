@@ -1,12 +1,12 @@
 {% extends ':Mails:base.html.twig' %}
 
-{% block subject %}Notificació{% endblock %}
+{% block subject %}Notificación{% endblock %}
 
 {% block content %}
     <table class="row">
         <tbody>
         <tr>
-            <th><img src="{{ absolute_url(asset('bundles/app/img/user_notification.jpg')) }}"></th>
+            {#<th><img src="{{ absolute_url(asset('')) }}"></th>#}
         </tr>
         </tbody>
     </table>
@@ -17,8 +17,8 @@
                 <table>
                     <tr>
                         <th>
-                            <h4>Gràcies per contactar amb nosaltres <br> {{ contact.name }}</h4>
-                            <p class="grey-color">Et respondrem el més aviat possible. Seguim en contacte.</p>
+                            <h4>Gracias por contactar conmigo <br> {{ contact.name }}</h4>
+                            <p class="grey-color">Te responderé lo más antes posible. Estamos en contacte.</p>
                         </th>
                         <th class="expander"></th>
                     </tr>
