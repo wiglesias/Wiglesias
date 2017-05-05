@@ -1,12 +1,12 @@
 {% extends ':Mails:base.html.twig' %}
 
-{% block subject %}Resposta{% endblock %}
+{% block subject %}Respuesta{% endblock %}
 
 {% block content %}
     <table class="row">
         <tbody>
         <tr>
-            <th><img src="{{ absolute_url(asset('bundles/app/img/user_notification.jpg')) }}"></th>
+            {#<th><img src="{{ absolute_url(asset('bundles/app/img/user_notification.jpg')) }}"></th>#}
         </tr>
         </tbody>
     </table>
@@ -17,13 +17,13 @@
                 <table>
                     <tr>
                         <th>
-                            <h4>Benvolgut {{ contact.name }},</h4>
-                            <p class="grey-color">En resposta a la teva pregunta:</p>
+                            <h4>Bienvenido {{ contact.name }},</h4>
+                            <p class="grey-color">En respuesta a su pregunta:</p>
                             <p class="grey-color">{{ contact.message }}</p>
-                            <p class="grey-color">T'hem de dir que:</p>
+                            <p class="grey-color">Te tengo que decir que:</p>
                             <p>{{ contact.description }}</p>
                             <br>
-                            <p class="grey-color">Salutacions</p>
+                            <p class="grey-color">Saludos</p>
                         </th>
                         <th class="expander"></th>
                     </tr>

@@ -2,7 +2,6 @@
 
 namespace AppBundle\Repository;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\DBAL\Query\QueryBuilder;
 use Doctrine\ORM\EntityRepository;
 
@@ -25,7 +24,7 @@ class TagRepository extends EntityRepository
     }
 
     /**
-     * @return ArrayCollection
+     * @return array
      */
     public function getAllEnabledSortedByTitle()
     {
@@ -39,7 +38,7 @@ class TagRepository extends EntityRepository
     }
 
     /**
-     * @return ArrayCollection
+     * @return array
      */
     public function getAllEnabledSortedByTitleWithJoin()
     {
