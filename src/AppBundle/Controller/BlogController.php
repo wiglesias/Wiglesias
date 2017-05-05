@@ -23,6 +23,7 @@ class BlogController extends Controller
     {
         $tags = $this->getDoctrine()->getRepository('AppBundle:Tag')->getAllEnabledSortedByTitle();
         $posts = $this->getDoctrine()->getRepository('AppBundle:Post')->getAllEnabledSortedByPublishedDateWithJoinUntilNow();
+        $recents = $this->getDoctrine()->getRepository('AppBundle:Post')->getAllEnabledSortedByPublishedDateLimit(4);
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate($posts, $pagina, 5);
@@ -30,6 +31,7 @@ class BlogController extends Controller
         return $this->render(':Frontend/Blog:list.html.twig', [
             'pagination' => $pagination,
             'tags' => $tags,
+            'recents' => $recents,
         ]);
     }
 
@@ -45,6 +47,7 @@ class BlogController extends Controller
      */
     public function postDetailAction($year, $month, $day, $slug)
     {
+        $recents = $this->getDoctrine()->getRepository('AppBundle:Post')->getAllEnabledSortedByPublishedDateLimit(4);
         $tags = $this->getDoctrine()->getRepository('AppBundle:Tag')->getAllEnabledSortedByTitle();
         $date = \DateTime::createFromFormat('Y-m-d', $year . '-' . $month . '-' . $day);
 
@@ -63,6 +66,7 @@ class BlogController extends Controller
         return $this->render('Frontend/Blog/detail.html.twig', [
                 'post' => $post,
                 'tags' => $tags,
+                'recents' => $recents,
             ]
         );
     }
@@ -88,6 +92,7 @@ class BlogController extends Controller
         if (!$tag) {
             throw new EntityNotFoundException();
         }
+        $recents = $this->getDoctrine()->getRepository('AppBundle:Post')->getAllEnabledSortedByPublishedDateLimit(4);
         $posts = $this->getDoctrine()->getRepository('AppBundle:Post')->getPostsByTagEnabledSortedByPublishedDate($tag);
 
         $paginator = $this->get('knp_paginator');
@@ -97,6 +102,7 @@ class BlogController extends Controller
             'tags' => $tags,
             'tag' => $tag,
             'pagination' => $pagination,
+            'recents' => $recents,
         ]);
     }
 }
