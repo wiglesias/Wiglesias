@@ -29,8 +29,8 @@
                                 {% include ':Frontend/includes:image_detail.html.twig' with {object: post, filter: '750x250'} %}
                             </a>
                             <div class="caption">
-                                <h4 class="no-m-top">{{ post.title }}</h4>
-                                <h6 class="text-muted">{{ post.publishedAt | date('d/m/Y') }}</h6>
+                                <h3 class="no-m-top main-title">{{ post.title }}</h3>
+                                <h6 class="text-muted"><i class="fa fa-calendar c-orange-md" aria-hidden="true"></i> {{ post.publishedAt | date('d/m/Y') }}</h6>
                                 <p>{{ post.shortDescription }}</p>
                                 <p>
                                     <a href="{{ path('front_blog_detail', {slug: post.slug, year: post.publishedAt | date('Y'), month: post.publishedAt | date('m'), day: post.publishedAt | date('d') }) }}" class="btn btn-wi" role="button">Leer más</a></p>
