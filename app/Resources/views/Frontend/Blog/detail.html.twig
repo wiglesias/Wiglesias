@@ -33,7 +33,7 @@
                     <div class="sidebox-content">
                         <ul class="list-unstyled categories-selector">
                             {% for tag in tags if tag.posts | length > 0 %}
-                                <li><a href="{{ path('front_blog_tag_detail', {slug: tag.slug}) }}"><i class="fa fa-folder-open-o" aria-hidden="true"></i> {{ tag.title }}</a></li>
+                                <li class="main-text-light"><a href="{{ path('front_blog_tag_detail', {slug: tag.slug}) }}"><i class="fa fa-folder-open-o" aria-hidden="true"></i> {{ tag.title }}</a></li>
                             {% endfor %}
                         </ul>
                     </div>
@@ -44,7 +44,7 @@
                     <div class="sidebox-content">
                         <ul class="list-unstyled categories-selector">
                             {% for recent in recents %}
-                                <li class="normal-m-bottom"><a href="{{ path('front_blog_detail', {slug: recent.slug, year: recent.publishedAt | date('Y'), month: recent.publishedAt | date('m'), day: recent.publishedAt | date('d')}) }}"><i class="fa fa-angle-right c-grey" aria-hidden="true"></i> {{ recent.title }}</a><br>
+                                <li class="normal-m-bottom main-text-light"><a href="{{ path('front_blog_detail', {slug: recent.slug, year: recent.publishedAt | date('Y'), month: recent.publishedAt | date('m'), day: recent.publishedAt | date('d')}) }}"><i class="fa fa-angle-right c-grey" aria-hidden="true"></i> {{ recent.title }}</a><br>
                                     <i class="fa fa-calendar c-grey" aria-hidden="true"></i>  {{ recent.publishedAt | date('d/m/Y') }}
                                 </li>
                             {% endfor %}
