@@ -1,62 +1,58 @@
 {% extends ':Frontend:base.html.twig' %}
 
 {% block main %}
-    <div class="container">
-        <div class="p-vertical">
-            <div class="row">
-                <div class="col-xs-12 text-center extra-m-bottom">
-                    <h2>Sobre mí</h2>
-                    <h3>Mil gracias por llegar hasta esta página tan importante para mi.</h3>
-                    <h4 class="c-grey">¡Es hora de conocernos, permíteme presentarme!</h4>
-                </div>
+    <div class="container container-main">
+        <div class="row">
+            <div class="col-xs-12 text-center extra-m-bottom">
+                <h2 class="main-text-light">Sobre mí</h2>
+                <h3 class="main-text-light">Mil gracias por llegar hasta esta página tan importante para mi.</h3>
+                <h4 class="c-grey main-text-light">¡Es hora de conocernos, permíteme presentarme!</h4>
             </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="row">
-                        <div class="col-sm-4 text-center">
-                            <i class="small-m-bottom c-blue-md fa fa-arrow-down fa-5x" aria-hidden="true"></i>
-                            <h3>Yo</h3>
-                            <img src="{{ asset('bundles/app/img/wils.jpg') }}" alt="..." class="img-circle img-responsive">
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-sm-4 text-center">
+                    <i class="small-m-bottom c-blue-md fa fa-arrow-down fa-5x" aria-hidden="true"></i>
+                    <h3 class="main-text-light">Yo</h3>
+                    <img src="{{ asset('bundles/app/img/wils-about.jpg') }}" alt="wils iglesias" class="img-rounded img-responsive">
+                </div>
+                <div class="col-sm-4 text-center">
+                    <i class="small-m-bottom c-blue-md fa fa-user fa-5x" aria-hidden="true"></i>
+                    <h3 class="main-text-light">¿Quién soy?</h3>
+                    <p class="c-grey main-text-light">Hola! Soy Wils Iglesias, programador web de profesión y amante de las nuevas tecnologías por vocación. Un geek vaya… ;)</p>
+                    <p class="c-grey main-text-light">Me considero una persona activa y autodidacta en constante evolución, características que considero clave tanto personal como profesionalmente.</p>
+                    {#<p class="c-grey main-text-light">Mi formación y experiencia provienen del ámbito empresarial. Un buen dia, un giro inesperado en mi vida me hizo descubrir lo que realmente me apasiona: las TIC y la programación web. Haciendo caso a mi intuición me sumergí en este mundo y ahora aquí me tienes, ofreciendo mis servicios como profesional independiente.</p>#}
+                    <p class="c-grey main-text-light">Me apasiona dar rienda suelta a mi curiosidad y a través de mis habilidades poder expresar mis ideas en forma de código, planificar proyectos y ver como éstos crecen y evolucionan hasta hacerse realidad. Esta es mi mayor fuente de satisfacción y motivación para seguir adelante.</p>
+                    <p class="c-grey main-text-light">Si tienes un proyecto web entre manos me gustaría formar parte de tu equipo para ofrecerte mis conocimientos, experiencia y esfuerzo. ¡Hagamos de tu idea un negocio de éxito!
+                    </p>
+                    <p class="c-grey main-text-light"><em>Sí, quiero trabajar contigo.</em></p>
+                </div>
+                <div class="col-sm-4 text-center">
+                    <i class="small-m-bottom c-blue-md fa fa-code fa-5x" aria-hidden="true"></i>
+                    <h3 class="main-text-light">Habilidades</h3>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">PHP
+                            <span class="sr-only">80% Complete</span>
                         </div>
-                        <div class="col-sm-4 text-center">
-                            <i class="small-m-bottom c-blue-md fa fa-user fa-5x" aria-hidden="true"></i>
-                            <h3 >¿Quién soy?</h3>
-                            <p class="c-grey">Hola! Soy Wils Iglesias, programador web de profesión y amante de las nuevas tecnologías por vocación. Un geek vaya… ;)</p>
-                            <p class="c-grey">Me considero una persona activa y autodidacta en constante evolución, características que considero clave tanto personal como profesionalmente.</p>
-                            <p class="c-grey">Mi formación y experiencia provienen del ámbito empresarial como administrativo. Un buen dia, un giro inesperado en mi vida me hizo descubrir lo que realmente me apasiona: las TIC y la programación web. Haciendo caso a mi intuición me sumergí en este mundo y ahora aquí me tienes, ofreciendo mis servicios como profesional independiente.</p>
-                            <p class="c-grey">Me apasiona dar rienda suelta a mi curiosidad y a través de mis habilidades poder expresar mis ideas en forma de código, planificar proyectos y ver como éstos crecen y evolucionan hasta hacerse realidad. Esta es mi mayor fuente de satisfacción y motivación para seguir adelante.</p>
-                            <p class="c-grey">Si tienes un proyecto web entre manos me gustaría formar parte de tu equipo para ofrecerte mis conocimientos, experiencia y esfuerzo. ¡Hagamos de tu idea un negocio de éxito!
-                            </p>
-                            <p class="c-grey"><em>Sí, quiero trabajar contigo.</em></p>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">Symfony
+                            <span class="sr-only">70% Complete (success)</span>
                         </div>
-                        <div class="col-sm-4 text-center">
-                            <i class="small-m-bottom c-blue-md fa fa-code fa-5x" aria-hidden="true"></i>
-                            <h3>Habilidades</h3>
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">PHP
-                                    <span class="sr-only">60% Complete</span>
-                                </div>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">Symfony
-                                    <span class="sr-only">40% Complete (success)</span>
-                                </div>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">HTML
-                                    <span class="sr-only">80% Complete (warning)</span>
-                                </div>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">CSS
-                                    <span class="sr-only">70% Complete (danger)</span>
-                                </div>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%">JS
-                                    <span class="sr-only">30% Complete (warning)</span>
-                                </div>
-                            </div>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%">HTML
+                            <span class="sr-only">90% Complete (warning)</span>
+                        </div>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">CSS
+                            <span class="sr-only">70% Complete (danger)</span>
+                        </div>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%">JS
+                            <span class="sr-only">30% Complete (warning)</span>
                         </div>
                     </div>
                 </div>

@@ -3,7 +3,6 @@
 namespace AppBundle\Repository;
 
 use AppBundle\Entity\Tag;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityRepository;
 
 /**
@@ -16,7 +15,7 @@ use Doctrine\ORM\EntityRepository;
 class PostRepository extends EntityRepository
 {
     /**
-     * @return ArrayCollection
+     * @return array
      */
     public function getAllEnabledSortedByPublishedDate()
     {
@@ -31,7 +30,25 @@ class PostRepository extends EntityRepository
     }
 
     /**
-     * @return ArrayCollection
+     * @param $limit
+     *
+     * @return array
+     */
+    public function getAllEnabledSortedByPublishedDateLimit($limit)
+    {
+        $query = $this->createQueryBuilder('p')
+            ->where('p.enabled = :enabled')
+            ->setParameter('enabled', true)
+            ->orderBy('p.publishedAt', 'DESC')
+            ->addOrderBy('p.title', 'ASC')
+            ->setMaxResults($limit)
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
+    /**
+     * @return array
      */
     public function getAllEnabledSortedByPublishedDateWithJoin()
     {
@@ -48,7 +65,7 @@ class PostRepository extends EntityRepository
     }
 
     /**
-     * @return ArrayCollection
+     * @return array
      */
     public function getAllEnabledSortedByPublishedDateWithJoinUntilNow()
     {
@@ -70,7 +87,7 @@ class PostRepository extends EntityRepository
     /**
      * @param Tag $tag
      *
-     * @return ArrayCollection
+     * @return array
      */
     public function getPostsByTagEnabledSortedByPublishedDate(Tag $tag)
     {
@@ -90,7 +107,8 @@ class PostRepository extends EntityRepository
 
     /**
      * @param Tag $tag
-     * @return ArrayCollection
+     *
+     * @return array
      */
     public function getPostsByTagEnabledSortedByPublishedDateWithJoin(Tag $tag)
     {
@@ -110,7 +128,8 @@ class PostRepository extends EntityRepository
 
     /**
      * @param Tag $tag
-     * @return ArrayCollection
+     *
+     * @return array
      */
     public function getPostsByTagEnabledSortedByPublishedDateWithJoinUntilNow(Tag $tag)
     {

@@ -1,12 +1,12 @@
 {% extends ':Mails:base.html.twig' %}
 
-{% block subject %}Notificació de contacte{% endblock %}
+{% block subject %}Notificación de contacto{% endblock %}
 
 {% block content %}
     <table class="row">
         <tbody>
         <tr>
-            <th><img src="{{ absolute_url(asset('bundles/app/img/user_notification.jpg')) }}"></th>
+            {#<th><img src="{{ absolute_url(asset('')) }}"></th>#}
         </tr>
         </tbody>
     </table>
@@ -17,10 +17,10 @@
                 <table>
                     <tr>
                         <th>
-                            <h4>Persona interessada en contactar</h4>
-                            <p class="grey-color">{{ contact.name }}, amb correu elèctrònic <a href="mailto:{{ contact.email }}">{{ contact.email }}</a> {% if contact.phone %}i telèfon {{ contact.phone }} {% endif %}ha emplenat el formulari de contacte amb el següent missatge:</p>
+                            <h4>Persona interesada en contactar</h4>
+                            <p class="grey-color">{{ contact.name }}, con correo electronico <a href="mailto:{{ contact.email }}">{{ contact.email }}</a> {% if contact.phone %}i teléfono {{ contact.phone }} {% endif %}ha rellenado el formulario de contacto con el siguiente mensaje:</p>
                             <p class="grey-color">"{{ contact.message }}"</p>
-                            <p>Comprova-ho a la teva llista de contactes del CMS <a href="{{ url('admin_app_contactmessage_list') }}">aquí</a>, o respon-li directament clicant <a href="{{ url('admin_app_contactmessage_answer', {id: contact.id }) }}">aquí</a></p>
+                            <p>Compruebalo en tu lista de contacto del CMS <a href="{{ url('admin_app_contactmessage_list') }}">aquí</a>, o respondele directamente clicando <a href="{{ url('admin_app_contactmessage_answer', {id: contact.id }) }}">aquí</a></p>
                         </th>
                         <th class="expander"></th>
                     </tr>

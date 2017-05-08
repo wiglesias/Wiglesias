@@ -3,64 +3,40 @@
 {% block title %}Blog{% endblock %}
 
 {% block main %}
-    <div class="p-vertical text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
-                    <h2>Blog</h2>
-                    <h3>Este es mi apartado favorito, ya que en ello se encuentran todos mis conocimiento y curiosidades que iré compartiendo con vosotros</h3>
-                    <blockquote>
-                        <p><em>"Las obras de conocimiento deben ser libres, no hay excusas para que no sea así"</em></p>
-                        <footer><cite title="Source Title">Richard Stallman</cite></footer>
-                    </blockquote>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
+    <div class="container container-main">
         <div class="row">
             <div class="col-md-8">
                 <div class="row">
                     {% if pagination.getTotalItemCount > 0 %}
-                    {% for post in pagination %}
-                    <div class="col-md-12">
-                        <div class="thumbnail">
-                            <a href="{{ path('front_blog_detail', {slug: post.slug, year: post.publishedAt | date('Y'), month: post.publishedAt | date('m'), day: post.publishedAt | date('d') }) }}">
-                                {% include ':Frontend/includes:image_detail.html.twig' with {object: post, filter: '750x250'} %}
-                            </a>
-                            <div class="caption">
-                                <h4 class="no-m-top">{{ post.title }}</h4>
-                                <h6 class="text-muted">{{ post.publishedAt | date('d/m/Y') }}</h6>
-                                <p>{{ post.shortDescription }}</p>
-                                <p>
-                                    <a href="{{ path('front_blog_detail', {slug: post.slug, year: post.publishedAt | date('Y'), month: post.publishedAt | date('m'), day: post.publishedAt | date('d') }) }}"
-                                       class="btn btn-wi" role="button">Leer más</a></p>
+                        {% for post in pagination %}
+                        <div class="col-md-12">
+                            <div class="thumbnail">
+                                <a href="{{ path('front_blog_detail', {slug: post.slug, year: post.publishedAt | date('Y'), month: post.publishedAt | date('m'), day: post.publishedAt | date('d') }) }}">
+                                    {% include ':Frontend/includes:image_detail.html.twig' with {object: post, filter: '750x250'} %}
+                                </a>
+                                <div class="caption">
+                                    <h3 class="no-m-top main-title">{{ post.title }}</h3>
+                                    <h6 class="text-muted"><i class="fa fa-calendar c-orange-md" aria-hidden="true"></i> {{ post.publishedAt | date('d/m/Y') }}</h6>
+                                    <p class="main-text-light">{{ post.shortDescription }}</p>
+                                    <p>
+                                        <a href="{{ path('front_blog_detail', {slug: post.slug, year: post.publishedAt | date('Y'), month: post.publishedAt | date('m'), day: post.publishedAt | date('d') }) }}"
+                                           class="btn btn-wi" role="button">Leer más</a></p>
+                                </div>
                             </div>
                         </div>
+                        {% if loop.index is divisible by(1) %}
                     </div>
-                    {% if loop.index is divisible by(1) %}
-                </div>
-                <div class="row extra-m-top">
-                    {% endif %}
-                    {% endfor %}
-                    {% else %}
-                        {% include ':Frontend/includes:under_construciton_warning.html.twig' %}
-                    {% endif %}
+                    <div class="row extra-m-top">
+                        {% endif %}
+                        {% endfor %}
+                        {% else %}
+                            {% include ':Frontend/includes:under_construciton_warning.html.twig' %}
+                        {% endif %}
                     {% include ':Frontend/includes:paginator_buttons_bar.html.twig' %}
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="blog-sidebox grey-background">
-                    <h3 class="no-m-top">Categorías</h3>
-                    <hr>
-                    <div class="sidebox-content">
-                        <ul class="list-unstyled categories-selector">
-                            {% for tag in tags if tag.posts | length > 0 %}
-                                <li><a href="{{ path('front_blog_tag_detail', {slug: tag.slug}) }}"><i class="fa fa-folder-open-o" aria-hidden="true"></i> {{ tag.title }}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
+                {% include ':Frontend/includes:_side.html.twig' %}
             </div>
         </div>
     </div>

@@ -8,7 +8,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="author" content="www.wiglesias.com">
-    <title>{% block title %}Wiglesias{% endblock %}</title>
+    <title>{% block title %}{{ main_brand_title }}{% endblock %}</title>
     {% block stylesheets %}
         {% stylesheets filter="cssrewrite,less" '@mycss' %}
         {#<!-- Material Design fonts -->#}
@@ -34,7 +34,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ path('front_homepage') }}">Wiglesias</a>
+                <a class="navbar-brand" href="{{ path('front_homepage') }}">Wils Iglesias</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 {{ knp_menu_render('top', {currentClass: 'active', allow_safe_labels: true}) }}
@@ -52,35 +52,35 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-xs-12 extra-m-bottom">
-                    <h4>Herramienta</h4>
-                    <p><em>Utilizo el framework Symfony para mis proyecto. "Symfony" es una marca registrada de Fabien Potencier.</em></p>
-                    <a href="http://symfony.com">
+                    <h3 class="main-text-light">Herramienta</h3>
+                    <p class="main-text-light"><em>Utilizo el framework Symfony para mis proyecto. "Symfony" es una marca registrada de Fabien Potencier.</em></p>
+                    <a href="http://symfony.com" target="_blank">
                         <svg height="70" width="70" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <image height="70" width="70" class="navbar-logo" xlink:href="{{ asset('bundles/app/img/sf-white.svg') }}" alt="Symfony"></image>
                         </svg>
                     </a>
                 </div>
                 <div class="col-md-3 col-xs-12 extra-m-bottom">
-                    <h4>Enlaces</h4>
+                    <h3 class="main-text-light">Enlaces</h3>
                     <ul class="list-unstyled">
                         <li><a href="{{ path('front_about') }}">Sobre mi</a></li>
-                        <li><a href="{{ path('front_portafolio') }}">Portafolio</a></li>
+                        {#<li><a href="{{ path('front_portafolio') }}">Portafolio</a></li>#}
                         <li><a href="{{ path('front_blog') }}">Blog</a></li>
                         <li><a href="{{ path('front_contact') }}">Contacto</a></li>
                         <li><a href="{{ path('front_credits') }}">Crédito</a></li>
                     </ul>
                 </div>
                 <div class="col-md-3 col-xs-12 extra-m-bottom">
-                    <h4>Conectar</h4>
-                    <a href="https://twitter.com/wils_83"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></a>
-                    <a href="https://github.com/wiglesias"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
-                    <a href="https://es.linkedin.com/in/wils-iglesias-3b99b940"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>
+                    <h3 class="main-text-light">Conectar</h3>
+                    <a href="https://twitter.com/wils_83" class="twitter-follow-button" data-show-count="false">Follow @wils_83</a><br>
+                    <a href="https://github.com/wiglesias" target="_blank"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://es.linkedin.com/in/wils-iglesias-3b99b940" target="_blank"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>
         <div class="footer-copyright">
             <div class="container extra-m-bottom">
-                <p><i class="fa fa-copyright" aria-hidden="true"></i> 2016-{{ "now" | date("Y") }} Wiglesias</p>
+                <p><i class="fa fa-copyright main-text-light" aria-hidden="true"></i> 2016 - {{ "now" | date("Y") }} Wils Iglesias</p>
             </div>
         </div>
     </footer>
@@ -90,6 +90,7 @@
     {% javascripts '@myjs' %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/app/js/typed.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/app/js/social_network.js') }}"></script>
     {% endjavascripts %}
 {% endblock %}
 {% block scroll_top %}

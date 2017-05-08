@@ -11,8 +11,8 @@ use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
  * Class BaseAdmin
  *
  * @category Admin
- * @package AppBundle\Admin
- * @author Wils Iglesias <wiglesias83@gmail.com>
+ *
+ * @author   Wils Iglesias <wiglesias83@gmail.com>
  */
 abstract class AbstractBaseAdmin extends AbstractAdmin
 {
@@ -124,26 +124,5 @@ abstract class AbstractBaseAdmin extends AbstractAdmin
                 $this->vus->asset($this->getSubject(), 'imageFile'),
                 '480xY'
             ) . '" class="admin-preview img-responsive" alt="thumbnail"/>' : '' : '') . '<span style="width:100%;display:block;">ancho mínima 1200px (màx. 10MB amb JPG o PNG)</span>';
-    }
-
-    /**
-     * Get image helper form mapper with thumbnail for black&white
-     *
-     * @return string
-     */
-    protected function getImageHelperFormMapperWithThumbnailBW()
-    {
-        return ($this->getSubject() ? $this->getSubject()->getImageNameBW() ? '<img src="' . $this->lis->getBrowserPath(
-                $this->vus->asset($this->getSubject(), 'imageFileBW'),
-                '480xY'
-            ) . '" class="admin-preview img-responsive" alt="thumbnail"/>' : '' : '') . '<span style="width:100%;display:block;">amplada mínima 1200px (màx. 10MB amb JPG o PNG)</span>';
-    }
-
-    protected function getImageHelperFormMapperWithThumbnailGif()
-    {
-        return ($this->getSubject() ? $this->getSubject()->getGifName() ? '<img src="' . $this->lis->getBrowserPath(
-                $this->vus->asset($this->getSubject(), 'gifFile'),
-                '480xY'
-            ) . '" class="admin-preview img-responsive" alt="thumbnail"/>' : '' : '') . '<span style="width:100%;display:block;">mida 780x1168px (màx. 10MB amb GIF)</span>';
     }
 }
