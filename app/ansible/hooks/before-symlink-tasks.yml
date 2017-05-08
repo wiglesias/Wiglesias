@@ -14,10 +14,10 @@
     recurse: yes
     owner: www-data
     group: www-data
-- name: fix symfony web directory apache ownership
-  file:
-    path: "{{ ansistrano_release_path.stdout }}/web"
-    recurse: yes
-    follow: yes
-    owner: www-data
-    group: www-data
+#- name: fix symfony web directory apache ownership
+#  file:
+#    path: "{{ ansistrano_release_path.stdout }}/web"
+#    recurse: yes
+#    follow: yes
+#    owner: www-data
+#    group: www-data

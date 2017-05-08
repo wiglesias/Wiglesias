@@ -61,8 +61,7 @@ class ContactMessageAdminController extends BaseAdminController
                 'object'   => $object,
                 'elements' => $this->admin->getShow(),
             ),
-            null,
-            $request
+            null
         );
     }
 
@@ -92,9 +91,10 @@ class ContactMessageAdminController extends BaseAdminController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             // persist new contact message form record
-            $object->setAnswered(true);
+            $object
+                ->setAnswered(true)
+                ->setChecked(true);
             $em = $this->getDoctrine()->getManager();
-            $em->persist($object);
             $em->flush();
             // send notifications
             $messenger = $this->get('app.notification');
@@ -113,8 +113,7 @@ class ContactMessageAdminController extends BaseAdminController
                 'form'     => $form->createView(),
                 'elements' => $this->admin->getShow(),
             ),
-            null,
-            $request
+            null
         );
     }
 }
