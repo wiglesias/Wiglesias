@@ -134,3 +134,8 @@ knp_paginator:
         page_name: pagina
     template:
         pagination: "::Pagination/custom_pagination.html.twig"
+
+# Recaptcha
+beelab_recaptcha2:
+    site_key: "%recaptcha_site_key%"
+    secret: "%recaptcha_secret%"
