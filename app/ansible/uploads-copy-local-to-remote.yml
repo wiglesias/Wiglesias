@@ -10,13 +10,12 @@
         recursive: yes
         perms: yes
         times: yes
+        src: "{{ playbook_dir }}/../../web/uploads/"
         dest: "{{ vhost_path }}/shared/web/uploads"
-        src: "{{ playbook_dir }}/../../web"
     - name: fix ownership in downloaded files locally
-      delegate_to: mother
       file:
-        path: "{{ vhost_path }}/shared/web/uploads"
+        path: "{{ vhost_path }}/shared/web"
         recurse: yes
-        follow: yes
+        follow: no
         owner: www-data
         group: www-data
