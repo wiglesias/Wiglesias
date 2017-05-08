@@ -60,8 +60,7 @@ class ContactMessageAdminController extends BaseAdminController
                 'action'   => 'show',
                 'object'   => $object,
                 'elements' => $this->admin->getShow(),
-            ),
-            null
+            )
         );
     }
 
@@ -112,8 +111,7 @@ class ContactMessageAdminController extends BaseAdminController
                 'object'   => $object,
                 'form'     => $form->createView(),
                 'elements' => $this->admin->getShow(),
-            ),
-            null
+            )
         );
     }
 }

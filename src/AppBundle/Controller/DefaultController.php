@@ -3,14 +3,12 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\ContactMessage;
-use AppBundle\Form\Type\ContactHomepageType;
 use AppBundle\Form\Type\ContactMessageType;
 use AppBundle\Service\NotificationService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class DefaultController extends Controller
@@ -25,7 +23,7 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
         $contact = new ContactMessage();
-        $form = $this->createForm(ContactHomepageType::class, $contact);
+        $form = $this->createForm(ContactMessageType::class, $contact);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -44,7 +42,7 @@ class DefaultController extends Controller
             $messenger->sendCommonUserNotification($contact);
             $messenger->sendCommonAdminNotification($contact);
             // Clean up new form
-            $form = $this->createForm(ContactHomepageType::class);
+            $form = $this->createForm(ContactMessageType::class);
         }
 
         return $this->render(':Frontend:homepage.html.twig', array(
