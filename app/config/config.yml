@@ -135,6 +135,13 @@ knp_paginator:
     template:
         pagination: "::Pagination/custom_pagination.html.twig"
 
+# CKEditor
+ivory_ck_editor:
+    inline: false
+    configs:
+        my_config:
+            toolbar: standard
+
 # Recaptcha
 beelab_recaptcha2:
     site_key: "%recaptcha_site_key%"
