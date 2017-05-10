@@ -240,6 +240,14 @@ class PostAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
+                'author',
+                null,
+                array(
+                    'label'    => 'backend.admin.post.author',
+                    'editable' => true,
+                )
+            )
+            ->add(
                 'enabled',
                 null,
                 array(
