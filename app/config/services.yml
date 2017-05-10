@@ -62,3 +62,9 @@ services:
         public: false
         tags:
             - { name: twig.extension }
+# Block
+    app.block.contact_message:
+        class: AppBundle\Admin\Block\PendingMessagesBlock
+        arguments: [ "app.block.contact_message", "@templating", "@doctrine.orm.entity_manager" ]
+        tags:
+            - { name: sonata.block }

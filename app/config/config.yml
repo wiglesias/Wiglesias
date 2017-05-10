@@ -44,7 +44,7 @@ twig:
         google_analytics_enabled: "%google_analytics_enabled%"
         google_analytics_account: "%google_analytics_account%"
         main_brand_title:         "%project_web_title%"
-        admin_tag_version:        "v1.0.06"
+        admin_tag_version:        "v1.0.07"
 
 # Assetic
 assetic:
@@ -134,6 +134,13 @@ knp_paginator:
         page_name: pagina
     template:
         pagination: "::Pagination/custom_pagination.html.twig"
+
+# CKEditor
+ivory_ck_editor:
+    inline: false
+    configs:
+        my_config:
+            toolbar: standard
 
 # Recaptcha
 beelab_recaptcha2:

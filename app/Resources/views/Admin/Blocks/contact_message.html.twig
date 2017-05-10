@@ -1,0 +1,22 @@
+{% extends sonata_block.templates.block_base %}
+
+{% block block %}
+    {% if is_granted('ROLE_CMS') %}
+        <div class="box{% if pendingMessages > 0 %} box-danger{% endif %}">
+            <div class="box-header">
+                <h3 class="box-title">
+                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                    {% if pendingMessages > 0 %}
+                        {% if pendingMessages == 1 %}
+                            {{ pendingMessages }} mensaje pendiente de leer
+                        {% else %}
+                            {{ pendingMessages }} mensajes pendientes de leer
+                        {% endif %}
+                    {% else %}
+                        no tienes nigún mensaje pendiente de leer
+                    {% endif %}
+                </h3>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
