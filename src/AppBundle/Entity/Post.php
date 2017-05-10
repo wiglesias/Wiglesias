@@ -87,6 +87,13 @@ class Post extends AbstractBase
     private $tags;
 
     /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     */
+    private $author;
+
+    /**
      *
      *
      * Methods
@@ -308,6 +315,26 @@ class Post extends AbstractBase
     public function removeTag(Tag $tag)
     {
         $this->tags->removeElement($tag);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    /**
+     * @param mixed $author
+     *
+     * @return Post
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+
+        return $this;
     }
 
     /**

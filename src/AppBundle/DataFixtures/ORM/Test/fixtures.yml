@@ -33,6 +33,7 @@ AppBundle\Entity\Post:
     updatedAt: <dateTimeThisMonth()>
     enabled: <boolean(70)>
     tags: [ @tag1 ]
+    author: @admin
   post3:
     publishedAt: '2008-04-25 08:37:17'
     title: my title
@@ -44,6 +45,7 @@ AppBundle\Entity\Post:
     updatedAt: <dateTimeThisMonth()>
     enabled: <boolean(70)>
     tags: [ @tag1 ]
+    author: @admin
 
 # Tags
 AppBundle\Entity\Tag:

@@ -10,7 +10,7 @@
                     <div class="col-md-12">
                         {% include ':Frontend/includes:image_detail.html.twig' with {object: post, filter: '1200xY'} %}
                         <h2 class="main-title">{{ post.title }}</h2>
-                        <h4 class="text-muted"><i class="fa fa-calendar c-orange-md" aria-hidden="true"></i> {{ post.publishedAt | date('d/m/Y') }}</h4>
+                        <h4 class="text-muted"><i class="fa fa-calendar c-orange-md" aria-hidden="true"></i> {{ post.publishedAt | date('d/m/Y') }} | por {{ post.author.firstname }}</h4>
                         {% for tag in post.tags %}
                             {% spaceless %}
                                 <a class="c-blue-md" href="{{ path('front_blog_tag_detail', {slug: tag.slug}) }}">{{ tag.title }}</a>

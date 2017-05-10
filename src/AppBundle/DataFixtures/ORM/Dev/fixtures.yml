@@ -33,6 +33,7 @@ AppBundle\Entity\Post:
     updatedAt: <dateTimeThisMonth()>
     enabled: <boolean(70)>
     tags: [ @tag1 ]
+    author: @admin
 
 # Tags
 AppBundle\Entity\Tag:
