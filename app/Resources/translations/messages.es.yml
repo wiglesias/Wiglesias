@@ -54,6 +54,7 @@ backend:
             metadescription: Metadescripción
             metakeywordshelp: Separados por coma
             content: Contenido
+            author: Autor
         tag:
             tag: Etiqueta
             title: Título
