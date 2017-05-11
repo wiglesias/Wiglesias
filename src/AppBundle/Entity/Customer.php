@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Class Customer
@@ -18,6 +19,14 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Customer extends AbstractBase
 {
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255)
+     * @Gedmo\Slug(fields={"name"})
+     */
+    private $slug;
+
     /**
      * @var string
      *
@@ -107,6 +116,26 @@ class Customer extends AbstractBase
     public function __construct()
     {
         $this->invoices = new ArrayCollection();
+    }
+
+    /**
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param string $slug
+     *
+     * @return Customer
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
     }
 
     /**

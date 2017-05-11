@@ -83,7 +83,7 @@ class Invoice extends AbstractBase
      *
      * @return Invoice
      */
-    public function setDate($date)
+    public function setDate(\DateTime $date)
     {
         $this->date = $date;
 
@@ -128,5 +128,10 @@ class Invoice extends AbstractBase
         $this->irpf = $irpf;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->id;
     }
 }
