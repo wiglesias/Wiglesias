@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -45,10 +46,25 @@ class Invoice extends AbstractBase
     private $irpf;
 
     /**
+     * @var array
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\InvoiceLine", mappedBy="invoice")
+     */
+    private $lines;
+
+    /**
      *
      * Methods
      *
      */
+
+    /**
+     * Invoice constructor.
+     */
+    public function __construct()
+    {
+        $this->lines = new ArrayCollection();
+    }
 
     /**
      * @return Customer
@@ -126,6 +142,50 @@ class Invoice extends AbstractBase
     public function setIrpf($irpf)
     {
         $this->irpf = $irpf;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getLines()
+    {
+        return $this->lines;
+    }
+
+    /**
+     * @param array $lines
+     *
+     * @return Invoice
+     */
+    public function setLines($lines)
+    {
+        $this->lines = $lines;
+
+        return $this;
+    }
+
+    /**
+     * @param InvoiceLine $line
+     *
+     * @return $this
+     */
+    public function addLine(InvoiceLine $line)
+    {
+        $this->lines->add($line);
+
+        return $this;
+    }
+
+    /**
+     * @param InvoiceLine $line
+     *
+     * @return $this
+     */
+    public function removeLine(InvoiceLine $line)
+    {
+        $this->lines->removeElement($line);
 
         return $this;
     }

@@ -77,8 +77,8 @@ sonata_admin:
                 settings:
                     groups: [ Usuarios ]
             -
-                position: bottom
+                position: left
                 type: sonata.admin.block.admin_list
-                class: col-md-12
+                class: col-md-6
                 settings:
                     groups: [ Facturacion ]

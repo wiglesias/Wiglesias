@@ -57,6 +57,7 @@ class InvoiceAdmin extends AbstractBaseAdmin
                 null,
                 array(
                     'label' => 'Cliente',
+                    'r'
                 )
             )
             ->add(

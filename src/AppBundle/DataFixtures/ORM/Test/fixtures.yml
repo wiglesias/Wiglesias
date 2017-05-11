@@ -83,6 +83,15 @@ AppBundle\Entity\Invoice:
     createdAt: <dateTimeBetween('-2 months', '-1 months')>
     updatedAt: <dateTimeThisMonth()>
     enabled: <boolean(70)>
+    lines:
+        - @invoiceline*
+
+# InvoiceLine
+AppBundle\Entity\InvoiceLine:
+  invoiceline{1..2}:
+    name: <sentence()>
+    price: <randomFloat(1, 5)>
+    amount: <numberBetween(1, 100)>
 
 ## Users
 AppBundle\Entity\User:
