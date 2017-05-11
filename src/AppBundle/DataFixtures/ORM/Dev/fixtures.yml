@@ -60,7 +60,7 @@ AppBundle\Entity\Customer:
     updatedAt: <dateTimeThisMonth()>
     enabled: <boolean(70)>
     invoices:
-        - @invoice*
+        - @invoice<numberBetween(1, 5)>
 
 # Invoice
 AppBundle\Entity\Invoice:
@@ -72,14 +72,17 @@ AppBundle\Entity\Invoice:
     updatedAt: <dateTimeThisMonth()>
     enabled: <boolean(70)>
     lines:
-        - @invoiceline*
+        - @invoice_line*
 
 # InvoiceLine
 AppBundle\Entity\InvoiceLine:
-  invoiceline{1..10}:
+  invoice_line{1..5}:
     name: <sentence()>
     price: <randomFloat(1, 5)>
     amount: <numberBetween(1, 100)>
+    createdAt: <dateTimeBetween('-2 months', '-1 months')>
+    updatedAt: <dateTimeThisMonth()>
+    enabled: <boolean(70)>
 
 ## Users
 AppBundle\Entity\User:
