@@ -48,7 +48,7 @@ class Invoice extends AbstractBase
     /**
      * @var array
      *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\InvoiceLine", mappedBy="invoice")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\InvoiceLine", mappedBy="invoice", cascade={"persist", "remove"}, orphanRemoval=true)
      */
     private $lines;
 

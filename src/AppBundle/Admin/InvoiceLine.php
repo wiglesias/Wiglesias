@@ -57,6 +57,10 @@ class InvoiceLine extends AbstractBaseAdmin
                 null,
                 array(
                     'label' => 'Factura',
+                    'attr' => array(
+//                        'hidden' => true,
+                    ),
+                    'required' => true,
                 )
             )
             ->add(

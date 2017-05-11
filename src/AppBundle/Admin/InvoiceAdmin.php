@@ -69,6 +69,24 @@ class InvoiceAdmin extends AbstractBaseAdmin
                 )
             )
             ->end()
+            ->with('Líneas de facturas', $this->getFormMdSuccessBoxArray(12))
+            ->add(
+                'lines',
+                'sonata_type_collection',
+                array(
+                    'label' => 'Línea',
+                    'required' => true,
+                    'cascade_validation' => true,
+                    'error_bubbling' => true,
+                    'by_reference' => false,
+                ),
+                array(
+                    'edit' => 'inline',
+                    'inline' => 'table',
+//                    'sortable' => 'position',
+                )
+            )
+            ->end()
         ;
     }
 
