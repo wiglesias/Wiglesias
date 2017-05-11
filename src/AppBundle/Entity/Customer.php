@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -88,10 +89,25 @@ class Customer extends AbstractBase
     private $mobile;
 
     /**
+     * @var array
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Invoice", mappedBy="customer")
+     */
+    private $invoices;
+
+    /**
      *
      * Methods
      *
      */
+
+    /**
+     * Customer constructor.
+     */
+    public function __construct()
+    {
+        $this->invoices = new ArrayCollection();
+    }
 
     /**
      * @return string
@@ -289,6 +305,50 @@ class Customer extends AbstractBase
     public function setMobile($mobile)
     {
         $this->mobile = $mobile;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getInvoices()
+    {
+        return $this->invoices;
+    }
+
+    /**
+     * @param array $invoices
+     *
+     * @return Customer
+     */
+    public function setInvoices($invoices)
+    {
+        $this->invoices = $invoices;
+
+        return $this;
+    }
+
+    /**
+     * @param Invoice $invoice
+     *
+     * @return $this
+     */
+    public function addInvoice(Invoice $invoice)
+    {
+        $this->invoices->add($invoice);
+
+        return $this;
+    }
+
+    /**
+     * @param Invoice $invoice
+     *
+     * @return $this
+     */
+    public function removeInvoice(Invoice $invoice)
+    {
+        $this->invoices->removeElement($invoice);
 
         return $this;
     }
