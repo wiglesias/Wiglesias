@@ -35,11 +35,16 @@ services:
         arguments: [ ~, AppBundle\Entity\Customer, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
         tags:
             - { name: sonata.admin, manager_type: orm, label: "Cliente", group: "Facturacion" }
-    admin.billing_invoice:
+    admin.billing.invoice:
         class: AppBundle\Admin\InvoiceAdmin
         arguments: [ ~, AppBundle\Entity\Invoice, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
         tags:
             - { name: sonata.admin, manager_type: orm, label: "Factura", group: "Facturacion" }
+    admin.billing.invoice_line:
+        class: AppBundle\Admin\InvoiceLine
+        arguments: [ ~, AppBundle\Entity\InvoiceLine, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: "Líneas", group: "Facturacion" }
 
 # Messaging
     app.courier:

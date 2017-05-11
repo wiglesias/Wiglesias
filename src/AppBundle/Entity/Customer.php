@@ -390,6 +390,9 @@ class Customer extends AbstractBase
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return $this->id ? $this->getFullName() : '---';

@@ -54,7 +54,7 @@ class CustomerAdmin extends AbstractBaseAdmin
                 'identityCard',
                 null,
                 array(
-                    'label' => 'DNI-CIF',
+                    'label' => 'DNI/CIF',
                 )
             )
             ->add(
@@ -199,6 +199,14 @@ class CustomerAdmin extends AbstractBaseAdmin
                 null,
                 array(
                     'label'    => 'Email',
+                    'editable' => true,
+                )
+            )
+            ->add(
+                'identityCard',
+                null,
+                array(
+                    'label'    => 'DNI/CIF',
                     'editable' => true,
                 )
             )

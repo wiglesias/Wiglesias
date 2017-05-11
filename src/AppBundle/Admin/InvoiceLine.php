@@ -7,18 +7,18 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
 /**
- * Class InvoiceAdmin
+ * Class InvoiceLine
  *
  * @category Admin
  * @package AppBundle\Admin
  * @author Wils Iglesias <wiglesias83@gmail.com>
  */
-class InvoiceAdmin extends AbstractBaseAdmin
+class InvoiceLine extends AbstractBaseAdmin
 {
-    protected $classnameLabel = 'Factura';
-    protected $baseRoutePattern = 'facturacion/factura';
+    protected $classnameLabel = 'Líneas';
+    protected $baseRoutePattern = 'facturacion/lineas';
     protected $datagridValues = array(
-        '_sort_by'    => 'date',
+        '_sort_by'    => 'name',
         '_sort_order' => 'asc',
     );
 
@@ -28,36 +28,35 @@ class InvoiceAdmin extends AbstractBaseAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('Factura', $this->getFormMdSuccessBoxArray(6))
+            ->with('Datos de Cliente', $this->getFormMdSuccessBoxArray(6))
             ->add(
-                'date',
-                'sonata_type_date_picker',
+                'name',
+                null,
                 array(
-                    'label' => 'Fecha Factura',
+                    'label' => 'Nombre',
                 )
             )
             ->add(
-                'iva',
+                'price',
                 null,
                 array(
-                    'label' => 'IVA',
+                    'label' => 'Precio',
                 )
             )
             ->add(
-                'irpf',
+                'amount',
                 null,
                 array(
-                    'label' => 'IRPF',
+                    'label' => 'Cantidad',
                 )
             )
             ->end()
             ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(6))
             ->add(
-                'customer',
+                'invoice',
                 null,
                 array(
-                    'label' => 'Cliente',
-                    'required' => true,
+                    'label' => 'Factura',
                 )
             )
             ->add(
@@ -79,40 +78,41 @@ class InvoiceAdmin extends AbstractBaseAdmin
     {
         $datagridMapper
             ->add(
-                'customer',
+                'name',
                 null,
                 array(
-                    'label' => 'Cliente',
+                    'label' => 'Nombre',
                 )
             )
             ->add(
-                'date',
+                'price',
                 null,
                 array(
-                    'label' => 'Fecha factura',
+                    'label' => 'Precio',
                 )
             )
             ->add(
-                'iva',
+                'amount',
                 null,
                 array(
-                    'label' => 'IVA',
+                    'label' => 'Cantidad',
                 )
             )
             ->add(
-                'irpf',
+                'invoice',
                 null,
                 array(
-                    'label' => 'IRPF',
+                    'label' => 'Factura',
                 )
             )
             ->add(
                 'enabled',
                 null,
                 array(
-                    'label' => 'Activo',
+                    'label' => 'backend.admin.enabled',
                 )
-            );
+            )
+        ;
     }
 
     /**
@@ -123,34 +123,34 @@ class InvoiceAdmin extends AbstractBaseAdmin
         unset($this->listModes['mosaic']);
         $listMapper
             ->add(
-                'customer',
+                'name',
                 null,
                 array(
-                    'label'    => 'Cliente',
+                    'label'    => 'Nombre',
                     'editable' => true,
                 )
             )
             ->add(
-                'date',
+                'price',
                 null,
                 array(
-                    'label'    => 'Fecha factura',
+                    'label'    => 'Precio',
                     'editable' => true,
                 )
             )
             ->add(
-                'iva',
+                'amount',
                 null,
                 array(
-                    'label'    => 'IVA',
+                    'label'    => 'Cantidad',
                     'editable' => true,
                 )
             )
             ->add(
-                'irpf',
+                'invoice',
                 null,
                 array(
-                    'label'    => 'IRPF',
+                    'label'    => 'Factura',
                     'editable' => true,
                 )
             )
