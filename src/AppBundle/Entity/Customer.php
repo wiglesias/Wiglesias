@@ -118,6 +118,14 @@ class Customer extends AbstractBase
     }
 
     /**
+     * @return string
+     */
+    public function getFullName()
+    {
+        return $this->name.' '.$this->surname;
+    }
+
+    /**
      * @param string $name
      *
      * @return Customer
@@ -351,5 +359,10 @@ class Customer extends AbstractBase
         $this->invoices->removeElement($invoice);
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->id ? $this->getFullName() : '---';
     }
 }

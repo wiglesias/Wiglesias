@@ -4,6 +4,7 @@ namespace AppBundle\Admin;
 
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
+use Sonata\AdminBundle\Form\FormMapper;
 
 /**
  * Class CustomerAdmin
@@ -21,98 +22,96 @@ class CustomerAdmin extends AbstractBaseAdmin
         '_sort_order' => 'asc',
     );
 
-//    /**
-//     * @param FormMapper $formMapper
-//     */
-//    protected function configureFormFields(FormMapper $formMapper)
-//    {
-//        $formMapper
-//            ->with('backend.admin.post.post', $this->getFormMdSuccessBoxArray(6))
-//            ->add(
-//                'publishedAt',
-//                'sonata_type_date_picker',
-//                array(
-//                    'label' => 'backend.admin.published_date',
-//                )
-//            )
-//            ->add(
-//                'imageFile',
-//                'file',
-//                array(
-//                    'label'    => 'backend.admin.post.image',
-//                    'help'     => $this->getImageHelperFormMapperWithThumbnail(),
-//                    'required' => false,
-//                )
-//            )
-//            ->add(
-//                'author',
-//                null,
-//                array(
-//                    'label' => 'backend.admin.post.author',
-//                )
-//            )
-//            ->end()
-//            ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(6))
-//            ->add(
-//                'tags',
-//                null,
-//                array(
-//                    'label' => 'backend.admin.post.tags',
-//                    'query_builder' => function (TagRepository $repository) {
-//                        return $repository->getAllSortedByTitleQB();
-//                    },
-//                )
-//            )
-//            ->add(
-//                'metaKeywords',
-//                null,
-//                array(
-//                    'label' => 'backend.admin.post.metakeywords',
-//                    'help'  => 'backend.admin.post.metakeywordshelp',
-//                )
-//            )
-//            ->add(
-//                'metaDescription',
-//                null,
-//                array(
-//                    'label' => 'backend.admin.post.metadescription',
-//                )
-//            )
-//            ->add(
-//                'enabled',
-//                'checkbox',
-//                array(
-//                    'label'    => 'backend.admin.enabled',
-//                    'required' => false,
-//                )
-//            )
-//            ->end()
-//            ->with('backend.admin.post.content', $this->getFormMdSuccessBoxArray(12))
-//            ->add(
-//                'title',
-//                null,
-//                array(
-//                    'label' => 'backend.admin.post.title',
-//                )
-//            )
-//            ->add(
-//                'shortDescription',
-//                null,
-//                array(
-//                    'label' => 'backend.admin.post.shortdescription',
-//                )
-//            )
-//            ->add(
-//                'description',
-//                CKEditorType::class,
-//                array(
-//                    'label'       => 'backend.admin.post.description',
-//                    'config_name' => 'my_config',
-//                    'required'    => true,
-//                )
-//            )
-//            ->end();
-//    }
+    /**
+     * @param FormMapper $formMapper
+     */
+    protected function configureFormFields(FormMapper $formMapper)
+    {
+        $formMapper
+            ->with('Datos de Cliente', $this->getFormMdSuccessBoxArray(6))
+            ->add(
+                'name',
+                null,
+                array(
+                    'label' => 'Nombre',
+                )
+            )
+            ->add(
+                'surname',
+                null,
+                array(
+                    'label' => 'Apellidos',
+                )
+            )
+            ->add(
+                'company',
+                null,
+                array(
+                    'label' => 'Empresa',
+                )
+            )
+            ->add(
+                'identityCard',
+                null,
+                array(
+                    'label' => 'DNI-CIF',
+                )
+            )
+            ->add(
+                'phone',
+                null,
+                array(
+                    'label' => 'Teléfono',
+                )
+            )
+            ->add(
+                'mobile',
+                null,
+                array(
+                    'label' => 'movil',
+                )
+            )
+            ->end()
+            ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(6))
+            ->add(
+                'adress',
+                null,
+                array(
+                    'label' => 'Dirección',
+                )
+            )
+            ->add(
+                'city',
+                null,
+                array(
+                    'label' => 'Ciudad',
+                )
+            )
+            ->add(
+                'postalCode',
+                null,
+                array(
+                    'label' => 'Codigo Postal',
+                )
+            )
+            ->add(
+                'email',
+                null,
+                array(
+                    'label' => 'Email',
+                )
+            )
+            ->add(
+                'enabled',
+                'checkbox',
+                array(
+                    'label'    => 'backend.admin.enabled',
+                    'required' => false,
+                )
+            )
+            ->end()
+        ;
+    }
 
     /**
      * @param DatagridMapper $datagridMapper
