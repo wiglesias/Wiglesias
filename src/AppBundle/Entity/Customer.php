@@ -44,7 +44,7 @@ class Customer extends AbstractBase
      *
      * @ORM\Column(type="string")
      */
-    private $identyCard;
+    private $identityCard;
 
     /**
      * @var string
@@ -172,19 +172,19 @@ class Customer extends AbstractBase
     /**
      * @return string
      */
-    public function getIdentyCard()
+    public function getIdentityCard()
     {
-        return $this->identyCard;
+        return $this->identityCard;
     }
 
     /**
-     * @param string $identyCard
+     * @param string $identityCard
      *
      * @return Customer
      */
-    public function setIdentyCard($identyCard)
+    public function setIdentityCard($identityCard)
     {
-        $this->identyCard = $identyCard;
+        $this->identityCard = $identityCard;
 
         return $this;
     }

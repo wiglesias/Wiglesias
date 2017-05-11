@@ -30,6 +30,11 @@ services:
         arguments: [ ~, AppBundle\Entity\User, ~, "@fos_user.user_manager" ]
         tags:
             - { name: sonata.admin, manager_type: orm, label: "Usuario", group: "Usuarios" }
+    admin.billing_customer:
+        class: AppBundle\Admin\CustomerAdmin
+        arguments: [ ~, AppBundle\Entity\Customer, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: "Cliente", group: "Facturacion" }
 
 # Messaging
     app.courier:

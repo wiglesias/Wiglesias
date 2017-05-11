@@ -37,6 +37,8 @@ sonata_admin:
                 icon: "<i class='fa fa-envelope'></i>"
             Usuarios:
                 icon: "<i class='fa fa-user'></i>"
+            Facturacion:
+                icon: "<i class='fa fa-eur'></i>"
         blocks:
             -
                 position: top
@@ -74,3 +76,9 @@ sonata_admin:
                 class: col-md-6
                 settings:
                     groups: [ Usuarios ]
+            -
+                position: bottom
+                type: sonata.admin.block.admin_list
+                class: col-md-12
+                settings:
+                    groups: [ Facturacion ]
