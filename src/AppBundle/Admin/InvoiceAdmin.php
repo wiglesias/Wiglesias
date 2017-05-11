@@ -22,146 +22,97 @@ class InvoiceAdmin extends AbstractBaseAdmin
         '_sort_order' => 'asc',
     );
 
-//    /**
-//     * @param FormMapper $formMapper
-//     */
-//    protected function configureFormFields(FormMapper $formMapper)
-//    {
-//        $formMapper
-//            ->with('Datos de Cliente', $this->getFormMdSuccessBoxArray(6))
-//            ->add(
-//                'name',
-//                null,
-//                array(
-//                    'label' => 'Nombre',
-//                )
-//            )
-//            ->add(
-//                'surname',
-//                null,
-//                array(
-//                    'label' => 'Apellidos',
-//                )
-//            )
-//            ->add(
-//                'company',
-//                null,
-//                array(
-//                    'label' => 'Empresa',
-//                )
-//            )
-//            ->add(
-//                'identityCard',
-//                null,
-//                array(
-//                    'label' => 'DNI-CIF',
-//                )
-//            )
-//            ->add(
-//                'phone',
-//                null,
-//                array(
-//                    'label' => 'Teléfono',
-//                )
-//            )
-//            ->add(
-//                'mobile',
-//                null,
-//                array(
-//                    'label' => 'movil',
-//                )
-//            )
-//            ->end()
-//            ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(6))
-//            ->add(
-//                'adress',
-//                null,
-//                array(
-//                    'label' => 'Dirección',
-//                )
-//            )
-//            ->add(
-//                'city',
-//                null,
-//                array(
-//                    'label' => 'Ciudad',
-//                )
-//            )
-//            ->add(
-//                'postalCode',
-//                null,
-//                array(
-//                    'label' => 'Codigo Postal',
-//                )
-//            )
-//            ->add(
-//                'email',
-//                null,
-//                array(
-//                    'label' => 'Email',
-//                )
-//            )
-//            ->add(
-//                'enabled',
-//                'checkbox',
-//                array(
-//                    'label'    => 'backend.admin.enabled',
-//                    'required' => false,
-//                )
-//            )
-//            ->end()
-//        ;
-//    }
-//
-//    /**
-//     * @param DatagridMapper $datagridMapper
-//     */
-//    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
-//    {
-//        $datagridMapper
-//            ->add(
-//                'name',
-//                null,
-//                array(
-//                    'label' => 'Nombre',
-//                )
-//            )
-//            ->add(
-//                'surname',
-//                null,
-//                array(
-//                    'label' => 'Apellidos',
-//                )
-//            )
-//            ->add(
-//                'company',
-//                null,
-//                array(
-//                    'label' => 'Empresa',
-//                )
-//            )
-//            ->add(
-//                'identityCard',
-//                null,
-//                array(
-//                    'label' => 'DNI/CIF',
-//                )
-//            )
-//            ->add(
-//                'city',
-//                null,
-//                array(
-//                    'label' => 'Ciudad',
-//                )
-//            )
-//            ->add(
-//                'email',
-//                null,
-//                array(
-//                    'label' => 'Email',
-//                )
-//            );
-//    }
+    /**
+     * @param FormMapper $formMapper
+     */
+    protected function configureFormFields(FormMapper $formMapper)
+    {
+        $formMapper
+            ->with('Factura', $this->getFormMdSuccessBoxArray(6))
+            ->add(
+                'date',
+                'sonata_type_date_picker',
+                array(
+                    'label' => 'Fecha Factura',
+                )
+            )
+            ->add(
+                'iva',
+                null,
+                array(
+                    'label' => 'IVA',
+                )
+            )
+            ->add(
+                'irpf',
+                null,
+                array(
+                    'label' => 'IRPF',
+                )
+            )
+            ->end()
+            ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(6))
+            ->add(
+                'customer',
+                null,
+                array(
+                    'label' => 'Cliente',
+                )
+            )
+            ->add(
+                'enabled',
+                'checkbox',
+                array(
+                    'label'    => 'backend.admin.enabled',
+                    'required' => false,
+                )
+            )
+            ->end()
+        ;
+    }
+
+    /**
+     * @param DatagridMapper $datagridMapper
+     */
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    {
+        $datagridMapper
+            ->add(
+                'customer',
+                null,
+                array(
+                    'label' => 'Cliente',
+                )
+            )
+            ->add(
+                'date',
+                null,
+                array(
+                    'label' => 'Fecha factura',
+                )
+            )
+            ->add(
+                'iva',
+                null,
+                array(
+                    'label' => 'IVA',
+                )
+            )
+            ->add(
+                'irpf',
+                null,
+                array(
+                    'label' => 'IRPF',
+                )
+            )
+            ->add(
+                'enabled',
+                null,
+                array(
+                    'label' => 'Activo',
+                )
+            );
+    }
 
     /**
      * @param ListMapper $listMapper
