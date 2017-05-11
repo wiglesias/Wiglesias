@@ -55,6 +55,35 @@ AppBundle\Entity\Tag:
     updatedAt: <dateTimeThisMonth()>
     enabled: <boolean(70)>
 
+# Customer
+AppBundle\Entity\Customer:
+  customer{1..2}:
+    name: <name()>
+    surname: <lastname()>
+    company: <company()>
+    identityCard: <bothify('######?')>
+    adress: <streetAddress()>
+    city: <city()>
+    postalCode: <postcode()>
+    email: <email()>
+    phone: <phoneNumber()>
+    mobile: <phoneNumber()>
+    createdAt: <dateTimeBetween('-2 months', '-1 months')>
+    updatedAt: <dateTimeThisMonth()>
+    enabled: <boolean(70)>
+    invoices:
+        - @invoice1
+
+# Invoice
+AppBundle\Entity\Invoice:
+  invoice{1..2}:
+    date: <dateTimeBetween('-2 months', '-1 months')>
+    iva: <numerify('##')>
+    irpf: <numerify('##')>
+    createdAt: <dateTimeBetween('-2 months', '-1 months')>
+    updatedAt: <dateTimeThisMonth()>
+    enabled: <boolean(70)>
+
 ## Users
 AppBundle\Entity\User:
     admin:
