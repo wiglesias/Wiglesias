@@ -131,6 +131,16 @@ class InvoiceLine extends AbstractBase
     }
 
     /**
+     * @return int
+     */
+    public function getTotal()
+    {
+        $total = $this->amount * $this->price;
+
+        return $total;
+    }
+
+    /**
      * @return string
      */
     public function __toString()

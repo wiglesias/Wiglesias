@@ -2,7 +2,7 @@
 
 namespace AppBundle\Repository;
 
-use \Doctrine\ORM\QueryBuilder;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\EntityRepository;
 
 /**

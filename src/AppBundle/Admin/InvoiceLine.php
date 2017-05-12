@@ -33,7 +33,7 @@ class InvoiceLine extends AbstractBaseAdmin
                 'name',
                 null,
                 array(
-                    'label' => 'Nombre',
+                    'label' => 'Concepto',
                 )
             )
             ->add(
@@ -58,7 +58,7 @@ class InvoiceLine extends AbstractBaseAdmin
                 array(
                     'label' => 'Factura',
                     'attr' => array(
-//                        'hidden' => true,
+                        'hidden' => true,
                     ),
                     'required' => true,
                 )
@@ -69,6 +69,9 @@ class InvoiceLine extends AbstractBaseAdmin
                 array(
                     'label'    => 'backend.admin.enabled',
                     'required' => false,
+                    'attr' => array(
+                        'hidden' => true,
+                    ),
                 )
             )
             ->end()
@@ -85,7 +88,7 @@ class InvoiceLine extends AbstractBaseAdmin
                 'name',
                 null,
                 array(
-                    'label' => 'Nombre',
+                    'label' => 'Concepto',
                 )
             )
             ->add(
@@ -130,7 +133,7 @@ class InvoiceLine extends AbstractBaseAdmin
                 'name',
                 null,
                 array(
-                    'label'    => 'Nombre',
+                    'label'    => 'Concepto',
                     'editable' => true,
                 )
             )

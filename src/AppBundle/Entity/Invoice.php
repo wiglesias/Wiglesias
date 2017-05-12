@@ -17,6 +17,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Invoice extends AbstractBase
 {
+    const DEFAULT_IVA = 21;
+
     /**
      * @var Customer
      *
@@ -34,9 +36,9 @@ class Invoice extends AbstractBase
     /**
      * @var int
      *
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", options={"default"=21})
      */
-    private $iva;
+    private $iva = self::DEFAULT_IVA;
 
     /**
      * @var int
