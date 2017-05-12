@@ -2,7 +2,7 @@
 
 namespace AppBundle\Repository;
 
-use Doctrine\DBAL\Query\QueryBuilder;
+use \Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\EntityRepository;
 
 /**
@@ -15,15 +15,12 @@ use Doctrine\ORM\EntityRepository;
 class TagRepository extends EntityRepository
 {
     /**
-     * @return array
+     * @return QueryBuilder
      */
     public function getAllSortedByTitleQB()
     {
-        $query = $this->createQueryBuilder('t')
-            ->orderBy('t.title', 'ASC')
-            ->getQuery();
-
-        return $query->getResult();
+        return $this->createQueryBuilder('t')
+            ->orderBy('t.title', 'ASC');
     }
 
     /**
