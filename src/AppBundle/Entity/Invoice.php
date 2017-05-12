@@ -173,7 +173,10 @@ class Invoice extends AbstractBase
      */
     public function addLine(InvoiceLine $line)
     {
-        $this->lines->add($line);
+        if (!$this->lines->contains($line)) {
+            $this->lines->add($line);
+            $line->setInvoice($this);
+        }
 
         return $this;
     }
@@ -185,7 +188,9 @@ class Invoice extends AbstractBase
      */
     public function removeLine(InvoiceLine $line)
     {
-        $this->lines->removeElement($line);
+        if ($this->lines->contains($line)) {
+            $this->lines->removeElement($line);
+        }
 
         return $this;
     }
