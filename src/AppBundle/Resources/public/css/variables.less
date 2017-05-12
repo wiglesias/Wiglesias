@@ -1,0 +1,63 @@
+@import "../../../../../vendor/twbs/bootstrap/less/bootstrap.less";
+@import "../../../../../vendor/components/font-awesome/less/font-awesome.less";
+@import "colors.less";
+
+
+// Variables
+
+// Fonts
+@icon-font-path: "/bundles/app/fonts/";
+@fa-font-path: "/bundles/app/fonts";
+
+// Custom Bootstrap vars
+@link-color: @gray-base;
+
+// Custom vars
+@wi-s-base: 20px;
+@wi-s-base-plus: 60px;
+@wi-s-base-minus: 10px;
+@gap-extra-big: @gap-big * 2;
+@gap-big: @gap-normal * 2;
+@gap-normal: 20px;
+@gap-small: @gap-normal / 2;
+@wi-font-size-base: 16px;
+@wi-font-size-large: ceil((@font-size-base * 1.25));
+@wi-font-size-small: ceil((@font-size-base * 0.95));
+
+// Custom Navbar
+//@navbar-height: 64px;
+//@navbar-default-color: @wi-c-white;
+//@navbar-default-bg: @wi-c-light-blue-500;
+//@navbar-default-link-active-bg: @wi-c-white;
+//@navbar-default-link-hover-bg: @wi-c-white;
+//@navbar-default-toggle-icon-bar-bg: @wi-c-white;
+//@navbar-default-toggle-hover-bg: lighten(@wi-c-light-blue-500, 15%);
+//@navbar-default-toggle-border-color: @wi-c-white;
+
+//@navbar-height: 110px;
+//@navbar-border-radius: 0;
+//@navbar-default-link-active-color: @wi-c-light-blue-500;
+//@navbar-default-link-hover-color: @wi-c-light-blue-500;
+//@navbar-default-link-color: @wi-c-white;
+
+// Custom btn-default
+@btn-default-color: @wi-c-light-blue-500;
+
+// Custom thumbnails
+@thumbnail-padding: 0;
+//@thumbnail-bg: @wi-c-white;
+//@thumbnail-border: @wi-c-white;
+@thumbnail-border-radius: 5px;
+@thumbnail-caption-padding: @gap-big;
+
+// Gray and Brand Colors for use across theme
+
+@theme-primary:    #03A9F4;
+@theme-danger:     #e74c3c;
+
+@gray-base:        #000;
+@gray-darker:      lighten(@gray-base, 13.5%); // #222
+@gray-dark:        lighten(@gray-base, 20%);   // #333
+@gray:             lighten(@gray-base, 33.5%); // #555
+@gray-light:       lighten(@gray-base, 46.7%); // #777
+@gray-lighter:     lighten(@gray-base, 93.5%); // #eee
