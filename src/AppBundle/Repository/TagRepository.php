@@ -15,12 +15,15 @@ use Doctrine\ORM\EntityRepository;
 class TagRepository extends EntityRepository
 {
     /**
-     * @return QueryBuilder
+     * @return array
      */
     public function getAllSortedByTitleQB()
     {
-        return $this->createQueryBuilder('t')
-            ->orderBy('t.title', 'ASC');
+        $query = $this->createQueryBuilder('t')
+            ->orderBy('t.title', 'ASC')
+            ->getQuery();
+
+        return $query->getResult();
     }
 
     /**
