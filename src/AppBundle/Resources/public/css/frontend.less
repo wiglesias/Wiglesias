@@ -81,6 +81,13 @@ body {
   padding-top: 40px;
 }
 
+// Global components
+
+h1, h2, h3, h4, h5, h6 {
+  .heading-font;
+  font-weight: 700;
+}
+
 // Custom buttons
 .wi-button-mixin(btn-wi, @wi-c-white, @wi-c-light-blue-500);
 
@@ -231,7 +238,7 @@ ul.categories-selector {
   overflow: hidden;
   text-align: center;
   z-index: 2000;
-  background-color: @wi-c-light-blue-500;
+  background-color: @theme-primary;
   color: @wi-c-white;
   width: 50px;
   height: 50px;
@@ -584,6 +591,38 @@ pre {
   padding-top: 10px;
   padding-bottom: 10px;
   margin: 0 15px 15px;
+}
+
+// Global Section Styles
+
+section {
+  padding: 100px 0;
+  h2.section-heading {
+    font-size: 40px;
+    margin-top: 0;
+    margin-bottom: 15px;
+  }
+  h3.section-subheading {
+    font-size: 16px;
+    .serif-font;
+    text-transform: none;
+    font-style: italic;
+    font-weight: 400;
+    margin-bottom: 75px;
+  }
+}
+
+@media(min-width:768px) {
+  section {
+    padding: 150px 0;
+  }
+}
+
+// Services Section
+
+.service-heading {
+  margin: 15px 0;
+  text-transform: none;
 }
 
 // Footer
