@@ -2,7 +2,8 @@
 @import "../../../../../vendor/twbs/bootstrap/less/bootstrap.less";
 @import "../../../../../vendor/components/font-awesome/less/font-awesome.less";
 @import "colors.less";
-@import "buttons";
+@import "buttons.less";
+@import "variables.less";
 @import url(http://fonts.googleapis.com/css?family=Ubuntu:400,500);
 
 // Fonts
@@ -559,43 +560,95 @@ pre {
 
 // Footer
 footer {
-  display: block;
-  ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+  border-top: solid @theme-primary 1px;
+  padding: 25px 0;
+  text-align: center;
+  span.copyright {
+    line-height: 40px;
+    .heading-font;
+    text-transform: none;
   }
-  a {
-    color: @wi-c-white;
-    &:hover {
-      text-decoration: none;
-      color: @wi-c-light-blue-500;
+  ul.quicklinks {
+    margin-bottom: 0;
+    line-height: 40px;
+    .heading-font;
+    text-transform: none;
+  }
+}
+
+// Social Buttons
+
+ul.social-buttons {
+  margin-bottom: 0;
+  li {
+    a {
+      display: block;
+      background-color: @gray-darker;
+      height: 40px;
+      width: 40px;
+      border-radius: 100%;
+      font-size: 20px;
+      line-height: 40px;
+      color: white;
+      outline: none;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      transition: all 0.3s;
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: @theme-primary;
+      }
     }
   }
 }
 
-footer.page-footer {
-  margin-top: 20px;
-  padding-top: 20px;
-  color: @wi-c-white;
-  background-color: @wi-c-blue-grey-800;
-  h1 {
-    font-size: 16px;
-  }
+.btn:focus,
+.btn:active,
+.btn.active,
+.btn:active:focus {
+  outline: none;
 }
 
-footer.page-footer .footer-copyright {
-  overflow: hidden;
-  padding-top: 10px;
-  height: 70px;
-  line-height: 50px;
-  color: rgba(255, 255, 255, 0.8);
-  background-color: @wi-c-blue-grey-900;
-}
 
-.light, footer.page-footer {
-  font-weight: 300;
-}
+//footer {
+//  display: block;
+//  ul {
+//    margin: 0;
+//    padding: 0;
+//    list-style: none;
+//  }
+//  a {
+//    color: @wi-c-white;
+//    &:hover {
+//      text-decoration: none;
+//      color: @wi-c-light-blue-500;
+//    }
+//  }
+//}
+//
+//footer.page-footer {
+//  margin-top: 20px;
+//  padding-top: 20px;
+//  color: @wi-c-white;
+//  background-color: @wi-c-blue-grey-800;
+//  h1 {
+//    font-size: 16px;
+//  }
+//}
+//
+//footer.page-footer .footer-copyright {
+//  overflow: hidden;
+//  padding-top: 10px;
+//  height: 70px;
+//  line-height: 50px;
+//  color: rgba(255, 255, 255, 0.8);
+//  background-color: @wi-c-blue-grey-900;
+//}
+//
+//.light, footer.page-footer {
+//  font-weight: 300;
+//}
 
 // Other customizations
 .content {
