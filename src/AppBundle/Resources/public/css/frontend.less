@@ -50,6 +50,16 @@
 @thumbnail-border-radius: 5px;
 @thumbnail-caption-padding: @gap-big;
 
+// Global Components
+.text-muted {
+  color: @gray-light;
+}
+
+.text-primary {
+  color: @theme-primary;
+}
+
+
 .navbar {
   line-height: 64px;
   margin-bottom: 0;
@@ -88,7 +98,33 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 // Custom buttons
-.wi-button-mixin(btn-wi, @wi-c-white, @wi-c-light-blue-500);
+.wi-button-mixin(btn-wi, @wi-c-white, @theme-primary);
+
+.btn-dark {
+  border-radius: 0;
+  color: @wi-c-white;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.btn-dark:hover,
+.btn-dark:focus,
+.btn-dark:active {
+  color: @wi-c-white;
+  background-color: rgba(0,0,0,0.7);
+}
+
+.btn-light {
+  border-radius: 0;
+  color: #333;
+  background-color: rgb(255,255,255);
+}
+
+.btn-light:hover,
+.btn-light:focus,
+.btn-light:active {
+  color: #333;
+  background-color: rgba(255,255,255,0.8);
+}
 
 // Custom anchors
 .underlined-anchors {
@@ -577,13 +613,6 @@ pre {
   border-top-right-radius: 5px;
   padding: 10px 0 0 10px;
   margin-bottom: 5px;
-}
-
-.h3, h3 {
-  font-size: 24px;
-  margin-top: 20px;
-  margin-bottom: 10px;
-
 }
 
 .sidebox-content {
