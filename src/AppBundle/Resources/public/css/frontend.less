@@ -50,29 +50,6 @@
 @thumbnail-border-radius: 5px;
 @thumbnail-caption-padding: @gap-big;
 
-.navbar {
-  line-height: 64px;
-  margin-bottom: 0;
-  border: 0;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-  0 1px 5px 0 rgba(0, 0, 0, 0.12),
-  0 3px 1px -2px rgba(0, 0, 0, 0.2);
-  .navbar li a:hover {
-    background-color: @wi-c-light-blue-500;
-  }
-}
-
-.navbar-brand-logo {
-  padding: 20px 15px;
-}
-
-.navbar-brand {
-  font-size: 25px;
-}
-
-.navbar-logo {
-  margin-top: -25px;
-}
 
 // Global Components
 
@@ -121,6 +98,94 @@ h1, h2, h3, h4, h5, h6 {
   .heading-font;
   font-weight: 700;
 }
+
+// Custom Navigation Bar
+
+//.navbar-custom {
+//  background-color: @gray-darker;
+//  border-color: transparent;
+//  .navbar-brand {
+//    color: @theme-primary;
+//    .script-font;
+//    &:hover,
+//    &:focus,
+//    &:active,
+//    &.active {
+//      color: darken(@theme-primary, 10%);
+//    }
+//  }
+//  .navbar-collapse {
+//    border-color: fade(white, 2%);
+//  }
+//  .navbar-toggle {
+//    background-color: @theme-primary;
+//    border-color: @theme-primary;
+//    .heading-font;
+//    color: white;
+//    font-size: 12px;
+//    &:hover,
+//    &:focus {
+//      background-color: @theme-primary;
+//    }
+//  }
+//  .nav {
+//    li {
+//      a {
+//        .heading-font;
+//        font-weight: 400;
+//        letter-spacing: 1px;
+//        color: white;
+//        &:hover,
+//        &:focus {
+//          color: @theme-primary;
+//          outline: none;
+//        }
+//      }
+//    }
+//  }
+//  .navbar-nav>.active>a {
+//    border-radius: 0;
+//    color: white;
+//    background-color: @theme-primary;
+//  }
+//  .navbar-nav>.active>a:hover,
+//  .navbar-nav>.active>a:focus {
+//    color: white;
+//    background-color: darken(@theme-primary, 10%);
+//  }
+//}
+//
+//@media(min-width:768px) {
+//  .navbar-custom {
+//    background-color: @theme-primary;
+//    padding: 25px 0;
+//    -webkit-transition: padding 0.3s;
+//    -moz-transition: padding 0.3s;
+//    transition: padding 0.3s;
+//    border: none;
+//    .navbar-brand {
+//      font-size: 2em;
+//      -webkit-transition: all 0.3s;
+//      -moz-transition: all 0.3s;
+//      transition: all 0.3s;
+//    }
+//    .navbar-nav>.active>a {
+//      border-radius: 3px;
+//    }
+//  }
+//}
+//
+//// Navbar Change on Scroll
+//
+//@media(min-width:768px) {
+//  .navbar-custom.affix {
+//    background-color: @theme-primary;
+//    padding: 10px 0;
+//    .navbar-brand {
+//      font-size: 1.5em;
+//    }
+//  }
+//}
 
 // Custom buttons
 .wi-button-mixin(btn-wi, @wi-c-white, @wi-c-light-blue-500);
