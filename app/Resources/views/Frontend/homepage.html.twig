@@ -1,7 +1,7 @@
 {% extends ':Frontend:base.html.twig' %}
 
 {% block main %}
-    <header>
+    <div class="jumbotron">
         <div class="container">
             <div class="head-wrap">
                 <h1 class="c-white">Programador web</h1>
@@ -23,18 +23,13 @@
                 </div>
             </div>
         </div>
-    </header>
-    {#<div class="jumbotron text-center">#}
-        {#<div class="container">#}
-        {#</div>#}
-    {#</div>#}
-    {#<!-- Modal -->#}
+    </div>    {#<!-- Modal -->#}
     <div class="modal fade" id="form_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content text-left">
                 <div class="modal-header blue-background-light">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title main-text-light" id="myModalLabel">Formulario de contacto</h4>
+                    <h4 class="modal-title service-heading" id="myModalLabel">Formulario de contacto</h4>
                 </div>
                 <div class="modal-body">
                     {{ form_start(formHomepage) }}
@@ -53,7 +48,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Services</h2>
+                    <h2 class="section-heading">Servicios</h2>
                     <h3 class="section-subheading text-muted">A lo que me dedico con una buena taza de café</h3>
                 </div>
             </div>
@@ -61,7 +56,7 @@
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                        <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
+                        <i class="fa fa-desktop fa-stack-1x fa-inverse"></i>
                     </span>
                     <h4 class="service-heading">Diseño Web</h4>
                     <p class="text-muted">Desarrollo páginas web atractivas, que se adaptan a tus necesidades y expectativas, intentando en todo momento adecuar un buen diseño a los requerimientos técnicos y funcionales que exige su proyecto.</p>
@@ -69,7 +64,7 @@
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                        <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
+                        <i class="fa fa-cog fa-stack-1x fa-inverse"></i>
                     </span>
                     <h4 class="service-heading">Desarrollo Frontend y Backend</h4>
                     <p class="text-muted">Garantizo un producto final adaptado a dispositivos móviles, accesible y funcional en todos los navegadores. Diseño de una interfaz gráfica atractiva y usable para una experiencia de usuario óptima.</p>
@@ -77,7 +72,7 @@
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                        <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
+                        <i class="fa fa-sliders fa-stack-1x fa-inverse"></i>
                     </span>
                     <h4 class="service-heading">Customización CMS</h4>
                     <p class="text-muted">Personalizo el sistema para que usted mismo pueda crear y administrar fácilmente su contenido. Obtenga el máximo beneficio de su web con un gestor de contenidos adaptado a sus necesidades.</p>
@@ -85,32 +80,6 @@
             </div>
         </div>
     </section>
-    {#<div class="container container-main">#}
-        {#<div class="row">#}
-            {#<div class="col-xs-12 extra-m-bottom text-center">#}
-                {#<h2 class="main-text-light no-m-top">Servicios</h2>#}
-                {#<h3 class="main-text-light">A lo que me dedico con una buena taza de café</h3>#}
-                {#<h4 class="c-grey main-text-light">¿Quieres sacar el máximo partido de tu web con una programación a medida?</h4>#}
-            {#</div>#}
-        {#</div>#}
-        {#<div class="row">#}
-            {#<div class="col-sm-4 text-center">#}
-                {#<i class="small-m-bottom c-blue-md fa fa-desktop fa-5x" aria-hidden="true"></i>#}
-                {#<h3 class="main-text-light">Diseño Web</h3>#}
-                {#<p class="c-grey main-text-light">Desarrollo páginas web atractivas, que se adaptan a tus necesidades y expectativas, intentando en todo momento adecuar un buen diseño a los requerimientos técnicos y funcionales que exige su proyecto.</p>#}
-            {#</div>#}
-            {#<div class="col-sm-4 text-center">#}
-                {#<i class="small-m-bottom c-blue-md fa fa-cog fa-5x" aria-hidden="true"></i>#}
-                {#<h3 class="main-text-light">Desarrollo Frontend y Backend</h3>#}
-                {#<p class="c-grey main-text-light">Garantizo un producto final adaptado a dispositivos móviles, accesible y funcional en todos los navegadores. Diseño de una interfaz gráfica atractiva y usable para una experiencia de usuario óptima.</p>#}
-            {#</div>#}
-            {#<div class="col-sm-4 text-center">#}
-                {#<i class="small-m-bottom c-blue-md fa fa-sliders fa-5x" aria-hidden="true"></i>#}
-                {#<h3 class="main-text-light">Customización CMS</h3>#}
-                {#<p class="c-grey main-text-light">Personalizo el sistema para que usted mismo pueda crear y administrar fácilmente su contenido. Obtenga el máximo beneficio de su web con un gestor de contenidos adaptado a sus necesidades.</p>#}
-            {#</div>#}
-        {#</div>#}
-    {#</div>#}
 {% endblock %}
 
 {% block javascripts %}

@@ -11,7 +11,6 @@
     <title>{% block title %}{{ main_brand_title }}{% endblock %}</title>
     {% block stylesheets %}
         {% stylesheets filter="cssrewrite,less" '@mycss' %}
-        {#<!-- Material Design fonts -->#}
         <link rel="stylesheet" type="text/css" href="{{ asset_url }}"/>
         {% endstylesheets %}
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -49,7 +48,7 @@
 {#<!-- Main content -->#}
 {% block main %}{% endblock %}
 {#<!-- Scroll-Top effect -->#}
-<div class="scroll-top-wrapper"><span class="scroll-top-inner"><i class="fa fa-2x fa-chevron-up"></i></span></div>
+<div class="scroll-top-wrapper"><span class="scroll-top-inner"><i class="fa fa-1x fa-chevron-up fa-fw"></i></span></div>
 {#<!-- Footer -->#}
 {% block footer %}
     <footer>
@@ -60,15 +59,11 @@
                 </div>
                 <div class="col-md-4">
                     <ul class="list-inline social-buttons">
-                        <li>
-                            <a href="https://twitter.com/wils_83"><i class="fa fa-twitter"></i></a>
+                        <li><a href="https://twitter.com/wils_83"><i class="fa fa-twitter"></i></a>
                         </li>
-                        <li>
-                            <a href="https://github.com/wiglesias"><i class="fa fa-github"></i></a>
+                        <li><a href="https://github.com/wiglesias"><i class="fa fa-github"></i></a>
                         </li>
-                        <li>
-                            <a href="https://es.linkedin.com/in/wils-iglesias-3b99b940"><i class="fa fa-linkedin"></i></a>
->>>>>>> wils
+                        <li><a href="https://es.linkedin.com/in/wils-iglesias-3b99b940"><i class="fa fa-linkedin"></i></a>
                         </li>
                     </ul>
                 </div>
@@ -76,59 +71,19 @@
                     <ul class="list-inline quicklinks">
                         <li><a href="#">Privacy Policy</a>
                         </li>
-                        <li><a href="{{ path('front_credits') }}">Crédito</a></li>
+                        <li><a href="{{ path('front_credits') }}">Crédito</a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
     </footer>
-
-    {#<footer class="page-footer">#}
-        {#<div class="container">#}
-            {#<div class="row">#}
-                {#<div class="col-md-6 col-xs-12 extra-m-bottom">#}
-                    {#<h3 class="main-text-light">Herramienta</h3>#}
-                    {#<p class="main-text-light"><em>Utilizo el framework Symfony para mis proyecto. "Symfony" es una marca registrada de Fabien Potencier.</em></p>#}
-                    {#<a href="http://symfony.com" target="_blank">#}
-                        {#<svg height="70" width="70" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">#}
-                            {#<image height="70" width="70" class="navbar-logo" xlink:href="{{ asset('bundles/app/img/sf-white.svg') }}" alt="Symfony"></image>#}
-                        {#</svg>#}
-                    {#</a>#}
-                {#</div>#}
-                {#<div class="col-md-3 col-xs-12 extra-m-bottom">#}
-                    {#<h3 class="main-text-light">Enlaces</h3>#}
-                    {#<ul class="list-unstyled">#}
-                        {#<li><a href="{{ path('front_about') }}">Sobre mi</a></li>#}
-                        {#<li><a href="{{ path('front_portafolio') }}">Portafolio</a></li>#}
-                        {#<li><a href="{{ path('front_blog') }}">Blog</a></li>#}
-                        {#<li><a href="{{ path('front_contact') }}">Contacto</a></li>#}
-                        {#<li><a href="{{ path('front_credits') }}">Crédito</a></li>#}
-                    {#</ul>#}
-                {#</div>#}
-                {#<div class="col-md-3 col-xs-12 extra-m-bottom">#}
-                    {#<h3 class="main-text-light">Conectar</h3>#}
-                    {#<a href="https://twitter.com/wils_83" class="twitter-follow-button" data-show-count="false">Follow @wils_83</a><br>#}
-                    {#<a href="https://github.com/wiglesias" target="_blank"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>#}
-                    {#<a href="https://es.linkedin.com/in/wils-iglesias-3b99b940" target="_blank"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>#}
-                {#</div>#}
-            {#</div>#}
-        {#</div>#}
-        {#<div class="footer-copyright">#}
-            {#<div class="container extra-m-bottom">#}
-                {#<p><i class="fa fa-copyright main-text-light" aria-hidden="true"></i> 2016 - {{ "now" | date("Y") }} Wils Iglesias</p>#}
-            {#</div>#}
-        {#</div>#}
-    {#</footer>#}
 {% endblock %}
 {#<!-- Javascripts -->#}
 {% block javascripts %}
     {% javascripts '@myjs' %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
-<<<<<<< HEAD
-    <script type="text/javascript" src="{{ asset('bundles/app/js/wils.js') }}"></script>
-=======
->>>>>>> wils
     <script type="text/javascript" src="{{ asset('bundles/app/js/typed.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/app/js/social_network.js') }}"></script>
     <script src="//www.google.com/recaptcha/api.js?hl={{ app.request.locale }}"></script>
