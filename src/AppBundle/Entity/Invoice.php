@@ -198,6 +198,20 @@ class Invoice extends AbstractBase
     }
 
     /**
+     * @return int
+     */
+    public function getTaxableBase()
+    {
+        $total = 0;
+        /** @var InvoiceLine $line */
+        foreach ($this->getLines() as $line) {
+            $total = $total + $line->getTotal();
+        }
+
+        return $total;
+    }
+
+    /**
      * @return string
      */
     public function __toString()

@@ -178,6 +178,14 @@ class InvoiceAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
+                'taxableBase',
+                null,
+                array(
+                    'label'    => 'Base imponible',
+                    'editable' => false,
+                )
+            )
+            ->add(
                 'iva',
                 null,
                 array(
