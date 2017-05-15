@@ -5,6 +5,7 @@ namespace AppBundle\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 
 /**
  * Class InvoiceAdmin
@@ -18,9 +19,20 @@ class InvoiceAdmin extends AbstractBaseAdmin
     protected $classnameLabel = 'Factura';
     protected $baseRoutePattern = 'facturacion/factura';
     protected $datagridValues = array(
-        '_sort_by'    => 'date',
-        '_sort_order' => 'asc',
+        '_sort_by'    => 'id',
+        '_sort_order' => 'desc',
     );
+
+    /**
+     * Configure route collection
+     *
+     * @param RouteCollection $collection
+     */
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        parent::configureRoutes($collection);
+        $collection->remove('delete');
+    }
 
     /**
      * @param FormMapper $formMapper
@@ -141,11 +153,11 @@ class InvoiceAdmin extends AbstractBaseAdmin
         unset($this->listModes['mosaic']);
         $listMapper
             ->add(
-                'customer',
+                'id',
                 null,
                 array(
-                    'label'    => 'Cliente',
-                    'editable' => true,
+                    'label'    => 'Nº Factura',
+                    'editable' => false,
                 )
             )
             ->add(
@@ -153,6 +165,15 @@ class InvoiceAdmin extends AbstractBaseAdmin
                 null,
                 array(
                     'label'    => 'Fecha factura',
+                    'editable' => true,
+                    'format' => 'd/m/Y',
+                )
+            )
+            ->add(
+                'customer',
+                null,
+                array(
+                    'label'    => 'Cliente',
                     'editable' => true,
                 )
             )
@@ -169,14 +190,6 @@ class InvoiceAdmin extends AbstractBaseAdmin
                 null,
                 array(
                     'label'    => 'IRPF',
-                    'editable' => true,
-                )
-            )
-            ->add(
-                'enabled',
-                null,
-                array(
-                    'label'    => 'backend.admin.enabled',
                     'editable' => true,
                 )
             )
