@@ -37,7 +37,7 @@ services:
             - { name: sonata.admin, manager_type: orm, label: "Cliente", group: "Facturacion" }
     admin.billing.invoice:
         class: AppBundle\Admin\InvoiceAdmin
-        arguments: [ ~, AppBundle\Entity\Invoice, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
+        arguments: [ ~, AppBundle\Entity\Invoice, AppBundle:Admin\InvoiceAdmin, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
         tags:
             - { name: sonata.admin, manager_type: orm, label: "Factura", group: "Facturacion" }
     admin.billing.invoice_line:
