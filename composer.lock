@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4ca9c3cb72043a2aa5e6dca56e2d8d5c",
+    "content-hash": "8923976b1b0d458bea132c80bfd5e5ee",
     "packages": [
         {
             "name": "a2lix/translation-form-bundle",
@@ -2970,16 +2970,16 @@
         },
         {
             "name": "liip/imagine-bundle",
-            "version": "1.7.4",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipImagineBundle.git",
-                "reference": "105dd9c3446e3eb44e33161d4e636a3abafb6d7f"
+                "reference": "d2551d8560212d440b4a6483236005957fbd4bff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipImagineBundle/zipball/105dd9c3446e3eb44e33161d4e636a3abafb6d7f",
-                "reference": "105dd9c3446e3eb44e33161d4e636a3abafb6d7f",
+                "url": "https://api.github.com/repos/liip/LiipImagineBundle/zipball/d2551d8560212d440b4a6483236005957fbd4bff",
+                "reference": "d2551d8560212d440b4a6483236005957fbd4bff",
                 "shasum": ""
             },
             "require": {
@@ -3000,7 +3000,7 @@
                 "doctrine/cache": "~1.1",
                 "doctrine/orm": "~2.3",
                 "ext-gd": "*",
-                "friendsofphp/php-cs-fixer": "~2.0",
+                "friendsofphp/php-cs-fixer": "~1.0",
                 "phpunit/phpunit": "~4.3|~5.0",
                 "psr/log": "~1.0",
                 "satooshi/php-coveralls": "~1.0",
@@ -3019,6 +3019,7 @@
                 "amazonwebservices/aws-sdk-for-php": "required to use AWS version 1 cache resolver",
                 "aws/aws-sdk-php": "required to use AWS version 2/3 cache resolver",
                 "doctrine/mongodb-odm": "required to use mongodb-backed doctrine components",
+                "enqueue/enqueue-bundle": "add if you like to process images in background",
                 "ext-exif": "required to read EXIF metadata from images",
                 "ext-gd": "required to use gd driver",
                 "ext-gmagick": "required to use gmagick driver",
@@ -3066,7 +3067,7 @@
                 "symfony",
                 "transformation"
             ],
-            "time": "2017-03-02T20:18:55+00:00"
+            "time": "2017-05-09T14:18:19+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -3678,16 +3679,16 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v5.0.19",
+            "version": "v5.0.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "654c4fa3d11448c8005400a244987896243a990a"
+                "reference": "4b019d4c0bd64438c42e4b6b0726085b409be8d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/654c4fa3d11448c8005400a244987896243a990a",
-                "reference": "654c4fa3d11448c8005400a244987896243a990a",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/4b019d4c0bd64438c42e4b6b0726085b409be8d9",
+                "reference": "4b019d4c0bd64438c42e4b6b0726085b409be8d9",
                 "shasum": ""
             },
             "require": {
@@ -3726,20 +3727,20 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2017-04-23T22:28:23+00:00"
+            "time": "2017-05-11T16:21:03+00:00"
         },
         {
             "name": "sensio/framework-extra-bundle",
-            "version": "v3.0.25",
+            "version": "v3.0.26",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioFrameworkExtraBundle.git",
-                "reference": "472b339cf0c82f3a033b29f85d9d9cada3cd1a9c"
+                "reference": "6d6cbe971554f0a2cc84965850481eb04a2a0059"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/472b339cf0c82f3a033b29f85d9d9cada3cd1a9c",
-                "reference": "472b339cf0c82f3a033b29f85d9d9cada3cd1a9c",
+                "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/6d6cbe971554f0a2cc84965850481eb04a2a0059",
+                "reference": "6d6cbe971554f0a2cc84965850481eb04a2a0059",
                 "shasum": ""
             },
             "require": {
@@ -3796,7 +3797,7 @@
                 "annotations",
                 "controllers"
             ],
-            "time": "2017-03-21T23:34:44+00:00"
+            "time": "2017-05-11T17:01:57+00:00"
         },
         {
             "name": "sensiolabs/security-checker",
@@ -3845,16 +3846,16 @@
         },
         {
             "name": "sonata-project/admin-bundle",
-            "version": "3.17.0",
+            "version": "3.18.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "e101c480220fc331e04e67460c11756ecaba1a51"
+                "reference": "448bec94b7f1d665ae60d4d2a37fdf5fd22afeab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/e101c480220fc331e04e67460c11756ecaba1a51",
-                "reference": "e101c480220fc331e04e67460c11756ecaba1a51",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/448bec94b7f1d665ae60d4d2a37fdf5fd22afeab",
+                "reference": "448bec94b7f1d665ae60d4d2a37fdf5fd22afeab",
                 "shasum": ""
             },
             "require": {
@@ -3940,7 +3941,7 @@
                 "bootstrap",
                 "sonata"
             ],
-            "time": "2017-04-25T13:40:42+00:00"
+            "time": "2017-05-15T14:51:14+00:00"
         },
         {
             "name": "sonata-project/block-bundle",
@@ -4623,6 +4624,55 @@
             "time": "2017-03-16T12:53:00+00:00"
         },
         {
+            "name": "spraed/pdf-generator-bundle",
+            "version": "v1.3",
+            "target-dir": "Spraed/PDFGeneratorBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stedekay/SpraedPDFGeneratorBundle.git",
+                "reference": "a20d95fe5a2decc6b9adf39cec8e4b00b7d61111"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stedekay/SpraedPDFGeneratorBundle/zipball/a20d95fe5a2decc6b9adf39cec8e4b00b7d61111",
+                "reference": "a20d95fe5a2decc6b9adf39cec8e4b00b7d61111",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2",
+                "symfony/framework-bundle": "~2.3|~3.0"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Spraed\\PDFGeneratorBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://github.com/stedekay/SpraedPDFGeneratorBundle/contributors"
+                },
+                {
+                    "name": "Spraed Team",
+                    "homepage": "http://www.spraed-it.de"
+                }
+            ],
+            "description": "This bundle creates (multiple) PDFs in Symfony2 by converting Twig/HTML templates.",
+            "homepage": "https://github.com/stedekay/SpraedPDFGeneratorBundle",
+            "keywords": [
+                "bundle",
+                "generator",
+                "pdf",
+                "spraed"
+            ],
+            "time": "2016-03-22T13:59:57+00:00"
+        },
+        {
             "name": "stof/doctrine-extensions-bundle",
             "version": "v1.2.2",
             "source": {
@@ -4685,16 +4735,16 @@
         },
         {
             "name": "swiftmailer/swiftmailer",
-            "version": "v5.4.7",
+            "version": "v5.4.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "56db4ed32a6d5c9824c3ecc1d2e538f663f47eb4"
+                "reference": "9a06dc570a0367850280eefd3f1dc2da45aef517"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/56db4ed32a6d5c9824c3ecc1d2e538f663f47eb4",
-                "reference": "56db4ed32a6d5c9824c3ecc1d2e538f663f47eb4",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/9a06dc570a0367850280eefd3f1dc2da45aef517",
+                "reference": "9a06dc570a0367850280eefd3f1dc2da45aef517",
                 "shasum": ""
             },
             "require": {
@@ -4735,7 +4785,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2017-04-20T17:32:18+00:00"
+            "time": "2017-05-01T15:54:03+00:00"
         },
         {
             "name": "symfony/assetic-bundle",

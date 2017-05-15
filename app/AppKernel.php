@@ -34,6 +34,7 @@ class AppKernel extends Kernel
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Liip\ImagineBundle\LiipImagineBundle(),
             new Presta\SitemapBundle\PrestaSitemapBundle(),
+            new Spraed\PDFGeneratorBundle\SpraedPDFGeneratorBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
             // App

@@ -48,6 +48,7 @@
         "sonata-project/admin-bundle": "^3.0",
         "sonata-project/doctrine-orm-admin-bundle": "^3.0",
         "sonata-project/user-bundle": "^3.0",
+        "spraed/pdf-generator-bundle": "^1.0",
         "stof/doctrine-extensions-bundle": "^1.2",
         "twbs/bootstrap": "^3.0",
         "twig/extensions": "^1.3",
