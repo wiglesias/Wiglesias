@@ -185,20 +185,44 @@ class InvoiceAdmin extends AbstractBaseAdmin
                     'editable' => false,
                 )
             )
+//            ->add(
+//                'iva',
+//                null,
+//                array(
+//                    'label'    => 'IVA',
+//                    'editable' => true,
+//                )
+//            )
+//            ->add(
+//                'irpf',
+//                null,
+//                array(
+//                    'label'    => 'IRPF',
+//                    'editable' => true,
+//                )
+//            )
             ->add(
-                'iva',
+                'calculateIva',
                 null,
                 array(
                     'label'    => 'IVA',
-                    'editable' => true,
+                    'editable' => false,
                 )
             )
             ->add(
-                'irpf',
+                'calculateIrpf',
                 null,
                 array(
                     'label'    => 'IRPF',
-                    'editable' => true,
+                    'editable' => false,
+                )
+            )
+            ->add(
+                'total',
+                null,
+                array(
+                    'label'    => 'Total',
+                    'editable' => false,
                 )
             )
             ->add(

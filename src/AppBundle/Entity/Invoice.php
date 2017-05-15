@@ -212,6 +212,30 @@ class Invoice extends AbstractBase
     }
 
     /**
+     * @return float|int
+     */
+    public function getCalculateIva()
+    {
+        return $this->getTaxableBase() * ($this->iva / 100);
+    }
+
+    /**
+     * @return float|int
+     */
+    public function getCalculateIrpf()
+    {
+        return $this->getTaxableBase() * ($this->irpf / 100);
+    }
+
+    /**
+     * @return int|float
+     */
+    public function getTotal()
+    {
+        return $this->getTaxableBase() + $this->getCalculateIva() - $this->getCalculateIrpf();
+    }
+
+    /**
      * @return string
      */
     public function __toString()
