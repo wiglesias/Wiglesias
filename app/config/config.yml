@@ -146,3 +146,13 @@ ivory_ck_editor:
 beelab_recaptcha2:
     site_key: "%recaptcha_site_key%"
     secret: "%recaptcha_secret%"
+
+knp_snappy:
+    pdf:
+        enabled:    true
+        binary:     /usr/local/bin/wkhtmltopdf
+        options:    []
+    image:
+        enabled:    true
+        binary:     /usr/local/bin/wkhtmltoimage
+        options:    []
