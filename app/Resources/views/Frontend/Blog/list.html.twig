@@ -3,11 +3,12 @@
 {% block title %}Blog{% endblock %}
 
 {% block main %}
-    <div class="container container-main">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="row">
-                    {% if pagination.getTotalItemCount > 0 %}
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="row">
+                        {% if pagination.getTotalItemCount > 0 %}
                         {% for post in pagination %}
                         <div class="col-md-12">
                             <div class="thumbnail">
@@ -32,12 +33,13 @@
                         {% else %}
                             {% include ':Frontend/includes:under_construciton_warning.html.twig' %}
                         {% endif %}
-                    {% include ':Frontend/includes:paginator_buttons_bar.html.twig' %}
+                        {% include ':Frontend/includes:paginator_buttons_bar.html.twig' %}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    {% include ':Frontend/includes:_side.html.twig' %}
                 </div>
             </div>
-            <div class="col-md-4">
-                {% include ':Frontend/includes:_side.html.twig' %}
-            </div>
         </div>
-    </div>
+    </section>
 {% endblock %}
