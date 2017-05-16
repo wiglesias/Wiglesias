@@ -2,22 +2,20 @@
 
 namespace AppBundle\Entity;
 
-
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * Class Customer
+ * Class Setting
  *
  * @category Entity
  * @package AppBundle\Entity
  * @author Wils Iglesias <wiglesias83@gmail.com>
  *
- * @ORM\Entity(repositoryClass="AppBundle\Repository\CustomerRepository")
- * @ORM\Table(name="customer")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\SettingRepository")
+ * @ORM\Table(name="setting")
  */
-class Customer extends AbstractBase
+class Setting extends AbstractBase
 {
     /**
      * @var string
@@ -98,25 +96,10 @@ class Customer extends AbstractBase
     private $mobile;
 
     /**
-     * @var array
-     *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Invoice", mappedBy="customer")
-     */
-    private $invoices;
-
-    /**
      *
      * Methods
      *
      */
-
-    /**
-     * Customer constructor.
-     */
-    public function __construct()
-    {
-        $this->invoices = new ArrayCollection();
-    }
 
     /**
      * @return string
@@ -129,7 +112,7 @@ class Customer extends AbstractBase
     /**
      * @param string $slug
      *
-     * @return Customer
+     * @return Setting
      */
     public function setSlug($slug)
     {
@@ -151,13 +134,13 @@ class Customer extends AbstractBase
      */
     public function getFullName()
     {
-        return $this->name.' '.$this->surname;
+        return $this->name .' '.$this->surname;
     }
 
     /**
      * @param string $name
      *
-     * @return Customer
+     * @return Setting
      */
     public function setName($name)
     {
@@ -177,7 +160,7 @@ class Customer extends AbstractBase
     /**
      * @param string $surname
      *
-     * @return Customer
+     * @return Setting
      */
     public function setSurname($surname)
     {
@@ -197,7 +180,7 @@ class Customer extends AbstractBase
     /**
      * @param string $company
      *
-     * @return Customer
+     * @return Setting
      */
     public function setCompany($company)
     {
@@ -217,7 +200,7 @@ class Customer extends AbstractBase
     /**
      * @param string $identityCard
      *
-     * @return Customer
+     * @return Setting
      */
     public function setIdentityCard($identityCard)
     {
@@ -237,7 +220,7 @@ class Customer extends AbstractBase
     /**
      * @param string $adress
      *
-     * @return Customer
+     * @return Setting
      */
     public function setAdress($adress)
     {
@@ -257,7 +240,7 @@ class Customer extends AbstractBase
     /**
      * @param string $city
      *
-     * @return Customer
+     * @return Setting
      */
     public function setCity($city)
     {
@@ -277,7 +260,7 @@ class Customer extends AbstractBase
     /**
      * @param string $postalCode
      *
-     * @return Customer
+     * @return Setting
      */
     public function setPostalCode($postalCode)
     {
@@ -297,7 +280,7 @@ class Customer extends AbstractBase
     /**
      * @param string $email
      *
-     * @return Customer
+     * @return Setting
      */
     public function setEmail($email)
     {
@@ -317,7 +300,7 @@ class Customer extends AbstractBase
     /**
      * @param string $phone
      *
-     * @return Customer
+     * @return Setting
      */
     public function setPhone($phone)
     {
@@ -337,55 +320,11 @@ class Customer extends AbstractBase
     /**
      * @param string $mobile
      *
-     * @return Customer
+     * @return Setting
      */
     public function setMobile($mobile)
     {
         $this->mobile = $mobile;
-
-        return $this;
-    }
-
-    /**
-     * @return array
-     */
-    public function getInvoices()
-    {
-        return $this->invoices;
-    }
-
-    /**
-     * @param array $invoices
-     *
-     * @return Customer
-     */
-    public function setInvoices($invoices)
-    {
-        $this->invoices = $invoices;
-
-        return $this;
-    }
-
-    /**
-     * @param Invoice $invoice
-     *
-     * @return $this
-     */
-    public function addInvoice(Invoice $invoice)
-    {
-        $this->invoices->add($invoice);
-
-        return $this;
-    }
-
-    /**
-     * @param Invoice $invoice
-     *
-     * @return $this
-     */
-    public function removeInvoice(Invoice $invoice)
-    {
-        $this->invoices->removeElement($invoice);
 
         return $this;
     }
