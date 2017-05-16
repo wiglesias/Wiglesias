@@ -16,7 +16,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 class SettingAdmin extends AbstractBaseAdmin
 {
     protected $classnameLabel = 'Configuración';
-    protected $baseRoutePattern = 'facturacion/profile';
+    protected $baseRoutePattern = 'setting/profile';
     protected $datagridValues = array(
         '_sort_by'    => 'username',
         '_sort_order' => 'asc',

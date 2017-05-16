@@ -56,6 +56,24 @@ AppBundle\Entity\Tag:
     enabled: <boolean(70)>
 
 # Customer
+AppBundle\Entity\Setting:
+  setting{1..2}:
+    name: <name()>
+    surname: <lastname()>
+    company: <company()>
+    identityCard: <bothify('######?')>
+    adress: <streetAddress()>
+    city: <city()>
+    province: <state()>
+    postalCode: <postcode()>
+    email: <email()>
+    phone: <phoneNumber()>
+    mobile: <phoneNumber()>
+    createdAt: <dateTimeBetween('-2 months', '-1 months')>
+    updatedAt: <dateTimeThisMonth()>
+    enabled: <boolean(70)>
+
+# Customer
 AppBundle\Entity\Customer:
   customer{1..2}:
     name: <name()>
