@@ -28,12 +28,13 @@ class CustomerAdmin extends AbstractBaseAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('Datos de Cliente', $this->getFormMdSuccessBoxArray(6))
+            ->with('General', $this->getFormMdSuccessBoxArray(5))
             ->add(
                 'name',
                 null,
                 array(
                     'label' => 'Nombre',
+                    'required' => false,
                 )
             )
             ->add(
@@ -41,6 +42,7 @@ class CustomerAdmin extends AbstractBaseAdmin
                 null,
                 array(
                     'label' => 'Apellidos',
+                    'required' => false,
                 )
             )
             ->add(
@@ -57,27 +59,14 @@ class CustomerAdmin extends AbstractBaseAdmin
                     'label' => 'DNI/CIF',
                 )
             )
-            ->add(
-                'phone',
-                null,
-                array(
-                    'label' => 'Teléfono',
-                )
-            )
-            ->add(
-                'mobile',
-                null,
-                array(
-                    'label' => 'movil',
-                )
-            )
             ->end()
-            ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(6))
+            ->with('Dirección', $this->getFormMdSuccessBoxArray(4))
             ->add(
                 'adress',
                 null,
                 array(
                     'label' => 'Dirección',
+                    'required' => true,
                 )
             )
             ->add(
@@ -85,13 +74,33 @@ class CustomerAdmin extends AbstractBaseAdmin
                 null,
                 array(
                     'label' => 'Ciudad',
+                    'required' => true,
                 )
             )
             ->add(
                 'postalCode',
                 null,
                 array(
-                    'label' => 'Codigo Postal',
+                    'label' => 'Código Postal',
+                    'required' => true,
+                )
+            )
+            ->end()
+            ->with('Contacto', $this->getFormMdSuccessBoxArray(3))
+            ->add(
+                'mobile',
+                null,
+                array(
+                    'label' => 'móvil',
+                    'required' => false,
+                )
+            )
+            ->add(
+                'phone',
+                null,
+                array(
+                    'label' => 'Teléfono',
+                    'required' => false,
                 )
             )
             ->add(
