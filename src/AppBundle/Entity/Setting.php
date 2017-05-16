@@ -72,6 +72,13 @@ class Setting extends AbstractBase
      *
      * @ORM\Column(type="string", nullable=true)
      */
+    private $province;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
     private $postalCode;
 
     /**
@@ -245,6 +252,26 @@ class Setting extends AbstractBase
     public function setCity($city)
     {
         $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProvince()
+    {
+        return $this->province;
+    }
+
+    /**
+     * @param string $province
+     *
+     * @return Setting
+     */
+    public function setProvince($province)
+    {
+        $this->province = $province;
 
         return $this;
     }

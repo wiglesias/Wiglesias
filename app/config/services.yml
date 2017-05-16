@@ -25,11 +25,16 @@ services:
         arguments: [ ~, AppBundle\Entity\ContactMessage, AppBundle:Admin\ContactMessageAdmin, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
         tags:
             - { name: sonata.admin, manager_type: orm, label: "Mensaje de Contacto", group: "Contactos" }
-    admin.user:
+    admin.administration_user:
         class: AppBundle\Admin\UserAdmin
         arguments: [ ~, AppBundle\Entity\User, ~, "@fos_user.user_manager" ]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: "Usuario", group: "Usuarios" }
+            - { name: sonata.admin, manager_type: orm, label: "Usuario", group: "Administracion" }
+    admin.administration_setting:
+        class: AppBundle\Admin\SettingAdmin
+        arguments: [ ~, AppBundle\Entity\Setting, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: "Configuración", group: "Administracion" }
     admin.billing_customer:
         class: AppBundle\Admin\CustomerAdmin
         arguments: [ ~, AppBundle\Entity\Customer, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
