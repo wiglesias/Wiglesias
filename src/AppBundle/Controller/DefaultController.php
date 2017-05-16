@@ -117,10 +117,14 @@ class DefaultController extends Controller
         if ($this->container->get('kernel')->getEnvironment() == 'prod') {
             throw new NotFoundHttpException();
         }
+        $contactMessage = new ContactMessage();
+        $contactMessage
+            ->setName('test')
+            ->setMessage('ok test')
+        ;
+//        $contactMessage = $this->getDoctrine()->getRepository('AppBundle:ContactMessage')->find(81);
 
-        $contactMessage = $this->getDoctrine()->getRepository('AppBundle:ContactMessage')->find(1);
-
-        return $this->render(':Mails:common_admin_notification.html.twig', array(
+        return $this->render(':Mails:user_backend_answer_notification.html.twig', array(
             'contact' => $contactMessage
         ));
     }
