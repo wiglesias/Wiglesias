@@ -46,16 +46,17 @@ class InvoiceAdminController extends Controller
             'Tu factura número '.$object->getId()
         );
 
-        $html = $this->renderView(':PDF:invoice_printer.html.twig', [
+        $html = $this->renderView(':PDF:invoice_printer.html.twig', array(
             'invoice' => $object,
-        ]);
+            )
+        );
 
         return new Response(
             $this->get('knp_snappy.pdf')->getOutputFromHtml($html),
             200,
             array(
                 'Content-Type' => 'application/pdf',
-                'Content-Disposition' => 'attachment; filename="file.pdf"'
+                'Content-Disposition' => 'inline; filename="file.pdf"'
             )
         );
     }
