@@ -120,8 +120,24 @@ class DefaultController extends Controller
 
         $contactMessage = $this->getDoctrine()->getRepository('AppBundle:ContactMessage')->find(1);
 
-        return $this->render(':Mails:user_backend_answer_notification.html.twig', array(
+        return $this->render(':Mails:common_admin_notification.html.twig', array(
             'contact' => $contactMessage
         ));
+    }
+
+    /**
+     * @Route("/test-pdf", name="front_show_pdf")
+     */
+    public function showPDFAction()
+    {
+        if ($this->container->get('kernel')->getEnvironment() == 'prod') {
+            throw new NotFoundHttpException();
+        }
+
+        $invoice = $this->getDoctrine()->getRepository('AppBundle:Invoice')->find(15);
+
+        return $this->render(':PDF:print_invoice.html.twig', [
+            'invoice' => $invoice,
+        ]);
     }
 }
