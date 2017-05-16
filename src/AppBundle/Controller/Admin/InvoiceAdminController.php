@@ -49,13 +49,13 @@ class InvoiceAdminController extends Controller
         $html = $this->renderView(':PDF:invoice_printer.html.twig', [
             'invoice' => $object,
         ]);
-        $pdfGenerator = $this->get('spraed.pdf.generator');
 
-        return new Response($pdfGenerator->generatePDF($html),
+        return new Response(
+            $this->get('knp_snappy.pdf')->getOutputFromHtml($html),
             200,
             array(
                 'Content-Type' => 'application/pdf',
-                'Content-Disposition' => 'inline; filename="out.pdf"'
+                'Content-Disposition' => 'attachment; filename="file.pdf"'
             )
         );
     }
