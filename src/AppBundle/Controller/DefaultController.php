@@ -137,11 +137,12 @@ class DefaultController extends Controller
         if ($this->container->get('kernel')->getEnvironment() == 'prod') {
             throw new NotFoundHttpException();
         }
-
-        $invoice = $this->getDoctrine()->getRepository('AppBundle:Invoice')->find(15);
+        $setting = $this->getDoctrine()->getRepository('AppBundle:Setting')->find(1);
+        $invoice = $this->getDoctrine()->getRepository('AppBundle:Invoice')->find(5);
 
         return $this->render(':PDF:print_invoice.html.twig', [
             'invoice' => $invoice,
+            'setting' => $setting,
         ]);
     }
 }
