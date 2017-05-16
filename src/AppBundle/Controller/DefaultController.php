@@ -140,9 +140,8 @@ class DefaultController extends Controller
         $setting = $this->getDoctrine()->getRepository('AppBundle:Setting')->find(1);
         $invoice = $this->getDoctrine()->getRepository('AppBundle:Invoice')->find(5);
 
-        return $this->render(':PDF:print_invoice.html.twig', [
+        return $this->render(':PDF:invoice_printer.html.twig', [
             'invoice' => $invoice,
-            'setting' => $setting,
         ]);
     }
 }

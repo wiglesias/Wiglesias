@@ -50,6 +50,7 @@ class CustomerAdmin extends AbstractBaseAdmin
                 null,
                 array(
                     'label' => 'Empresa',
+                    'required' => false,
                 )
             )
             ->add(

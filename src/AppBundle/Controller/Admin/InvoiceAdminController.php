@@ -46,7 +46,7 @@ class InvoiceAdminController extends Controller
             'Tu factura número '.$object->getId()
         );
 
-        $html = $this->renderView(':PDF:print_invoice.html.twig', [
+        $html = $this->renderView(':PDF:invoice_printer.html.twig', [
             'invoice' => $object,
         ]);
         $pdfGenerator = $this->get('spraed.pdf.generator');
