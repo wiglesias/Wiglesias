@@ -78,6 +78,14 @@ class CustomerAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
+                'province',
+                null,
+                array(
+                    'label' => 'Provincia',
+                    'required' => true,
+                )
+            )
+            ->add(
                 'postalCode',
                 null,
                 array(

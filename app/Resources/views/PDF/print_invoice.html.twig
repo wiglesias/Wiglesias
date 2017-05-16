@@ -22,7 +22,7 @@
             <div class="col-lg-12">
                 <h2>Factura {{ invoice.invoiceNumber }}</h2>
                 <p>
-                    Fecha {{ invoice.date | date('d/m/Y') }}
+                    Fecha {{ invoice.createdAt | date('d/m/Y') }}
                 </p>
             </div>
         </div>
@@ -42,7 +42,7 @@
                             {{ invoice.customer.company }} <br>
                             {{ invoice.customer.identityCard }} <br>
                             {{ invoice.customer.adress }} <br>
-                            {{ invoice.customer.postalCode }} {{ invoice.customer.city }}
+                            {{ invoice.customer.postalCode }} {{ invoice.customer.city }} ({{ invoice.customer.province }})
                         </p>
                     </div>
                 </div>

@@ -101,7 +101,7 @@ class Invoice extends AbstractBase
      */
     public function getInvoiceNumber()
     {
-        return  $this->getCreatedAt()->format('Y') . '-' . $this->getId();
+        return  $this->getCreatedAt()->format('Y') . '-' .  $this->getId();
     }
 
     /**
