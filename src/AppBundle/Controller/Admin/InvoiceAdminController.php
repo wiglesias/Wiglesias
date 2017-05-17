@@ -58,7 +58,7 @@ class InvoiceAdminController extends Controller
             200,
             array(
                 'Content-Type' => 'application/pdf',
-                'Content-Disposition' => 'inline; filename="file.pdf"'
+                'Content-Disposition' => 'inline; filename="factura-' .$object->getInvoiceNumber(). '.pdf"'
             )
         );
     }
