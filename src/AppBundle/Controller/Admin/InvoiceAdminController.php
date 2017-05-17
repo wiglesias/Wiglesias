@@ -71,4 +71,10 @@ class InvoiceAdminController extends Controller
 
         return $request;
     }
+
+
+    public function sendInvoiceAction()
+    {
+        return $this->render(':Admin/Invoice:send_invoice.html.twig');
+    }
 }
