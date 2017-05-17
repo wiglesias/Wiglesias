@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\ContactMessage;
+use AppBundle\Entity\Customer;
 use AppBundle\Form\Type\ContactMessageType;
 use AppBundle\Service\NotificationService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -143,6 +144,24 @@ class DefaultController extends Controller
         return $this->render(':PDF:invoice_printer.html.twig', [
             'invoice' => $invoice,
             'setting' => $setting,
+        ]);
+    }
+
+    /**
+     * @Route("/test-send-invoice", name="front_show_send_invoice")
+     */
+    public function showSendInvoiceAction()
+    {
+        if ($this->container->get('kernel')->getEnvironment() == 'prod') {
+            throw new NotFoundHttpException();
+        }
+
+        $customer = new Customer();
+        $customer
+            ->setName('test');
+
+        return $this->render(':Mails:customer_backend_send_invoice.html.twig', [
+            'customer' => $customer,
         ]);
     }
 }

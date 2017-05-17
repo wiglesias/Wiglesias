@@ -1,0 +1,31 @@
+{% extends ':Mails:base.html.twig' %}
+
+{% block subject %}{% endblock %}
+
+{% block content %}
+    <table class="row">
+        <tbody>
+        <tr>
+            {#<th><img src="{{ absolute_url(asset('bundles/app/img/user_notification.jpg')) }}"></th>#}
+        </tr>
+        </tbody>
+    </table>
+    <table class="row">
+        <tbody>
+        <tr>
+            <th class="small-12 large-12 columns first last vertical-padding">
+                <table>
+                    <tr>
+                        <th>
+                            <h4>Bienvenido {{ invoice.customer.name }},</h4>
+                            <p>Para pagar esta factura tienes que hacerlo a través de tranferencia bancaria al número de cuenta indicado en el pdf adjunto.</p>
+                            <p class="grey-color">Saludos</p>
+                        </th>
+                        <th class="expander"></th>
+                    </tr>
+                </table>
+            </th>
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}

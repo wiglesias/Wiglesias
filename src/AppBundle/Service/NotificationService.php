@@ -3,6 +3,7 @@
 namespace AppBundle\Service;
 
 use AppBundle\Entity\ContactMessage;
+use AppBundle\Entity\Invoice;
 
 /**
  * Class NotificationService
@@ -44,17 +45,17 @@ class NotificationService
     /**
      * NotificationService constructor
      *
-     * @param CourierService    $messenger
+     * @param CourierService $messenger
      * @param \Twig_Environment $twig
-     * @param string            $amd
-     * @param string            $urlBase
+     * @param string $amd
+     * @param string $urlBase
      */
     public function __construct(CourierService $messenger, \Twig_Environment $twig, $amd, $urlBase)
     {
         $this->messenger = $messenger;
-        $this->twig      = $twig;
-        $this->amd       = $amd;
-        $this->urlBase   = $urlBase;
+        $this->twig = $twig;
+        $this->amd = $amd;
+        $this->urlBase = $urlBase;
     }
 
     /**
@@ -93,24 +94,6 @@ class NotificationService
     }
 
     /**
-     * Send free trial notification to admin user
-     *
-     * @param ContactMessage $contactMessage
-     */
-    public function sendFreeTrialAdminNotification(ContactMessage $contactMessage)
-    {
-        $this->messenger->sendEmail(
-            $this->amd,
-            $this->amd,
-            'Missatge de prova-ho gratis pàgina web ' . $this->urlBase,
-            $this->twig->render(':Mails:free_trial_admin_notification.html.twig', array(
-                'contact' => $contactMessage,
-            )),
-            $contactMessage->getEmail()
-        );
-    }
-
-    /**
      * Send a contact form notification to admin user
      *
      * @param ContactMessage $contactMessage
@@ -141,6 +124,23 @@ class NotificationService
             $this->twig->render(':Mails:user_backend_answer_notification.html.twig', array(
                 'contact' => $contactMessage,
             ))
+        );
+    }
+
+    /**
+     * @param Invoice $invoice
+     * @param string $pdf
+     */
+    public function sendInvoiceCustomer(Invoice $invoice, $pdf)
+    {
+        $this->messenger->sendEmailWithAttachment(
+            $this->amd,
+            $invoice->getCustomer()->getEmail(),
+            'Factura nº ' . $invoice->getInvoiceNumber(),
+            $this->twig->render(':Mails:customer_backend_send_invoice.html.twig', array(
+                'invoice' => $invoice,
+            )),
+            $pdf
         );
     }
 }

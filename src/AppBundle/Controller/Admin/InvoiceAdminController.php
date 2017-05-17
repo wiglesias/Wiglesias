@@ -4,6 +4,7 @@ namespace AppBundle\Controller\Admin;
 
 use AppBundle\Entity\Invoice;
 use Sonata\AdminBundle\Controller\CRUDController as Controller;
+use Symfony\Component\HttpFoundation\File\Exception\AccessDeniedException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
@@ -72,9 +73,45 @@ class InvoiceAdminController extends Controller
         return $request;
     }
 
-
-    public function sendInvoiceAction()
+    /**
+     * @param int|string|null $id
+     * @param Request $request
+     *
+     * @return Response
+     * @throws NotFoundHttpException
+     * @throws AccessDeniedException
+     */
+    public function sendAction($id = null, Request $request = null)
     {
-        return $this->render(':Admin/Invoice:send_invoice.html.twig');
+        $request = $this->resolveRequest($request);
+        $id = $request->get($this->admin->getIdParameter());
+
+        /** @var Invoice $object */
+        $object = $this->admin->getObject($id);
+        $setting = $this->getDoctrine()->getRepository('AppBundle:Setting')->find(1);
+
+        if (!$object) {
+            throw $this->createNotFoundException(sprintf('unable to find the object with id : %s', $id));
+        }
+
+        $html = $this->renderView(':PDF:invoice_printer.html.twig', array(
+            'invoice' => $object,
+            'setting' => $setting,
+        ));
+
+        $pdf = $this->get('knp_snappy.pdf')->getOutputFromHtml($html);
+
+        // Send
+        $messenger = $this->get('app.notification');
+        $messenger->sendInvoiceCustomer($object, $pdf);
+        // build flash message
+        $this->addFlash('success', 'La factura se ha enviado correctamente');
+
+        return $this->redirectToRoute('admin_app_invoice_list', array(
+            'invoice' => $object,
+        ));
+//        return $this->render(':Admin/Invoice:send_invoice.html.twig', array(
+//            'invoice' => $object,
+//        ));
     }
 }
