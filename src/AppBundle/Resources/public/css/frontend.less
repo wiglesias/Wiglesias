@@ -27,21 +27,21 @@
 // Custom Navbar
 @navbar-height: 64px;
 @navbar-default-color: @wi-c-white;
-@navbar-default-bg: @wi-c-light-blue-500;
+@navbar-default-bg: @theme-primary;
 @navbar-default-link-active-bg: @wi-c-white;
 @navbar-default-link-hover-bg: @wi-c-white;
 @navbar-default-toggle-icon-bar-bg: @wi-c-white;
-@navbar-default-toggle-hover-bg: lighten(@wi-c-light-blue-500, 15%);
+@navbar-default-toggle-hover-bg: lighten(@theme-primary, 15%);
 @navbar-default-toggle-border-color: @wi-c-white;
 
 //@navbar-height: 110px;
 @navbar-border-radius: 0;
-@navbar-default-link-active-color: @wi-c-light-blue-500;
-@navbar-default-link-hover-color: @wi-c-light-blue-500;
+@navbar-default-link-active-color: @theme-primary;
+@navbar-default-link-hover-color: @theme-primary;
 @navbar-default-link-color: @wi-c-white;
 
 // Custom btn-default
-@btn-default-color: @wi-c-light-blue-500;
+@btn-default-color: @theme-primary;
 
 // Custom thumbnails
 @thumbnail-padding: 0;
@@ -188,7 +188,7 @@ h1, h2, h3, h4, h5, h6 {
 //}
 
 // Custom buttons
-.wi-button-mixin(btn-wi, @wi-c-white, @wi-c-light-blue-500);
+.wi-button-mixin(btn-wi, @wi-c-white, @theme-primary);
 
 // Custom anchors
 .underlined-anchors {
@@ -201,8 +201,8 @@ h1, h2, h3, h4, h5, h6 {
 ul.pagination {
   li.active {
     span.c-blue-md {
-      background-color: @wi-c-light-blue-500;
-      border-color: @wi-c-light-blue-500;
+      background-color: @theme-primary;
+      border-color: @theme-primary;
     }
   }
 }
@@ -221,7 +221,7 @@ ul.categories-selector {
   overflow: hidden;
   text-align: center;
   z-index: 2000;
-  background-color: @wi-c-light-blue-500;
+  background-color: @theme-primary;
   color: @wi-c-white;
   width: 50px;
   height: 50px;
@@ -629,7 +629,7 @@ ul.social-buttons {
 }
 
 .text-title {
-  color: @wi-c-light-blue-500;
+  color: @theme-primary;
 }
 
 .under-construction-warning {
@@ -649,11 +649,11 @@ textarea {
 }
 
 .hr-divider {
-  border-top: dotted @wi-c-light-blue-500 2px;
+  border-top: dotted @theme-primary 2px;
 }
 
 .main-title {
-  color: @wi-c-light-blue-500;
+  color: @theme-primary;
   font-weight: 500;
 }
 
