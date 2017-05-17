@@ -79,6 +79,7 @@ AppBundle\Entity\Customer:
     name: <name()>
     surname: <lastname()>
     company: <company()>
+    isCompany: <boolean(70)>
     identityCard: <bothify('######?')>
     adress: <streetAddress()>
     city: <city()>

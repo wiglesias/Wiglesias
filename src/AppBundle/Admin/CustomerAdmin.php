@@ -100,8 +100,7 @@ class CustomerAdmin extends AbstractBaseAdmin
                 'mobile',
                 null,
                 array(
-                    'label' => 'móvil',
-                    'required' => false,
+                    'label' => 'Móvil',
                 )
             )
             ->add(

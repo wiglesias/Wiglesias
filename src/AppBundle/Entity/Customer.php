@@ -43,6 +43,13 @@ class Customer extends AbstractBase
     private $surname;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(type="boolean")
+     */
+    private $isCompany = true;
+
+    /**
      * @var string
      *
      * @ORM\Column(type="string", length=255)
@@ -87,7 +94,7 @@ class Customer extends AbstractBase
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      * @Assert\Email(strict=true, checkMX=true, checkHost=true)
      */
     private $email;
@@ -191,6 +198,26 @@ class Customer extends AbstractBase
     public function setSurname($surname)
     {
         $this->surname = $surname;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isCompany()
+    {
+        return $this->isCompany;
+    }
+
+    /**
+     * @param bool $isCompany
+     *
+     * @return Customer
+     */
+    public function setIsCompany($isCompany)
+    {
+        $this->isCompany = $isCompany;
 
         return $this;
     }
