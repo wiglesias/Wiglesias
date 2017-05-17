@@ -150,9 +150,5 @@ beelab_recaptcha2:
 knp_snappy:
     pdf:
         enabled:    true
-        binary:     /usr/local/bin/wkhtmltopdf
-        options:    []
-    image:
-        enabled:    true
-        binary:     /usr/local/bin/wkhtmltoimage
+        binary:     "%path_wkhtmltopdf%"
         options:    []

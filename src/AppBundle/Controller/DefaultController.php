@@ -142,6 +142,7 @@ class DefaultController extends Controller
 
         return $this->render(':PDF:invoice_printer.html.twig', [
             'invoice' => $invoice,
+            'setting' => $setting,
         ]);
     }
 }

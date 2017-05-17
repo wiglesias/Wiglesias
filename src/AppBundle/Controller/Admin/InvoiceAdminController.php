@@ -23,7 +23,7 @@ class InvoiceAdminController extends Controller
      * Custom show action redirect to public frontend view
      *
      * @param int|string|null $id
-     * @param Request         $request
+     * @param Request $request
      *
      * @return Response
      * @throws NotFoundHttpException If the object does not exist
@@ -36,6 +36,7 @@ class InvoiceAdminController extends Controller
 
         /** @var Invoice $object */
         $object = $this->admin->getObject($id);
+        $setting = $this->getDoctrine()->getRepository('AppBundle:Setting')->find(1);
 
         if (!$object) {
             throw $this->createNotFoundException(sprintf('unable to find the object with id : %s', $id));
@@ -43,11 +44,12 @@ class InvoiceAdminController extends Controller
 
         $this->addFlash(
             'success',
-            'Tu factura número '.$object->getId()
+            'Tu factura número ' . $object->getId()
         );
 
         $html = $this->renderView(':PDF:invoice_printer.html.twig', array(
-            'invoice' => $object,
+                'invoice' => $object,
+                'setting' => $setting,
             )
         );
 
