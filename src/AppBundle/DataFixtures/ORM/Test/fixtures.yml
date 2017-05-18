@@ -55,7 +55,7 @@ AppBundle\Entity\Tag:
     updatedAt: <dateTimeThisMonth()>
     enabled: <boolean(70)>
 
-# Customer
+# Setting
 AppBundle\Entity\Setting:
   setting{1..2}:
     name: <name()>
