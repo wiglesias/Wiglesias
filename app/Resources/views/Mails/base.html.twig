@@ -39,7 +39,7 @@
                                                 </a>
                                             </th>
                                             <th class="small-12 large-6 last columns white-color vertical-padding">
-                                                <h2 class="text-right">{% block subject %}Wils Iglesias{% endblock %}</h2>
+                                                <h2 class="text-right">{% block subject %}{{ main_brand_title }}{% endblock %}</h2>
                                             </th>
                                             <th class="expander"></th>
                                         </tr>
@@ -52,16 +52,18 @@
                                         <table class="row blue-grey-background">
                                             <tr>
                                                 <th class="small-12 large-5 first columns vertical-padding">
-                                                    <h6 class="blue-color">Wils Iglesias</h6>
+                                                    <p>
+                                                        <a href="mailto:info@wiglesias.com">info@wiglesias.com</a>
+                                                    </p>
                                                 </th>
-                                                <th class="small-6 large-1 vertical-padding ">
+                                                <th class="small-6 large-1 vertical-padding">
                                                     <a href="https://twitter.com/wils_83">
                                                         <img src="{{ absolute_url(asset('bundles/app/img/twitter30x30.png')) }}">
                                                     </a>
                                                 </th>
                                                 <th class="small-12 large-5 last columns vertical-padding">
                                                     <p class="white-color text-right">
-                                                        &copy; {{ "now" | date("Y") }}
+                                                        Copyright &copy; 2016 - {{ "now" | date("Y") }}
                                                     </p>
                                                 </th>
                                                 <th class="expander"></th>
