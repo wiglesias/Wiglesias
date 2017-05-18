@@ -184,8 +184,8 @@ class Invoice extends AbstractBase
     public function addLine(InvoiceLine $line)
     {
         if (!$this->lines->contains($line)) {
-            $this->lines->add($line);
             $line->setInvoice($this);
+            $this->lines->add($line);
         }
 
         return $this;
