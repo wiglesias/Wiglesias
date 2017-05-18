@@ -1,39 +1,42 @@
 {% extends ':Frontend:base.html.twig' %}
 
 {% block main %}
-    <div class="container container-main">
-        <div class="row">
-            <div class="col-xs-12 text-center">
-                <h2 class="no-m-top extra-m-bottom main-text-light">Créditos</h2>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <h2 class="section-heading">Créditos</h2>
+                    <h3 class="section-subheading text-muted">Siempre el día con las últimas tecnologias</h3>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-sm-5 col-md-4 extra-m-bottom text-center">
-                <i class="fa fa-coffee fa-5x" aria-hidden="true"></i>
-            </div>
-            <div class="col-xs-12 col-sm-7 col-md-8">
-                <table class="table table-bordered">
-                    <tbody>
+            <div class="row">
+                <div class="col-xs-12 col-sm-5 col-md-4 extra-m-bottom text-center">
+                    <i class="fa fa-coffee fa-5x" aria-hidden="true"></i>
+                </div>
+                <div class="col-xs-12 col-sm-7 col-md-8">
+                    <table class="table table-bordered">
+                        <tbody>
                         <tr>
-                            <td class="main-text-light">Desarrollo web</td>
-                            <td class="main-text-light"><a class="c-blue-md" href="http://www.wiglesias.com" target="_blank">Wiglesias</a></td>
+                            <td class="credits-heading">Desarrollo web</td>
+                            <td class="text-muted"><a class="c-blue-md" href="http://www.wiglesias.com" target="_blank">Wiglesias</a></td>
                         </tr>
                         <tr>
-                            <td class="main-text-light">Tecnologías utilizadas</td>
-                            <td class="main-text-light"><a class="c-blue-md" href="http://www.php.net/">PHP</a>, Frameworks <a class="c-blue-md" href="http://symfony.com/">Symfony</a>, <a class="c-blue-md" href="http://getbootstrap.com/">Bootstrap 3</a></td>
+                            <td class="credits-heading">Tecnologías utilizadas</td>
+                            <td class="text-muted"><a class="c-blue-md" href="http://www.php.net/">PHP</a>, Frameworks <a class="c-blue-md" href="http://symfony.com/">Symfony</a>, <a class="c-blue-md" href="http://getbootstrap.com/">Bootstrap 3</a></td>
                         </tr>
                         <tr>
-                            <td class="main-text-light">Agradecimientos</td>
+                            <td class="credits-heading">Agradecimientos</td>
                             <td>
                                 <ul class="list-unstyled">
-                                    <li class="main-text-light">A <a class="c-blue-md" href="https://github.com/davidromani">David Romaní</a>, por dedicarme en sus tiempos libres a enseñarme las buenas prácticas sobre la programación y también por la gran paciencia que ha tenido.</li>
-                                    <li class="main-text-light">A <a class="c-blue-md" href="https://www.linkedin.com/in/rubenhierro">Rubèn Hierro</a>, una espíritu libre que nada por las redes sociales como un pez en el agua. "<a class="c-blue-md" href="http://contents.cat/">Contents Marketing Online</a>"</li>
+                                    <li class="text-muted">A <a class="c-blue-md" href="https://github.com/davidromani">David Romaní</a>, por dedicarme en sus tiempos libres a enseñarme las buenas prácticas sobre la programación y también por la gran paciencia que ha tenido.</li>
+                                    <li class="text-muted">A <a class="c-blue-md" href="https://www.linkedin.com/in/rubenhierro">Rubèn Hierro</a>, una espíritu libre que nada por las redes sociales como un pez en el agua. "<a class="c-blue-md" href="http://contents.cat/">Contents Marketing Online</a>"</li>
                                 </ul>
 
                         </tr>
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 {% endblock %}

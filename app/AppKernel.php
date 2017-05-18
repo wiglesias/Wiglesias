@@ -32,8 +32,10 @@ class AppKernel extends Kernel
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
             new Liip\ImagineBundle\LiipImagineBundle(),
             new Presta\SitemapBundle\PrestaSitemapBundle(),
+            new Spraed\PDFGeneratorBundle\SpraedPDFGeneratorBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
             // App

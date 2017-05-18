@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="author" content="www.wiglesias.com">
+    <title>Facturación</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" type="text/css" href="{{ absolute_url(asset('bundles/app/css/bootstrap.min.css')) }}">
+    {% endblock %}
+</head>
+<body id="page-top" class="index">
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="alert" style="background-color: #03A9f4" role="alert">
+                    <h1 style="margin: 0; color: #ffffff">Wils Iglesias</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h3 style="margin-bottom: 0">Factura {{ invoice.invoiceNumber }}</h3>
+                <p style="margin-top: 0">Fecha {{ invoice.date | date('d/m/Y') }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-7">
+                <p>
+                    {{ setting.fullName }}<br>
+                    {{ setting.identityCard }}<br>
+                    {{ setting.adress }}<br>
+                    {{ setting.postalCode }} {{ setting.city }} ({{ setting.province }})
+                </p>
+            </div>
+            <div class="col-xs-5">
+                <p>
+                    {{ invoice.customer.company }} <br>
+                    {{ invoice.customer.identityCard }} <br>
+                    {{ invoice.customer.adress }} <br>
+                    {{ invoice.customer.postalCode }} {{ invoice.customer.city }} ({{ invoice.customer.province }})
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <table class="table" style="margin-top: 40px">
+                    <thead>
+                    <tr>
+                        <th style="border-bottom: 2px solid #03A9f4">Concepto</th>
+                        <th class="text-right" style="border-bottom: 2px solid #03A9f4">Cantidad</th>
+                        <th class="text-right" style="border-bottom: 2px solid #03A9f4">Precio</th>
+                        <th class="text-right" style="border-bottom: 2px solid #03A9f4">Total</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for line in invoice.lines %}
+                        <tr>
+                            <td>{{ line.name }}</td>
+                            <td class="text-right">{{ line.amount }}</td>
+                            <td class="text-right">{{ line.price | number_format(2, '\'', '.') }} €</td>
+                            <td class="text-right">{{ line.total | number_format(2, '\'', '.') }} €</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <th colspan="3" class="text-right" style="border-top: 2px solid #03A9f4">Base imponible</th>
+                        <td class="text-right" style="border-top: 2px solid #03A9f4">{{ invoice.taxableBase | number_format(2, '\'', '.') }} €</td>
+                    </tr>
+                    <tr>
+                        <th colspan="3" class="text-right" style="border: none">IVA {{ invoice.iva }}%</th>
+                        <td class="text-right">{{ invoice.calculateIva | number_format(2, '\'', '.') }} €</td>
+                    </tr>
+                    <tr>
+                        <th colspan="3" class="text-right" style="border: none">IRPF {{ invoice.irpf }}%</th>
+                        <td class="text-right">-{{ invoice.calculateIrpf | number_format(2, '\'', '.') }} €</td>
+                    </tr>
+                    <tr>
+                        <th colspan="3" class="text-right" style="border: none">TOTAL</th>
+                        <th class="text-right" style="border-top: 2px solid #03A9f4">{{ invoice.total | number_format(2, '\'', '.') }} €</th>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h3>Forma de pago</h3>
+                <hr style="margin-top: 0; border-top: 2px solid #03A9F4">
+                <p>
+                    Mediante transferencia bancaria al número de cuenta:<br>
+                    {{ payment_type }}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

@@ -19,17 +19,37 @@ services:
         class: AppBundle\Admin\TagAdmin
         arguments: [ ~, AppBundle\Entity\Tag, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: "Categorías", group: "Blog" }
+            - { name: sonata.admin, manager_type: orm, label: "Etiquetas", group: "Blog" }
     admin.contact_message:
         class: AppBundle\Admin\ContactMessageAdmin
         arguments: [ ~, AppBundle\Entity\ContactMessage, AppBundle:Admin\ContactMessageAdmin, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
         tags:
             - { name: sonata.admin, manager_type: orm, label: "Mensaje de Contacto", group: "Contactos" }
-    admin.user:
+    admin.administration_user:
         class: AppBundle\Admin\UserAdmin
         arguments: [ ~, AppBundle\Entity\User, ~, "@fos_user.user_manager" ]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: "Usuario", group: "Usuarios" }
+            - { name: sonata.admin, manager_type: orm, label: "Usuario", group: "Administracion" }
+    admin.administration_setting:
+        class: AppBundle\Admin\SettingAdmin
+        arguments: [ ~, AppBundle\Entity\Setting, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: "Configuración", group: "Administracion" }
+    admin.billing_customer:
+        class: AppBundle\Admin\CustomerAdmin
+        arguments: [ ~, AppBundle\Entity\Customer, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: "Cliente", group: "Facturacion" }
+    admin.billing.invoice:
+        class: AppBundle\Admin\InvoiceAdmin
+        arguments: [ ~, AppBundle\Entity\Invoice, AppBundle:Admin\InvoiceAdmin, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: "Factura", group: "Facturacion" }
+    admin.billing.invoice_line:
+        class: AppBundle\Admin\InvoiceLine
+        arguments: [ ~, AppBundle\Entity\InvoiceLine, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: "Líneas", group: "Facturacion", show_in_dashboard: false }
 
 # Messaging
     app.courier:

@@ -61,4 +61,32 @@ class CourierService
 
         return $this->mailer->send($message);
     }
+
+    /**
+     * Send an email
+     *
+     * @param string $from
+     * @param string $to
+     * @param string $subject
+     * @param string $body
+     * @param string $pdf
+     *
+     * @return int
+     */
+    public function sendEmailWithAttachment($from, $to, $subject, $body, $pdf)
+    {
+        $attachment = \Swift_Attachment::newInstance($pdf, $subject.'.pdf', 'application/pdf');
+
+        $message = new \Swift_Message();
+        $message
+            ->attach($attachment)
+            ->setSubject($subject)
+            ->setFrom($from)
+            ->setTo($to)
+            ->setBody($body)
+            ->setCharset('UTF-8')
+            ->setContentType('text/html');
+
+        return $this->mailer->send($message);
+    }
 }

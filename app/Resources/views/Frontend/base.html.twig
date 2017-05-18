@@ -11,9 +11,12 @@
     <title>{% block title %}{{ main_brand_title }}{% endblock %}</title>
     {% block stylesheets %}
         {% stylesheets filter="cssrewrite,less" '@mycss' %}
-        {#<!-- Material Design fonts -->#}
         <link rel="stylesheet" type="text/css" href="{{ asset_url }}"/>
         {% endstylesheets %}
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+        <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
     {% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     <!--[if lt IE 9]>
@@ -21,20 +24,20 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body id="{% block body_id %}{% endblock %}">
+<body id="page-top" class="index">
 {% block body_class %}{% endblock %}
 {# Head content #}
 {% block header %}
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation" data-offset="60">
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
         <div class="container">
-            <div class="navbar-header">
+            <div class="navbar-header page-scroll">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ path('front_homepage') }}">Wils Iglesias</a>
+                <a class="navbar-brand page-scroll" href="{{ path('front_homepage') }}">Wils Iglesias</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 {{ knp_menu_render('top', {currentClass: 'active', allow_safe_labels: true}) }}
@@ -45,42 +48,31 @@
 {#<!-- Main content -->#}
 {% block main %}{% endblock %}
 {#<!-- Scroll-Top effect -->#}
-<div class="scroll-top-wrapper"><span class="scroll-top-inner"><i class="fa fa-2x fa-chevron-up"></i></span></div>
+<div class="scroll-top-wrapper"><span class="scroll-top-inner"><i class="fa fa-1x fa-chevron-up fa-fw"></i></span></div>
 {#<!-- Footer -->#}
 {% block footer %}
-    <footer class="page-footer">
+    <footer>
         <div class="container">
             <div class="row">
-                <div class="col-md-6 col-xs-12 extra-m-bottom">
-                    <h3 class="main-text-light">Herramienta</h3>
-                    <p class="main-text-light"><em>Utilizo el framework Symfony para mis proyecto. "Symfony" es una marca registrada de Fabien Potencier.</em></p>
-                    <a href="http://symfony.com" target="_blank">
-                        <svg height="70" width="70" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <image height="70" width="70" class="navbar-logo" xlink:href="{{ asset('bundles/app/img/sf-white.svg') }}" alt="Symfony"></image>
-                        </svg>
-                    </a>
+                <div class="col-md-4">
+                    <span class="copyright">Copyright &copy; 2016 - {{ "now" | date("Y") }} Wils Iglesias</span>
                 </div>
-                <div class="col-md-3 col-xs-12 extra-m-bottom">
-                    <h3 class="main-text-light">Enlaces</h3>
-                    <ul class="list-unstyled">
-                        <li><a href="{{ path('front_about') }}">Sobre mi</a></li>
-                        {#<li><a href="{{ path('front_portafolio') }}">Portafolio</a></li>#}
-                        <li><a href="{{ path('front_blog') }}">Blog</a></li>
-                        <li><a href="{{ path('front_contact') }}">Contacto</a></li>
+                <div class="col-md-4">
+                    <ul class="list-inline social-buttons">
+                        <li><a href="https://twitter.com/wils_83"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a href="https://github.com/wiglesias"><i class="fa fa-github"></i></a>
+                        </li>
+                        <li><a href="https://es.linkedin.com/in/wils-iglesias-3b99b940"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline quicklinks">
+                        <li><a href="#">Política de privacidad</a></li>
                         <li><a href="{{ path('front_credits') }}">Crédito</a></li>
                     </ul>
                 </div>
-                <div class="col-md-3 col-xs-12 extra-m-bottom">
-                    <h3 class="main-text-light">Conectar</h3>
-                    <a href="https://twitter.com/wils_83" class="twitter-follow-button" data-show-count="false">Follow @wils_83</a><br>
-                    <a href="https://github.com/wiglesias" target="_blank"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
-                    <a href="https://es.linkedin.com/in/wils-iglesias-3b99b940" target="_blank"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-copyright">
-            <div class="container extra-m-bottom">
-                <p><i class="fa fa-copyright main-text-light" aria-hidden="true"></i> 2016 - {{ "now" | date("Y") }} Wils Iglesias</p>
             </div>
         </div>
     </footer>
@@ -89,10 +81,11 @@
 {% block javascripts %}
     {% javascripts '@myjs' %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
     <script type="text/javascript" src="{{ asset('bundles/app/js/typed.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/app/js/social_network.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/app/js/wils.js') }}"></script>
     <script src="//www.google.com/recaptcha/api.js?hl={{ app.request.locale }}"></script>
-    {% endjavascripts %}
 {% endblock %}
 {% block scroll_top %}
     {#<!-- Scroll-Top effect JS -->#}

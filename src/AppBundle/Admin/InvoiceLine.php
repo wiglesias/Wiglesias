@@ -2,57 +2,25 @@
 
 namespace AppBundle\Admin;
 
-use Doctrine\ORM\QueryBuilder;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Route\RouteCollection;
-use Sonata\AdminBundle\Show\ShowMapper;
 
 /**
- * Class TagAdmin
+ * Class InvoiceLine
  *
  * @category Admin
  * @package AppBundle\Admin
  * @author Wils Iglesias <wiglesias83@gmail.com>
  */
-class TagAdmin extends AbstractBaseAdmin
+class InvoiceLine extends AbstractBaseAdmin
 {
-    protected $classnameLabel = 'Etiqueta';
-    protected $baseRoutePattern = 'web/tag';
+    protected $classnameLabel = 'Líneas';
+    protected $baseRoutePattern = 'facturacion/lineas';
     protected $datagridValues = array(
-        '_sort_by'    => 'title',
+        '_sort_by'    => 'name',
         '_sort_order' => 'asc',
     );
-
-    /**
-     * Configure route collection
-     *
-     * @param RouteCollection $collection
-     */
-    protected function configureRoutes(RouteCollection $collection)
-    {
-        $collection
-            ->remove('batch');
-    }
-
-    /**
-     * Override query list to reduce queries amount on list view (apply join strategy)
-     *
-     * @param string $context context
-     *
-     * @return QueryBuilder
-     */
-    public function createQuery($context = 'list')
-    {
-        /** @var QueryBuilder $query */
-        $query = parent::createQuery($context);
-        $query
-            ->select($query->getRootAliases()[0] . ', p')
-            ->leftJoin($query->getRootAliases()[0] . '.posts', 'p');
-
-        return $query;
-    }
 
     /**
      * @param FormMapper $formMapper
@@ -60,25 +28,54 @@ class TagAdmin extends AbstractBaseAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('backend.admin.tag.tag', $this->getFormMdSuccessBoxArray(6))
+            ->with('Datos de Cliente', $this->getFormMdSuccessBoxArray(6))
             ->add(
-                'title',
+                'name',
                 null,
                 array(
-                    'label' => 'backend.admin.tag.title',
+                    'label' => 'Concepto',
+                )
+            )
+            ->add(
+                'price',
+                null,
+                array(
+                    'label' => 'Precio',
+                )
+            )
+            ->add(
+                'amount',
+                null,
+                array(
+                    'label' => 'Cantidad',
                 )
             )
             ->end()
             ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(6))
+            ->add(
+                'invoice',
+                null,
+                array(
+                    'label' => 'Factura',
+                    'attr' => array(
+                        'hidden' => true,
+                    ),
+                    'required' => true,
+                )
+            )
             ->add(
                 'enabled',
                 'checkbox',
                 array(
                     'label'    => 'backend.admin.enabled',
                     'required' => false,
+                    'attr' => array(
+                        'hidden' => true,
+                    ),
                 )
             )
-            ->end();
+            ->end()
+        ;
     }
 
     /**
@@ -88,54 +85,31 @@ class TagAdmin extends AbstractBaseAdmin
     {
         $datagridMapper
             ->add(
-                'title',
+                'name',
                 null,
                 array(
-                    'label' => 'backend.admin.tag.title',
+                    'label' => 'Concepto',
                 )
             )
             ->add(
-                'posts',
+                'price',
                 null,
                 array(
-                    'label'    => 'backend.admin.tag.posts',
+                    'label' => 'Precio',
                 )
             )
             ->add(
-                'enabled',
+                'amount',
                 null,
                 array(
-                    'label' => 'backend.admin.enabled',
-                )
-            );
-    }
-
-    /**
-     * @param ShowMapper $showMapper
-     */
-    protected function configureShowFields(ShowMapper $showMapper)
-    {
-        $showMapper
-            ->add(
-                'createdAt',
-                'date',
-                array(
-                    'label'  => 'backend.admin.date',
-                    'format' => 'd/m/Y H:i',
+                    'label' => 'Cantidad',
                 )
             )
             ->add(
-                'title',
+                'invoice',
                 null,
                 array(
-                    'label' => 'backend.admin.tag.title',
-                )
-            )
-            ->add(
-                'posts',
-                null,
-                array(
-                    'label' => 'backend.admin.tag.posts',
+                    'label' => 'Factura',
                 )
             )
             ->add(
@@ -144,7 +118,8 @@ class TagAdmin extends AbstractBaseAdmin
                 array(
                     'label' => 'backend.admin.enabled',
                 )
-            );
+            )
+        ;
     }
 
     /**
@@ -155,19 +130,35 @@ class TagAdmin extends AbstractBaseAdmin
         unset($this->listModes['mosaic']);
         $listMapper
             ->add(
-                'title',
+                'name',
                 null,
                 array(
-                    'label'    => 'backend.admin.tag.title',
+                    'label'    => 'Concepto',
                     'editable' => true,
                 )
             )
             ->add(
-                'count',
+                'price',
                 null,
                 array(
-                    'label'    => 'backend.admin.tag.posts_amount',
-                    'template' => '::Admin/Cells/list__cell_posts_amount_field.html.twig',
+                    'label'    => 'Precio',
+                    'editable' => true,
+                )
+            )
+            ->add(
+                'amount',
+                null,
+                array(
+                    'label'    => 'Cantidad',
+                    'editable' => true,
+                )
+            )
+            ->add(
+                'invoice',
+                null,
+                array(
+                    'label'    => 'Factura',
+                    'editable' => true,
                 )
             )
             ->add(
@@ -183,14 +174,13 @@ class TagAdmin extends AbstractBaseAdmin
                 'actions',
                 array(
                     'actions' => array(
-                        'show'   => array(
-                            'template' => '::Admin/Buttons/list__action_show_button.html.twig'
-                        ),
+                        'show'   => array('template' => '::Admin/Buttons/list__action_show_button.html.twig'),
                         'edit'   => array('template' => '::Admin/Buttons/list__action_edit_button.html.twig'),
                         'delete' => array('template' => '::Admin/Buttons/list__action_delete_button.html.twig'),
                     ),
                     'label'   => 'backend.admin.actions',
                 )
-            );
+            )
+        ;
     }
 }

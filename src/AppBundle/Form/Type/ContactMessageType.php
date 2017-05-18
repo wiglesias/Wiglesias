@@ -101,7 +101,7 @@ class ContactMessageType extends AbstractType
                 array(
                     'label' => 'Enviar',
                     'attr' => array(
-                        'class' => 'btn btn-primary no-m-bottom',
+                        'class' => 'btn btn-lg btn-dark ',
                         'style' => 'margin-bottom: -15px',
                     ),
                 )

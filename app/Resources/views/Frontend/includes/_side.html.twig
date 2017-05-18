@@ -1,16 +1,16 @@
 <div class="blog-sidebox grey-background">
-    <h3 class="no-m-top main-text-light">Categorías</h3>
+    <h3 class="section-heading">Categorías</h3>
     <hr>
     <div class="sidebox-content">
         <ul class="list-unstyled categories-selector">
             {% for tag in tags if tag.posts | length > 0 %}
-                <li class="main-text-light"><a href="{{ path('front_blog_tag_detail', {slug: tag.slug}) }}"><i class="fa fa-folder-open-o" aria-hidden="true"></i> {{ tag.title }}</a></li>
+                <li><a href="{{ path('front_blog_tag_detail', {slug: tag.slug}) }}"><i class="fa fa-folder-open-o" aria-hidden="true"></i> {{ tag.title }}</a></li>
             {% endfor %}
         </ul>
     </div>
 </div>
 <div class="blog-sidebox grey-background">
-    <h3 class="no-m main-text-light">Últimes notícias</h3>
+    <h3 class="section-heading">Últimes notícias</h3>
     <hr class="hr-divider">
     <div class="sidebox-content">
         <ul class="list-unstyled categories-selector">

@@ -78,6 +78,13 @@ class PostAdmin extends AbstractBaseAdmin
                     'required' => false,
                 )
             )
+            ->add(
+                'author',
+                null,
+                array(
+                    'label' => 'backend.admin.post.author',
+                )
+            )
             ->end()
             ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(6))
             ->add(
@@ -196,7 +203,8 @@ class PostAdmin extends AbstractBaseAdmin
                 array(
                     'label' => 'backend.admin.enabled',
                 )
-            );
+            )
+        ;
     }
 
     /**
