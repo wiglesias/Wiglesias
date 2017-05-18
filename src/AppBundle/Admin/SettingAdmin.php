@@ -100,7 +100,7 @@ class SettingAdmin extends AbstractBaseAdmin
                 'mobile',
                 null,
                 array(
-                    'label' => 'móvil',
+                    'label' => 'Móvil',
                     'required' => false,
                 )
             )
