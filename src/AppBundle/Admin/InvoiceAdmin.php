@@ -49,6 +49,8 @@ class InvoiceAdmin extends AbstractBaseAdmin
                 'sonata_type_date_picker',
                 array(
                     'label' => 'Fecha Factura',
+                    'format' => 'd/M/y',
+                    'required' => true,
                 )
             )
             ->add(
