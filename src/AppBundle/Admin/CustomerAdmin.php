@@ -117,6 +117,7 @@ class CustomerAdmin extends AbstractBaseAdmin
                 null,
                 array(
                     'label' => 'Email',
+                    'required' => true,
                 )
             )
             ->add(
