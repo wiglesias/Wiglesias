@@ -90,8 +90,8 @@ class InvoiceAdminController extends Controller
         $object = $this->admin->getObject($id);
         $setting = $this->getDoctrine()->getRepository('AppBundle:Setting')->find(1);
 
-        if (!$object) {
-            throw $this->createNotFoundException(sprintf('unable to find the object with id : %s', $id));
+        if (!$object || !$setting) {
+            throw $this->createNotFoundException(sprintf('unable to find the invoice or the setting with id : %s', $id));
         }
 
         $html = $this->renderView(':PDF:invoice_printer.html.twig', array(
