@@ -648,8 +648,17 @@ textarea {
   .resizable(vertical);
 }
 
-.hr-divider {
-  border-top: dotted @theme-primary 2px;
+.hr-divider-section {
+  width: 100px;
+  margin: 5px auto 5px;
+  border-top: 4px solid @theme-primary;
+}
+
+.hr-divider-blog {
+  width: 100px;
+  margin: 5px auto 5px;
+  border-top: 1px solid @theme-primary;
+  border-bottom: 1px solid grey;
 }
 
 .main-title {
@@ -660,3 +669,5 @@ textarea {
 .main-text-light { font-weight: 300; }
 
 .no-overflow { overflow: hidden; }
+
+// Customer blog side
