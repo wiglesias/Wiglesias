@@ -14,7 +14,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <div class="alert text-center" style="background-color: #03A9f4; border-radius: 0;" role="alert">
+                <div class="alert text-center" style="background-color: #03A9f4; border-radius: 0; margin-top: 50px" role="alert">
                     <h1 style="margin: 0; color: #ffffff">{{ main_brand_title | upper }}</h1>
                     <hr style="width: 100px; margin: 5px auto 5px">
                     <h4 style="font-family: Courier, 'Lucida Sans Unicode', Monospace; margin-top: 0">Web Developer</h4>
@@ -30,7 +30,7 @@
         <div class="row">
             <div class="col-xs-7">
                 <p style="font-family: Courier, 'Lucida Sans Unicode', Monospace">
-                    <span style="font-weight: bold">{{ setting.fullName | upper }}</span><br>
+                    <span style="font-weight: bold">{{ setting.fullName }}</span><br>
                     {{ setting.identityCard }}<br>
                     {{ setting.adress }}<br>
                     {{ setting.postalCode }} {{ setting.city }} ({{ setting.province }})
@@ -38,7 +38,7 @@
             </div>
             <div class="col-xs-5">
                 <p style="font-family: Courier, 'Lucida Sans Unicode', Monospace">
-                    <span style="font-weight: bold">{{ invoice.customer.company | upper}}</span><br>
+                    <span style="font-weight: bold">{{ invoice.customer.company }}</span><br>
                     {{ invoice.customer.identityCard }} <br>
                     {{ invoice.customer.adress }} <br>
                     {{ invoice.customer.postalCode }} {{ invoice.customer.city }} ({{ invoice.customer.province }})
@@ -50,10 +50,10 @@
                 <table class="table" style="margin-top: 40px">
                     <thead>
                     <tr>
-                        <th style="border-bottom: 2px solid #03A9f4; background-color: #03A9f4; color: #ffffff">Concepto</th>
-                        <th class="text-right" style="border-bottom: 2px solid #03A9f4; background-color: #03A9f4; color: #ffffff">Cantidad</th>
-                        <th class="text-right" style="border-bottom: 2px solid #03A9f4; background-color: #03A9f4; color: #ffffff">Precio</th>
-                        <th class="text-right" style="border-bottom: 2px solid #03A9f4; background-color: #03A9f4; color: #ffffff">Total</th>
+                        <th style="border-bottom: 2px solid #03A9f4; background-color: #03A9f4; color: #ffffff; text-transform: uppercase">Concepto</th>
+                        <th class="text-right" style="border-bottom: 2px solid #03A9f4; background-color: #03A9f4; color: #ffffff; text-transform: uppercase">Cantidad</th>
+                        <th class="text-right" style="border-bottom: 2px solid #03A9f4; background-color: #03A9f4; color: #ffffff; text-transform: uppercase">Precio</th>
+                        <th class="text-right" style="border-bottom: 2px solid #03A9f4; background-color: #03A9f4; color: #ffffff; text-transform: uppercase">Total</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -89,7 +89,7 @@
         </div>
         <div class="row">
             <div class="col-xs-12">
-                <h3>Forma de pago</h3>
+                <h4>Forma de pago</h4>
                 <hr style="margin-top: 0; border-top: 2px solid #03A9F4">
                 <p style="font-family: Courier, 'Lucida Sans Unicode', Monospace">
                     Mediante transferencia bancaria al número de cuenta:<br>
