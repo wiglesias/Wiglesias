@@ -14,29 +14,31 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <div class="alert" style="background-color: #03A9f4" role="alert">
-                    <h1 style="margin: 0; color: #ffffff">{{ main_brand_title }}</h1>
+                <div class="alert text-center" style="background-color: #03A9f4; border-radius: 0;" role="alert">
+                    <h1 style="margin: 0; color: #ffffff">{{ main_brand_title | upper }}</h1>
+                    <hr style="width: 100px; margin: 5px auto 5px">
+                    <h4 style="font-family: Courier, 'Lucida Sans Unicode', Monospace; margin-top: 0">Web Developer</h4>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-xs-12">
-                <h3 style="margin-bottom: 0">Factura {{ invoice.invoiceNumber }}</h3>
+                <h3 style="margin-bottom: 0; color: #000000; text-transform: uppercase; font-size: 25px">Factura {{ invoice.invoiceNumber }}</h3>
                 <p style="margin-top: 0">Fecha {{ invoice.date | date('d/m/Y') }}</p>
             </div>
         </div>
         <div class="row">
             <div class="col-xs-7">
-                <p>
-                    {{ setting.fullName }}<br>
+                <p style="font-family: Courier, 'Lucida Sans Unicode', Monospace">
+                    {{ setting.fullName | upper }}<br>
                     {{ setting.identityCard }}<br>
                     {{ setting.adress }}<br>
                     {{ setting.postalCode }} {{ setting.city }} ({{ setting.province }})
                 </p>
             </div>
             <div class="col-xs-5">
-                <p>
-                    {{ invoice.customer.company }} <br>
+                <p style="font-family: Courier, 'Lucida Sans Unicode', Monospace">
+                    {{ invoice.customer.company | upper}} <br>
                     {{ invoice.customer.identityCard }} <br>
                     {{ invoice.customer.adress }} <br>
                     {{ invoice.customer.postalCode }} {{ invoice.customer.city }} ({{ invoice.customer.province }})
@@ -89,7 +91,7 @@
             <div class="col-xs-12">
                 <h3>Forma de pago</h3>
                 <hr style="margin-top: 0; border-top: 2px solid #03A9F4">
-                <p>
+                <p style="font-family: Courier, 'Lucida Sans Unicode', Monospace">
                     Mediante transferencia bancaria al número de cuenta:<br>
                     {{ payment_type }}
                 </p>

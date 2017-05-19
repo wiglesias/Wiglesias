@@ -139,7 +139,7 @@ class DefaultController extends Controller
             throw new NotFoundHttpException();
         }
         $setting = $this->getDoctrine()->getRepository('AppBundle:Setting')->find(1);
-        $invoice = $this->getDoctrine()->getRepository('AppBundle:Invoice')->find(5);
+        $invoice = $this->getDoctrine()->getRepository('AppBundle:Invoice')->find(1);
 
         return $this->render(':PDF:invoice_printer.html.twig', [
             'invoice' => $invoice,
