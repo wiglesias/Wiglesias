@@ -648,8 +648,17 @@ textarea {
   .resizable(vertical);
 }
 
-.hr-divider {
-  border-top: dotted @theme-primary 2px;
+.hr-divider-section {
+  width: 100px;
+  margin: 5px auto 5px;
+  border-top: 4px solid @theme-primary;
+}
+
+.hr-divider-blog {
+  width: 100px;
+  margin: 5px auto 5px;
+  border-top: 1px solid @theme-primary;
+  border-bottom: 1px solid grey;
 }
 
 .main-title {
@@ -660,3 +669,30 @@ textarea {
 .main-text-light { font-weight: 300; }
 
 .no-overflow { overflow: hidden; }
+
+// Customer logo css
+
+.left-span {
+  background-color: @theme-white;
+  color: @theme-primary;
+  margin-right: 0;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border: 1px solid @theme-white;
+  padding-right: 5px;
+  padding-left: 5px;
+  font-family: sans-serif, arial, "Open Sans";
+}
+
+.right-span {
+  border: 1px solid @theme-white;
+  border-left: 0;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding-right: 5px;
+  padding-left: 5px;
+  margin-left: -5px;
+  font-family: sans-serif, "Roboto";
+  line-height: 14px;
+  font-size: 18px;
+  }

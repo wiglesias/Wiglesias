@@ -85,26 +85,28 @@ class InvoiceAdmin extends AbstractBaseAdmin
                     'required' => false,
                 )
             )
-            ->end()
-            ->with('Líneas de facturas', $this->getFormMdSuccessBoxArray(12))
-            ->add(
-                'lines',
-                'sonata_type_collection',
-                array(
-                    'label' => 'Línea',
-                    'required' => true,
-                    'cascade_validation' => true,
-                    'error_bubbling' => true,
-                    'by_reference' => false,
-                ),
-                array(
-                    'edit' => 'inline',
-                    'inline' => 'table',
+            ->end();
+        if ($this->id($this->getSubject())) { // is edit mode, disable on new subjetcs
+            $formMapper
+                ->with('Líneas de facturas', $this->getFormMdSuccessBoxArray(12))
+                ->add(
+                    'lines',
+                    'sonata_type_collection',
+                    array(
+                        'label' => 'Línea',
+                        'required' => true,
+                        'cascade_validation' => true,
+                        'error_bubbling' => true,
+                        'by_reference' => false,
+                    ),
+                    array(
+                        'edit' => 'inline',
+                        'inline' => 'table',
 //                    'sortable' => 'position',
+                    )
                 )
-            )
-            ->end()
-        ;
+                ->end();
+        }
     }
 
     /**
