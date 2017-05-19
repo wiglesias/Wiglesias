@@ -23,14 +23,14 @@
         </div>
         <div class="row">
             <div class="col-xs-12">
-                <h3 style="margin-bottom: 0; color: #000000; text-transform: uppercase; font-size: 25px">Factura {{ invoice.invoiceNumber }}</h3>
+                <h3 style="margin-bottom: 0; color: #03A9f4; text-transform: uppercase; font-size: 25px; font-weight: bold">Factura {{ invoice.invoiceNumber }}</h3>
                 <p style="margin-top: 0">Fecha {{ invoice.date | date('d/m/Y') }}</p>
             </div>
         </div>
         <div class="row">
             <div class="col-xs-7">
                 <p style="font-family: Courier, 'Lucida Sans Unicode', Monospace">
-                    {{ setting.fullName | upper }}<br>
+                    <span style="font-weight: bold">{{ setting.fullName | upper }}</span><br>
                     {{ setting.identityCard }}<br>
                     {{ setting.adress }}<br>
                     {{ setting.postalCode }} {{ setting.city }} ({{ setting.province }})
@@ -38,7 +38,7 @@
             </div>
             <div class="col-xs-5">
                 <p style="font-family: Courier, 'Lucida Sans Unicode', Monospace">
-                    {{ invoice.customer.company | upper}} <br>
+                    <span style="font-weight: bold">{{ invoice.customer.company | upper}}</span><br>
                     {{ invoice.customer.identityCard }} <br>
                     {{ invoice.customer.adress }} <br>
                     {{ invoice.customer.postalCode }} {{ invoice.customer.city }} ({{ invoice.customer.province }})
@@ -50,10 +50,10 @@
                 <table class="table" style="margin-top: 40px">
                     <thead>
                     <tr>
-                        <th style="border-bottom: 2px solid #03A9f4">Concepto</th>
-                        <th class="text-right" style="border-bottom: 2px solid #03A9f4">Cantidad</th>
-                        <th class="text-right" style="border-bottom: 2px solid #03A9f4">Precio</th>
-                        <th class="text-right" style="border-bottom: 2px solid #03A9f4">Total</th>
+                        <th style="border-bottom: 2px solid #03A9f4; background-color: #03A9f4; color: #ffffff">Concepto</th>
+                        <th class="text-right" style="border-bottom: 2px solid #03A9f4; background-color: #03A9f4; color: #ffffff">Cantidad</th>
+                        <th class="text-right" style="border-bottom: 2px solid #03A9f4; background-color: #03A9f4; color: #ffffff">Precio</th>
+                        <th class="text-right" style="border-bottom: 2px solid #03A9f4; background-color: #03A9f4; color: #ffffff">Total</th>
                     </tr>
                     </thead>
                     <tbody>
