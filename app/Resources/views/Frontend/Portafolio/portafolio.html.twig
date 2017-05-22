@@ -8,23 +8,29 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Portafolio</h2>
-                    <h3 class="section-subheading">Aquí se encuentran todos mis trabajos y colaboraciones realizados con otros proyectos.</h3>
+                    <hr class="hr-divider-section">
+                    <h3 class="section-subheading">Aquí se encuentran todos mis trabajos y colaboraciones realizados con
+                        otros proyectos.</h3>
                 </div>
             </div>
             <div class="row">
                 {% for portafolio in allPortafolios %}
                     <div class="col-md-4 col-sm-6 portafolio-item">
-                        <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+                        <a href="#{{ portafolio.slug }}" class="portfolio-link" data-toggle="modal">
                             <div class="portfolio-hover">
                                 <div class="portfolio-hover-content">
                                     {#<i class="fa fa-plus fa-3x"></i>#}
                                 </div>
                             </div>
-                            {% include ':Frontend/includes:image_detail.html.twig' with {object: portafolio, filter: '780xY'} %}
+                            {% if portafolio.imageName is not null %}
+                                <img class="img-responsive img-centered" src="{{ vich_uploader_asset(portafolio, 'imageFile') | imagine_filter('600x450') }}" alt="{{ portafolio.imageName }}">
+                            {% else %}
+                                <img class="img-responsive img-centered" src="{{ asset('bundles/app/img/default-portfolio.jpg') | imagine_filter('600x450') }}" alt="default site image">
+                            {% endif %}
                         </a>
                         <div class="portfolio-caption">
                             <h4>{{ portafolio.title }}</h4>
-                            <p class="text-muted">{{ portafolio.description | truncate(400) | raw }}</p>
+                            <p class="text-muted">{{ portafolio.description | truncate(200) | raw }}</p>
                         </div>
                     </div>
                 {% endfor %}
@@ -35,39 +41,41 @@
     {#<!-- Use the modals below to showcase details about your portfolio projects! -->#}
 
     {#<!-- Portfolio Modal 1 -->#}
-    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl">
+    {% for portafolio in allPortafolios %}
+        <div class="portfolio-modal modal fade" id="{{ portafolio.slug }}" tabindex="-1" role="dialog"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-dismiss="modal">
+                        <div class="lr">
+                            <div class="rl"></div>
                         </div>
                     </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        {% for portafolio in allPortafolios %}
-                            <div class="col-lg-8 col-lg-offset-2">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-8 col-lg-offset-2">
                                 <div class="modal-body">
-                                    <!-- Project Details Go Here -->
+                                    {#<!-- Project Details Go Here -->#}
                                     <h2>{{ portafolio.title }}</h2>
-                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                    <img class="img-responsive img-centered" src="..." alt="">
-                                    <p>{{ portafolio.description }}</p>
-                                    <p>
-                                        <strong>Want these icons in this portfolio item sample?</strong>You can download 60 of them for free, courtesy of <a href="https://getdpd.com/cart/hoplink/18076?referrer=bvbo4kax5k8ogc">RoundIcons.com</a>, or you can purchase the 1500 icon set <a href="https://getdpd.com/cart/hoplink/18076?referrer=bvbo4kax5k8ogc">here</a>.</p>
+                                    <p class="item-intro text-muted">Introducción al proyecto</p>
+                                    {% if portafolio.imageName is not null %}
+                                        <img class="img-responsive img-centered" src="{{ vich_uploader_asset(portafolio, 'imageFile') | imagine_filter('600x450') }}" alt="{{ portafolio.imageName }}">
+                                    {% else %}
+                                        <img class="img-responsive img-centered" src="{{ asset('bundles/app/img/default-portfolio.jpg') | imagine_filter('600x450') }}" alt="default site image">
+                                    {% endif %}
+                                    <p>{{ portafolio.description | raw }}</p>
                                     <ul class="list-inline">
-                                        <li>Date: July 2014</li>
-                                        <li>Client: Round Icons</li>
-                                        <li>Category: Graphic Design</li>
+                                        <li>Date: {{ portafolio.date | date('m/Y') }}</li>
+                                        <li>Client: {{ portafolio.title }}</li>
+                                        <li>Category: Desarrollo web</li>
                                     </ul>
-                                    <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
+                                    <button type="button" class="btn btn-primary btn-wi" data-dismiss="modal"><i class="fa fa-times"></i> Cerrar</button>
                                 </div>
                             </div>
-                        {% endfor %}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    {% endfor %}
 {% endblock %}
