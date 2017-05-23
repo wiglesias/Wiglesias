@@ -5,16 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="author" content="www.wiglesias.com">
     <title>Facturación</title>
-    {% block stylesheets %}
-        <link rel="stylesheet" type="text/css" href="{{ absolute_url(asset('bundles/app/css/bootstrap.min.css')) }}">
-    {% endblock %}
+    <link rel="stylesheet" type="text/css" href="{{ absolute_url(asset('bundles/app/css/bootstrap.min.css')) }}">
 </head>
 <body id="page-top" class="index">
 <section>
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <div class="alert text-center" style="background-color: #03A9f4; border-radius: 0; margin-top: 50px" role="alert">
+                <div class="alert text-center" style="background-color: #03A9f4 !important; border-radius: 0; margin-top: 50px" role="alert">
                     <h1 style="margin: 0; color: #ffffff">{{ main_brand_title | upper }}</h1>
                     <hr style="width: 100px; margin: 5px auto 5px">
                     <h4 style="font-family: Courier, 'Lucida Sans Unicode', Monospace; margin-top: 0">Web Developer</h4>
@@ -51,9 +49,9 @@
                     <thead>
                     <tr>
                         <th style="border-bottom: 2px solid #03A9f4; background-color: #03A9f4; color: #ffffff; text-transform: uppercase">Concepto</th>
-                        <th class="text-right" style="border-bottom: 2px solid #03A9f4; background-color: #03A9f4; color: #ffffff; text-transform: uppercase">Cantidad</th>
-                        <th class="text-right" style="border-bottom: 2px solid #03A9f4; background-color: #03A9f4; color: #ffffff; text-transform: uppercase">Precio</th>
-                        <th class="text-right" style="border-bottom: 2px solid #03A9f4; background-color: #03A9f4; color: #ffffff; text-transform: uppercase">Total</th>
+                        <th class="text-right" style="border-bottom: 2px solid #03A9f4; background-color: #03A9f4 !important; color: #ffffff; text-transform: uppercase">Cantidad</th>
+                        <th class="text-right" style="border-bottom: 2px solid #03A9f4; background-color: #03A9f4 !important; color: #ffffff; text-transform: uppercase">Precio</th>
+                        <th class="text-right" style="border-bottom: 2px solid #03A9f4; background-color: #03A9f4 !important; color: #ffffff; text-transform: uppercase">Total</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -81,7 +79,7 @@
                     </tr>
                     <tr>
                         <th colspan="3" class="text-right" style="border: none">TOTAL</th>
-                        <th class="text-right" style="border-top: #03A9f4;background-color: #03A9f4;color: #ffffff">{{ invoice.total | number_format(2, '\'', '.') }} €</th>
+                        <th class="text-right" style="border-top: #03A9f4;background-color: #03A9f4 !important;color: #ffffff">{{ invoice.total | number_format(2, '\'', '.') }} €</th>
                     </tr>
                     </tfoot>
                 </table>
