@@ -152,8 +152,8 @@ knp_snappy:
     pdf:
         enabled: true
         binary:  "%path_wkhtmltopdf%"
-        options:
-            enable-javascript: false
-            dpi: 300
-            use-xserver: false
-            page-size: A4
+        options: []
+#            enable-javascript: false
+#            dpi: 300
+#            use-xserver: false
+#            page-size: A4

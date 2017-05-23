@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\ContactMessage;
 use AppBundle\Entity\Customer;
+use AppBundle\Entity\Invoice;
 use AppBundle\Form\Type\ContactMessageType;
 use AppBundle\Service\NotificationService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -156,12 +157,12 @@ class DefaultController extends Controller
             throw new NotFoundHttpException();
         }
 
-        $customer = new Customer();
-        $customer
-            ->setName('test');
+        $invoice = $this->getDoctrine()->getRepository('AppBundle:Invoice')->find(1);
+        $setting = $this->getDoctrine()->getRepository('AppBundle:Setting')->find(1);
 
         return $this->render(':Mails:customer_backend_send_invoice.html.twig', [
-            'customer' => $customer,
+            'invoice' => $invoice,
+            'setting' => $setting,
         ]);
     }
 }
