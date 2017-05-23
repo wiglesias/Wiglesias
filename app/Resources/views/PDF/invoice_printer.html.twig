@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="alert text-center" style="background-color: #03A9f4 !important; border-radius: 0; margin-top: 50px" role="alert">
-                    <h1 style="margin: 0; color: #ffffff">{{ main_brand_title | upper }}</h1>
+                    <h1 style="margin: 0; color: #ffffff !important;">{{ main_brand_title | upper }}</h1>
                     <hr style="width: 100px; margin: 5px auto 5px">
                     <h4 style="font-family: Courier, 'Lucida Sans Unicode', Monospace; margin-top: 0">Web Developer</h4>
                 </div>
@@ -21,8 +21,8 @@
         </div>
         <div class="row">
             <div class="col-xs-12">
-                <h3 style="margin-bottom: 0; color: #03A9f4; text-transform: uppercase; font-size: 25px; font-weight: bold">Factura {{ invoice.invoiceNumber }}</h3>
-                <p style="margin-top: 0">Fecha {{ invoice.date | date('d/m/Y') }}</p>
+                <h3 style="margin-bottom: 0; color: #03A9f4 !important; text-transform: uppercase; font-size: 25px; font-weight: bold">Factura {{ invoice.invoiceNumber }}</h3>
+                <p style="margin-top: 0">Fecha: <strong>{{ invoice.date | date('d/m/Y') }}</strong></p>
             </div>
         </div>
         <div class="row">
@@ -48,10 +48,10 @@
                 <table class="table" style="margin-top: 40px">
                     <thead>
                     <tr>
-                        <th style="border-bottom: 2px solid #03A9f4; background-color: #03A9f4; color: #ffffff; text-transform: uppercase">Concepto</th>
-                        <th class="text-right" style="border-bottom: 2px solid #03A9f4; background-color: #03A9f4 !important; color: #ffffff; text-transform: uppercase">Cantidad</th>
-                        <th class="text-right" style="border-bottom: 2px solid #03A9f4; background-color: #03A9f4 !important; color: #ffffff; text-transform: uppercase">Precio</th>
-                        <th class="text-right" style="border-bottom: 2px solid #03A9f4; background-color: #03A9f4 !important; color: #ffffff; text-transform: uppercase">Total</th>
+                        <th style="border-bottom: 2px solid #03A9f4; background-color: #03A9f4 !important; color: #ffffff !important; text-transform: uppercase">Concepto</th>
+                        <th class="text-right" style="border-bottom: 2px solid #03A9f4; background-color: #03A9f4 !important; color: #ffffff !important; text-transform: uppercase">Cantidad</th>
+                        <th class="text-right" style="border-bottom: 2px solid #03A9f4; background-color: #03A9f4 !important; color: #ffffff !important; text-transform: uppercase">Precio</th>
+                        <th class="text-right" style="border-bottom: 2px solid #03A9f4; background-color: #03A9f4 !important; color: #ffffff !important; text-transform: uppercase">Total</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -79,7 +79,7 @@
                     </tr>
                     <tr>
                         <th colspan="3" class="text-right" style="border: none">TOTAL</th>
-                        <th class="text-right" style="border-top: #03A9f4;background-color: #03A9f4 !important;color: #ffffff">{{ invoice.total | number_format(2, '\'', '.') }} €</th>
+                        <th class="text-right" style="border-top: #03A9f4;background-color: #03A9f4 !important;color: #ffffff !important">{{ invoice.total | number_format(2, '\'', '.') }} €</th>
                     </tr>
                     </tfoot>
                 </table>
