@@ -102,7 +102,7 @@ AppBundle\Entity\Invoice:
     updatedAt: <dateTimeThisMonth()>
     enabled: <boolean(70)>
     lines:
-        - @invoiceline*
+        - @invoiceline1
 
 # InvoiceLine
 AppBundle\Entity\InvoiceLine:
