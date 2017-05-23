@@ -21,7 +21,6 @@
                                     <i class="fa fa-plus fa-3x"></i>
                                 </div>
                             </div>
-                            {#<img src="{{ asset('bundles/app/img/default-portfolio.jpg') }}" class="img-responsive" alt="">#}
                             {% if portfolio.imageName is not null %}
                                 <img class="img-responsive img-centered" src="{{ vich_uploader_asset(portfolio, 'imageFile') | imagine_filter('600x450') }}" alt="{{ portfolio.imageName }}">
                             {% else %}
