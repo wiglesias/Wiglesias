@@ -44,7 +44,7 @@ twig:
         google_analytics_enabled: "%google_analytics_enabled%"
         google_analytics_account: "%google_analytics_account%"
         main_brand_title:         "%project_web_title%"
-        admin_tag_version:        "v1.0.16"
+        admin_tag_version:        "v1.0.17"
         payment_type: "%acount_web%"
 
 # Assetic
@@ -146,10 +146,14 @@ ivory_ck_editor:
 # Recaptcha
 beelab_recaptcha2:
     site_key: "%recaptcha_site_key%"
-    secret: "%recaptcha_secret%"
+    secret:   "%recaptcha_secret%"
 
 knp_snappy:
     pdf:
-        enabled:    true
-        binary:     "%path_wkhtmltopdf%"
-        options:    []
+        enabled: true
+        binary:  "%path_wkhtmltopdf%"
+        options:
+            enable-javascript: false
+            dpi: 300
+            use-xserver: false
+            page-size: A4
