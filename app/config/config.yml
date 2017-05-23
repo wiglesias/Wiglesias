@@ -146,10 +146,14 @@ ivory_ck_editor:
 # Recaptcha
 beelab_recaptcha2:
     site_key: "%recaptcha_site_key%"
-    secret: "%recaptcha_secret%"
+    secret:   "%recaptcha_secret%"
 
 knp_snappy:
     pdf:
-        enabled:    true
-        binary:     "%path_wkhtmltopdf%"
-        options:    []
+        enabled: true
+        binary:  "%path_wkhtmltopdf%"
+        options:
+            enable-javascript: false
+            dpi: 300
+            use-xserver: false
+            page-size: A4
