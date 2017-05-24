@@ -15,8 +15,8 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
  * Class PortafolioAdmin
  *
  * @category Admin
- * @package AppBundle\Admin
- * @author Wils Iglesias <wiglesias83@gmail.com>
+ * @package  AppBundle\Admin
+ * @author   Wils Iglesias <wiglesias83@gmail.com>
  */
 class PortafolioAdmin extends AbstractBaseAdmin
 {

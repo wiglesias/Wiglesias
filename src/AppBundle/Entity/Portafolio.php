@@ -18,8 +18,8 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * Portafolio
  *
  * @category Entity
- * @package AppBundle\Entity
- * @author Wils Iglesias <wiglesias83@gmail.com>
+ * @package  AppBundle\Entity
+ * @author   Wils Iglesias <wiglesias83@gmail.com>
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PortafolioRepository")

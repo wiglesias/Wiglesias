@@ -8,8 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
  * Date trait
  *
  * @category Trait
- * @package AppBundle\Entity\Traits
- * @author Wils Iglesias <wiglesias83@gmail.com>
+ * @package  AppBundle\Entity\Traits
+ * @author   Wils Iglesias <wiglesias83@gmail.com>
  */
 Trait DateTrait
 {

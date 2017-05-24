@@ -14,8 +14,8 @@ use FOS\UserBundle\Model\UserManagerInterface;
  * Class UserAdmin
  *
  * @category Admin
- * @package AppBundle\Admin
- * @author Wils Iglesias <wiglesias83@gmail.com>
+ * @package  AppBundle\Admin
+ * @author   Wils Iglesias <wiglesias83@gmail.com>
  */
 class UserAdmin extends ParentUserAdmin
 {
@@ -128,7 +128,8 @@ class UserAdmin extends ParentUserAdmin
                     'expanded' => true,
                 )
             )
-            ->end();
+            ->end()
+        ;
     }
 
     /**
@@ -151,21 +152,14 @@ class UserAdmin extends ParentUserAdmin
                     'label' => 'backend.admin.user.email',
                 )
             )
-//            ->add(
-//                'roles',
-//                'doctrine_orm_string',
-//                array(
-//                    'choice',
-//                    array('choices' => UserRolesEnum::getEnumArray()),
-//                )
-//            )
             ->add(
                 'enabled',
                 null,
                 array(
                     'label' => 'backend.admin.enabled',
                 )
-            );
+            )
+        ;
     }
 
     /**
@@ -217,6 +211,7 @@ class UserAdmin extends ParentUserAdmin
                         'delete' => array('template' => '::Admin/Buttons/list__action_delete_button.html.twig'),
                     ),
                 )
-            );
+            )
+        ;
     }
 }

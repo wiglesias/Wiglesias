@@ -10,8 +10,8 @@ use Sonata\AdminBundle\Form\FormMapper;
  * Class InvoiceLine
  *
  * @category Admin
- * @package AppBundle\Admin
- * @author Wils Iglesias <wiglesias83@gmail.com>
+ * @package  AppBundle\Admin
+ * @author   Wils Iglesias <wiglesias83@gmail.com>
  */
 class InvoiceLine extends AbstractBaseAdmin
 {

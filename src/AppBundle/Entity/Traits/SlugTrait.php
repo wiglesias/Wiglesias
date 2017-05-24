@@ -9,8 +9,8 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * Slug trait
  *
  * @category Trait
- * @package AppBundle\Entity\Traits
- * @author Wils Iglesias <wiglesias83@gmail.com>
+ * @package  AppBundle\Entity\Traits
+ * @author   Wils Iglesias <wiglesias83@gmail.com>
  */
 Trait SlugTrait
 {

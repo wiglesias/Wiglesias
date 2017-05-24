@@ -13,8 +13,8 @@ use Sonata\AdminBundle\Show\ShowMapper;
  * Class TagAdmin
  *
  * @category Admin
- * @package AppBundle\Admin
- * @author Wils Iglesias <wiglesias83@gmail.com>
+ * @package  AppBundle\Admin
+ * @author   Wils Iglesias <wiglesias83@gmail.com>
  */
 class TagAdmin extends AbstractBaseAdmin
 {
@@ -78,7 +78,8 @@ class TagAdmin extends AbstractBaseAdmin
                     'required' => false,
                 )
             )
-            ->end();
+            ->end()
+        ;
     }
 
     /**
@@ -144,7 +145,8 @@ class TagAdmin extends AbstractBaseAdmin
                 array(
                     'label' => 'backend.admin.enabled',
                 )
-            );
+            )
+        ;
     }
 
     /**
@@ -191,6 +193,7 @@ class TagAdmin extends AbstractBaseAdmin
                     ),
                     'label'   => 'backend.admin.actions',
                 )
-            );
+            )
+        ;
     }
 }

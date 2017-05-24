@@ -9,8 +9,8 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * Class Setting
  *
  * @category Entity
- * @package AppBundle\Entity
- * @author Wils Iglesias <wiglesias83@gmail.com>
+ * @package  AppBundle\Entity
+ * @author   Wils Iglesias <wiglesias83@gmail.com>
  *
  * @ORM\Entity(repositoryClass="AppBundle\Repository\SettingRepository")
  * @ORM\Table(name="setting")

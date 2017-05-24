@@ -9,10 +9,10 @@ use Sonata\AdminBundle\Route\RouteCollection;
 use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
 
 /**
- * Class BaseAdmin
+ * Class AbstractBaseAdmin
  *
  * @category Admin
- *
+ * @package  AppBundle\Admin
  * @author   Wils Iglesias <wiglesias83@gmail.com>
  */
 abstract class AbstractBaseAdmin extends AbstractAdmin

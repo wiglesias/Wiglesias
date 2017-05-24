@@ -11,8 +11,8 @@ use Sonata\AdminBundle\Route\RouteCollection;
  * Class InvoiceAdmin
  *
  * @category Admin
- * @package AppBundle\Admin
- * @author Wils Iglesias <wiglesias83@gmail.com>
+ * @package  AppBundle\Admin
+ * @author   Wils Iglesias <wiglesias83@gmail.com>
  */
 class InvoiceAdmin extends AbstractBaseAdmin
 {

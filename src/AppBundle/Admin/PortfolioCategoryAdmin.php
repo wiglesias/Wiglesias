@@ -20,7 +20,7 @@ class PortfolioCategoryAdmin extends AbstractBaseAdmin
     protected $classnameLabel = 'Category';
     protected $baseRoutePattern = 'Portafolio/portfolio-category';
     protected $datagridValues = array(
-        '_sort_by'    => 'title',
+        '_sort_by'    => 'date',
         '_sort_order' => 'asc',
     );
 
@@ -77,7 +77,8 @@ class PortfolioCategoryAdmin extends AbstractBaseAdmin
                 array(
                     'label' => 'backend.admin.enabled',
                 )
-            );
+            )
+        ;
     }
 
     /**
@@ -152,6 +153,7 @@ class PortfolioCategoryAdmin extends AbstractBaseAdmin
                     ),
                     'label'   => 'backend.admin.actions',
                 )
-            );
+            )
+        ;
     }
 }

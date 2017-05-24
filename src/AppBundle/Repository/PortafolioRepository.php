@@ -9,8 +9,8 @@ use Doctrine\ORM\EntityRepository;
  * Class PortafolioRepository
  *
  * @category Repository
- * @package AppBundle\Repository
- * @author Wils Iglesias <wiglesias83@gmail.com>
+ * @package  AppBundle\Repository
+ * @author   Wils Iglesias <wiglesias83@gmail.com>
  */
 class PortafolioRepository extends EntityRepository
 {
