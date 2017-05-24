@@ -2,6 +2,7 @@
 
 namespace AppBundle\Admin;
 
+use AppBundle\Repository\PortfolioCategoryRepository;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -40,12 +41,19 @@ class PortafolioAdmin extends AbstractBaseAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('backend.admin.portafolio.project', $this->getFormMdSuccessBoxArray(8))
+            ->with('General', $this->getFormMdSuccessBoxArray(8))
             ->add(
                 'title',
                 null,
                 array(
                     'label' => 'backend.admin.portafolio.project',
+                )
+            )
+            ->add(
+                'shortDescription',
+                null,
+                array(
+                    'label' => 'Breve descripción',
                 )
             )
             ->add(
@@ -75,6 +83,17 @@ class PortafolioAdmin extends AbstractBaseAdmin
                     'label'    => 'backend.admin.portafolio.date',
                     'format'   => 'd/M/y',
                     'required' => true,
+                )
+            )
+            ->add(
+                'categories',
+                null,
+                array(
+                    'label' => 'Categoría',
+                    'required' => true,
+                    'query_builder' => function(PortfolioCategoryRepository $repository) {
+                        return $repository->findEnabledSortedByTitleQB();
+                    },
                 )
             )
             ->add(
@@ -117,6 +136,13 @@ class PortafolioAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
+                'categories',
+                null,
+                array(
+                    'label' => 'Categorías',
+                )
+            )
+            ->add(
                 'enabled',
                 null,
                 array(
@@ -155,6 +181,14 @@ class PortafolioAdmin extends AbstractBaseAdmin
                 null,
                 array(
                     'label' => 'backend.admin.portafolio.project',
+                    'editable' => true,
+                )
+            )
+            ->add(
+                'categories',
+                null,
+                array(
+                    'label' => 'Categorías',
                     'editable' => true,
                 )
             )

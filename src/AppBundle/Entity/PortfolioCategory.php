@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @category Entity
  * @package  AppBundle\Entity
  * @author   Wils Iglesias <wiglesias83@gmail.com>
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\PortfolioCategoryRepository")
  * @ORM\Table(name="portfolio_category")
  */
 class PortfolioCategory extends AbstractBase
