@@ -4,7 +4,6 @@ namespace AppBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
-use Doctrine\ORM\Query;
 
 /**
  * Class PortfolioCategoryRepository
@@ -18,28 +17,39 @@ class PortfolioCategoryRepository extends EntityRepository
     /**
      * @return QueryBuilder
      */
-    public function findEnabledSortedByTitleQB()
+    public function getAllSortedByTitleQB()
     {
-        return $this->createQueryBuilder('pc')
-            ->join('pc.portfolios', 'p')
-            ->where('pc.enabled = :enabled')
-            ->setParameter('enabled', true)
-            ->orderBy('pc.title', 'ASC');
-    }
-
-    /**
-     * @return Query
-     */
-    public function findEnabledSortedByTitleQ()
-    {
-        return $this->findEnabledSortedByTitleQB()->getQuery();
+        return $this->createQueryBuilder('c')
+            ->orderBy('c.title', 'ASC');
     }
 
     /**
      * @return array
      */
-    public function findEnabledSortedByTitle()
+    public function getAllEnabledSortedByTitle()
     {
-        return $this->findEnabledSortedByTitleQ()->getResult();
+        $query = $this->createQueryBuilder('c')
+            ->where('c.enabled = :enabled')
+            ->setParameter('enabled', true)
+            ->orderBy('c.title', 'ASC')
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
+    /**
+     * @return array
+     */
+    public function getAllEnabledSortedByTitleWithJoin()
+    {
+        $query = $this->createQueryBuilder('c')
+            ->select('c, p')
+            ->join('c.portfolios', 'p')
+            ->where('c.enabled = :enabled')
+            ->setParameter('enabled', true)
+            ->orderBy('c.title', 'ASC')
+            ->getQuery();
+
+        return $query->getResult();
     }
 }

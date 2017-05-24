@@ -3,10 +3,13 @@
 namespace AppBundle\Admin;
 
 use AppBundle\Repository\PortfolioCategoryRepository;
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 /**
  * Class PortafolioAdmin
@@ -58,7 +61,7 @@ class PortafolioAdmin extends AbstractBaseAdmin
             )
             ->add(
                 'description',
-                'ckeditor',
+                CKEditorType::class,
                 array(
                     'label'       => 'backend.admin.portafolio.description',
                     'config_name' => 'my_config',
@@ -67,7 +70,7 @@ class PortafolioAdmin extends AbstractBaseAdmin
             )
             ->add(
                 'imageFile',
-                'file',
+                FileType::class,
                 array(
                     'label'    => 'backend.admin.portafolio.image',
                     'help'     => $this->getImageHelperFormMapperWithThumbnail(),
@@ -92,13 +95,13 @@ class PortafolioAdmin extends AbstractBaseAdmin
                     'label' => 'Categoría',
                     'required' => true,
                     'query_builder' => function (PortfolioCategoryRepository $repository) {
-                        return $repository->findEnabledSortedByTitleQB();
+                        return $repository->getAllSortedByTitleQB();
                     },
                 )
             )
             ->add(
                 'enabled',
-                'checkbox',
+                CheckboxType::class,
                 array(
                     'label'    => 'backend.admin.enabled',
                     'required' => false,
