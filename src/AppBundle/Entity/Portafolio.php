@@ -6,6 +6,7 @@ use AppBundle\Entity\Traits\DateTrait;
 use AppBundle\Entity\Traits\DescriptionTrait;
 use AppBundle\Entity\Traits\SlugTrait;
 use AppBundle\Entity\Traits\TitleTrait;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -41,6 +42,13 @@ class Portafolio extends AbstractBase
     private $shortDescription;
 
     /**
+     * @var ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\PortfolioCategory", inversedBy="portfolios")
+     */
+    private $categories;
+
+    /**
      * @var File
      *
      * @Vich\UploadableField(mapping="portafolio", fileNameProperty="imageName")
@@ -68,6 +76,14 @@ class Portafolio extends AbstractBase
      */
 
     /**
+     * Portafolio constructor.
+     */
+    public function __construct()
+    {
+        $this->categories = new ArrayCollection();
+    }
+
+    /**
      * @return string
      */
     public function getShortDescription()
@@ -83,6 +99,50 @@ class Portafolio extends AbstractBase
     public function setShortDescription($shortDescription)
     {
         $this->shortDescription = $shortDescription;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
+
+    /**
+     * @param mixed $categories
+     *
+     * @return Portafolio
+     */
+    public function setCategories($categories)
+    {
+        $this->categories = $categories;
+
+        return $this;
+    }
+
+    /**
+     * @param PortfolioCategory $category
+     *
+     * @return $this
+     */
+    public function addCategory(PortfolioCategory $category)
+    {
+        $this->categories->add($category);
+
+        return $this;
+    }
+
+    /**
+     * @param PortfolioCategory $category
+     *
+     * @return $this
+     */
+    public function removeCategory(PortfolioCategory $category)
+    {
+        $this->categories->removeElement($category);
 
         return $this;
     }
