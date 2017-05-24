@@ -3,8 +3,6 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\ContactMessage;
-use AppBundle\Entity\Customer;
-use AppBundle\Entity\Invoice;
 use AppBundle\Form\Type\ContactMessageType;
 use AppBundle\Service\NotificationService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
