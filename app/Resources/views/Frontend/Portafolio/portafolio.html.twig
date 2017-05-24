@@ -67,9 +67,9 @@
                                     <h2>{{ portfolio.title }}</h2>
                                     <p class="item-intro text-muted">{{ portfolio.shortDescription }}</p>
                                     {% if portfolio.imageName is not null %}
-                                        <img class="img-responsive img-centered" src="{{ vich_uploader_asset(portfolio, 'imageFile') | imagine_filter('600x450') }}" alt="{{ portafolio.imageName }}">
+                                        <img class="img-responsive img-centered" src="{{ vich_uploader_asset(portfolio, 'imageFile') | imagine_filter('720x520') }}" alt="{{ portafolio.imageName }}">
                                     {% else %}
-                                        <img class="img-responsive img-centered" src="{{ asset('bundles/app/img/default-portfolio.jpg') | imagine_filter('600x450') }}" alt="default site image">
+                                        <img class="img-responsive img-centered" src="{{ asset('bundles/app/img/default-portfolio.jpg') | imagine_filter('720x520') }}" alt="default site image">
                                     {% endif %}
                                     <p>{{ portfolio.description | raw }}</p>
                                     <ul class="list-inline">
