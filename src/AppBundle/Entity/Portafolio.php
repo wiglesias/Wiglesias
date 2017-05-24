@@ -34,6 +34,13 @@ class Portafolio extends AbstractBase
     use SlugTrait;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $shortDescription;
+
+    /**
      * @var File
      *
      * @Vich\UploadableField(mapping="portafolio", fileNameProperty="imageName")
@@ -59,6 +66,26 @@ class Portafolio extends AbstractBase
      *
      *
      */
+
+    /**
+     * @return string
+     */
+    public function getShortDescription()
+    {
+        return $this->shortDescription;
+    }
+
+    /**
+     * @param string $shortDescription
+     *
+     * @return Portafolio
+     */
+    public function setShortDescription($shortDescription)
+    {
+        $this->shortDescription = $shortDescription;
+
+        return $this;
+    }
 
     /**
      * Get slug
