@@ -91,7 +91,7 @@ class PortafolioAdmin extends AbstractBaseAdmin
                 array(
                     'label' => 'Categoría',
                     'required' => true,
-                    'query_builder' => function(PortfolioCategoryRepository $repository) {
+                    'query_builder' => function (PortfolioCategoryRepository $repository) {
                         return $repository->findEnabledSortedByTitleQB();
                     },
                 )

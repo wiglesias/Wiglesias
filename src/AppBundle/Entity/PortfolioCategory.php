@@ -64,6 +64,7 @@ class PortfolioCategory extends AbstractBase
 
     /**
      * @param Portafolio $portafolio
+     *
      * @return $this
      */
     public function addPortfolio(Portafolio $portafolio)
@@ -85,6 +86,9 @@ class PortfolioCategory extends AbstractBase
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return $this->getTitle() ? $this->getTitle() : '---';
