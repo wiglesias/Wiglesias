@@ -6,20 +6,20 @@ use AppBundle\Entity\Traits\DateTrait;
 use AppBundle\Entity\Traits\DescriptionTrait;
 use AppBundle\Entity\Traits\SlugTrait;
 use AppBundle\Entity\Traits\TitleTrait;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
-use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Portafolio
  *
  * @category Entity
- * @package AppBundle\Entity
- * @author Wils Iglesias <wiglesias83@gmail.com>
+ * @package  AppBundle\Entity
+ * @author   Wils Iglesias <wiglesias83@gmail.com>
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PortafolioRepository")
@@ -32,6 +32,20 @@ class Portafolio extends AbstractBase
     use DescriptionTrait;
     use DateTrait;
     use SlugTrait;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $shortDescription;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\PortfolioCategory", inversedBy="portfolios")
+     */
+    private $categories;
 
     /**
      * @var File
@@ -59,6 +73,78 @@ class Portafolio extends AbstractBase
      *
      *
      */
+
+    /**
+     * Portafolio constructor.
+     */
+    public function __construct()
+    {
+        $this->categories = new ArrayCollection();
+    }
+
+    /**
+     * @return string
+     */
+    public function getShortDescription()
+    {
+        return $this->shortDescription;
+    }
+
+    /**
+     * @param string $shortDescription
+     *
+     * @return Portafolio
+     */
+    public function setShortDescription($shortDescription)
+    {
+        $this->shortDescription = $shortDescription;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
+
+    /**
+     * @param mixed $categories
+     *
+     * @return Portafolio
+     */
+    public function setCategories($categories)
+    {
+        $this->categories = $categories;
+
+        return $this;
+    }
+
+    /**
+     * @param PortfolioCategory $category
+     *
+     * @return $this
+     */
+    public function addCategory(PortfolioCategory $category)
+    {
+        $this->categories->add($category);
+
+        return $this;
+    }
+
+    /**
+     * @param PortfolioCategory $category
+     *
+     * @return $this
+     */
+    public function removeCategory(PortfolioCategory $category)
+    {
+        $this->categories->removeElement($category);
+
+        return $this;
+    }
 
     /**
      * Get slug

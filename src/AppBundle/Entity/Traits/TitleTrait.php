@@ -8,8 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
  * Title Trait
  *
  * @category trait
- * @package AppBundle\Entity\Traits
- * @author wils Iglesias <wiglesias83@gmail.com>
+ * @package  AppBundle\Entity\Traits
+ * @author   Wils Iglesias <wiglesias83@gmail.com>
  */
 Trait TitleTrait
 {

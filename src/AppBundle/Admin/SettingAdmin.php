@@ -10,8 +10,8 @@ use Sonata\AdminBundle\Form\FormMapper;
  * Class SettingAdmin
  *
  * @category Admin
- * @package AppBundle\Admin
- * @author Wils Iglesias <wiglesias83@gmail.com>
+ * @package  AppBundle\Admin
+ * @author   Wils Iglesias <wiglesias83@gmail.com>
  */
 class SettingAdmin extends AbstractBaseAdmin
 {
@@ -178,7 +178,8 @@ class SettingAdmin extends AbstractBaseAdmin
                 array(
                     'label' => 'Email',
                 )
-            );
+            )
+        ;
     }
 
     /**

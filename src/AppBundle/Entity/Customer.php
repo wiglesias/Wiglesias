@@ -12,8 +12,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Class Customer
  *
  * @category Entity
- * @package AppBundle\Entity
- * @author Wils Iglesias <wiglesias83@gmail.com>
+ * @package  AppBundle\Entity
+ * @author   Wils Iglesias <wiglesias83@gmail.com>
  *
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CustomerRepository")
  * @ORM\Table(name="customer")

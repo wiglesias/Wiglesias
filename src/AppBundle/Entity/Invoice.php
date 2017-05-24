@@ -9,8 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
  * Class Invoice
  *
  * @category Entity
- * @package AppBundle\Entity
- * @author Wils Iglesias <wiglesias83@gmail.com>
+ * @package  AppBundle\Entity
+ * @author   Wils Iglesias <wiglesias83@gmail.com>
  *
  * @ORM\Entity
  * @ORM\Table(name="invoice")

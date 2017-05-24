@@ -13,26 +13,35 @@
                 </div>
             </div>
             <div class="row">
-                {% for portfolio in allPortafolios %}
-                    <div class="col-md-4 col-sm-6 portfolio-item">
-                        <a href="#{{ portfolio.slug }}" class="portfolio-link" data-toggle="modal">
-                            <div class="portfolio-hover">
-                                <div class="portfolio-hover-content">
-                                    <i class="fa fa-plus fa-3x"></i>
+                {%  if pagination.getTotalItemCount > 0 %}
+                    {% for portfolio in pagination %}
+                        <div class="col-md-4 col-sm-6 portfolio-item">
+                            <a href="#{{ portfolio.slug }}" class="portfolio-link" data-toggle="modal">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content">
+                                        <i class="fa fa-plus fa-3x"></i>
+                                    </div>
                                 </div>
+                                {% if portfolio.imageName is not null %}
+                                    <img class="img-responsive img-centered" src="{{ vich_uploader_asset(portfolio, 'imageFile') | imagine_filter('600x450') }}" alt="{{ portfolio.imageName }}">
+                                {% else %}
+                                    <img class="img-responsive img-centered" src="{{ asset('bundles/app/img/default-portfolio.jpg') | imagine_filter('600x450') }}" alt="default site image">
+                                {% endif %}
+                            </a>
+                            <div class="portfolio-caption">
+                                <h4>{{ portfolio.title }}</h4>
+                                {% for category in categories %}
+                                    <p class="text-muted">{{ category.title }}</p>
+                                {% endfor %}
                             </div>
-                            {% if portfolio.imageName is not null %}
-                                <img class="img-responsive img-centered" src="{{ vich_uploader_asset(portfolio, 'imageFile') | imagine_filter('600x450') }}" alt="{{ portfolio.imageName }}">
-                            {% else %}
-                                <img class="img-responsive img-centered" src="{{ asset('bundles/app/img/default-portfolio.jpg') | imagine_filter('600x450') }}" alt="default site image">
-                            {% endif %}
-                        </a>
-                        <div class="portfolio-caption">
-                            <h4>{{ portfolio.title }}</h4>
-                            <p class="text-muted">Desarrollo Web</p>
                         </div>
-                    </div>
-                {% endfor %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    {{ knp_pagination_render(pagination) }}
+                </div>
             </div>
         </div>
     </section>
@@ -41,8 +50,8 @@
     {#<!-- Use the modals below to showcase details about your portfolio projects! -->#}
 
     {#<!-- Portfolio Modal 1 -->#}
-    {% for portafolio in allPortafolios %}
-        <div class="portfolio-modal modal fade" id="{{ portafolio.slug }}" tabindex="-1" role="dialog" aria-hidden="true">
+    {% for portfolio in pagination %}
+        <div class="portfolio-modal modal fade" id="{{ portfolio.slug }}" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="close-modal" data-dismiss="modal">
@@ -55,18 +64,20 @@
                             <div class="col-xs-8 col-lg-offset-2">
                                 <div class="modal-body">
                                     {#<!-- Project Details Go Here -->#}
-                                    <h2>{{ portafolio.title }}</h2>
-                                    <p class="item-intro text-muted">Introducción al proyecto</p>
-                                    {% if portafolio.imageName is not null %}
-                                        <img class="img-responsive img-centered" src="{{ vich_uploader_asset(portafolio, 'imageFile') | imagine_filter('600x450') }}" alt="{{ portafolio.imageName }}">
+                                    <h2>{{ portfolio.title }}</h2>
+                                    <p class="item-intro text-muted">{{ portfolio.shortDescription }}</p>
+                                    {% if portfolio.imageName is not null %}
+                                        <img class="img-responsive img-centered" src="{{ vich_uploader_asset(portfolio, 'imageFile') | imagine_filter('720x520') }}" alt="{{ portafolio.imageName }}">
                                     {% else %}
-                                        <img class="img-responsive img-centered" src="{{ asset('bundles/app/img/default-portfolio.jpg') | imagine_filter('600x450') }}" alt="default site image">
+                                        <img class="img-responsive img-centered" src="{{ asset('bundles/app/img/default-portfolio.jpg') | imagine_filter('720x520') }}" alt="default site image">
                                     {% endif %}
-                                    <p>{{ portafolio.description | raw }}</p>
+                                    <p>{{ portfolio.description | raw }}</p>
                                     <ul class="list-inline">
-                                        <li>Date: {{ portafolio.date | date('m/Y') }}</li>
-                                        <li>Client: {{ portafolio.title }}</li>
-                                        <li>Category: Desarrollo web</li>
+                                        <li>Date: {{ portfolio.date | date('m/Y') }}</li>
+                                        <li>Client: {{ portfolio.title }}</li>
+                                        {% for category in categories %}
+                                            <li>Category: {{ category.title }}</li>
+                                        {% endfor %}
                                     </ul>
                                     <button type="button" class="btn btn-primary btn-wi" data-dismiss="modal"><i class="fa fa-times"></i> Cerrar</button>
                                 </div>

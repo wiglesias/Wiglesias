@@ -15,10 +15,31 @@ AppBundle\Entity\ContactMessage:
 
 # Portafolio
 AppBundle\Entity\Portafolio:
-  portafolio{1..2}:
-    title: <sentence()>
+  portafolio1:
+    title: my title
+    shortDescription: <sentence()>
     description: <paragraph()>
     date: <dateTimeThisMonth()>
+    categories: [ @categoryportfolio1 ]
+  portafolio2:
+    title: <sentence()>
+    shortDescription: <sentence()>
+    description: <paragraph()>
+    date: <dateTimeThisMonth()>
+    categories: [ @categoryportfolio1 ]
+
+# PortfolioCategory
+AppBundle\Entity\PortfolioCategory:
+  categoryportfolio1:
+    title: my category
+    createdAt: <dateTimeBetween('-2 months', '-1 months')>
+    updatedAt: <dateTimeThisMonth()>
+    enabled: <boolean(70)>
+  categoryportfolio2:
+    title: <sentence()>
+    createdAt: <dateTimeBetween('-2 months', '-1 months')>
+    updatedAt: <dateTimeThisMonth()>
+    enabled: <boolean(70)>
 
 # Posts
 AppBundle\Entity\Post:

@@ -10,8 +10,8 @@ use Sonata\AdminBundle\Form\FormMapper;
  * Class CustomerAdmin
  *
  * @category Admin
- * @package AppBundle\Admin
- * @author Wils Iglesias <wiglesias83@gmail.com>
+ * @package  AppBundle\Admin
+ * @author   Wils Iglesias <wiglesias83@gmail.com>
  */
 class CustomerAdmin extends AbstractBaseAdmin
 {

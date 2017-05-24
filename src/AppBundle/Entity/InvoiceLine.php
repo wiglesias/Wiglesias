@@ -8,8 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
  * Class InvoiceLine
  *
  * @category Entity
- * @package AppBundle\Entity
- * @author Wils Iglesias <wiglesias83@gmail.com>
+ * @package  AppBundle\Entity
+ * @author   Wils Iglesias <wiglesias83@gmail.com>
  *
  * @ORM\Entity
  * @ORM\Table(name="invoice_line")

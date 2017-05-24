@@ -2,17 +2,21 @@
 
 namespace AppBundle\Admin;
 
+use AppBundle\Repository\PortfolioCategoryRepository;
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 /**
  * Class PortafolioAdmin
  *
  * @category Admin
- * @package AppBundle\Admin
- * @author Wils Iglesias <wiglesias83@gmail.com>
+ * @package  AppBundle\Admin
+ * @author   Wils Iglesias <wiglesias83@gmail.com>
  */
 class PortafolioAdmin extends AbstractBaseAdmin
 {
@@ -40,7 +44,7 @@ class PortafolioAdmin extends AbstractBaseAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('backend.admin.portafolio.project', $this->getFormMdSuccessBoxArray(8))
+            ->with('General', $this->getFormMdSuccessBoxArray(8))
             ->add(
                 'title',
                 null,
@@ -49,8 +53,15 @@ class PortafolioAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
+                'shortDescription',
+                null,
+                array(
+                    'label' => 'Breve descripción',
+                )
+            )
+            ->add(
                 'description',
-                'ckeditor',
+                CKEditorType::class,
                 array(
                     'label'       => 'backend.admin.portafolio.description',
                     'config_name' => 'my_config',
@@ -59,7 +70,7 @@ class PortafolioAdmin extends AbstractBaseAdmin
             )
             ->add(
                 'imageFile',
-                'file',
+                FileType::class,
                 array(
                     'label'    => 'backend.admin.portafolio.image',
                     'help'     => $this->getImageHelperFormMapperWithThumbnail(),
@@ -78,8 +89,19 @@ class PortafolioAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
+                'categories',
+                null,
+                array(
+                    'label' => 'Categoría',
+                    'required' => true,
+                    'query_builder' => function (PortfolioCategoryRepository $repository) {
+                        return $repository->getAllSortedByTitleQB();
+                    },
+                )
+            )
+            ->add(
                 'enabled',
-                'checkbox',
+                CheckboxType::class,
                 array(
                     'label'    => 'backend.admin.enabled',
                     'required' => false,
@@ -114,6 +136,13 @@ class PortafolioAdmin extends AbstractBaseAdmin
                 null,
                 array(
                     'label' => 'backend.admin.portafolio.description',
+                )
+            )
+            ->add(
+                'categories',
+                null,
+                array(
+                    'label' => 'Categorías',
                 )
             )
             ->add(
@@ -155,6 +184,14 @@ class PortafolioAdmin extends AbstractBaseAdmin
                 null,
                 array(
                     'label' => 'backend.admin.portafolio.project',
+                    'editable' => true,
+                )
+            )
+            ->add(
+                'categories',
+                null,
+                array(
+                    'label' => 'Categorías',
                     'editable' => true,
                 )
             )

@@ -2,57 +2,27 @@
 
 namespace AppBundle\Admin;
 
-use Doctrine\ORM\QueryBuilder;
+use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
-use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 /**
- * Class TagAdmin
+ * Class PortfolioCategoryAdmin
  *
  * @category Admin
  * @package  AppBundle\Admin
  * @author   Wils Iglesias <wiglesias83@gmail.com>
  */
-class TagAdmin extends AbstractBaseAdmin
+class PortfolioCategoryAdmin extends AbstractBaseAdmin
 {
-    protected $classnameLabel = 'Etiqueta';
-    protected $baseRoutePattern = 'web/tag';
+    protected $classnameLabel = 'Category';
+    protected $baseRoutePattern = 'Portafolio/portfolio-category';
     protected $datagridValues = array(
-        '_sort_by'    => 'title',
+        '_sort_by'    => 'date',
         '_sort_order' => 'asc',
     );
-
-    /**
-     * Configure route collection
-     *
-     * @param RouteCollection $collection
-     */
-    protected function configureRoutes(RouteCollection $collection)
-    {
-        $collection
-            ->remove('batch');
-    }
-
-    /**
-     * Override query list to reduce queries amount on list view (apply join strategy)
-     *
-     * @param string $context context
-     *
-     * @return QueryBuilder
-     */
-    public function createQuery($context = 'list')
-    {
-        /** @var QueryBuilder $query */
-        $query = parent::createQuery($context);
-        $query
-            ->select($query->getRootAliases()[0] . ', p')
-            ->leftJoin($query->getRootAliases()[0] . '.posts', 'p');
-
-        return $query;
-    }
 
     /**
      * @param FormMapper $formMapper
@@ -65,21 +35,20 @@ class TagAdmin extends AbstractBaseAdmin
                 'title',
                 null,
                 array(
-                    'label' => 'backend.admin.tag.title',
+                    'label' => 'Título',
                 )
             )
             ->end()
             ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(6))
             ->add(
                 'enabled',
-                'checkbox',
+                CheckboxType::class,
                 array(
                     'label'    => 'backend.admin.enabled',
                     'required' => false,
                 )
             )
-            ->end()
-        ;
+            ->end();
     }
 
     /**
@@ -92,14 +61,14 @@ class TagAdmin extends AbstractBaseAdmin
                 'title',
                 null,
                 array(
-                    'label' => 'backend.admin.tag.title',
+                    'label' => 'Título',
                 )
             )
             ->add(
-                'posts',
+                'portfolios',
                 null,
                 array(
-                    'label'    => 'backend.admin.tag.posts',
+                    'label'    => 'Portafolio',
                 )
             )
             ->add(
@@ -108,7 +77,8 @@ class TagAdmin extends AbstractBaseAdmin
                 array(
                     'label' => 'backend.admin.enabled',
                 )
-            );
+            )
+        ;
     }
 
     /**
@@ -129,14 +99,14 @@ class TagAdmin extends AbstractBaseAdmin
                 'title',
                 null,
                 array(
-                    'label' => 'backend.admin.tag.title',
+                    'label' => 'Título',
                 )
             )
             ->add(
-                'posts',
+                'portfolios',
                 null,
                 array(
-                    'label' => 'backend.admin.tag.posts',
+                    'label' => 'portafolio',
                 )
             )
             ->add(
@@ -160,16 +130,8 @@ class TagAdmin extends AbstractBaseAdmin
                 'title',
                 null,
                 array(
-                    'label'    => 'backend.admin.tag.title',
+                    'label'    => 'Título',
                     'editable' => true,
-                )
-            )
-            ->add(
-                'count',
-                null,
-                array(
-                    'label'    => 'backend.admin.tag.posts_amount',
-                    'template' => '::Admin/Cells/list__cell_posts_amount_field.html.twig',
                 )
             )
             ->add(
@@ -185,9 +147,7 @@ class TagAdmin extends AbstractBaseAdmin
                 'actions',
                 array(
                     'actions' => array(
-                        'show'   => array(
-                            'template' => '::Admin/Buttons/list__action_show_button.html.twig'
-                        ),
+                        'show'   => array('template' => '::Admin/Buttons/list__action_show_button.html.twig'),
                         'edit'   => array('template' => '::Admin/Buttons/list__action_edit_button.html.twig'),
                         'delete' => array('template' => '::Admin/Buttons/list__action_delete_button.html.twig'),
                     ),

@@ -1,0 +1,10 @@
+services:
+    app.portfolio_category_repository:
+        class: AppBundle\Repository\PortfolioCategoryRepository
+        factory: [ "@doctrine", getRepository ]
+        arguments:
+            - AppBundle:PortfolioCategory
+    app.repositories_manager:
+        class: AppBundle\Manager\RepositoriesManager
+        arguments:
+            - "@app.portfolio_category_repository"

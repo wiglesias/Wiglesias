@@ -79,14 +79,14 @@ class FrontendMenuBuilder
                 'current' => $route == 'front_about',
             )
         );
-//        $menu->addChild(
-//            'front_portafolio',
-//            array(
-//                'label' => 'frontend.menu.portafolio',
-//                'route'   => 'front_portafolio',
-//                'current' => $route == 'front_portafolio',
-//            )
-//        );
+        $menu->addChild(
+            'front_portafolio',
+            array(
+                'label' => 'frontend.menu.portafolio',
+                'route'   => 'front_portafolio',
+                'current' => $route == 'front_portafolio',
+            )
+        );
         $menu->addChild(
             'front_blog',
             array(
