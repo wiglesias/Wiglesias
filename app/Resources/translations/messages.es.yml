@@ -1,9 +1,9 @@
 frontend:
     menu:
-        about: SOBRE MÍ
-        portafolio: PORTAFOLIO
-        blog: BLOG
-        contact: CONTACTO
+        about: Sobre mí
+        portafolio: Portafolio
+        blog: Blog
+        contact: Contacto
         cms: "[ CMS ]"
     forms:
         name: "Nombre *"
