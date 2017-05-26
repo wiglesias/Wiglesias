@@ -104,11 +104,12 @@ class SitemapListener implements SitemapListenerInterface
             $event
                 ->getUrlContainer()
                 ->addUrl($this->makeUrlConcrete($url, 1, $lastUpdatedAtDate), 'default');
-            // Contact
+            // Contact view
             $url = $this->makeUrl('front_contact');
             $event
                 ->getUrlContainer()
                 ->addUrl($this->makeUrlConcrete($url, 1), 'default');
+            // Credit view
             $url = $this->makeUrl('front_credits');
             $event
                 ->getUrlContainer()
