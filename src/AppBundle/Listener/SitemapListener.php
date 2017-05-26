@@ -16,7 +16,7 @@ use Symfony\Component\Routing\RouterInterface;
  *
  * @category Listener
  * @package  AppBundle\Listener
- * @author   Anton Serra <aserratorta@gmail.com>
+ * @author   Wils Iglesias <wiglesias83@gmail.com>
  */
 class SitemapListener implements SitemapListenerInterface
 {
@@ -67,27 +67,19 @@ class SitemapListener implements SitemapListenerInterface
             $url = $this->makeUrl('front_homepage');
             $event
                 ->getUrlContainer()
-                ->addUrl($this->makeUrlConcrete($url), 'default');
+                ->addUrl($this->makeUrlConcrete($url, 1), 'default');
+            // About-me view
             $url = $this->makeUrl('front_about');
             $event
                 ->getUrlContainer()
-                ->addUrl($this->makeUrlConcrete($url), 'default');
+                ->addUrl($this->makeUrlConcrete($url, 1), 'default');
+            // Portfolio view
             $url = $this->makeUrl('front_portafolio');
             $event
                 ->getUrlContainer()
-                ->addUrl($this->makeUrlConcrete($url), 'default');
-            $url = $this->makeUrl('front_blog');
-            $event
-                ->getUrlContainer()
-                ->addUrl($this->makeUrlConcrete($url), 'default');
-            $url = $this->makeUrl('front_contact');
-            $event
-                ->getUrlContainer()
-                ->addUrl($this->makeUrlConcrete($url), 'default');
-            $url = $this->makeUrl('front_credits');
-            $event
-                ->getUrlContainer()
-                ->addUrl($this->makeUrlConcrete($url), 'default');
+                ->addUrl($this->makeUrlConcrete($url, 1), 'default');
+            // Posts detail view list
+            $lastUpdatedAtDate = \DateTime::createFromFormat('d-m-Y', '01-01-2000');
             /** @var Post $post */
             foreach ($this->posts as $post) {
                 $url = $this->router->generate(
@@ -103,7 +95,25 @@ class SitemapListener implements SitemapListenerInterface
                 $event
                     ->getUrlContainer()
                     ->addUrl($this->makeUrlConcrete($url, 0.8, $post->getUpdatedAt()), 'default');
+                if ($post->getUpdatedAt() > $lastUpdatedAtDate) {
+                    $lastUpdatedAtDate = $post->getUpdatedAt();
+                }
             }
+            // Blog main view
+            $url = $this->makeUrl('front_blog');
+            $event
+                ->getUrlContainer()
+                ->addUrl($this->makeUrlConcrete($url, 1, $lastUpdatedAtDate), 'default');
+            // Contact view
+            $url = $this->makeUrl('front_contact');
+            $event
+                ->getUrlContainer()
+                ->addUrl($this->makeUrlConcrete($url, 1), 'default');
+            // Credit view
+            $url = $this->makeUrl('front_credits');
+            $event
+                ->getUrlContainer()
+                ->addUrl($this->makeUrlConcrete($url, 0.5), 'default');
         }
     }
 
