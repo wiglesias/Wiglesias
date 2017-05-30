@@ -120,6 +120,9 @@ fos_user:
         group_manager: sonata.user.orm.group_manager
     service:
         user_manager: sonata.user.orm.user_manager
+    from_email:
+        address:     "%private_admin_prod_email%"
+        sender_name: "%private_admin_prod_firstname%"
 
 # Swiftmailer Configuration
 swiftmailer:
