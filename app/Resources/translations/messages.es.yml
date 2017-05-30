@@ -25,7 +25,7 @@ backend:
         published_date: Fecha de publicación
         contact:
             name: Nombre
-            email: Correu electronico
+            email: Email
             checked: Leido
             date: Fecha
             subject: Tema
