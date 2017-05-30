@@ -4,7 +4,6 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\ContactMessage;
 use AppBundle\Form\Type\ContactMessageType;
-use AppBundle\Service\NotificationService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,8 +26,6 @@ class DefaultController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            /** @var NotificationService $messenger */
-            $messenger = $this->get('app.notification');
             // Set frontend flash message
             $this->addFlash(
                 'notice',
@@ -39,10 +36,14 @@ class DefaultController extends Controller
             $em->persist($contact);
             $em->flush();
             // Send email notifications
+            $messenger = $this->get('app.notification');
             $messenger->sendCommonUserNotification($contact);
             $messenger->sendCommonAdminNotification($contact);
-            // Clean up new form
-            $form = $this->createForm(ContactMessageType::class);
+            // Clean up new form in production environment
+            if ($this->get('kernel')->getEnvironment() == 'prod') {
+                $contact = new ContactMessage();
+                $form = $this->createForm(ContactMessageType::class, $contact);
+            }
         }
 
         return $this->render(':Frontend:homepage.html.twig', array(
@@ -82,13 +83,14 @@ class DefaultController extends Controller
             $em->persist($contactMessage);
             $em->flush();
             // Send email notifications
-            /** @var NotificationService $messenger */
             $messenger = $this->get('app.notification');
             $messenger->sendCommonUserNotification($contactMessage);
             $messenger->sendContactAdminNotification($contactMessage);
-            // Clean up new form
-            $contactMessage = new ContactMessage();
-            $form = $this->createForm(ContactMessageType::class, $contactMessage);
+            // Clean up new form in production environment
+            if ($this->get('kernel')->getEnvironment() == 'prod') {
+                $contactMessage = new ContactMessage();
+                $form = $this->createForm(ContactMessageType::class, $contactMessage);
+            }
         }
 
         return $this->render(':Frontend:contact.html.twig', array(
