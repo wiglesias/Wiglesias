@@ -13,16 +13,18 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-4 col-md-6">
-                </div>
-                <div class="col-sm-8 col-md-6">
-                    {% include ':Frontend/includes:notice_flash.html.twig' %}
+                <div class="col-md-12">
                     {{ form_start(formContact) }}
-                    {{ form_row(formContact.name) }}
-                    {{ form_row(formContact.phone) }}
-                    {{ form_row(formContact.email) }}
-                    {{ form_row(formContact.message) }}
-                    {{ form_rest(formContact) }}
+                        <div class="col-sm-4 col-md-6">
+                            {{ form_row(formContact.name) }}
+                            {{ form_row(formContact.phone) }}
+                            {{ form_row(formContact.email) }}
+                        </div>
+                        <div class="col-sm-8 col-md-6">
+                            {% include ':Frontend/includes:notice_flash.html.twig' %}
+                            {{ form_row(formContact.message) }}
+                            {{ form_rest(formContact) }}
+                        </div>
                     {{ form_end(formContact) }}
                 </div>
             </div>
