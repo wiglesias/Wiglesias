@@ -87,14 +87,14 @@ class FrontendMenuBuilder
                 'current' => $route == 'front_portafolio',
             )
         );
-        $menu->addChild(
-            'front_blog',
-            array(
-                'label' => 'frontend.menu.blog',
-                'route' => 'front_blog',
-                'current' => $route == 'front_blog' || $route == 'front_blog_detail' || $route == 'front_blog_tag_detail',
-            )
-        );
+//        $menu->addChild(
+//            'front_blog',
+//            array(
+//                'label' => 'frontend.menu.blog',
+//                'route' => 'front_blog',
+//                'current' => $route == 'front_blog' || $route == 'front_blog_detail' || $route == 'front_blog_tag_detail',
+//            )
+//        );
         $menu->addChild(
             'front_contact',
             array(
