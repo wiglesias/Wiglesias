@@ -5,6 +5,7 @@ namespace AppBundle\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 /**
  * Class CustomerAdmin
@@ -65,26 +66,13 @@ class CustomerAdmin extends AbstractBaseAdmin
             )
             ->add(
                 'city',
-                null,
+                EntityType::class,
                 array(
                     'label' => 'backend.admin.customer.city',
                     'required' => true,
-                )
-            )
-            ->add(
-                'province',
-                null,
-                array(
-                    'label' => 'backend.admin.customer.province',
-                    'required' => true,
-                )
-            )
-            ->add(
-                'postalCode',
-                null,
-                array(
-                    'label' => 'backend.admin.customer.postalCode',
-                    'required' => true,
+                    'class' => 'AppBundle:City',
+                    'choice_label' => 'name',
+                    'query_builder' => $this->getConfigurationPool()->getContainer()->get('app.city_repository')->getEnabledSortedByNameQB(),
                 )
             )
             ->add(
