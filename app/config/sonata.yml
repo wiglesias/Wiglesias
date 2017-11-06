@@ -37,8 +37,10 @@ sonata_admin:
                 icon: "<i class='fa fa-envelope'></i>"
             Administracion:
                 icon: "<i class='fa fa-cogs'></i>"
+                label: "Administración"
             Facturacion:
                 icon: "<i class='fa fa-eur'></i>"
+                label: "Facturación"
         blocks:
             -
                 position: top
