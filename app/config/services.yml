@@ -60,6 +60,11 @@ services:
         arguments: [ ~, AppBundle\Entity\Province, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager", "@app.repositories_manager" ]
         tags:
             - { name: sonata.admin, manager_type: orm, label: "Provincia", group: "Administration", label_translator_strategy: "sonata.admin.label.strategy.noop" }
+    admin.city:
+        class: AppBundle\Admin\CityAdmin
+        arguments: [ ~, AppBundle\Entity\City, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager", "@app.repositories_manager" ]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: "Ciudad", group: "Administration", label_translator_strategy: "sonata.admin.label.strategy.noop" }
 
 # Messaging
     app.courier:
