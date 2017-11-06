@@ -24,6 +24,7 @@ backend:
         submit: Enviar
         published_date: Fecha de publicación
         contact:
+            contact: Contacto
             name: Nombre
             email: Email
             checked: Leido
@@ -79,3 +80,16 @@ backend:
             name: Nombre
             postalCode: Código postal
             province: Provincia
+        customer:
+            name: Nombre
+            surname: Apellidos
+            company: Empresa
+            identityCard: NIF/CIF
+            adress: Dirección
+            province: Provincia
+            city: Ciudad
+            postalCode: Código Postal
+            email: Email
+            phone: Teléfono
+            mobile: Móvil
+            invoices: Facturas
