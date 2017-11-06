@@ -78,6 +78,9 @@ class BackendControllerTest extends AbstractBaseTest
             array('/admin/facturacion/factura/list'),
             array('/admin/facturacion/factura/create'),
             array('/admin/facturacion/factura/1/edit'),
+            array('/admin/administration/province/list'),
+            array('/admin/administration/province/create'),
+            array('/admin/administration/province/1/edit'),
             array('/admin/users/list'),
             array('/admin/users/create'),
             array('/admin/users/1/edit'),
@@ -113,6 +116,8 @@ class BackendControllerTest extends AbstractBaseTest
             array('/admin/contact/message/batch'),
             array('/admin/users/show'),
             array('/admin/users/batch'),
+            array('/admin/administration/province/batch'),
+            array('/admin/administration/province/1/delete'),
         );
     }
 }

@@ -43,7 +43,7 @@ backend:
             date: Fecha
             image: Imagen
         post:
-            post: Articulo
+            post: Artículo
             image: Imagen color
             imageBW: Imagen blanco y negro
             title: Título
@@ -71,3 +71,11 @@ backend:
             email: Correo electronico
             plain_password: Contraseña
             roles: Roles
+        province:
+            code: Código
+            name: Nombre
+            country: País
+        city:
+            name: Nombre
+            postalCode: Código postal
+            province: Provincia
