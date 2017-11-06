@@ -93,3 +93,17 @@ backend:
             phone: Teléfono
             mobile: Móvil
             invoices: Facturas
+        invoice:
+            invoice: Factura
+            date: Fecha factura
+            iva: IVA
+            irpf: IRPF
+            lines: Líneas de facturas
+            total: total
+            customer: Cliente
+            taxableBase: Base imponible
+            id: Nº Factura
+        invoice_line:
+            name: Concepto
+            price: Precio
+            amount: Cantidad

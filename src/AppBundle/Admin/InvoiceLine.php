@@ -28,26 +28,26 @@ class InvoiceLine extends AbstractBaseAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('Datos de Cliente', $this->getFormMdSuccessBoxArray(6))
+            ->with('backend.admin.general', $this->getFormMdSuccessBoxArray(6))
             ->add(
                 'name',
                 null,
                 array(
-                    'label' => 'Concepto',
+                    'label' => 'backend.admin.invoice_line.name',
                 )
             )
             ->add(
                 'price',
                 null,
                 array(
-                    'label' => 'Precio',
+                    'label' => 'backend.admin.invoice_line.price',
                 )
             )
             ->add(
                 'amount',
                 null,
                 array(
-                    'label' => 'Cantidad',
+                    'label' => 'backend.admin.invoice_line.amount',
                 )
             )
             ->end()
@@ -56,7 +56,7 @@ class InvoiceLine extends AbstractBaseAdmin
                 'invoice',
                 null,
                 array(
-                    'label' => 'Factura',
+                    'label' => 'backend.admin.invoice.invoice',
                     'attr' => array(
                         'hidden' => true,
                     ),
@@ -88,28 +88,28 @@ class InvoiceLine extends AbstractBaseAdmin
                 'name',
                 null,
                 array(
-                    'label' => 'Concepto',
+                    'label' => 'backend.admin.invoice_line.name',
                 )
             )
             ->add(
                 'price',
                 null,
                 array(
-                    'label' => 'Precio',
+                    'label' => 'backend.admin.invoice_line.price',
                 )
             )
             ->add(
                 'amount',
                 null,
                 array(
-                    'label' => 'Cantidad',
+                    'label' => 'backend.admin.invoice_line.amount',
                 )
             )
             ->add(
                 'invoice',
                 null,
                 array(
-                    'label' => 'Factura',
+                    'label' => 'backend.admin.invoice.invoice',
                 )
             )
             ->add(
@@ -133,7 +133,7 @@ class InvoiceLine extends AbstractBaseAdmin
                 'name',
                 null,
                 array(
-                    'label'    => 'Concepto',
+                    'label'    => 'backend.admin.invoice_line.name',
                     'editable' => true,
                 )
             )
@@ -141,7 +141,7 @@ class InvoiceLine extends AbstractBaseAdmin
                 'price',
                 null,
                 array(
-                    'label'    => 'Precio',
+                    'label'    => 'backend.admin.invoice_line.price',
                     'editable' => true,
                 )
             )
@@ -149,7 +149,7 @@ class InvoiceLine extends AbstractBaseAdmin
                 'amount',
                 null,
                 array(
-                    'label'    => 'Cantidad',
+                    'label'    => 'backend.admin.invoice_line.amount',
                     'editable' => true,
                 )
             )
@@ -157,7 +157,7 @@ class InvoiceLine extends AbstractBaseAdmin
                 'invoice',
                 null,
                 array(
-                    'label'    => 'Factura',
+                    'label'    => 'backend.admin.invoice.invoice',
                     'editable' => true,
                 )
             )

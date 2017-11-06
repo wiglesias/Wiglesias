@@ -102,7 +102,6 @@ class InvoiceAdmin extends AbstractBaseAdmin
                     array(
                         'edit' => 'inline',
                         'inline' => 'table',
-//                    'sortable' => 'position',
                     )
                 )
                 ->end();
@@ -119,35 +118,35 @@ class InvoiceAdmin extends AbstractBaseAdmin
                 'customer',
                 null,
                 array(
-                    'label' => 'Cliente',
+                    'label' => 'backend.admin.invoice.customer',
                 )
             )
             ->add(
                 'date',
                 null,
                 array(
-                    'label' => 'Fecha factura',
+                    'label' => 'backend.admin.invoice.date',
                 )
             )
             ->add(
                 'iva',
                 null,
                 array(
-                    'label' => 'IVA',
+                    'label' => 'backend.admin.invoice.iva',
                 )
             )
             ->add(
                 'irpf',
                 null,
                 array(
-                    'label' => 'IRPF',
+                    'label' => 'backend.admin.invoice.irpf',
                 )
             )
             ->add(
                 'enabled',
                 null,
                 array(
-                    'label' => 'Activo',
+                    'label' => 'backend.admin.enabled',
                 )
             );
     }
@@ -163,7 +162,7 @@ class InvoiceAdmin extends AbstractBaseAdmin
                 'id',
                 null,
                 array(
-                    'label'    => 'Nº Factura',
+                    'label'    => 'backend.admin.invoice.id',
                     'editable' => false,
                 )
             )
@@ -171,7 +170,7 @@ class InvoiceAdmin extends AbstractBaseAdmin
                 'date',
                 null,
                 array(
-                    'label'    => 'Fecha factura',
+                    'label'    => 'backend.admin.invoice.date',
                     'editable' => true,
                     'format' => 'd/m/Y',
                 )
@@ -180,7 +179,7 @@ class InvoiceAdmin extends AbstractBaseAdmin
                 'customer',
                 null,
                 array(
-                    'label'    => 'Cliente',
+                    'label'    => 'backend.admin.invoice.customer',
                     'editable' => true,
                 )
             )
@@ -188,31 +187,15 @@ class InvoiceAdmin extends AbstractBaseAdmin
                 'taxableBase',
                 null,
                 array(
-                    'label'    => 'Base imponible',
+                    'label'    => 'backend.admin.invoice.taxableBase',
                     'editable' => false,
                 )
             )
-//            ->add(
-//                'iva',
-//                null,
-//                array(
-//                    'label'    => 'IVA',
-//                    'editable' => true,
-//                )
-//            )
-//            ->add(
-//                'irpf',
-//                null,
-//                array(
-//                    'label'    => 'IRPF',
-//                    'editable' => true,
-//                )
-//            )
             ->add(
                 'calculateIva',
                 null,
                 array(
-                    'label'    => 'IVA',
+                    'label'    => 'backend.admin.invoice.iva',
                     'editable' => false,
                 )
             )
@@ -220,7 +203,7 @@ class InvoiceAdmin extends AbstractBaseAdmin
                 'calculateIrpf',
                 null,
                 array(
-                    'label'    => 'IRPF',
+                    'label'    => 'backend.admin.invoice.irpf',
                     'editable' => false,
                 )
             )
@@ -228,7 +211,7 @@ class InvoiceAdmin extends AbstractBaseAdmin
                 'total',
                 null,
                 array(
-                    'label'    => 'Total',
+                    'label'    => 'backend.admin.invoice.total',
                     'editable' => false,
                 )
             )
