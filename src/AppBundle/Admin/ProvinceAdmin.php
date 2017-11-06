@@ -5,22 +5,36 @@ namespace AppBundle\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\CountryType;
+use Sonata\AdminBundle\Route\RouteCollection;
 
 /**
- * Class InvoiceLine
+ * Class ProvinceAdmin.
  *
  * @category Admin
- * @package  AppBundle\Admin
+ *
  * @author   Wils Iglesias <wiglesias83@gmail.com>
  */
-class InvoiceLine extends AbstractBaseAdmin
+class ProvinceAdmin extends AbstractBaseAdmin
 {
-    protected $classnameLabel = 'Líneas';
-    protected $baseRoutePattern = 'facturacion/lineas';
+    protected $classnameLabel = 'Province';
+    protected $baseRoutePattern = 'administration/province';
     protected $datagridValues = array(
-        '_sort_by'    => 'name',
+        '_sort_by' => 'name',
         '_sort_order' => 'asc',
     );
+
+    /**
+     * Configure route collection.
+     *
+     * @param RouteCollection $collection
+     */
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        parent::configureRoutes($collection);
+        $collection->remove('delete');
+    }
 
     /**
      * @param FormMapper $formMapper
@@ -30,48 +44,35 @@ class InvoiceLine extends AbstractBaseAdmin
         $formMapper
             ->with('backend.admin.general', $this->getFormMdSuccessBoxArray(6))
             ->add(
+                'code',
+                null,
+                array(
+                    'label' => 'backend.admin.province.code',
+                )
+            )
+            ->add(
                 'name',
                 null,
                 array(
-                    'label' => 'backend.admin.invoice_line.name',
+                    'label' => 'backend.admin.province.name',
                 )
             )
             ->add(
-                'price',
-                null,
+                'country',
+                CountryType::class,
                 array(
-                    'label' => 'backend.admin.invoice_line.price',
-                )
-            )
-            ->add(
-                'amount',
-                null,
-                array(
-                    'label' => 'backend.admin.invoice_line.amount',
+                    'label' => 'backend.admin.province.country',
+                    'preferred_choices' => array('ES'),
                 )
             )
             ->end()
             ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(6))
             ->add(
-                'invoice',
-                null,
-                array(
-                    'label' => 'backend.admin.invoice.invoice',
-                    'attr' => array(
-                        'hidden' => true,
-                    ),
-                    'required' => true,
-                )
-            )
-            ->add(
                 'enabled',
-                'checkbox',
+                CheckboxType::class,
                 array(
-                    'label'    => 'backend.admin.enabled',
+                    'label' => 'backend.admin.enabled',
                     'required' => false,
-                    'attr' => array(
-                        'hidden' => true,
-                    ),
                 )
             )
             ->end()
@@ -85,31 +86,24 @@ class InvoiceLine extends AbstractBaseAdmin
     {
         $datagridMapper
             ->add(
+                'code',
+                null,
+                array(
+                    'label' => 'backend.admin.province.code',
+                )
+            )
+            ->add(
                 'name',
                 null,
                 array(
-                    'label' => 'backend.admin.invoice_line.name',
+                    'label' => 'backend.admin.province.name',
                 )
             )
             ->add(
-                'price',
+                'country',
                 null,
                 array(
-                    'label' => 'backend.admin.invoice_line.price',
-                )
-            )
-            ->add(
-                'amount',
-                null,
-                array(
-                    'label' => 'backend.admin.invoice_line.amount',
-                )
-            )
-            ->add(
-                'invoice',
-                null,
-                array(
-                    'label' => 'backend.admin.invoice.invoice',
+                    'label' => 'backend.admin.province.country',
                 )
             )
             ->add(
@@ -130,42 +124,34 @@ class InvoiceLine extends AbstractBaseAdmin
         unset($this->listModes['mosaic']);
         $listMapper
             ->add(
+                'code',
+                null,
+                array(
+                    'label' => 'backend.admin.province.code',
+                    'editable' => true,
+                )
+            )
+            ->add(
                 'name',
                 null,
                 array(
-                    'label'    => 'backend.admin.invoice_line.name',
+                    'label' => 'backend.admin.province.name',
                     'editable' => true,
                 )
             )
             ->add(
-                'price',
+                'country',
                 null,
                 array(
-                    'label'    => 'backend.admin.invoice_line.price',
-                    'editable' => true,
-                )
-            )
-            ->add(
-                'amount',
-                null,
-                array(
-                    'label'    => 'backend.admin.invoice_line.amount',
-                    'editable' => true,
-                )
-            )
-            ->add(
-                'invoice',
-                null,
-                array(
-                    'label'    => 'backend.admin.invoice.invoice',
-                    'editable' => true,
+                    'label' => 'backend.admin.province.country',
+                    'editable' => false,
                 )
             )
             ->add(
                 'enabled',
                 null,
                 array(
-                    'label'    => 'backend.admin.enabled',
+                    'label' => 'backend.admin.enabled',
                     'editable' => true,
                 )
             )
@@ -174,11 +160,10 @@ class InvoiceLine extends AbstractBaseAdmin
                 'actions',
                 array(
                     'actions' => array(
-                        'show'   => array('template' => '::Admin/Buttons/list__action_show_button.html.twig'),
-                        'edit'   => array('template' => '::Admin/Buttons/list__action_edit_button.html.twig'),
-                        'delete' => array('template' => '::Admin/Buttons/list__action_delete_button.html.twig'),
+                        'show' => array('template' => '::Admin/Buttons/list__action_show_button.html.twig'),
+                        'edit' => array('template' => '::Admin/Buttons/list__action_edit_button.html.twig'),
                     ),
-                    'label'   => 'backend.admin.actions',
+                    'label' => 'backend.admin.actions',
                 )
             )
         ;

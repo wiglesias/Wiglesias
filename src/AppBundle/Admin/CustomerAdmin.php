@@ -28,12 +28,12 @@ class CustomerAdmin extends AbstractBaseAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('General', $this->getFormMdSuccessBoxArray(5))
+            ->with('backend.admin.general', $this->getFormMdSuccessBoxArray(4))
             ->add(
                 'name',
                 null,
                 array(
-                    'label' => 'Nombre',
+                    'label' => 'backend.admin.customer.name',
                     'required' => false,
                 )
             )
@@ -41,7 +41,7 @@ class CustomerAdmin extends AbstractBaseAdmin
                 'surname',
                 null,
                 array(
-                    'label' => 'Apellidos',
+                    'label' => 'backend.admin.customer.surname',
                     'required' => false,
                 )
             )
@@ -49,24 +49,17 @@ class CustomerAdmin extends AbstractBaseAdmin
                 'company',
                 null,
                 array(
-                    'label' => 'Empresa',
+                    'label' => 'backend.admin.customer.company',
                     'required' => false,
                 )
             )
-            ->add(
-                'identityCard',
-                null,
-                array(
-                    'label' => 'DNI/CIF',
-                )
-            )
             ->end()
-            ->with('Dirección', $this->getFormMdSuccessBoxArray(4))
+            ->with('backend.admin.contact.contact', $this->getFormMdSuccessBoxArray(4))
             ->add(
                 'adress',
                 null,
                 array(
-                    'label' => 'Dirección',
+                    'label' => 'backend.admin.customer.adress',
                     'required' => true,
                 )
             )
@@ -74,7 +67,7 @@ class CustomerAdmin extends AbstractBaseAdmin
                 'city',
                 null,
                 array(
-                    'label' => 'Ciudad',
+                    'label' => 'backend.admin.customer.city',
                     'required' => true,
                 )
             )
@@ -82,7 +75,7 @@ class CustomerAdmin extends AbstractBaseAdmin
                 'province',
                 null,
                 array(
-                    'label' => 'Provincia',
+                    'label' => 'backend.admin.customer.province',
                     'required' => true,
                 )
             )
@@ -90,17 +83,15 @@ class CustomerAdmin extends AbstractBaseAdmin
                 'postalCode',
                 null,
                 array(
-                    'label' => 'Código Postal',
+                    'label' => 'backend.admin.customer.postalCode',
                     'required' => true,
                 )
             )
-            ->end()
-            ->with('Contacto', $this->getFormMdSuccessBoxArray(3))
             ->add(
                 'mobile',
                 null,
                 array(
-                    'label' => 'Móvil',
+                    'label' => 'backend.admin.customer.mobile',
                     'required' => false,
                 )
             )
@@ -108,7 +99,7 @@ class CustomerAdmin extends AbstractBaseAdmin
                 'phone',
                 null,
                 array(
-                    'label' => 'Teléfono',
+                    'label' => 'backend.admin.customer.phone',
                     'required' => false,
                 )
             )
@@ -116,10 +107,12 @@ class CustomerAdmin extends AbstractBaseAdmin
                 'email',
                 null,
                 array(
-                    'label' => 'Email',
+                    'label' => 'backend.admin.customer.email',
                     'required' => true,
                 )
             )
+            ->end()
+            ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(3))
             ->add(
                 'enabled',
                 'checkbox',
@@ -142,44 +135,52 @@ class CustomerAdmin extends AbstractBaseAdmin
                 'name',
                 null,
                 array(
-                    'label' => 'Nombre',
+                    'label' => 'backend.admin.customer.name',
                 )
             )
             ->add(
                 'surname',
                 null,
                 array(
-                    'label' => 'Apellidos',
+                    'label' => 'backend.admin.customer.surname',
                 )
             )
             ->add(
                 'company',
                 null,
                 array(
-                    'label' => 'Empresa',
+                    'label' => 'backend.admin.customer.company',
                 )
             )
             ->add(
                 'identityCard',
                 null,
                 array(
-                    'label' => 'DNI/CIF',
+                    'label' => 'backend.admin.customer.identityCard',
                 )
             )
             ->add(
                 'city',
                 null,
                 array(
-                    'label' => 'Ciudad',
+                    'label' => 'backend.admin.customer.city',
                 )
             )
             ->add(
                 'email',
                 null,
                 array(
-                    'label' => 'Email',
+                    'label' => 'backend.admin.customer.email',
                 )
-            );
+            )
+            ->add(
+                'enabled',
+                null,
+                array(
+                    'label' => 'backend.admin.enabled',
+                )
+            )
+        ;
     }
 
     /**
@@ -193,7 +194,7 @@ class CustomerAdmin extends AbstractBaseAdmin
                 'name',
                 null,
                 array(
-                    'label'    => 'Nombre',
+                    'label'    => 'backend.admin.customer.name',
                     'editable' => true,
                 )
             )
@@ -201,7 +202,7 @@ class CustomerAdmin extends AbstractBaseAdmin
                 'surname',
                 null,
                 array(
-                    'label'    => 'Apellidos',
+                    'label'    => 'backend.admin.customer.surname',
                     'editable' => true,
                 )
             )
@@ -209,7 +210,7 @@ class CustomerAdmin extends AbstractBaseAdmin
                 'company',
                 null,
                 array(
-                    'label'    => 'Empresa',
+                    'label'    => 'backend.admin.customer.company',
                     'editable' => true,
                 )
             )
@@ -217,7 +218,7 @@ class CustomerAdmin extends AbstractBaseAdmin
                 'email',
                 null,
                 array(
-                    'label'    => 'Email',
+                    'label'    => 'backend.admin.customer.email',
                     'editable' => true,
                 )
             )
@@ -225,7 +226,7 @@ class CustomerAdmin extends AbstractBaseAdmin
                 'identityCard',
                 null,
                 array(
-                    'label'    => 'DNI/CIF',
+                    'label'    => 'backend.admin.customer.identityCard',
                     'editable' => true,
                 )
             )

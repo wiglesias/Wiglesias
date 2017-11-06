@@ -6,6 +6,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 /**
  * Class InvoiceAdmin
@@ -43,12 +44,12 @@ class InvoiceAdmin extends AbstractBaseAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('Factura', $this->getFormMdSuccessBoxArray(6))
+            ->with('backend.admin.invoice.invoice', $this->getFormMdSuccessBoxArray(6))
             ->add(
                 'date',
                 'sonata_type_date_picker',
                 array(
-                    'label' => 'Fecha Factura',
+                    'label' => 'backend.admin.invoice.date',
                     'format' => 'd/M/y',
                     'required' => true,
                 )
@@ -57,14 +58,14 @@ class InvoiceAdmin extends AbstractBaseAdmin
                 'iva',
                 null,
                 array(
-                    'label' => 'IVA',
+                    'label' => 'backend.admin.invoice.iva',
                 )
             )
             ->add(
                 'irpf',
                 null,
                 array(
-                    'label' => 'IRPF',
+                    'label' => 'backend.admin.invoice.irpf',
                 )
             )
             ->end()
@@ -73,13 +74,13 @@ class InvoiceAdmin extends AbstractBaseAdmin
                 'customer',
                 null,
                 array(
-                    'label' => 'Cliente',
+                    'label' => 'backend.admin.invoice.customer',
                     'required' => true,
                 )
             )
             ->add(
                 'enabled',
-                'checkbox',
+                CheckboxType::class,
                 array(
                     'label'    => 'backend.admin.enabled',
                     'required' => false,
@@ -88,7 +89,7 @@ class InvoiceAdmin extends AbstractBaseAdmin
             ->end();
         if ($this->id($this->getSubject())) { // is edit mode, disable on new subjetcs
             $formMapper
-                ->with('Líneas de facturas', $this->getFormMdSuccessBoxArray(12))
+                ->with('backend.admin.invoice.lines', $this->getFormMdSuccessBoxArray(12))
                 ->add(
                     'lines',
                     'sonata_type_collection',
@@ -102,7 +103,6 @@ class InvoiceAdmin extends AbstractBaseAdmin
                     array(
                         'edit' => 'inline',
                         'inline' => 'table',
-//                    'sortable' => 'position',
                     )
                 )
                 ->end();
@@ -119,35 +119,35 @@ class InvoiceAdmin extends AbstractBaseAdmin
                 'customer',
                 null,
                 array(
-                    'label' => 'Cliente',
+                    'label' => 'backend.admin.invoice.customer',
                 )
             )
             ->add(
                 'date',
                 null,
                 array(
-                    'label' => 'Fecha factura',
+                    'label' => 'backend.admin.invoice.date',
                 )
             )
             ->add(
                 'iva',
                 null,
                 array(
-                    'label' => 'IVA',
+                    'label' => 'backend.admin.invoice.iva',
                 )
             )
             ->add(
                 'irpf',
                 null,
                 array(
-                    'label' => 'IRPF',
+                    'label' => 'backend.admin.invoice.irpf',
                 )
             )
             ->add(
                 'enabled',
                 null,
                 array(
-                    'label' => 'Activo',
+                    'label' => 'backend.admin.enabled',
                 )
             );
     }
@@ -163,7 +163,7 @@ class InvoiceAdmin extends AbstractBaseAdmin
                 'id',
                 null,
                 array(
-                    'label'    => 'Nº Factura',
+                    'label'    => 'backend.admin.invoice.id',
                     'editable' => false,
                 )
             )
@@ -171,7 +171,7 @@ class InvoiceAdmin extends AbstractBaseAdmin
                 'date',
                 null,
                 array(
-                    'label'    => 'Fecha factura',
+                    'label'    => 'backend.admin.invoice.date',
                     'editable' => true,
                     'format' => 'd/m/Y',
                 )
@@ -180,7 +180,7 @@ class InvoiceAdmin extends AbstractBaseAdmin
                 'customer',
                 null,
                 array(
-                    'label'    => 'Cliente',
+                    'label'    => 'backend.admin.invoice.customer',
                     'editable' => true,
                 )
             )
@@ -188,31 +188,15 @@ class InvoiceAdmin extends AbstractBaseAdmin
                 'taxableBase',
                 null,
                 array(
-                    'label'    => 'Base imponible',
+                    'label'    => 'backend.admin.invoice.taxableBase',
                     'editable' => false,
                 )
             )
-//            ->add(
-//                'iva',
-//                null,
-//                array(
-//                    'label'    => 'IVA',
-//                    'editable' => true,
-//                )
-//            )
-//            ->add(
-//                'irpf',
-//                null,
-//                array(
-//                    'label'    => 'IRPF',
-//                    'editable' => true,
-//                )
-//            )
             ->add(
                 'calculateIva',
                 null,
                 array(
-                    'label'    => 'IVA',
+                    'label'    => 'backend.admin.invoice.iva',
                     'editable' => false,
                 )
             )
@@ -220,7 +204,7 @@ class InvoiceAdmin extends AbstractBaseAdmin
                 'calculateIrpf',
                 null,
                 array(
-                    'label'    => 'IRPF',
+                    'label'    => 'backend.admin.invoice.irpf',
                     'editable' => false,
                 )
             )
@@ -228,7 +212,7 @@ class InvoiceAdmin extends AbstractBaseAdmin
                 'total',
                 null,
                 array(
-                    'label'    => 'Total',
+                    'label'    => 'backend.admin.invoice.total',
                     'editable' => false,
                 )
             )
