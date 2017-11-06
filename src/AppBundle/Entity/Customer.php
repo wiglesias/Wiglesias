@@ -64,25 +64,11 @@ class Customer extends AbstractBase
     private $adress;
 
     /**
-     * @var string
+     * @var City
      *
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\City")
      */
     private $city;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $province;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $postalCode;
 
     /**
      * @var string
@@ -256,7 +242,7 @@ class Customer extends AbstractBase
     }
 
     /**
-     * @return string
+     * @return City
      */
     public function getCity()
     {
@@ -264,53 +250,13 @@ class Customer extends AbstractBase
     }
 
     /**
-     * @param string $city
+     * @param City $city
      *
      * @return Customer
      */
     public function setCity($city)
     {
         $this->city = $city;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getProvince()
-    {
-        return $this->province;
-    }
-
-    /**
-     * @param string $province
-     *
-     * @return Customer
-     */
-    public function setProvince($province)
-    {
-        $this->province = $province;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPostalCode()
-    {
-        return $this->postalCode;
-    }
-
-    /**
-     * @param string $postalCode
-     *
-     * @return Customer
-     */
-    public function setPostalCode($postalCode)
-    {
-        $this->postalCode = $postalCode;
 
         return $this;
     }

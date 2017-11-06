@@ -51,8 +51,7 @@ AppBundle\Entity\Customer:
     company: <company()>
     identityCard: <bothify('######?')>
     adress: <streetAddress()>
-    city: <city()>
-    postalCode: <postcode()>
+    city: @city*
     email: <email()>
     phone: <phoneNumber()>
     mobile: <phoneNumber()>
