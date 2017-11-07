@@ -2,17 +2,16 @@
 
 namespace AppBundle\Entity;
 
-
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Class Customer
+ * Class Customer.
  *
  * @category Entity
- * @package  AppBundle\Entity
+ *
  * @author   Wils Iglesias <wiglesias83@gmail.com>
  *
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CustomerRepository")
@@ -61,7 +60,7 @@ class Customer extends AbstractBase
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $adress;
+    private $address;
 
     /**
      * @var City
@@ -100,9 +99,7 @@ class Customer extends AbstractBase
     private $invoices;
 
     /**
-     *
-     * Methods
-     *
+     * Methods.
      */
 
     /**
@@ -224,19 +221,19 @@ class Customer extends AbstractBase
     /**
      * @return string
      */
-    public function getAdress()
+    public function getAddress()
     {
-        return $this->adress;
+        return $this->address;
     }
 
     /**
-     * @param string $adress
+     * @param string $address
      *
      * @return Customer
      */
-    public function setAdress($adress)
+    public function setAddress($address)
     {
-        $this->adress = $adress;
+        $this->address = $address;
 
         return $this;
     }

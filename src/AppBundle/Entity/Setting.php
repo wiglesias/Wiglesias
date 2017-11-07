@@ -58,7 +58,7 @@ class Setting extends AbstractBase
      *
      * @ORM\Column(type="string", nullable=true)
      */
-    private $adress;
+    private $address;
 
     /**
      * @var City
@@ -203,19 +203,19 @@ class Setting extends AbstractBase
     /**
      * @return string
      */
-    public function getAdress()
+    public function getAddress()
     {
-        return $this->adress;
+        return $this->address;
     }
 
     /**
-     * @param string $adress
+     * @param string $address
      *
      * @return Setting
      */
-    public function setAdress($adress)
+    public function setAddress($address)
     {
-        $this->adress = $adress;
+        $this->address = $address;
 
         return $this;
     }

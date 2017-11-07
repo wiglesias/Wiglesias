@@ -80,6 +80,16 @@ backend:
             name: Nombre
             postalCode: Código postal
             province: Provincia
+        setting:
+            firstName: Nombre
+            lastName: Apellidos
+            company: Nombre empresa
+            identityCard: DNI/NIF
+            address: Dirección
+            city: Ciudad
+            email: Email
+            phone: Teléfono
+            mobile: Móvil
         customer:
             name: Nombre
             surname: Apellidos
