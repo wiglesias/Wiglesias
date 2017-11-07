@@ -103,6 +103,14 @@ class CustomerAdmin extends AbstractBaseAdmin
             ->end()
             ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(3))
             ->add(
+                'identityCard',
+                null,
+                array(
+                    'label' => 'backend.admin.customer.identityCard',
+                    'required' => true,
+                )
+            )
+            ->add(
                 'enabled',
                 CheckboxType::class,
                 array(

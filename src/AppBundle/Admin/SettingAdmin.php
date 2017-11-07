@@ -5,6 +5,7 @@ namespace AppBundle\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 /**
@@ -29,7 +30,7 @@ class SettingAdmin extends AbstractBaseAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('backend.admin.general', $this->getFormMdSuccessBoxArray(5))
+            ->with('backend.admin.general', $this->getFormMdSuccessBoxArray(4))
             ->add(
                 'name',
                 null,
@@ -55,7 +56,7 @@ class SettingAdmin extends AbstractBaseAdmin
                 )
             )
             ->end()
-            ->with('backend.admin.contact.contact', $this->getFormMdSuccessBoxArray(3))
+            ->with('backend.admin.contact.contact', $this->getFormMdSuccessBoxArray(4))
             ->add(
                 'address',
                 null,
@@ -66,10 +67,12 @@ class SettingAdmin extends AbstractBaseAdmin
             )
             ->add(
                 'city',
-                null,
+                EntityType::class,
                 array(
                     'label' => 'backend.admin.setting.city',
                     'required' => true,
+                    'class' => 'AppBundle:City',
+                    'query_builder' => $this->getConfigurationPool()->getContainer()->get('app.city_repository')->getEnabledSortedByNameQB(),
                 )
             )
             ->add(
