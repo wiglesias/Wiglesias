@@ -95,7 +95,7 @@ backend:
             surname: Apellidos
             company: Empresa
             identityCard: NIF/CIF
-            adress: Dirección
+            address: Dirección
             province: Provincia
             city: Ciudad
             postalCode: Código Postal

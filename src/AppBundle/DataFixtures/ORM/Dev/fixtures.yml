@@ -50,7 +50,7 @@ AppBundle\Entity\Setting:
     surname: <lastname()>
     company: <company()>
     identityCard: <bothify('######?')>
-    adress: <streetAddress()>
+    address: <streetAddress()>
     city: @city<numberBetween(1, 10)>
     email: <email()>
     phone: <phoneNumber()>
@@ -66,7 +66,7 @@ AppBundle\Entity\Customer:
     surname: <lastname()>
     company: <company()>
     identityCard: <bothify('######?')>
-    adress: <streetAddress()>
+    address: <streetAddress()>
     city: @city*
     email: <email()>
     phone: <phoneNumber()>
