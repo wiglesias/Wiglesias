@@ -38,6 +38,7 @@ class AppKernel extends Kernel
             new Spraed\PDFGeneratorBundle\SpraedPDFGeneratorBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
+            new WhiteOctober\TCPDFBundle\WhiteOctoberTCPDFBundle(),
             // App
             new AppBundle\AppBundle(),
         );

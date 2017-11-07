@@ -6,8 +6,6 @@ imports:
     - { resource: sonata.yml }
     - { resource: repositories.yml }
 
-# Put parameters here that don't need to change on each machine where the app is deployed
-# http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 #parameters:
 #    locale: es
 
@@ -159,3 +157,7 @@ knp_snappy:
         options:
             enable-javascript: false
             use-xserver: false
+
+# TCPDF
+white_october_tcpdf:
+    class: AppBundle\Pdf\BaseTcpdf

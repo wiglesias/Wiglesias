@@ -82,6 +82,20 @@ services:
         tags:
             - { name: knp_menu.menu, alias: top }
 
+# PDF service builders
+    app.base_tcpdf:
+        class: AppBundle\Pdf\BaseTcpdf
+        arguments:
+            - "@templating.helper.assets"
+            - "@translator.default"
+#    app.invoice_pdf_builder:
+#        class: AppBundle\Service\InvoicePdfService
+#        arguments:
+#            - "@white_october.tcpdf"
+#            - "@templating.helper.assets"
+#            - "@translator.default"
+#            - "%project_web_title%"
+
 # Sitemap
     app.sitemap:
         class: AppBundle\Listener\SitemapListener
