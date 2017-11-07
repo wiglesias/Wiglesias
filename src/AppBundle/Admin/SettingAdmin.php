@@ -5,20 +5,22 @@ namespace AppBundle\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 /**
- * Class SettingAdmin
+ * Class SettingAdmin.
  *
  * @category Admin
- * @package  AppBundle\Admin
+ *
  * @author   Wils Iglesias <wiglesias83@gmail.com>
  */
 class SettingAdmin extends AbstractBaseAdmin
 {
-    protected $classnameLabel = 'Configuración';
+    protected $classnameLabel = 'Setting';
     protected $baseRoutePattern = 'setting/profile';
     protected $datagridValues = array(
-        '_sort_by'    => 'username',
+        '_sort_by' => 'username',
         '_sort_order' => 'asc',
     );
 
@@ -28,12 +30,12 @@ class SettingAdmin extends AbstractBaseAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('General', $this->getFormMdSuccessBoxArray(5))
+            ->with('backend.admin.general', $this->getFormMdSuccessBoxArray(4))
             ->add(
                 'name',
                 null,
                 array(
-                    'label' => 'Nombre',
+                    'label' => 'backend.admin.setting.firstName',
                     'required' => false,
                 )
             )
@@ -41,7 +43,7 @@ class SettingAdmin extends AbstractBaseAdmin
                 'surname',
                 null,
                 array(
-                    'label' => 'Apellidos',
+                    'label' => 'backend.admin.setting.lastName',
                     'required' => false,
                 )
             )
@@ -49,58 +51,35 @@ class SettingAdmin extends AbstractBaseAdmin
                 'company',
                 null,
                 array(
-                    'label' => 'Empresa',
+                    'label' => 'backend.admin.setting.company',
                     'required' => false,
                 )
             )
-            ->add(
-                'identityCard',
-                null,
-                array(
-                    'label' => 'DNI/CIF',
-                )
-            )
             ->end()
-            ->with('Dirección', $this->getFormMdSuccessBoxArray(4))
+            ->with('backend.admin.contact.contact', $this->getFormMdSuccessBoxArray(4))
             ->add(
-                'adress',
+                'address',
                 null,
                 array(
-                    'label' => 'Dirección',
+                    'label' => 'backend.admin.setting.address',
                     'required' => true,
                 )
             )
             ->add(
                 'city',
-                null,
+                EntityType::class,
                 array(
-                    'label' => 'Ciudad',
+                    'label' => 'backend.admin.setting.city',
                     'required' => true,
+                    'class' => 'AppBundle:City',
+                    'query_builder' => $this->getConfigurationPool()->getContainer()->get('app.city_repository')->getEnabledSortedByNameQB(),
                 )
             )
-            ->add(
-                'province',
-                null,
-                array(
-                    'label' => 'Provincia',
-                    'required' => true,
-                )
-            )
-            ->add(
-                'postalCode',
-                null,
-                array(
-                    'label' => 'Código Postal',
-                    'required' => true,
-                )
-            )
-            ->end()
-            ->with('Contacto', $this->getFormMdSuccessBoxArray(3))
             ->add(
                 'mobile',
                 null,
                 array(
-                    'label' => 'Móvil',
+                    'label' => 'backend.admin.setting.mobile',
                     'required' => false,
                 )
             )
@@ -108,7 +87,7 @@ class SettingAdmin extends AbstractBaseAdmin
                 'phone',
                 null,
                 array(
-                    'label' => 'Teléfono',
+                    'label' => 'backend.admin.setting.phone',
                     'required' => false,
                 )
             )
@@ -116,14 +95,23 @@ class SettingAdmin extends AbstractBaseAdmin
                 'email',
                 null,
                 array(
-                    'label' => 'Email',
+                    'label' => 'backend.admin.setting.email',
+                )
+            )
+            ->end()
+            ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(3))
+            ->add(
+                'identityCard',
+                null,
+                array(
+                    'label' => 'backend.admin.setting.identityCard',
                 )
             )
             ->add(
                 'enabled',
-                'checkbox',
+                CheckboxType::class,
                 array(
-                    'label'    => 'backend.admin.enabled',
+                    'label' => 'backend.admin.enabled',
                     'required' => false,
                 )
             )
@@ -141,42 +129,42 @@ class SettingAdmin extends AbstractBaseAdmin
                 'name',
                 null,
                 array(
-                    'label' => 'Nombre',
+                    'label' => 'backend.admin.setting.firstName',
                 )
             )
             ->add(
                 'surname',
                 null,
                 array(
-                    'label' => 'Apellidos',
+                    'label' => 'backend.admin.setting.lastName',
                 )
             )
             ->add(
                 'company',
                 null,
                 array(
-                    'label' => 'Empresa',
+                    'label' => 'backend.admin.setting.company',
                 )
             )
             ->add(
                 'identityCard',
                 null,
                 array(
-                    'label' => 'DNI/CIF',
+                    'label' => 'backend.admin.setting.identityCard',
                 )
             )
             ->add(
                 'city',
                 null,
                 array(
-                    'label' => 'Ciudad',
+                    'label' => 'backend.admin.setting.city',
                 )
             )
             ->add(
                 'email',
                 null,
                 array(
-                    'label' => 'Email',
+                    'label' => 'backend.admin.setting.email',
                 )
             )
         ;
@@ -193,7 +181,7 @@ class SettingAdmin extends AbstractBaseAdmin
                 'name',
                 null,
                 array(
-                    'label'    => 'Nombre',
+                    'label' => 'backend.admin.setting.firstName',
                     'editable' => true,
                 )
             )
@@ -201,7 +189,7 @@ class SettingAdmin extends AbstractBaseAdmin
                 'surname',
                 null,
                 array(
-                    'label'    => 'Apellidos',
+                    'label' => 'backend.admin.setting.lastName',
                     'editable' => true,
                 )
             )
@@ -209,7 +197,7 @@ class SettingAdmin extends AbstractBaseAdmin
                 'company',
                 null,
                 array(
-                    'label'    => 'Empresa',
+                    'label' => 'backend.admin.setting.company',
                     'editable' => true,
                 )
             )
@@ -217,7 +205,7 @@ class SettingAdmin extends AbstractBaseAdmin
                 'email',
                 null,
                 array(
-                    'label'    => 'Email',
+                    'label' => 'backend.admin.setting.email',
                     'editable' => true,
                 )
             )
@@ -225,7 +213,7 @@ class SettingAdmin extends AbstractBaseAdmin
                 'identityCard',
                 null,
                 array(
-                    'label'    => 'DNI/CIF',
+                    'label' => 'backend.admin.setting.identityCard',
                     'editable' => true,
                 )
             )
@@ -233,7 +221,7 @@ class SettingAdmin extends AbstractBaseAdmin
                 'enabled',
                 null,
                 array(
-                    'label'    => 'backend.admin.enabled',
+                    'label' => 'backend.admin.enabled',
                     'editable' => true,
                 )
             )
@@ -242,11 +230,11 @@ class SettingAdmin extends AbstractBaseAdmin
                 'actions',
                 array(
                     'actions' => array(
-                        'show'   => array('template' => '::Admin/Buttons/list__action_show_button.html.twig'),
-                        'edit'   => array('template' => '::Admin/Buttons/list__action_edit_button.html.twig'),
+                        'show' => array('template' => '::Admin/Buttons/list__action_show_button.html.twig'),
+                        'edit' => array('template' => '::Admin/Buttons/list__action_edit_button.html.twig'),
                         'delete' => array('template' => '::Admin/Buttons/list__action_delete_button.html.twig'),
                     ),
-                    'label'   => 'backend.admin.actions',
+                    'label' => 'backend.admin.actions',
                 )
             )
         ;

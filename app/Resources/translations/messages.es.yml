@@ -1,3 +1,34 @@
+Portfolio_list: Portafolio
+Portfolio_create: Crear
+Portfolio_delete: Eliminar
+Category_list: Categoría
+Category_create: Crear
+Category_delete: Eliminar
+Post_list: Articulo
+Post_create: Crear
+Post_delete: Eliminar
+Tag_list: Etiqueta
+Tag_create: Crear
+Tag_delete: Eliminar
+Contact Message_list: Mensaje de contacto
+User_list: Usuario
+User_create: Crear
+User_delete: Eliminar
+Setting_list: Configuración
+Setting_create: Crear
+Setting_delete: Eliminar
+Province_list: Província
+Province_create: Crear
+Province_delete: Eliminar
+City_list: Ciudad
+City_create: Crear
+City_list: Eliminar
+Customer_list: Cliente
+Customer_create: Crear
+Customer_delete: Eliminar
+Invoice_list: Factura
+Invoice_create: Crear
+Invoice_delete: Eliminar
 frontend:
     menu:
         about: Sobre mí
@@ -36,6 +67,9 @@ backend:
             description: Descripción
             user_question: Pregunta del usuario
             your_answer: Tu respuesta
+            text_1: Todos los mensajes de contacto están contestados
+            text_2: Mensaje de contacto pendiente de contestar
+            text_3: Mensajes de contacto pendientes de contestar
         portafolio:
             project: Proyecto
             title: Título
@@ -80,12 +114,22 @@ backend:
             name: Nombre
             postalCode: Código postal
             province: Provincia
+        setting:
+            firstName: Nombre
+            lastName: Apellidos
+            company: Nombre empresa
+            identityCard: DNI/NIF
+            address: Dirección
+            city: Ciudad
+            email: Email
+            phone: Teléfono
+            mobile: Móvil
         customer:
             name: Nombre
             surname: Apellidos
             company: Empresa
             identityCard: NIF/CIF
-            adress: Dirección
+            address: Dirección
             province: Provincia
             city: Ciudad
             postalCode: Código Postal

@@ -160,7 +160,8 @@ class ContactMessageAdmin extends AbstractBaseAdmin
                     array(
                         'label' => 'backend.admin.contact.answered',
                     )
-                );
+                )
+            ;
         }
     }
 
@@ -212,14 +213,12 @@ class ContactMessageAdmin extends AbstractBaseAdmin
                 'actions',
                 array(
                     'actions' => array(
-                        'show'   => array(
-                            'template' => '::Admin/Buttons/list__action_show_button.html.twig'
-                        ),
-                        'answer' => array(
-                            'template' => '::Admin/Cells/list__action_answer.html.twig'
-                        )
+                        'show'   => array('template' => '::Admin/Buttons/list__action_show_button.html.twig'),
+                        'answer' => array('template' => '::Admin/Cells/list__action_answer.html.twig')
                     ),
+                    'label' => 'backend.admin.actions',
                 )
-            );
+            )
+        ;
     }
 }

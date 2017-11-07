@@ -5,20 +5,22 @@ namespace AppBundle\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 /**
- * Class CustomerAdmin
+ * Class CustomerAdmin.
  *
  * @category Admin
- * @package  AppBundle\Admin
+ *
  * @author   Wils Iglesias <wiglesias83@gmail.com>
  */
 class CustomerAdmin extends AbstractBaseAdmin
 {
-    protected $classnameLabel = 'Cliente';
-    protected $baseRoutePattern = 'facturacion/cliente';
+    protected $classnameLabel = 'Customer';
+    protected $baseRoutePattern = 'billing/customer';
     protected $datagridValues = array(
-        '_sort_by'    => 'username',
+        '_sort_by' => 'username',
         '_sort_order' => 'asc',
     );
 
@@ -56,35 +58,21 @@ class CustomerAdmin extends AbstractBaseAdmin
             ->end()
             ->with('backend.admin.contact.contact', $this->getFormMdSuccessBoxArray(4))
             ->add(
-                'adress',
+                'address',
                 null,
                 array(
-                    'label' => 'backend.admin.customer.adress',
+                    'label' => 'backend.admin.customer.address',
                     'required' => true,
                 )
             )
             ->add(
                 'city',
-                null,
+                EntityType::class,
                 array(
                     'label' => 'backend.admin.customer.city',
                     'required' => true,
-                )
-            )
-            ->add(
-                'province',
-                null,
-                array(
-                    'label' => 'backend.admin.customer.province',
-                    'required' => true,
-                )
-            )
-            ->add(
-                'postalCode',
-                null,
-                array(
-                    'label' => 'backend.admin.customer.postalCode',
-                    'required' => true,
+                    'class' => 'AppBundle:City',
+                    'query_builder' => $this->getConfigurationPool()->getContainer()->get('app.city_repository')->getEnabledSortedByNameQB(),
                 )
             )
             ->add(
@@ -114,10 +102,18 @@ class CustomerAdmin extends AbstractBaseAdmin
             ->end()
             ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(3))
             ->add(
-                'enabled',
-                'checkbox',
+                'identityCard',
+                null,
                 array(
-                    'label'    => 'backend.admin.enabled',
+                    'label' => 'backend.admin.customer.identityCard',
+                    'required' => true,
+                )
+            )
+            ->add(
+                'enabled',
+                CheckboxType::class,
+                array(
+                    'label' => 'backend.admin.enabled',
                     'required' => false,
                 )
             )
@@ -194,7 +190,7 @@ class CustomerAdmin extends AbstractBaseAdmin
                 'name',
                 null,
                 array(
-                    'label'    => 'backend.admin.customer.name',
+                    'label' => 'backend.admin.customer.name',
                     'editable' => true,
                 )
             )
@@ -202,7 +198,7 @@ class CustomerAdmin extends AbstractBaseAdmin
                 'surname',
                 null,
                 array(
-                    'label'    => 'backend.admin.customer.surname',
+                    'label' => 'backend.admin.customer.surname',
                     'editable' => true,
                 )
             )
@@ -210,7 +206,7 @@ class CustomerAdmin extends AbstractBaseAdmin
                 'company',
                 null,
                 array(
-                    'label'    => 'backend.admin.customer.company',
+                    'label' => 'backend.admin.customer.company',
                     'editable' => true,
                 )
             )
@@ -218,7 +214,7 @@ class CustomerAdmin extends AbstractBaseAdmin
                 'email',
                 null,
                 array(
-                    'label'    => 'backend.admin.customer.email',
+                    'label' => 'backend.admin.customer.email',
                     'editable' => true,
                 )
             )
@@ -226,7 +222,7 @@ class CustomerAdmin extends AbstractBaseAdmin
                 'identityCard',
                 null,
                 array(
-                    'label'    => 'backend.admin.customer.identityCard',
+                    'label' => 'backend.admin.customer.identityCard',
                     'editable' => true,
                 )
             )
@@ -234,7 +230,7 @@ class CustomerAdmin extends AbstractBaseAdmin
                 'enabled',
                 null,
                 array(
-                    'label'    => 'backend.admin.enabled',
+                    'label' => 'backend.admin.enabled',
                     'editable' => true,
                 )
             )
@@ -243,11 +239,11 @@ class CustomerAdmin extends AbstractBaseAdmin
                 'actions',
                 array(
                     'actions' => array(
-                        'show'   => array('template' => '::Admin/Buttons/list__action_show_button.html.twig'),
-                        'edit'   => array('template' => '::Admin/Buttons/list__action_edit_button.html.twig'),
+                        'show' => array('template' => '::Admin/Buttons/list__action_show_button.html.twig'),
+                        'edit' => array('template' => '::Admin/Buttons/list__action_edit_button.html.twig'),
                         'delete' => array('template' => '::Admin/Buttons/list__action_delete_button.html.twig'),
                     ),
-                    'label'   => 'backend.admin.actions',
+                    'label' => 'backend.admin.actions',
                 )
             )
         ;

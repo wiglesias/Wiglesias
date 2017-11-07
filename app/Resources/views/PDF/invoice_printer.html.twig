@@ -30,16 +30,16 @@
                 <p style="font-family: Courier, 'Lucida Sans Unicode', Monospace">
                     <span style="font-weight: bold">{{ setting.fullName }}</span><br>
                     {{ setting.identityCard }}<br>
-                    {{ setting.adress }}<br>
-                    {{ setting.postalCode }} {{ setting.city }} ({{ setting.province }})
+                    {{ setting.address }}<br>
+                    {{ setting.city }} ({{ setting.city.province.name }})
                 </p>
             </div>
             <div class="col-xs-5">
                 <p style="font-family: Courier, 'Lucida Sans Unicode', Monospace">
                     <span style="font-weight: bold">{{ invoice.customer.company }}</span><br>
                     {{ invoice.customer.identityCard }} <br>
-                    {{ invoice.customer.adress }} <br>
-                    {{ invoice.customer.postalCode }} {{ invoice.customer.city }} ({{ invoice.customer.province }})
+                    {{ invoice.customer.address }} <br>
+                    {{ invoice.customer.city }} ({{ invoice.customer.city.province.name }})
                 </p>
             </div>
         </div>

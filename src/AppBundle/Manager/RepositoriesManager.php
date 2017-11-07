@@ -2,6 +2,7 @@
 
 namespace AppBundle\Manager;
 
+use AppBundle\Repository\CityRepository;
 use AppBundle\Repository\PortfolioCategoryRepository;
 
 /**
@@ -19,6 +20,11 @@ class RepositoriesManager
     private $portfolioCategoryRepository;
 
     /**
+     * @var CityRepository
+     */
+    private $cityRepository;
+
+    /**
      * Methods.
      */
 
@@ -26,10 +32,12 @@ class RepositoriesManager
      * RepositoriesManager constructor.
      *
      * @param PortfolioCategoryRepository $portfolioCategoryRepository
+     * @param CityRepository $cityRepository
      */
-    public function __construct(PortfolioCategoryRepository $portfolioCategoryRepository)
+    public function __construct(PortfolioCategoryRepository $portfolioCategoryRepository, CityRepository $cityRepository)
     {
         $this->portfolioCategoryRepository = $portfolioCategoryRepository;
+        $this->cityRepository = $cityRepository;
     }
 
     /**
@@ -38,5 +46,10 @@ class RepositoriesManager
     public function getPortfolioCategoryRepository()
     {
         return $this->portfolioCategoryRepository;
+    }
+
+    public function getCityRepository()
+    {
+        return $this->cityRepository;
     }
 }

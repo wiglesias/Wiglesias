@@ -19,6 +19,15 @@ AppBundle\Entity\Portafolio:
     title: <sentence()>
     description: <paragraph()>
     date: <dateTimeThisMonth()>
+    categories: [ @categoryportfolio* ]
+
+# PortfolioCategory
+AppBundle\Entity\PortfolioCategory:
+  categoryportfolio{1..5}:
+    title: <name()>
+    createdAt: <dateTimeBetween('-2 months', '-1 months')>
+    updatedAt: <dateTimeThisMonth()>
+    enabled: <boolean(70)>
 
 # Posts
 AppBundle\Entity\Post:
@@ -43,16 +52,31 @@ AppBundle\Entity\Tag:
     updatedAt: <dateTimeThisMonth()>
     enabled: <boolean(70)>
 
+# Setting
+AppBundle\Entity\Setting:
+  setting1:
+    name: <name()>
+    surname: <lastname()>
+    company: <company()>
+    identityCard: <bothify('########?')>
+    address: <streetAddress()>
+    city: @city<numberBetween(1, 10)>
+    email: <email()>
+    phone: <phoneNumber()>
+    mobile: <phoneNumber()>
+    createdAt: <dateTimeBetween('-2 months', '-1 months')>
+    updatedAt: <dateTimeThisMonth()>
+    enabled: <boolean(70)>
+
 # Customer
 AppBundle\Entity\Customer:
   customer{1..5}:
     name: <name()>
     surname: <lastname()>
     company: <company()>
-    identityCard: <bothify('######?')>
-    adress: <streetAddress()>
-    city: <city()>
-    postalCode: <postcode()>
+    identityCard: <bothify('########?')>
+    address: <streetAddress()>
+    city: @city*
     email: <email()>
     phone: <phoneNumber()>
     mobile: <phoneNumber()>

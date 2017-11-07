@@ -9,18 +9,18 @@ use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 /**
- * Class PortfolioCategoryAdmin
+ * Class PortfolioCategoryAdmin.
  *
  * @category Admin
- * @package  AppBundle\Admin
+ *
  * @author   Wils Iglesias <wiglesias83@gmail.com>
  */
 class PortfolioCategoryAdmin extends AbstractBaseAdmin
 {
     protected $classnameLabel = 'Category';
-    protected $baseRoutePattern = 'Portafolio/portfolio-category';
+    protected $baseRoutePattern = 'Portfolio/category';
     protected $datagridValues = array(
-        '_sort_by'    => 'date',
+        '_sort_by' => 'date',
         '_sort_order' => 'asc',
     );
 
@@ -44,7 +44,7 @@ class PortfolioCategoryAdmin extends AbstractBaseAdmin
                 'enabled',
                 CheckboxType::class,
                 array(
-                    'label'    => 'backend.admin.enabled',
+                    'label' => 'backend.admin.enabled',
                     'required' => false,
                 )
             )
@@ -68,7 +68,7 @@ class PortfolioCategoryAdmin extends AbstractBaseAdmin
                 'portfolios',
                 null,
                 array(
-                    'label'    => 'Portafolio',
+                    'label' => 'Portafolio',
                 )
             )
             ->add(
@@ -91,7 +91,7 @@ class PortfolioCategoryAdmin extends AbstractBaseAdmin
                 'createdAt',
                 'date',
                 array(
-                    'label'  => 'backend.admin.date',
+                    'label' => 'backend.admin.date',
                     'format' => 'd/m/Y H:i',
                 )
             )
@@ -130,7 +130,7 @@ class PortfolioCategoryAdmin extends AbstractBaseAdmin
                 'title',
                 null,
                 array(
-                    'label'    => 'Título',
+                    'label' => 'Título',
                     'editable' => true,
                 )
             )
@@ -138,7 +138,7 @@ class PortfolioCategoryAdmin extends AbstractBaseAdmin
                 'enabled',
                 null,
                 array(
-                    'label'    => 'backend.admin.enabled',
+                    'label' => 'backend.admin.enabled',
                     'editable' => true,
                 )
             )
@@ -147,11 +147,11 @@ class PortfolioCategoryAdmin extends AbstractBaseAdmin
                 'actions',
                 array(
                     'actions' => array(
-                        'show'   => array('template' => '::Admin/Buttons/list__action_show_button.html.twig'),
-                        'edit'   => array('template' => '::Admin/Buttons/list__action_edit_button.html.twig'),
+                        'show' => array('template' => '::Admin/Buttons/list__action_show_button.html.twig'),
+                        'edit' => array('template' => '::Admin/Buttons/list__action_edit_button.html.twig'),
                         'delete' => array('template' => '::Admin/Buttons/list__action_delete_button.html.twig'),
                     ),
-                    'label'   => 'backend.admin.actions',
+                    'label' => 'backend.admin.actions',
                 )
             )
         ;

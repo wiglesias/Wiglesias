@@ -9,23 +9,23 @@ use Sonata\AdminBundle\Route\RouteCollection;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 /**
- * Class InvoiceAdmin
+ * Class InvoiceAdmin.
  *
  * @category Admin
- * @package  AppBundle\Admin
+ *
  * @author   Wils Iglesias <wiglesias83@gmail.com>
  */
 class InvoiceAdmin extends AbstractBaseAdmin
 {
-    protected $classnameLabel = 'Factura';
-    protected $baseRoutePattern = 'facturacion/factura';
+    protected $classnameLabel = 'Invoice';
+    protected $baseRoutePattern = 'billing/invoice';
     protected $datagridValues = array(
-        '_sort_by'    => 'id',
+        '_sort_by' => 'id',
         '_sort_order' => 'desc',
     );
 
     /**
-     * Configure route collection
+     * Configure route collection.
      *
      * @param RouteCollection $collection
      */
@@ -34,7 +34,7 @@ class InvoiceAdmin extends AbstractBaseAdmin
         parent::configureRoutes($collection);
         $collection
             ->add('pdf', $this->getRouterIdParameter().'/pdf')
-            ->add('send', $this->getRouterIdParameter() . '/send')
+            ->add('send', $this->getRouterIdParameter().'/send')
             ->remove('delete');
     }
 
@@ -82,7 +82,7 @@ class InvoiceAdmin extends AbstractBaseAdmin
                 'enabled',
                 CheckboxType::class,
                 array(
-                    'label'    => 'backend.admin.enabled',
+                    'label' => 'backend.admin.enabled',
                     'required' => false,
                 )
             )
@@ -163,7 +163,7 @@ class InvoiceAdmin extends AbstractBaseAdmin
                 'id',
                 null,
                 array(
-                    'label'    => 'backend.admin.invoice.id',
+                    'label' => 'backend.admin.invoice.id',
                     'editable' => false,
                 )
             )
@@ -171,7 +171,7 @@ class InvoiceAdmin extends AbstractBaseAdmin
                 'date',
                 null,
                 array(
-                    'label'    => 'backend.admin.invoice.date',
+                    'label' => 'backend.admin.invoice.date',
                     'editable' => true,
                     'format' => 'd/m/Y',
                 )
@@ -180,7 +180,7 @@ class InvoiceAdmin extends AbstractBaseAdmin
                 'customer',
                 null,
                 array(
-                    'label'    => 'backend.admin.invoice.customer',
+                    'label' => 'backend.admin.invoice.customer',
                     'editable' => true,
                 )
             )
@@ -188,7 +188,7 @@ class InvoiceAdmin extends AbstractBaseAdmin
                 'taxableBase',
                 null,
                 array(
-                    'label'    => 'backend.admin.invoice.taxableBase',
+                    'label' => 'backend.admin.invoice.taxableBase',
                     'editable' => false,
                 )
             )
@@ -196,7 +196,7 @@ class InvoiceAdmin extends AbstractBaseAdmin
                 'calculateIva',
                 null,
                 array(
-                    'label'    => 'backend.admin.invoice.iva',
+                    'label' => 'backend.admin.invoice.iva',
                     'editable' => false,
                 )
             )
@@ -204,7 +204,7 @@ class InvoiceAdmin extends AbstractBaseAdmin
                 'calculateIrpf',
                 null,
                 array(
-                    'label'    => 'backend.admin.invoice.irpf',
+                    'label' => 'backend.admin.invoice.irpf',
                     'editable' => false,
                 )
             )
@@ -212,7 +212,7 @@ class InvoiceAdmin extends AbstractBaseAdmin
                 'total',
                 null,
                 array(
-                    'label'    => 'backend.admin.invoice.total',
+                    'label' => 'backend.admin.invoice.total',
                     'editable' => false,
                 )
             )
@@ -221,13 +221,13 @@ class InvoiceAdmin extends AbstractBaseAdmin
                 'actions',
                 array(
                     'actions' => array(
-                        'show'   => array('template' => '::Admin/Buttons/list__action_show_button.html.twig'),
-                        'edit'   => array('template' => '::Admin/Buttons/list__action_edit_button.html.twig'),
+                        'show' => array('template' => '::Admin/Buttons/list__action_show_button.html.twig'),
+                        'edit' => array('template' => '::Admin/Buttons/list__action_edit_button.html.twig'),
                         'pdf' => array('template' => '::Admin/Buttons/list__action_pdf_button.html.twig'),
                         'send' => array('template' => '::Admin/Buttons/list__action_send_button.html.twig'),
                         'delete' => array('template' => '::Admin/Buttons/list__action_delete_button.html.twig'),
                     ),
-                    'label'   => 'backend.admin.actions',
+                    'label' => 'backend.admin.actions',
                 )
             )
         ;

@@ -12,23 +12,23 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 /**
- * Class PortafolioAdmin
+ * Class PortafolioAdmin.
  *
  * @category Admin
- * @package  AppBundle\Admin
+ *
  * @author   Wils Iglesias <wiglesias83@gmail.com>
  */
 class PortafolioAdmin extends AbstractBaseAdmin
 {
-    protected $classnameLabel = 'Portafolio';
-    protected $baseRoutePattern = 'portafolios/portafolio';
+    protected $classnameLabel = 'Portfolio';
+    protected $baseRoutePattern = 'portfolios/portfolio';
     protected $datagridValues = array(
-        '_sort_by'    => 'date',
+        '_sort_by' => 'date',
         '_sort_order' => 'desc',
     );
 
     /**
-     * Configure route collection
+     * Configure route collection.
      *
      * @param RouteCollection $collection
      */
@@ -63,17 +63,17 @@ class PortafolioAdmin extends AbstractBaseAdmin
                 'description',
                 CKEditorType::class,
                 array(
-                    'label'       => 'backend.admin.portafolio.description',
+                    'label' => 'backend.admin.portafolio.description',
                     'config_name' => 'my_config',
-                    'required'    => true,
+                    'required' => true,
                 )
             )
             ->add(
                 'imageFile',
                 FileType::class,
                 array(
-                    'label'    => 'backend.admin.portafolio.image',
-                    'help'     => $this->getImageHelperFormMapperWithThumbnail(),
+                    'label' => 'backend.admin.portafolio.image',
+                    'help' => $this->getImageHelperFormMapperWithThumbnail(),
                     'required' => false,
                 )
             )
@@ -83,8 +83,8 @@ class PortafolioAdmin extends AbstractBaseAdmin
                 'date',
                 'sonata_type_date_picker',
                 array(
-                    'label'    => 'backend.admin.portafolio.date',
-                    'format'   => 'd/M/y',
+                    'label' => 'backend.admin.portafolio.date',
+                    'format' => 'd/M/y',
                     'required' => true,
                 )
             )
@@ -103,12 +103,13 @@ class PortafolioAdmin extends AbstractBaseAdmin
                 'enabled',
                 CheckboxType::class,
                 array(
-                    'label'    => 'backend.admin.enabled',
+                    'label' => 'backend.admin.enabled',
                     'required' => false,
                 )
             )
             ->end();
     }
+
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -119,9 +120,9 @@ class PortafolioAdmin extends AbstractBaseAdmin
                 'date',
                 'doctrine_orm_date',
                 array(
-                    'label'      => 'backend.admin.portafolio.date',
+                    'label' => 'backend.admin.portafolio.date',
                     'field_type' => 'sonata_type_date_picker',
-                    'format'     => 'd-m-Y',
+                    'format' => 'd-m-Y',
                 )
             )
             ->add(
@@ -166,16 +167,16 @@ class PortafolioAdmin extends AbstractBaseAdmin
                 'image',
                 null,
                 array(
-                    'label'    => 'backend.admin.portafolio.image',
-                    'template' => '::Admin/Cells/list__cell_image_field.html.twig'
+                    'label' => 'backend.admin.portafolio.image',
+                    'template' => '::Admin/Cells/list__cell_image_field.html.twig',
                 )
             )
             ->add(
                 'date',
                 'date',
                 array(
-                    'label'    => 'backend.admin.portafolio.date',
-                    'format'   => 'd/m/Y',
+                    'label' => 'backend.admin.portafolio.date',
+                    'format' => 'd/m/Y',
                     'editable' => true,
                 )
             )
@@ -208,11 +209,11 @@ class PortafolioAdmin extends AbstractBaseAdmin
                 'actions',
                 array(
                     'actions' => array(
-                        'show'   => array('template' => '::Admin/Buttons/list__action_show_button.html.twig'),
-                        'edit'   => array('template' => '::Admin/Buttons/list__action_edit_button.html.twig'),
+                        'show' => array('template' => '::Admin/Buttons/list__action_show_button.html.twig'),
+                        'edit' => array('template' => '::Admin/Buttons/list__action_edit_button.html.twig'),
                         'delete' => array('template' => '::Admin/Buttons/list__action_delete_button.html.twig'),
                     ),
-                    'label'   => 'backend.admin.actions',
+                    'label' => 'backend.admin.actions',
                 )
             );
     }
