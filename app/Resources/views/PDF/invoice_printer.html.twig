@@ -31,7 +31,7 @@
                     <span style="font-weight: bold">{{ setting.fullName }}</span><br>
                     {{ setting.identityCard }}<br>
                     {{ setting.address }}<br>
-                    {{ setting.city }}
+                    {{ setting.city }} ({{ setting.city.province.name }})
                 </p>
             </div>
             <div class="col-xs-5">
@@ -39,7 +39,7 @@
                     <span style="font-weight: bold">{{ invoice.customer.company }}</span><br>
                     {{ invoice.customer.identityCard }} <br>
                     {{ invoice.customer.address }} <br>
-                    {{ invoice.customer.city }}
+                    {{ invoice.customer.city }} ({{ invoice.customer.city.province.name }})
                 </p>
             </div>
         </div>
