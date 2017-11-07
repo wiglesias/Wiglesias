@@ -6,10 +6,10 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * Class Setting
+ * Class Setting.
  *
  * @category Entity
- * @package  AppBundle\Entity
+ *
  * @author   Wils Iglesias <wiglesias83@gmail.com>
  *
  * @ORM\Entity(repositoryClass="AppBundle\Repository\SettingRepository")
@@ -61,25 +61,11 @@ class Setting extends AbstractBase
     private $adress;
 
     /**
-     * @var string
+     * @var City
      *
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\City")
      */
     private $city;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", nullable=true)
-     */
-    private $province;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", nullable=true)
-     */
-    private $postalCode;
 
     /**
      * @var string
@@ -103,9 +89,7 @@ class Setting extends AbstractBase
     private $mobile;
 
     /**
-     *
-     * Methods
-     *
+     * Methods.
      */
 
     /**
@@ -141,7 +125,7 @@ class Setting extends AbstractBase
      */
     public function getFullName()
     {
-        return $this->name .' '.$this->surname;
+        return $this->name.' '.$this->surname;
     }
 
     /**
@@ -237,7 +221,7 @@ class Setting extends AbstractBase
     }
 
     /**
-     * @return string
+     * @return City
      */
     public function getCity()
     {
@@ -245,53 +229,13 @@ class Setting extends AbstractBase
     }
 
     /**
-     * @param string $city
+     * @param City $city
      *
      * @return Setting
      */
     public function setCity($city)
     {
         $this->city = $city;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getProvince()
-    {
-        return $this->province;
-    }
-
-    /**
-     * @param string $province
-     *
-     * @return Setting
-     */
-    public function setProvince($province)
-    {
-        $this->province = $province;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPostalCode()
-    {
-        return $this->postalCode;
-    }
-
-    /**
-     * @param string $postalCode
-     *
-     * @return Setting
-     */
-    public function setPostalCode($postalCode)
-    {
-        $this->postalCode = $postalCode;
 
         return $this;
     }
