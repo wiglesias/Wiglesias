@@ -14,21 +14,5 @@
                 Anar al llistat <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
-        {#<div class="box{% if pendingMessages > 0 %} box-danger{% endif %}">#}
-            {#<div class="box-header">#}
-                {#<h3 class="box-title">#}
-                    {#<i class="fa fa-envelope-o" aria-hidden="true"></i>#}
-                    {#{% if pendingMessages > 0 %}#}
-                        {#{% if pendingMessages == 1 %}#}
-                            {#{{ pendingMessages }} mensaje pendiente de leer#}
-                        {#{% else %}#}
-                            {#{{ pendingMessages }} mensajes pendientes de leer#}
-                        {#{% endif %}#}
-                    {#{% else %}#}
-                        {#no tienes nigún mensaje pendiente de leer#}
-                    {#{% endif %}#}
-                {#</h3>#}
-            {#</div>#}
-        {#</div>#}
     {% endif %}
 {% endblock %}

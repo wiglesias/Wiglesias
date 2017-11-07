@@ -67,6 +67,9 @@ backend:
             description: Descripción
             user_question: Pregunta del usuario
             your_answer: Tu respuesta
+            text_1: Todos los mensajes de contacto están contestados
+            text_2: Mensaje de contacto pendiente de contestar
+            text_3: Mensajes de contacto pendientes de contestar
         portafolio:
             project: Proyecto
             title: Título
