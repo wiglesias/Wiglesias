@@ -84,9 +84,7 @@ AppBundle\Entity\Setting:
     company: <company()>
     identityCard: <bothify('######?')>
     adress: <streetAddress()>
-    city: <city()>
-    province: <state()>
-    postalCode: <postcode()>
+    city: @city*
     email: <email()>
     phone: <phoneNumber()>
     mobile: <phoneNumber()>
