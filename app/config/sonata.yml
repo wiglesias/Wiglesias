@@ -31,10 +31,12 @@ sonata_admin:
         groups:
             Portfolio:
                 icon: "<i class='fa fa-briefcase'></i>"
+                label: "Portafolio"
             Blog:
                 icon: "<i class='fa fa-chrome'></i>"
             Contacts:
                 icon: "<i class='fa fa-envelope'></i>"
+                label: "Contactos"
             Administration:
                 icon: "<i class='fa fa-cogs'></i>"
                 label: "Administración"

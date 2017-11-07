@@ -1,12 +1,15 @@
-Portafolio_list: Portafolio
-Portafolio_create: Crear
-Portafolio_delete: Eliminar
+Portfolio_list: Portafolio
+Portfolio_create: Crear
+Portfolio_delete: Eliminar
 Category_list: Categoría
 Category_create: Crear
 Category_delete: Eliminar
 Post_list: Articulo
 Post_create: Crear
 Post_delete: Eliminar
+Tag_list: Etiqueta
+Tag_create: Crear
+Tag_delete: Eliminar
 Contact Message_list: Mensaje de contacto
 User_list: Usuario
 User_create: Crear

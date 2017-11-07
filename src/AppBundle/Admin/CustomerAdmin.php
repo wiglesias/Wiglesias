@@ -18,7 +18,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 class CustomerAdmin extends AbstractBaseAdmin
 {
     protected $classnameLabel = 'Customer';
-    protected $baseRoutePattern = 'facturacion/cliente';
+    protected $baseRoutePattern = 'billing/customer';
     protected $datagridValues = array(
         '_sort_by' => 'username',
         '_sort_order' => 'asc',

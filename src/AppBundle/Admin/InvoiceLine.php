@@ -7,18 +7,18 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
 /**
- * Class InvoiceLine
+ * Class InvoiceLine.
  *
  * @category Admin
- * @package  AppBundle\Admin
+ *
  * @author   Wils Iglesias <wiglesias83@gmail.com>
  */
 class InvoiceLine extends AbstractBaseAdmin
 {
-    protected $classnameLabel = 'Líneas';
-    protected $baseRoutePattern = 'facturacion/lineas';
+    protected $classnameLabel = 'Lines';
+    protected $baseRoutePattern = 'facturacion/lines';
     protected $datagridValues = array(
-        '_sort_by'    => 'name',
+        '_sort_by' => 'name',
         '_sort_order' => 'asc',
     );
 
@@ -67,7 +67,7 @@ class InvoiceLine extends AbstractBaseAdmin
                 'enabled',
                 'checkbox',
                 array(
-                    'label'    => 'backend.admin.enabled',
+                    'label' => 'backend.admin.enabled',
                     'required' => false,
                     'attr' => array(
                         'hidden' => true,
@@ -133,7 +133,7 @@ class InvoiceLine extends AbstractBaseAdmin
                 'name',
                 null,
                 array(
-                    'label'    => 'backend.admin.invoice_line.name',
+                    'label' => 'backend.admin.invoice_line.name',
                     'editable' => true,
                 )
             )
@@ -141,7 +141,7 @@ class InvoiceLine extends AbstractBaseAdmin
                 'price',
                 null,
                 array(
-                    'label'    => 'backend.admin.invoice_line.price',
+                    'label' => 'backend.admin.invoice_line.price',
                     'editable' => true,
                 )
             )
@@ -149,7 +149,7 @@ class InvoiceLine extends AbstractBaseAdmin
                 'amount',
                 null,
                 array(
-                    'label'    => 'backend.admin.invoice_line.amount',
+                    'label' => 'backend.admin.invoice_line.amount',
                     'editable' => true,
                 )
             )
@@ -157,7 +157,7 @@ class InvoiceLine extends AbstractBaseAdmin
                 'invoice',
                 null,
                 array(
-                    'label'    => 'backend.admin.invoice.invoice',
+                    'label' => 'backend.admin.invoice.invoice',
                     'editable' => true,
                 )
             )
@@ -165,7 +165,7 @@ class InvoiceLine extends AbstractBaseAdmin
                 'enabled',
                 null,
                 array(
-                    'label'    => 'backend.admin.enabled',
+                    'label' => 'backend.admin.enabled',
                     'editable' => true,
                 )
             )
@@ -174,11 +174,11 @@ class InvoiceLine extends AbstractBaseAdmin
                 'actions',
                 array(
                     'actions' => array(
-                        'show'   => array('template' => '::Admin/Buttons/list__action_show_button.html.twig'),
-                        'edit'   => array('template' => '::Admin/Buttons/list__action_edit_button.html.twig'),
+                        'show' => array('template' => '::Admin/Buttons/list__action_show_button.html.twig'),
+                        'edit' => array('template' => '::Admin/Buttons/list__action_edit_button.html.twig'),
                         'delete' => array('template' => '::Admin/Buttons/list__action_delete_button.html.twig'),
                     ),
-                    'label'   => 'backend.admin.actions',
+                    'label' => 'backend.admin.actions',
                 )
             )
         ;

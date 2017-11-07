@@ -5,16 +5,16 @@ namespace AppBundle\Tests\Controller;
 use AppBundle\Tests\AbstractBaseTest;
 
 /**
- * Class BackendControllerTest
+ * Class BackendControllerTest.
  *
  * @category Test
- * @package  AppBundle\Tests\Controller
+ *
  * @author   Wils Iglesias <wiglesias83@gmail.com>
  */
 class BackendControllerTest extends AbstractBaseTest
 {
     /**
-     * Test admin login request is successful
+     * Test admin login request is successful.
      */
     public function testAdminLoginPageIsSuccessful()
     {
@@ -25,9 +25,10 @@ class BackendControllerTest extends AbstractBaseTest
     }
 
     /**
-     * Test HTTP request is successful
+     * Test HTTP request is successful.
      *
      * @dataProvider provideSuccessfulUrls
+     *
      * @param string $url
      */
     public function testAdminPagesAreSuccessful($url)
@@ -39,7 +40,7 @@ class BackendControllerTest extends AbstractBaseTest
     }
 
     /**
-     * Successful Urls provider
+     * Successful Urls provider.
      *
      * @return array
      */
@@ -50,34 +51,34 @@ class BackendControllerTest extends AbstractBaseTest
             array('/admin/contact/message/list'),
             array('/admin/contact/message/1/show'),
             array('/admin/contact/message/1/answer'),
-            array('/admin/web/tag/list'),
-            array('/admin/web/tag/create'),
-            array('/admin/web/tag/1/show'),
-            array('/admin/web/tag/1/edit'),
-            array('/admin/web/tag/1/delete'),
-            array('/admin/web/post/list'),
-            array('/admin/web/post/create'),
-            array('/admin/web/post/1/edit'),
-            array('/admin/web/post/1/delete'),
-            array('/admin/portafolios/portafolio/list'),
-            array('/admin/portafolios/portafolio/create'),
-            array('/admin/portafolios/portafolio/1/edit'),
-            array('/admin/portafolios/portafolio/1/delete'),
-            array('/admin/Portafolio/portfolio-category/list'),
-            array('/admin/Portafolio/portfolio-category/create'),
-            array('/admin/Portafolio/portfolio-category/1/edit'),
-            array('/admin/Portafolio/portfolio-category/1/delete'),
+            array('/admin/blog/tag/list'),
+            array('/admin/blog/tag/create'),
+            array('/admin/blog/tag/1/show'),
+            array('/admin/blog/tag/1/edit'),
+            array('/admin/blog/tag/1/delete'),
+            array('/admin/blog/post/list'),
+            array('/admin/blog/post/create'),
+            array('/admin/blog/post/1/edit'),
+            array('/admin/blog/post/1/delete'),
+            array('/admin/portfolios/portfolio/list'),
+            array('/admin/portfolios/portfolio/create'),
+            array('/admin/portfolios/portfolio/1/edit'),
+            array('/admin/portfolios/portfolio/1/delete'),
+            array('/admin/Portfolio/category/list'),
+            array('/admin/Portfolio/category/create'),
+            array('/admin/Portfolio/category/1/edit'),
+            array('/admin/Portfolio/category/1/delete'),
             array('/admin/setting/profile/list'),
             array('/admin/setting/profile/create'),
             array('/admin/setting/profile/1/edit'),
             array('/admin/setting/profile/1/delete'),
-            array('/admin/facturacion/cliente/list'),
-            array('/admin/facturacion/cliente/create'),
-            array('/admin/facturacion/cliente/1/edit'),
-            array('/admin/facturacion/cliente/1/delete'),
-            array('/admin/facturacion/factura/list'),
-            array('/admin/facturacion/factura/create'),
-            array('/admin/facturacion/factura/1/edit'),
+            array('/admin/billing/customer/list'),
+            array('/admin/billing/customer/create'),
+            array('/admin/billing/customer/1/edit'),
+            array('/admin/billing/customer/1/delete'),
+            array('/admin/billing/invoice/list'),
+            array('/admin/billing/invoice/create'),
+            array('/admin/billing/invoice/1/edit'),
             array('/admin/administration/province/list'),
             array('/admin/administration/province/create'),
             array('/admin/administration/province/1/edit'),
@@ -92,9 +93,10 @@ class BackendControllerTest extends AbstractBaseTest
     }
 
     /**
-     * Test HTTP request is not found
+     * Test HTTP request is not found.
      *
      * @dataProvider provideNotFoundUrls
+     *
      * @param string $url
      */
     public function testAdminPagesAreNotFound($url)
@@ -106,7 +108,7 @@ class BackendControllerTest extends AbstractBaseTest
     }
 
     /**
-     * Not found Urls provider
+     * Not found Urls provider.
      *
      * @return array
      */

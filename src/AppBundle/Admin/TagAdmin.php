@@ -10,23 +10,23 @@ use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
 
 /**
- * Class TagAdmin
+ * Class TagAdmin.
  *
  * @category Admin
- * @package  AppBundle\Admin
+ *
  * @author   Wils Iglesias <wiglesias83@gmail.com>
  */
 class TagAdmin extends AbstractBaseAdmin
 {
-    protected $classnameLabel = 'Etiqueta';
-    protected $baseRoutePattern = 'web/tag';
+    protected $classnameLabel = 'Tag';
+    protected $baseRoutePattern = 'blog/tag';
     protected $datagridValues = array(
-        '_sort_by'    => 'title',
+        '_sort_by' => 'title',
         '_sort_order' => 'asc',
     );
 
     /**
-     * Configure route collection
+     * Configure route collection.
      *
      * @param RouteCollection $collection
      */
@@ -37,7 +37,7 @@ class TagAdmin extends AbstractBaseAdmin
     }
 
     /**
-     * Override query list to reduce queries amount on list view (apply join strategy)
+     * Override query list to reduce queries amount on list view (apply join strategy).
      *
      * @param string $context context
      *
@@ -48,8 +48,8 @@ class TagAdmin extends AbstractBaseAdmin
         /** @var QueryBuilder $query */
         $query = parent::createQuery($context);
         $query
-            ->select($query->getRootAliases()[0] . ', p')
-            ->leftJoin($query->getRootAliases()[0] . '.posts', 'p');
+            ->select($query->getRootAliases()[0].', p')
+            ->leftJoin($query->getRootAliases()[0].'.posts', 'p');
 
         return $query;
     }
@@ -74,7 +74,7 @@ class TagAdmin extends AbstractBaseAdmin
                 'enabled',
                 'checkbox',
                 array(
-                    'label'    => 'backend.admin.enabled',
+                    'label' => 'backend.admin.enabled',
                     'required' => false,
                 )
             )
@@ -99,7 +99,7 @@ class TagAdmin extends AbstractBaseAdmin
                 'posts',
                 null,
                 array(
-                    'label'    => 'backend.admin.tag.posts',
+                    'label' => 'backend.admin.tag.posts',
                 )
             )
             ->add(
@@ -121,7 +121,7 @@ class TagAdmin extends AbstractBaseAdmin
                 'createdAt',
                 'date',
                 array(
-                    'label'  => 'backend.admin.date',
+                    'label' => 'backend.admin.date',
                     'format' => 'd/m/Y H:i',
                 )
             )
@@ -160,7 +160,7 @@ class TagAdmin extends AbstractBaseAdmin
                 'title',
                 null,
                 array(
-                    'label'    => 'backend.admin.tag.title',
+                    'label' => 'backend.admin.tag.title',
                     'editable' => true,
                 )
             )
@@ -168,7 +168,7 @@ class TagAdmin extends AbstractBaseAdmin
                 'count',
                 null,
                 array(
-                    'label'    => 'backend.admin.tag.posts_amount',
+                    'label' => 'backend.admin.tag.posts_amount',
                     'template' => '::Admin/Cells/list__cell_posts_amount_field.html.twig',
                 )
             )
@@ -176,7 +176,7 @@ class TagAdmin extends AbstractBaseAdmin
                 'enabled',
                 null,
                 array(
-                    'label'    => 'backend.admin.enabled',
+                    'label' => 'backend.admin.enabled',
                     'editable' => true,
                 )
             )
@@ -185,13 +185,13 @@ class TagAdmin extends AbstractBaseAdmin
                 'actions',
                 array(
                     'actions' => array(
-                        'show'   => array(
-                            'template' => '::Admin/Buttons/list__action_show_button.html.twig'
+                        'show' => array(
+                            'template' => '::Admin/Buttons/list__action_show_button.html.twig',
                         ),
-                        'edit'   => array('template' => '::Admin/Buttons/list__action_edit_button.html.twig'),
+                        'edit' => array('template' => '::Admin/Buttons/list__action_edit_button.html.twig'),
                         'delete' => array('template' => '::Admin/Buttons/list__action_delete_button.html.twig'),
                     ),
-                    'label'   => 'backend.admin.actions',
+                    'label' => 'backend.admin.actions',
                 )
             )
         ;
