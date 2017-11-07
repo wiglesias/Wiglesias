@@ -11,23 +11,23 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 
 /**
- * Class PostAdmin
+ * Class PostAdmin.
  *
  * @category Admin
- * @package  AppBundle\Admin
+ *
  * @author   Wils Iglesias <wiglesias83@gmail.com>
  */
 class PostAdmin extends AbstractBaseAdmin
 {
-    protected $classnameLabel = 'Articulo';
+    protected $classnameLabel = 'Post';
     protected $baseRoutePattern = 'web/post';
     protected $datagridValues = array(
-        '_sort_by'    => 'publishedAt',
+        '_sort_by' => 'publishedAt',
         '_sort_order' => 'desc',
     );
 
     /**
-     * Configure route collection
+     * Configure route collection.
      *
      * @param RouteCollection $collection
      */
@@ -38,7 +38,7 @@ class PostAdmin extends AbstractBaseAdmin
     }
 
     /**
-     * Override query list to reduce queries amount on list view (apply join strategy)
+     * Override query list to reduce queries amount on list view (apply join strategy).
      *
      * @param string $context context
      *
@@ -49,8 +49,8 @@ class PostAdmin extends AbstractBaseAdmin
         /** @var QueryBuilder $query */
         $query = parent::createQuery($context);
         $query
-            ->select($query->getRootAliases()[0] . ', t')
-            ->leftJoin($query->getRootAliases()[0] . '.tags', 't');
+            ->select($query->getRootAliases()[0].', t')
+            ->leftJoin($query->getRootAliases()[0].'.tags', 't');
 
         return $query;
     }
@@ -73,8 +73,8 @@ class PostAdmin extends AbstractBaseAdmin
                 'imageFile',
                 'file',
                 array(
-                    'label'    => 'backend.admin.post.image',
-                    'help'     => $this->getImageHelperFormMapperWithThumbnail(),
+                    'label' => 'backend.admin.post.image',
+                    'help' => $this->getImageHelperFormMapperWithThumbnail(),
                     'required' => false,
                 )
             )
@@ -102,7 +102,7 @@ class PostAdmin extends AbstractBaseAdmin
                 null,
                 array(
                     'label' => 'backend.admin.post.metakeywords',
-                    'help'  => 'backend.admin.post.metakeywordshelp',
+                    'help' => 'backend.admin.post.metakeywordshelp',
                 )
             )
             ->add(
@@ -116,7 +116,7 @@ class PostAdmin extends AbstractBaseAdmin
                 'enabled',
                 'checkbox',
                 array(
-                    'label'    => 'backend.admin.enabled',
+                    'label' => 'backend.admin.enabled',
                     'required' => false,
                 )
             )
@@ -140,9 +140,9 @@ class PostAdmin extends AbstractBaseAdmin
                 'description',
                 CKEditorType::class,
                 array(
-                    'label'       => 'backend.admin.post.description',
+                    'label' => 'backend.admin.post.description',
                     'config_name' => 'my_config',
-                    'required'    => true,
+                    'required' => true,
                 )
             )
             ->end();
@@ -158,7 +158,7 @@ class PostAdmin extends AbstractBaseAdmin
                 'publishedAt',
                 'doctrine_orm_date',
                 array(
-                    'label'      => 'backend.admin.published_date',
+                    'label' => 'backend.admin.published_date',
                     'field_type' => 'sonata_type_date_picker',
                 )
             )
@@ -218,16 +218,16 @@ class PostAdmin extends AbstractBaseAdmin
                 'image',
                 null,
                 array(
-                    'label'    => 'backend.admin.post.image',
-                    'template' => '::Admin/Cells/list__cell_image_field.html.twig'
+                    'label' => 'backend.admin.post.image',
+                    'template' => '::Admin/Cells/list__cell_image_field.html.twig',
                 )
             )
             ->add(
                 'publishedAt',
                 'date',
                 array(
-                    'label'    => 'backend.admin.published_date',
-                    'format'   => 'd/m/Y',
+                    'label' => 'backend.admin.published_date',
+                    'format' => 'd/m/Y',
                     'editable' => true,
                 )
             )
@@ -235,7 +235,7 @@ class PostAdmin extends AbstractBaseAdmin
                 'title',
                 null,
                 array(
-                    'label'    => 'backend.admin.post.title',
+                    'label' => 'backend.admin.post.title',
                     'editable' => true,
                 )
             )
@@ -243,7 +243,7 @@ class PostAdmin extends AbstractBaseAdmin
                 'tags',
                 null,
                 array(
-                    'label'    => 'backend.admin.post.tags',
+                    'label' => 'backend.admin.post.tags',
                     'editable' => true,
                 )
             )
@@ -251,7 +251,7 @@ class PostAdmin extends AbstractBaseAdmin
                 'author',
                 null,
                 array(
-                    'label'    => 'backend.admin.post.author',
+                    'label' => 'backend.admin.post.author',
                     'editable' => true,
                 )
             )
@@ -259,7 +259,7 @@ class PostAdmin extends AbstractBaseAdmin
                 'enabled',
                 null,
                 array(
-                    'label'    => 'backend.admin.enabled',
+                    'label' => 'backend.admin.enabled',
                     'editable' => true,
                 )
             )
@@ -268,11 +268,11 @@ class PostAdmin extends AbstractBaseAdmin
                 'actions',
                 array(
                     'actions' => array(
-                        'show'   => array('template' => '::Admin/Buttons/list__action_show_button.html.twig'),
-                        'edit'   => array('template' => '::Admin/Buttons/list__action_edit_button.html.twig'),
+                        'show' => array('template' => '::Admin/Buttons/list__action_show_button.html.twig'),
+                        'edit' => array('template' => '::Admin/Buttons/list__action_edit_button.html.twig'),
                         'delete' => array('template' => '::Admin/Buttons/list__action_delete_button.html.twig'),
                     ),
-                    'label'   => 'backend.admin.actions',
+                    'label' => 'backend.admin.actions',
                 )
             );
     }

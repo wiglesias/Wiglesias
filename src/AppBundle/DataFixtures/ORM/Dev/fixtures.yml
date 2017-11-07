@@ -19,6 +19,15 @@ AppBundle\Entity\Portafolio:
     title: <sentence()>
     description: <paragraph()>
     date: <dateTimeThisMonth()>
+    categories: [ @categoryportfolio* ]
+
+# PortfolioCategory
+AppBundle\Entity\PortfolioCategory:
+  categoryportfolio{1..5}:
+    title: <name()>
+    createdAt: <dateTimeBetween('-2 months', '-1 months')>
+    updatedAt: <dateTimeThisMonth()>
+    enabled: <boolean(70)>
 
 # Posts
 AppBundle\Entity\Post:

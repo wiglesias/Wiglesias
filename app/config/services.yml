@@ -1,5 +1,3 @@
-# Learn more about services, parameters and containers at
-# http://symfony.com/doc/current/book/service_container.html
 parameters:
 #    parameter_name: value
 
@@ -9,12 +7,12 @@ services:
         class: AppBundle\Admin\PortafolioAdmin
         arguments: [ ~, AppBundle\Entity\Portafolio, AppBundle:Admin\PortafolioAdmin, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager", "@app.repositories_manager" ]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: "Portafolio", group: "Portafolio", label_translator_strategy: "sonata.admin.label.strategy.noop" }
+            - { name: sonata.admin, manager_type: orm, label: "Portafolio", group: "Portfolio", label_translator_strategy: "sonata.admin.label.strategy.noop" }
     admin.portfolio_category:
         class: AppBundle\Admin\PortfolioCategoryAdmin
         arguments: [ ~, AppBundle\Entity\PortfolioCategory, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager", "@app.repositories_manager" ]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: "Categoría", group: "Portafolio", label_translator_strategy: "sonata.admin.label.strategy.noop" }
+            - { name: sonata.admin, manager_type: orm, label: "Categoría", group: "Portfolio", label_translator_strategy: "sonata.admin.label.strategy.noop" }
     admin.post:
         class: AppBundle\Admin\PostAdmin
         arguments: [ ~, AppBundle\Entity\Post, AppBundle:Admin\PostAdmin, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager", "@app.repositories_manager" ]
@@ -29,7 +27,7 @@ services:
         class: AppBundle\Admin\ContactMessageAdmin
         arguments: [ ~, AppBundle\Entity\ContactMessage, AppBundle:Admin\ContactMessageAdmin, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager", "@app.repositories_manager" ]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: "Mensaje de Contacto", group: "Contactos", label_translator_strategy: "sonata.admin.label.strategy.noop" }
+            - { name: sonata.admin, manager_type: orm, label: "Mensaje de Contacto", group: "Contacts", label_translator_strategy: "sonata.admin.label.strategy.noop" }
     admin.administration_user:
         class: AppBundle\Admin\UserAdmin
         arguments: [ ~, AppBundle\Entity\User, ~, "@fos_user.user_manager" ]
@@ -44,17 +42,17 @@ services:
         class: AppBundle\Admin\CustomerAdmin
         arguments: [ ~, AppBundle\Entity\Customer, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager", "@app.repositories_manager" ]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: "Cliente", group: "Facturacion", label_translator_strategy: "sonata.admin.label.strategy.noop" }
+            - { name: sonata.admin, manager_type: orm, label: "Cliente", group: "Billing", label_translator_strategy: "sonata.admin.label.strategy.noop" }
     admin.billing.invoice:
         class: AppBundle\Admin\InvoiceAdmin
         arguments: [ ~, AppBundle\Entity\Invoice, AppBundle:Admin\InvoiceAdmin, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager", "@app.repositories_manager" ]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: "Factura", group: "Facturacion", label_translator_strategy: "sonata.admin.label.strategy.noop" }
+            - { name: sonata.admin, manager_type: orm, label: "Factura", group: "Billing", label_translator_strategy: "sonata.admin.label.strategy.noop" }
     admin.billing.invoice_line:
         class: AppBundle\Admin\InvoiceLine
         arguments: [ ~, AppBundle\Entity\InvoiceLine, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager", "@app.repositories_manager" ]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: "Líneas", group: "Facturacion", label_translator_strategy: "sonata.admin.label.strategy.noop", show_in_dashboard: false }
+            - { name: sonata.admin, manager_type: orm, label: "Líneas", group: "Billing", label_translator_strategy: "sonata.admin.label.strategy.noop", show_in_dashboard: false }
     admin.province:
         class: AppBundle\Admin\ProvinceAdmin
         arguments: [ ~, AppBundle\Entity\Province, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager", "@app.repositories_manager" ]

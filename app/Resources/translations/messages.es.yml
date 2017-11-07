@@ -1,3 +1,31 @@
+Portafolio_list: Portafolio
+Portafolio_create: Crear
+Portafolio_delete: Eliminar
+Category_list: Categoría
+Category_create: Crear
+Category_delete: Eliminar
+Post_list: Articulo
+Post_create: Crear
+Post_delete: Eliminar
+Contact Message_list: Mensaje de contacto
+User_list: Usuario
+User_create: Crear
+User_delete: Eliminar
+Setting_list: Configuración
+Setting_create: Crear
+Setting_delete: Eliminar
+Province_list: Província
+Province_create: Crear
+Province_delete: Eliminar
+City_list: Ciudad
+City_create: Crear
+City_list: Eliminar
+Customer_list: Cliente
+Customer_create: Crear
+Customer_delete: Eliminar
+Invoice_list: Factura
+Invoice_create: Crear
+Invoice_delete: Eliminar
 frontend:
     menu:
         about: Sobre mí

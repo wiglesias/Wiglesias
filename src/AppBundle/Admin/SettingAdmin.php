@@ -16,7 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
  */
 class SettingAdmin extends AbstractBaseAdmin
 {
-    protected $classnameLabel = 'Configuración';
+    protected $classnameLabel = 'Setting';
     protected $baseRoutePattern = 'setting/profile';
     protected $datagridValues = array(
         '_sort_by' => 'username',
