@@ -10,11 +10,11 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class PendingMessagesBlock
+ * Class PendingMessagesBlock.
  *
  * @category Block
- * @package AppBundle\Admin\Block
- * @author Wils Iglesias <wiglesias83@gmail.com>
+ *
+ * @author   Wils Iglesias <wiglesias83@gmail.com>
  */
 class PendingMessagesBlock extends AbstractBlockService
 {
@@ -38,7 +38,7 @@ class PendingMessagesBlock extends AbstractBlockService
 
     /**
      * @param BlockContextInterface $blockContext
-     * @param Response|null $response
+     * @param Response|null         $response
      *
      * @return Response
      */
@@ -47,13 +47,28 @@ class PendingMessagesBlock extends AbstractBlockService
         // merge settings
         $settings = $blockContext->getSettings();
 
+        $pendingMessagesAmount = $this->em->getRepository('AppBundle:ContactMessage')->getPendingMessagesAmount();
+
+        $backgroundColor = 'bg-green';
+        $content = '<h3><i class="fa fa-check-circle-o" aria-hidden="true"></i></h3><p>Tots els missatges de contacte estan contestats</p>';
+
+        if ($pendingMessagesAmount > 0) {
+            $backgroundColor = 'bg-red';
+            if ($pendingMessagesAmount == 1) {
+                $content = '<h3>'.$pendingMessagesAmount.'</h3><p>Missatge de contacte pendent de contestar</p>';
+            } else {
+                $content = '<h3>'.$pendingMessagesAmount.'</h3><p>Missatges de contacte pendents de contestar</p>';
+            }
+        }
+
         return $this->renderResponse(
             $blockContext->getTemplate(),
             array(
                 'block' => $blockContext->getBlock(),
                 'settings' => $settings,
                 'title' => 'Notificacions',
-                'pendingMessages' => $this->em->getRepository('AppBundle:ContactMessage')->getPendingMessagesAmount(),
+                'background' => $backgroundColor,
+                'content' => $content,
             ),
             $response
         );
