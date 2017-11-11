@@ -89,6 +89,13 @@ class Setting extends AbstractBase
     private $mobile;
 
     /**
+     * @var Bank
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Bank", cascade={"persist"})
+     */
+    protected $bank;
+
+    /**
      * Methods.
      */
 
@@ -296,6 +303,26 @@ class Setting extends AbstractBase
     public function setMobile($mobile)
     {
         $this->mobile = $mobile;
+
+        return $this;
+    }
+
+    /**
+     * @return Bank
+     */
+    public function getBank()
+    {
+        return $this->bank;
+    }
+
+    /**
+     * @param Bank $bank
+     *
+     * @return Setting
+     */
+    public function setBank($bank)
+    {
+        $this->bank = $bank;
 
         return $this;
     }
