@@ -91,7 +91,7 @@ AppBundle\Entity\Customer:
 AppBundle\Entity\Invoice:
   invoice{1..5}:
     date: <dateTimeBetween('-2 months', '-1 months')>
-    iva: <numerify('##')>
+    iva: <numberBetween(0, 2)>
     irpf: <numerify('##')>
     createdAt: <dateTimeBetween('-2 months', '-1 months')>
     updatedAt: <dateTimeThisMonth()>
