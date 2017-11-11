@@ -85,6 +85,7 @@ AppBundle\Entity\Setting:
     identityCard: <bothify('######?')>
     address: <streetAddress()>
     city: @city*
+    bank: @bank*
     email: <email()>
     phone: <phoneNumber()>
     mobile: <phoneNumber()>
@@ -128,6 +129,16 @@ AppBundle\Entity\InvoiceLine:
     name: <sentence()>
     price: <randomFloat(1, 5)>
     amount: <numberBetween(1, 100)>
+
+# Bank
+AppBundle\Entity\Bank:
+  bank{1..2}:
+    name: <company()>
+    accountNumber: <iban('ES')>
+    swiftCode: <swiftBicNumber()>
+    createdAt: <dateTimeBetween('-2 months', '-1 months')>
+    updatedAt: <dateTimeThisMonth()>
+    enabled: true
 
 # Province
 AppBundle\Entity\Province:

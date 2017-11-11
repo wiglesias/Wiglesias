@@ -76,6 +76,16 @@ class SettingAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
+                'bank',
+                EntityType::class,
+                array(
+                    'label' => 'backend.admin.setting.bank',
+                    'required' => true,
+                    'class' => 'AppBundle:Bank',
+                    'query_builder' => $this->getConfigurationPool()->getContainer()->get('app.bank_repository')->getEnabledSortedByNameQB(),
+                )
+            )
+            ->add(
                 'mobile',
                 null,
                 array(

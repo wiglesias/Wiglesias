@@ -33,6 +33,11 @@ services:
         arguments: [ ~, AppBundle\Entity\Setting, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager", "@app.repositories_manager" ]
         tags:
             - { name: sonata.admin, manager_type: orm, label: "Configuración", group: "Administration", label_translator_strategy: "sonata.admin.label.strategy.noop" }
+    admin.bank:
+        class: AppBundle\Admin\BankAdmin
+        arguments: [ ~, AppBundle\Entity\Bank, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager", "@app.repositories_manager" ]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: "Bank", group: "Administration" }
     admin.billing_customer:
         class: AppBundle\Admin\CustomerAdmin
         arguments: [ ~, AppBundle\Entity\Customer, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager", "@app.repositories_manager" ]
