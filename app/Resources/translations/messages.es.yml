@@ -121,6 +121,7 @@ backend:
             identityCard: DNI/NIF
             address: Dirección
             city: Ciudad
+            bank: Núm. Cta. Cte.
             email: Email
             phone: Teléfono
             mobile: Móvil

@@ -9,8 +9,14 @@ services:
         factory: [ "@doctrine", getRepository ]
         arguments:
             - AppBundle:City
+    app.bank_repository:
+        class: AppBundle\Repository\BankRepository
+        factory: [ "@doctrine", getRepository ]
+        arguments:
+            - AppBundle:Bank
     app.repositories_manager:
         class: AppBundle\Manager\RepositoriesManager
         arguments:
             - "@app.portfolio_category_repository"
             - "@app.city_repository"
+            - "@app.bank_repository"

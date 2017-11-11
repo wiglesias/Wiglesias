@@ -2,14 +2,15 @@
 
 namespace AppBundle\Manager;
 
+use AppBundle\Repository\BankRepository;
 use AppBundle\Repository\CityRepository;
 use AppBundle\Repository\PortfolioCategoryRepository;
 
 /**
- * Class RepositoriesManager
+ * Class RepositoriesManager.
  *
  * @category Manager
- * @package  AppBundle\Manager
+ *
  * @author   Wils Iglesias <wiglesias83@gmail.com>
  */
 class RepositoriesManager
@@ -25,6 +26,11 @@ class RepositoriesManager
     private $cityRepository;
 
     /**
+     * @var BankRepository
+     */
+    private $bankRepository;
+
+    /**
      * Methods.
      */
 
@@ -32,12 +38,14 @@ class RepositoriesManager
      * RepositoriesManager constructor.
      *
      * @param PortfolioCategoryRepository $portfolioCategoryRepository
-     * @param CityRepository $cityRepository
+     * @param CityRepository              $cityRepository
+     * @param BankRepository              $bankRepository
      */
-    public function __construct(PortfolioCategoryRepository $portfolioCategoryRepository, CityRepository $cityRepository)
+    public function __construct(PortfolioCategoryRepository $portfolioCategoryRepository, CityRepository $cityRepository, BankRepository $bankRepository)
     {
         $this->portfolioCategoryRepository = $portfolioCategoryRepository;
         $this->cityRepository = $cityRepository;
+        $this->bankRepository = $bankRepository;
     }
 
     /**
@@ -48,8 +56,19 @@ class RepositoriesManager
         return $this->portfolioCategoryRepository;
     }
 
+    /**
+     * @return CityRepository
+     */
     public function getCityRepository()
     {
         return $this->cityRepository;
+    }
+
+    /**
+     * @return BankRepository
+     */
+    public function bankRepository()
+    {
+        return $this->bankRepository;
     }
 }

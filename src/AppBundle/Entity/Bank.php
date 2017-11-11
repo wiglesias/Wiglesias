@@ -187,6 +187,6 @@ class Bank extends AbstractBase
      */
     public function __toString()
     {
-        return $this->id ? $this->getIbanFormatNumber() : '---';
+        return $this->id ? $this->getName().' · '.$this->getIbanFormatNumber() : '---';
     }
 }
