@@ -151,3 +151,7 @@ backend:
             name: Concepto
             price: Precio
             amount: Cantidad
+        bank:
+            name: Entidad bancaria
+            accountNumber: Núm. de cuenta
+            swiftCode: Código SWIFT
