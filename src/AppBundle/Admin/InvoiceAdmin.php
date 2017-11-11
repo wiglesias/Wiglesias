@@ -2,11 +2,13 @@
 
 namespace AppBundle\Admin;
 
+use AppBundle\Enum\InvoiceIvaTypeEnum;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 /**
  * Class InvoiceAdmin.
@@ -44,7 +46,7 @@ class InvoiceAdmin extends AbstractBaseAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('backend.admin.invoice.invoice', $this->getFormMdSuccessBoxArray(6))
+            ->with('backend.admin.invoice.invoice', $this->getFormMdSuccessBoxArray(4))
             ->add(
                 'date',
                 'sonata_type_date_picker',
@@ -56,9 +58,13 @@ class InvoiceAdmin extends AbstractBaseAdmin
             )
             ->add(
                 'iva',
-                null,
+                ChoiceType::class,
                 array(
                     'label' => 'backend.admin.invoice.iva',
+                    'choices' => InvoiceIvaTypeEnum::getEnumArray(),
+                    'multiple' => false,
+                    'expanded' => false,
+                    'required' => true,
                 )
             )
             ->add(
@@ -69,7 +75,7 @@ class InvoiceAdmin extends AbstractBaseAdmin
                 )
             )
             ->end()
-            ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(6))
+            ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(3))
             ->add(
                 'customer',
                 null,
@@ -124,9 +130,11 @@ class InvoiceAdmin extends AbstractBaseAdmin
             )
             ->add(
                 'date',
-                null,
+                'doctrine_orm_date',
                 array(
                     'label' => 'backend.admin.invoice.date',
+                    'field_type' => 'sonata_type_date_picker',
+                    'format' => 'd-m-Y',
                 )
             )
             ->add(
@@ -134,6 +142,12 @@ class InvoiceAdmin extends AbstractBaseAdmin
                 null,
                 array(
                     'label' => 'backend.admin.invoice.iva',
+                ),
+                ChoiceType::class,
+                array(
+                    'expanded' => false,
+                    'multiple' => false,
+                    'choices' => InvoiceIvaTypeEnum::getEnumArray(),
                 )
             )
             ->add(
