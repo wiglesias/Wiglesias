@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Enum\InvoiceIvaTypeEnum;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -220,7 +221,7 @@ class Invoice extends AbstractBase
      */
     public function getCalculateIva()
     {
-        return $this->getTaxableBase() * ($this->iva / 100);
+        return $this->getTaxableBase() * (InvoiceIvaTypeEnum::getEnumArray()[$this->getIva()] / 100);
     }
 
     /**
