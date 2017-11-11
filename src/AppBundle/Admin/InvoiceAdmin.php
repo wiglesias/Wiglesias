@@ -46,7 +46,7 @@ class InvoiceAdmin extends AbstractBaseAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('backend.admin.invoice.invoice', $this->getFormMdSuccessBoxArray(6))
+            ->with('backend.admin.invoice.invoice', $this->getFormMdSuccessBoxArray(4))
             ->add(
                 'date',
                 'sonata_type_date_picker',
@@ -75,7 +75,7 @@ class InvoiceAdmin extends AbstractBaseAdmin
                 )
             )
             ->end()
-            ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(6))
+            ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(3))
             ->add(
                 'customer',
                 null,
@@ -130,9 +130,11 @@ class InvoiceAdmin extends AbstractBaseAdmin
             )
             ->add(
                 'date',
-                null,
+                'doctrine_orm_date',
                 array(
                     'label' => 'backend.admin.invoice.date',
+                    'field_type' => 'sonata_type_date_picker',
+                    'format' => 'd-m-Y',
                 )
             )
             ->add(
