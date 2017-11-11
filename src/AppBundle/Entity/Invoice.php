@@ -6,10 +6,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class Invoice
+ * Class Invoice.
  *
  * @category Entity
- * @package  AppBundle\Entity
+ *
  * @author   Wils Iglesias <wiglesias83@gmail.com>
  *
  * @ORM\Entity
@@ -17,8 +17,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Invoice extends AbstractBase
 {
-    const DEFAULT_IVA = 21;
-
     /**
      * @var Customer
      *
@@ -36,9 +34,9 @@ class Invoice extends AbstractBase
     /**
      * @var int
      *
-     * @ORM\Column(type="integer", options={"default"=21})
+     * @ORM\Column(type="integer", options={"default"=0})
      */
-    private $iva = self::DEFAULT_IVA;
+    private $iva = 0;
 
     /**
      * @var int
@@ -55,9 +53,7 @@ class Invoice extends AbstractBase
     private $lines;
 
     /**
-     *
-     * Methods
-     *
+     * Methods.
      */
 
     /**
@@ -101,7 +97,7 @@ class Invoice extends AbstractBase
      */
     public function getInvoiceNumber()
     {
-        return  $this->getDate()->format('Y') . '-' .  $this->getId();
+        return  $this->getDate()->format('Y').'-'.$this->getId();
     }
 
     /**
@@ -248,6 +244,6 @@ class Invoice extends AbstractBase
      */
     public function __toString()
     {
-        return $this->id ? $this->getDate()->format('d/m/Y'): '---';
+        return $this->id ? $this->getDate()->format('d/m/Y') : '---';
     }
 }
