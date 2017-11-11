@@ -55,7 +55,6 @@ class AppExtension extends \Twig_Extension
     {
         return array(
             new \Twig_SimpleFilter('draw_role_span', array($this, 'drawRoleSpan')),
-            new \Twig_SimpleFilter('draw_invoice_iva_type_span', array($this, 'drawInvoiceIvaTypeSpan')),
         );
     }
 
