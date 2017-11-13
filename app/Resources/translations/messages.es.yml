@@ -151,6 +151,7 @@ backend:
             iva_1: 4
             iva_2: 10
             iva_general: 21
+            description: Factura en pdf
         invoice_line:
             name: Concepto
             price: Precio

@@ -50,13 +50,13 @@ class BaseTcpdf extends \TCPDF
     /**
      * Page header.
      */
-    public function header()
-    {
-        // logo
-        $this->Image($this->ahs->getUrl('/bundles/app/img/logo-pdf.png'), 75, 20, 60);
-        $this->SetXY(self::PDF_MARGIN_LEFT, 11);
-        $this->setFontStyle(null, 'I', 8);
-    }
+//    public function header()
+//    {
+//        // logo
+//        $this->Image($this->ahs->getUrl('/bundles/app/img/logo-pdf.png'), 75, 20, 60);
+//        $this->SetXY(self::PDF_MARGIN_LEFT, 11);
+//        $this->setFontStyle(null, 'I', 8);
+//    }
 
     /**
      * Page footer.
