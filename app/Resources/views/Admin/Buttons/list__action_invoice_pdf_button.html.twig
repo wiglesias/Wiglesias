@@ -1,0 +1,3 @@
+{% if admin.isGranted('EDIT', object) and admin.hasRoute('invoice') %}
+    <a href="{{ admin.generateObjectUrl('invoice', object) }}" class="btn btn-sm btn-default edit_link" title="factura"><i class="fa fa-barcode"></i></a>
+{% endif %}
