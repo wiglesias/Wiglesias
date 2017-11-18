@@ -3,6 +3,7 @@
 namespace AppBundle\Controller\Admin;
 
 use AppBundle\Entity\Invoice;
+use AppBundle\Service\InvoicePdfBuilderService;
 use Sonata\AdminBundle\Controller\CRUDController as Controller;
 use Symfony\Component\HttpFoundation\File\Exception\AccessDeniedException;
 use Symfony\Component\HttpFoundation\Request;
@@ -10,24 +11,24 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-
 /**
- * Class InvoiceAdminController
+ * Class InvoiceAdminController.
  *
  * @category Controller
- * @package AppBundle\Controller\Admin
+ *
  * @author Wils Iglesias <wiglesias83@gmail.com>
  */
 class InvoiceAdminController extends Controller
 {
     /**
-     * Custom show action redirect to public frontend view
+     * Custom show action redirect to public frontend view.
      *
      * @param int|string|null $id
-     * @param Request $request
+     * @param Request         $request
      *
      * @return Response
-     * @throws NotFoundHttpException If the object does not exist
+     *
+     * @throws NotFoundHttpException     If the object does not exist
      * @throws AccessDeniedHttpException If access is not granted
      */
     public function pdfAction($id = null, Request $request = null)
@@ -45,7 +46,7 @@ class InvoiceAdminController extends Controller
 
         $this->addFlash(
             'success',
-            'Tu factura número ' . $object->getId()
+            'Tu factura número '.$object->getId()
         );
 
         $html = $this->renderView(':PDF:invoice_printer.html.twig', array(
@@ -59,7 +60,7 @@ class InvoiceAdminController extends Controller
             200,
             array(
                 'Content-Type' => 'application/pdf',
-                'Content-Disposition' => 'inline; filename="factura-' .$object->getInvoiceNumber(). '.pdf"'
+                'Content-Disposition' => 'inline; filename="factura-'.$object->getInvoiceNumber().'.pdf"',
             )
         );
     }
@@ -75,9 +76,10 @@ class InvoiceAdminController extends Controller
 
     /**
      * @param int|string|null $id
-     * @param Request $request
+     * @param Request         $request
      *
      * @return Response
+     *
      * @throws NotFoundHttpException
      * @throws AccessDeniedException
      */
@@ -113,5 +115,35 @@ class InvoiceAdminController extends Controller
 //        return $this->render(':Admin/Invoice:send_invoice.html.twig', array(
 //            'invoice' => $object,
 //        ));
+    }
+
+    /**
+     * Ivoice pdf action.
+     *
+     * @param int|string|null $id
+     * @param Request         $request
+     *
+     * @return Response
+     *
+     * @throws NotFoundHttpException If the object does not exist
+     * @throws AccessDeniedException If access is not granted
+     */
+    public function invoiceAction($id = null, Request $request = null)
+    {
+        $request = $this->resolveRequest($request);
+        $id = $request->get($this->admin->getIdParameter());
+
+        /** @var Invoice $object */
+        $object = $this->admin->getObject($id);
+
+        if (!$object) {
+            throw $this->createNotFoundException(sprintf('unable to find the object with id : %s', $id));
+        }
+
+        /** @var InvoicePdfBuilderService $saps */
+        $saps = $this->get('app.invoice_pdf_builder');
+        $pdf = $saps->build($object);
+
+        return new Response($pdf->Output('invoice_'.$object->getId().'.pdf', 'I'), 200, array('Content-type' => 'application/pdf'));
     }
 }
