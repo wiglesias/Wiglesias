@@ -41,9 +41,9 @@ class InvoicePdfBuilderService
      * InvoicePdfBuilderService constructor.
      *
      * @param TCPDFController $tcpdf
-     * @param AssetsHelper $tha
-     * @param Translator $translator
-     * @param $pwt
+     * @param AssetsHelper    $tha
+     * @param Translator      $translator
+     * @param string          $pwt
      */
     public function __construct(TCPDFController $tcpdf, AssetsHelper $tha, Translator $translator, $pwt)
     {
@@ -86,5 +86,7 @@ class InvoicePdfBuilderService
 
         $pdf->SetXY(BaseTcpdf::PDF_MARGIN_LEFT, BaseTcpdf::PDF_MARGIN_TOP);
         $pdf->setFontStyle(null, '', 11);
+
+        return $pdf;
     }
 }

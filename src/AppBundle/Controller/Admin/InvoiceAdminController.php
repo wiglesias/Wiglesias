@@ -112,13 +112,10 @@ class InvoiceAdminController extends Controller
         return $this->redirectToRoute('admin_app_invoice_list', array(
             'invoice' => $object,
         ));
-//        return $this->render(':Admin/Invoice:send_invoice.html.twig', array(
-//            'invoice' => $object,
-//        ));
     }
 
     /**
-     * Ivoice pdf action.
+     * Invoice pdf action.
      *
      * @param int|string|null $id
      * @param Request         $request
@@ -144,6 +141,9 @@ class InvoiceAdminController extends Controller
         $saps = $this->get('app.invoice_pdf_builder');
         $pdf = $saps->build($object);
 
-        return new Response($pdf->Output('invoice_'.$object->getId().'.pdf', 'I'), 200, array('Content-type' => 'application/pdf'));
+        return new Response($pdf->Output('invoice_'.$object->getId().'.pdf', 'I'), 200, array(
+            'Content-type' => 'application/pdf'
+            )
+        );
     }
 }
