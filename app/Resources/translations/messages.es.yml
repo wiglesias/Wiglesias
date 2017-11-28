@@ -45,6 +45,7 @@ frontend:
     pagination:
         previous: anterior
         next: siguiente
+    category: Categoría
 backend:
     admin:
         actions: Acciones
