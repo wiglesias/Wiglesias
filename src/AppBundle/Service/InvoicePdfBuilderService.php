@@ -63,6 +63,8 @@ class InvoicePdfBuilderService
         /** @var BaseTcpdf $pdf */
         $pdf = $this->tcpdf->create($this->tha, $this->translator);
 
+        $maxCellWidth = BaseTcpdf::PDF_WIDTH - BaseTcpdf::PDF_MARGIN_LEFT - BaseTcpdf::PDF_MARGIN_RIGHT;
+
         // set document information
         $pdf->SetCreator(PDF_CREATOR);
         $pdf->SetAuthor($this->pwt);
@@ -86,6 +88,28 @@ class InvoicePdfBuilderService
 
         $pdf->SetXY(BaseTcpdf::PDF_MARGIN_LEFT, BaseTcpdf::PDF_MARGIN_TOP);
         $pdf->setFontStyle(null, '', 11);
+        // contact
+        $pdf->Write(0, 'FACTURA '.$invoice->getInvoiceNumber(), '', false, 'L', true);
+        $pdf->Write(0, $invoice->getDate()->format('d/m/Y'), '', false, 'L', true);
+        $pdf->Ln(BaseTcpdf::MARGIN_VERTICAL_SMALL);
+        $pdf->Write(0,$invoice->getCustomer()->getName(), '', false, 'L', true);
+        $pdf->Write(0, $invoice->getCustomer()->getIdentityCard(), '', false, 'L', true);
+        $pdf->Write(0, $invoice->getCustomer()->getAddress(), '', false, 'L', true);
+        $pdf->Write(0, $invoice->getCustomer()->getCity(), '', false, 'L', true);
+        $pdf->Ln(BaseTcpdf::MARGIN_VERTICAL_SMALL);
+        // description
+        $pdf->Ln(BaseTcpdf::MARGIN_VERTICAL_BIG);
+//        $pdf->setCellPaddings(2, 1, 0, 0);
+//        $pdf->setCellMargins(1, 0, 1, 0);
+
+        $pdf->MultiCell(100, 7, 'CONCEPTO', 0, 'L', false, 0, '', '', true, 0, true, true, 0, 'T', false);
+        $pdf->MultiCell(25, 7, 'CANTIDAD', 0, 'C', false, 0, '', '', true, 0, true, true, 0, 'T', false);
+        $pdf->MultiCell(25, 7, 'PRECIO', 0, 'C', false, 0, '', '', true, 0, true, true, 0, 'T', false);
+        $pdf->MultiCell(30, 7, 'TOTAL', 0, 'C', false, 0, '', '', true, 0, true, true, 0, 'T', false);
+
+
+//        $pdf->MultiCell(100, 7, 'CONCEPTO', 1, 'L', false, 1, '', '', true, 0, true, true, 0, 'T', false);
+//        $pdf->setCellMargins(1, 0, 0, 0);
 
         return $pdf;
     }
