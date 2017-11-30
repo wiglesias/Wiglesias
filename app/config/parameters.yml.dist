@@ -44,3 +44,5 @@ parameters:
 
     recaptcha_site_key: MY KEY
     recaptcha_secret: MY SECRET
+    setting_slug: 'acme'
+
