@@ -57,6 +57,7 @@ class InvoicePdfBuilderService
 
     /**
      * @param Invoice $invoice
+     * @param Setting $setting
      *
      * @return \TCPDF
      */
@@ -65,7 +66,7 @@ class InvoicePdfBuilderService
         /** @var BaseTcpdf $pdf */
         $pdf = $this->tcpdf->create($this->tha, $this->translator);
 
-        $maxCellWidth = BaseTcpdf::PDF_WIDTH - BaseTcpdf::PDF_MARGIN_LEFT - BaseTcpdf::PDF_MARGIN_RIGHT;
+//        $maxCellWidth = BaseTcpdf::PDF_WIDTH - BaseTcpdf::PDF_MARGIN_LEFT - BaseTcpdf::PDF_MARGIN_RIGHT;
 
         // set document information
         $pdf->SetCreator(PDF_CREATOR);
@@ -92,41 +93,86 @@ class InvoicePdfBuilderService
         $pdf->setFontStyle(null, '', 11);
         // contact
         $pdf->Write(0, 'FACTURA '.$invoice->getInvoiceNumber(), '', false, 'L', true);
-        $pdf->Write(0, 'Fecha: '.$invoice->getDate()->format('d/m/Y'), '', false, 'L', true);
+        $pdf->Write(0, 'Fecha: ', '', false, 'L', false);
+        $pdf->setFontStyle(null, 'B', 11);
+        $pdf->Write(0, $invoice->getDate()->format('d/m/Y'), '', false, 'L', true);
         $pdf->Ln(BaseTcpdf::MARGIN_VERTICAL_SMALL);
 
-        $setting = new Setting();
-        $pdf->Write(0, $setting->getName(), '', false, 'L', true);
+        $y = $pdf->GetY();
 
+        $pdf->Write(0, $setting->getFullName(), '', false, 'L', true);
+        $pdf->setFontStyle(null, '', 11);
+        $pdf->Write(0, $setting->getIdentityCard(), '', false, 'L', true);
+        $pdf->Write(0, $setting->getAddress(), '', false, 'L', true);
+        $pdf->Write(0, $setting->getCity().' ('.$setting->getCity()->getProvince()->getName().')', '', false, 'L', true);
+        $pdf->Write(0, $setting->getMobile().' - '.$setting->getEmail(), '', false, 'L', true);
+
+        $pdf->SetY($y);
+        $pdf->SetX(125);
+
+        $pdf->setFontStyle(null, 'B', 11);
         $pdf->Write(0, $invoice->getCustomer()->getName(), '', false, 'L', true);
+        $pdf->setFontStyle(null, '', 11);
+        $pdf->SetX(125);
         $pdf->Write(0, $invoice->getCustomer()->getIdentityCard(), '', false, 'L', true);
+        $pdf->SetX(125);
         $pdf->Write(0, $invoice->getCustomer()->getAddress(), '', false, 'L', true);
+        $pdf->SetX(125);
         $pdf->Write(0, $invoice->getCustomer()->getCity(), '', false, 'L', true);
+
         $pdf->Ln(BaseTcpdf::MARGIN_VERTICAL_SMALL);
         // table
         $pdf->Ln(BaseTcpdf::MARGIN_VERTICAL_BIG);
         $pdf->Ln(BaseTcpdf::MARGIN_VERTICAL_BIG);
         $pdf->setCellPaddings(2, 1, 0, 0);
         // table header
-//        $pdf->MultiCell(100, 7, 'CONCEPTO', 1, 'C', false, 0, '', '', true, 0, true, true, 0, 'T', false);
-//        $pdf->MultiCell(25, 7, 'CANTIDAD', 1, 'C', false, 0, '', '', true, 0, true, true, 0, 'T', false);
-//        $pdf->MultiCell(25, 7, 'PRECIO', 1, 'C', false, 0, '', '', true, 0, true, true, 0, 'T', false);
-//        $pdf->MultiCell(30, 7, 'TOTAL', 1, 'C', false, 0, '', '', true, 0, true, true, 0, 'T', false);
-//        $pdf->setCellMargins(1, 0, 0, 0);
-        // table body
+        $pdf->SetFillColor(3, 169, 244);
+        $pdf->SetTextColor(255, 255, 255);
+        $pdf->MultiCell(100, 7, 'CONCEPTO', 0, 'L', true, 0, '', '', true, 0, true, true, 0, 'T', false);
+        $pdf->MultiCell(25, 7, 'CANTIDAD', 0, 'R', true, 0, '', '', true, 0, true, true, 0, 'T', false);
+        $pdf->MultiCell(25, 7, 'PRECIO', 0, 'R', true, 0, '', '', true, 0, true, true, 0, 'T', false);
+        $pdf->MultiCell(30, 7, 'TOTAL', 0, 'R', true, 1, '', '', true, 0, true, true, 0, 'T', false);
+        $pdf->SetTextColor(0, 0, 0);
 
+        // table body
+        $pdf->setFontStyle(null, '', 10);
+        $pdf->setCellMargins(0, 0, 0, 2);
+        $pdf->setCellPaddings(1, 2, 1, 2);
         /** @var InvoiceLine $line */
         foreach ($invoice->getLines() as $line) {
-            $pdf->setFontStyle(null, '', 10);
-            $pdf->MultiCell(100, 7, $line->getName(), 0, 'L', false, 0, '', '', true, 0, true, true, 0, 'T', false);
-            $pdf->setCellMargins(0, 0, 0, 0);
-            $pdf->MultiCell(25, 7, $line->getAmount(), 0, 'R', false, 0, '', '', true, 0, true, true, 0, 'T', false);
-            $pdf->MultiCell(25, 7, number_format($line->getPrice(), 2, ',', '.').' €', 0, 'R', false, 0, '', '', true, 0, true, true, 0, 'T', false);
-            $pdf->MultiCell(30, 7, number_format($line->getTotal(), 2, ',', '.').' €', 0, 'R', false, 0, '', '', true, 0, true, true, 0, 'T', false);
+            $pdf->MultiCell(100, 8, $line->getName(), 1, 'L', false, 0, '', '', true, 0, true, true, 0, 'T', false);
+            $pdf->MultiCell(25, 8, $line->getAmount(), 1, 'R', false, 0, '', '', true, 0, true, true, 0, 'T', false);
+            $pdf->MultiCell(25, 8, number_format($line->getPrice(), 2, ',', '.').' €', 1, 'R', false, 0, '', '', true, 0, true, true, 0, 'T', false);
+            $pdf->MultiCell(30, 8, number_format($line->getTotal(), 2, ',', '.').' €', 1, 'R', false, 1, '', '', true, 0, true, true, 0, 'T', false);
         }
         $pdf->setCellMargins(1, 0, 1, 0);
         $pdf->setCellPaddings(0, 0, 0, 0);
         // table footer
+
+        $fy = $pdf->GetY();
+
+        $pdf->SetY($fy);
+//        $pdf->SetX(120);
+//        $pdf->setFontStyle(null, 'B', 11);
+//        $pdf->Write(0, 'Base imponible', '', false, 'R', true);
+//        $pdf->setFontStyle(null, 'B', 11);
+//        $pdf->SetX(120);
+//        $pdf->Write(0, 'IVA ' . $invoice->getIva() . ' %', '', false, 'R', true);
+//        $pdf->setFontStyle(null, 'B', 11);
+//        $pdf->SetX(120);
+//        $pdf->Write(0, 'IRPF ' . $invoice->getIrpf() . ' %', '', false, 'R', true);
+//        $pdf->setFontStyle(null, 'B', 11);
+//        $pdf->SetX(120);
+//        $pdf->Write(0, 'Total', '', false, 'R', true);
+
+        $pdf->SetY($fy);
+        $pdf->SetX(170);
+        $pdf->Write(0, number_format($invoice->getTaxableBase(), 2, ',', '.').' €', '', false, 'R', true);
+        $pdf->SetX(170);
+        $pdf->Write(0, number_format($invoice->getCalculateIva(), 2, ',', '.').' €', '', false, 'R', true);
+        $pdf->SetX(170);
+        $pdf->Write(0, number_format($invoice->getCalculateIrpf(), 2, ',', '.').' €', '', false, 'R', true);
+        $pdf->Write(0, number_format($invoice->getTotal(), 2, ',', '.').' €', '', false, 'R', true);
 
         return $pdf;
     }
