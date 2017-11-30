@@ -60,7 +60,7 @@ class InvoicePdfBuilderService
      *
      * @return \TCPDF
      */
-    public function build(Invoice $invoice)
+    public function build(Invoice $invoice, Setting $setting)
     {
         /** @var BaseTcpdf $pdf */
         $pdf = $this->tcpdf->create($this->tha, $this->translator);
