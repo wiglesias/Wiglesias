@@ -90,8 +90,8 @@ class InvoicePdfBuilderService
         $pdf->setPrintFooter(true);
 
         $pdf->SetXY(BaseTcpdf::PDF_MARGIN_LEFT, BaseTcpdf::PDF_MARGIN_TOP);
-        $pdf->setFontStyle(null, '', 11);
         // contact
+        $pdf->setFontStyle(null, '', 12);
         $pdf->Write(0, 'FACTURA '.$invoice->getInvoiceNumber(), '', false, 'L', true);
         $pdf->Write(0, 'Fecha: ', '', false, 'L', false);
         $pdf->setFontStyle(null, 'B', 11);
@@ -120,9 +120,7 @@ class InvoicePdfBuilderService
         $pdf->SetX(125);
         $pdf->Write(0, $invoice->getCustomer()->getCity(), '', false, 'L', true);
 
-        $pdf->Ln(BaseTcpdf::MARGIN_VERTICAL_SMALL);
         // table
-        $pdf->Ln(BaseTcpdf::MARGIN_VERTICAL_BIG);
         $pdf->Ln(BaseTcpdf::MARGIN_VERTICAL_BIG);
         $pdf->setCellPaddings(2, 1, 0, 0);
         // table header
@@ -147,32 +145,46 @@ class InvoicePdfBuilderService
         }
         $pdf->setCellMargins(1, 0, 1, 0);
         $pdf->setCellPaddings(0, 0, 0, 0);
+
         // table footer
+        $pdf->Ln(BaseTcpdf::MARGIN_VERTICAL_BIG);
 
-        $fy = $pdf->GetY();
+//        $xc=100;
+//        $yc=100;
+//        $style = array('width' => 0.5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(3, 169, 244));
+//
+//        $pdf->Line($xc-85, $yc, $xc+95, $yc, $style);
+//
+//        $fy = $pdf->GetY();
+//        $pdf->SetY($fy);
 
-        $pdf->SetY($fy);
 //        $pdf->SetX(120);
-//        $pdf->setFontStyle(null, 'B', 11);
-//        $pdf->Write(0, 'Base imponible', '', false, 'R', true);
-//        $pdf->setFontStyle(null, 'B', 11);
+        $pdf->setFontStyle(null, 'B', 11);
+        $pdf->Write(0, 'Base imponible', '', false, 'L', true);
+        $pdf->setFontStyle(null, 'B', 11);
 //        $pdf->SetX(120);
-//        $pdf->Write(0, 'IVA ' . $invoice->getIva() . ' %', '', false, 'R', true);
-//        $pdf->setFontStyle(null, 'B', 11);
+        $pdf->Write(0, 'IVA '.$invoice->getIva().' %', '', false, 'L', true);
+        $pdf->setFontStyle(null, 'B', 11);
 //        $pdf->SetX(120);
-//        $pdf->Write(0, 'IRPF ' . $invoice->getIrpf() . ' %', '', false, 'R', true);
-//        $pdf->setFontStyle(null, 'B', 11);
+        $pdf->Write(0, 'IRPF '.$invoice->getIrpf().' %', '', false, 'L', true);
+        $pdf->setFontStyle(null, 'B', 11);
 //        $pdf->SetX(120);
-//        $pdf->Write(0, 'Total', '', false, 'R', true);
-
-        $pdf->SetY($fy);
-        $pdf->SetX(170);
+        $pdf->Write(0, 'Total', '', false, 'L', true);
+//        $pdf->SetY($fy);
+//        $pdf->SetX(170);
         $pdf->Write(0, number_format($invoice->getTaxableBase(), 2, ',', '.').' €', '', false, 'R', true);
         $pdf->SetX(170);
         $pdf->Write(0, number_format($invoice->getCalculateIva(), 2, ',', '.').' €', '', false, 'R', true);
         $pdf->SetX(170);
         $pdf->Write(0, number_format($invoice->getCalculateIrpf(), 2, ',', '.').' €', '', false, 'R', true);
+
         $pdf->Write(0, number_format($invoice->getTotal(), 2, ',', '.').' €', '', false, 'R', true);
+
+//        $xc=100;
+//        $yc=100;
+//        $style = array('width' => 0.5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(3, 169, 244));
+//        $pdf->SetXY(BaseTcpdf::PDF_MARGIN_LEFT, 170);
+//        $pdf->Line($xc-85, $yc, $xc+95, $yc, $style);
 
         return $pdf;
     }
