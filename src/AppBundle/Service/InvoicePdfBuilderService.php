@@ -177,7 +177,7 @@ class InvoicePdfBuilderService
 
         $pdf->MultiCell(180, 8, 'Forma de pago', $styleButtom, 'L', false, 1, '', '', true, 0, true, true, 0, 'T', false);
         $pdf->setCellPaddings(0, 1, 0, 0);
-        $pdf->setCellMargins(1, 0, 1, 0);
+        $pdf->setCellMargins(1, 2, 1, 0);
         $pdf->MultiCell(180, 14, 'Mediante transferencia bancaria al número de cuenta: <br>'.$setting->getBank()->getAccountNumber(), 0, 'L', false, 1, '', '', true, 0, true, true, 0, 'T', false);
 
         $pdf->setCellMargins(1, 0, 1, 0);

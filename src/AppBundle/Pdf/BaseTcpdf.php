@@ -79,7 +79,7 @@ class BaseTcpdf extends \TCPDF
     {
         $this->SetXY(self::PDF_MARGIN_LEFT, 280);
         $this->setFontStyle(null, 'I', 8);
-        $this->Cell(0, 0, 'mobile: 667 362 821, website: www.wiglesias.com, email: info@gmail.com', 0, 0, 'T', 0, 'C');
+        $this->Cell(0, 0, 'website: www.wiglesias.com, email: info@gmail.com', 0, 0, 'C', 0, 'C');
     }
 
     /**
