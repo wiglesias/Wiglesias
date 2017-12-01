@@ -138,10 +138,10 @@ class InvoicePdfBuilderService
         $pdf->setCellPaddings(1, 2, 1, 2);
         /** @var InvoiceLine $line */
         foreach ($invoice->getLines() as $line) {
-            $pdf->MultiCell(100, 8, $line->getName(), 1, 'L', false, 0, '', '', true, 0, true, true, 0, 'T', false);
-            $pdf->MultiCell(25, 8, $line->getAmount(), 1, 'R', false, 0, '', '', true, 0, true, true, 0, 'T', false);
-            $pdf->MultiCell(25, 8, number_format($line->getPrice(), 2, ',', '.').' €', 1, 'R', false, 0, '', '', true, 0, true, true, 0, 'T', false);
-            $pdf->MultiCell(30, 8, number_format($line->getTotal(), 2, ',', '.').' €', 1, 'R', false, 1, '', '', true, 0, true, true, 0, 'T', false);
+            $pdf->MultiCell(100, 8, $line->getName(), 0, 'L', false, 0, '', '', true, 0, true, true, 0, 'T', false);
+            $pdf->MultiCell(25, 8, $line->getAmount(), 0, 'R', false, 0, '', '', true, 0, true, true, 0, 'T', false);
+            $pdf->MultiCell(25, 8, number_format($line->getPrice(), 2, ',', '.').' €', 0, 'R', false, 0, '', '', true, 0, true, true, 0, 'T', false);
+            $pdf->MultiCell(30, 8, number_format($line->getTotal(), 2, ',', '.').' €', 0, 'R', false, 1, '', '', true, 0, true, true, 0, 'T', false);
         }
 //        $pdf->setCellMargins(1, 0, 1, 0);
 //        $pdf->setCellPaddings(0, 0, 0, 0);
@@ -149,10 +149,12 @@ class InvoicePdfBuilderService
         // table footer
         $pdf->SetY(195);
 
+        $styleTop = array('T' => array('width' => 0.5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(3, 169, 244)));
+
         $pdf->setFontStyle(null, 'B', 11);
-        $pdf->MultiCell(150, 8, 'Base imponible', 'T', 'R', false, 0, '', '', true, 0, true, true, 0, 'T', false);
+        $pdf->MultiCell(150, 8, 'Base imponible', $styleTop, 'R', false, 0, '', '', true, 0, true, true, 0, 'T', false);
         $pdf->setFontStyle(null, '', 11);
-        $pdf->MultiCell(30, 8, number_format($invoice->getTaxableBase(), 2, ',', '.').' €', 'T', 'R', false, 1, '', '', true, 0, true, true, 0, 'T', false);
+        $pdf->MultiCell(30, 8, number_format($invoice->getTaxableBase(), 2, ',', '.').' €', $styleTop, 'R', false, 1, '', '', true, 0, true, true, 0, 'T', false);
         $pdf->setFontStyle(null, 'B', 11);
         $pdf->MultiCell(150, 8, 'IVA '.$invoice->getIva().' %', 0, 'R', false, 0, '', '', true, 0, true, true, 0, 'T', false);
         $pdf->setFontStyle(null, '', 11);
@@ -166,30 +168,28 @@ class InvoicePdfBuilderService
         $pdf->setFontStyle(null, '', 11);
         $pdf->MultiCell(30, 8, number_format($invoice->getTotal(), 2, ',', '.').' €', 0, 'R', false, 1, '', '', true, 0, true, true, 0, 'T', false);
 
-//        $pdf->setCellMargins(1, 0, 1, 0);
-//        $pdf->setCellPaddings(0, 0, 0, 0);
+        $pdf->setCellMargins(1, 0, 1, 0);
+        $pdf->setCellPaddings(0, 0, 0, 0);
 
-//        $pdf->setFontStyle(null, 'B', 11);
-//        $pdf->Write(0, 'Base imponible', '', false, 'L', true);
-//        $pdf->setFontStyle(null, 'B', 11);
-//        $pdf->Write(0, 'IVA '.$invoice->getIva().' %', '', false, 'L', true);
-//        $pdf->setFontStyle(null, 'B', 11);
-//        $pdf->Write(0, 'IRPF '.$invoice->getIrpf().' %', '', false, 'L', true);
-//        $pdf->setFontStyle(null, 'B', 11);
-//        $pdf->Write(0, 'Total', '', false, 'L', true);
-//
-//        $pdf->Write(0, number_format($invoice->getTaxableBase(), 2, ',', '.').' €', '', false, 'R', true);
-//        $pdf->SetX(170);
-//        $pdf->Write(0, number_format($invoice->getCalculateIva(), 2, ',', '.').' €', '', false, 'R', true);
-//        $pdf->SetX(170);
-//        $pdf->Write(0, number_format($invoice->getCalculateIrpf(), 2, ',', '.').' €', '', false, 'R', true);
-//
-//        $pdf->Write(0, number_format($invoice->getTotal(), 2, ',', '.').' €', '', false, 'R', true);
+        $pdf->SetY(255);
+
+        $styleButtom = array('B' => array('width' => 0.5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(3, 169, 244)));
+
+        $pdf->MultiCell(180, 8, 'Forma de pago', $styleButtom, 'L', false, 1, '', '', true, 0, true, true, 0, 'T', false);
+        $pdf->setCellPaddings(0, 1, 0, 0);
+        $pdf->setCellMargins(1, 0, 1, 0);
+        $pdf->MultiCell(180, 14, 'Mediante transferencia bancaria al número de cuenta: <br>'.$setting->getBank()->getAccountNumber(), 0, 'L', false, 1, '', '', true, 0, true, true, 0, 'T', false);
+
+        $pdf->setCellMargins(1, 0, 1, 0);
+        $pdf->setCellPaddings(0, 0, 0, 0);
+
+//        $pdf->Write(0, 'Forma de pago', '', false, 'L', true);
+//        $style = array('width' => 0.5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(3, 169, 244));
+//        $pdf->Line(15, 255, 195, 255, $style);
 
 //        $xc=100;
 //        $yc=100;
 //        $style = array('width' => 0.5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(3, 169, 244));
-//        $pdf->SetXY(BaseTcpdf::PDF_MARGIN_LEFT, 170);
 //        $pdf->Line($xc-85, $yc, $xc+95, $yc, $style);
 
         return $pdf;
