@@ -149,25 +149,42 @@ class InvoicePdfBuilderService
         // table footer
         $pdf->SetY(195);
 
+        $pdf->setFontStyle(null, 'B', 11);
         $pdf->MultiCell(150, 8, 'Base imponible', 'T', 'R', false, 0, '', '', true, 0, true, true, 0, 'T', false);
+        $pdf->setFontStyle(null, '', 11);
         $pdf->MultiCell(30, 8, number_format($invoice->getTaxableBase(), 2, ',', '.').' €', 'T', 'R', false, 1, '', '', true, 0, true, true, 0, 'T', false);
+        $pdf->setFontStyle(null, 'B', 11);
+        $pdf->MultiCell(150, 8, 'IVA '.$invoice->getIva().' %', 0, 'R', false, 0, '', '', true, 0, true, true, 0, 'T', false);
+        $pdf->setFontStyle(null, '', 11);
+        $pdf->MultiCell(30, 8, number_format($invoice->getTaxableBase(), 2, ',', '.').' €', 0, 'R', false, 1, '', '', true, 0, true, true, 0, 'T', false);
+        $pdf->setFontStyle(null, 'B', 11);
+        $pdf->MultiCell(150, 8, 'IRPF '.$invoice->getIrpf().' %', 0, 'R', false, 0, '', '', true, 0, true, true, 0, 'T', false);
+        $pdf->setFontStyle(null, '', 11);
+        $pdf->MultiCell(30, 8, number_format($invoice->getCalculateIrpf(), 2, ',', '.').' €', 0, 'R', false, 1, '', '', true, 0, true, true, 0, 'T', false);
+        $pdf->setFontStyle(null, 'B', 11);
+        $pdf->MultiCell(150, 8, 'TOTAL', 0, 'R', false, 0, '', '', true, 0, true, true, 0, 'T', false);
+        $pdf->setFontStyle(null, '', 11);
+        $pdf->MultiCell(30, 8, number_format($invoice->getTotal(), 2, ',', '.').' €', 0, 'R', false, 1, '', '', true, 0, true, true, 0, 'T', false);
 
-        $pdf->setFontStyle(null, 'B', 11);
-        $pdf->Write(0, 'Base imponible', '', false, 'L', true);
-        $pdf->setFontStyle(null, 'B', 11);
-        $pdf->Write(0, 'IVA '.$invoice->getIva().' %', '', false, 'L', true);
-        $pdf->setFontStyle(null, 'B', 11);
-        $pdf->Write(0, 'IRPF '.$invoice->getIrpf().' %', '', false, 'L', true);
-        $pdf->setFontStyle(null, 'B', 11);
-        $pdf->Write(0, 'Total', '', false, 'L', true);
+//        $pdf->setCellMargins(1, 0, 1, 0);
+//        $pdf->setCellPaddings(0, 0, 0, 0);
 
-        $pdf->Write(0, number_format($invoice->getTaxableBase(), 2, ',', '.').' €', '', false, 'R', true);
-        $pdf->SetX(170);
-        $pdf->Write(0, number_format($invoice->getCalculateIva(), 2, ',', '.').' €', '', false, 'R', true);
-        $pdf->SetX(170);
-        $pdf->Write(0, number_format($invoice->getCalculateIrpf(), 2, ',', '.').' €', '', false, 'R', true);
-
-        $pdf->Write(0, number_format($invoice->getTotal(), 2, ',', '.').' €', '', false, 'R', true);
+//        $pdf->setFontStyle(null, 'B', 11);
+//        $pdf->Write(0, 'Base imponible', '', false, 'L', true);
+//        $pdf->setFontStyle(null, 'B', 11);
+//        $pdf->Write(0, 'IVA '.$invoice->getIva().' %', '', false, 'L', true);
+//        $pdf->setFontStyle(null, 'B', 11);
+//        $pdf->Write(0, 'IRPF '.$invoice->getIrpf().' %', '', false, 'L', true);
+//        $pdf->setFontStyle(null, 'B', 11);
+//        $pdf->Write(0, 'Total', '', false, 'L', true);
+//
+//        $pdf->Write(0, number_format($invoice->getTaxableBase(), 2, ',', '.').' €', '', false, 'R', true);
+//        $pdf->SetX(170);
+//        $pdf->Write(0, number_format($invoice->getCalculateIva(), 2, ',', '.').' €', '', false, 'R', true);
+//        $pdf->SetX(170);
+//        $pdf->Write(0, number_format($invoice->getCalculateIrpf(), 2, ',', '.').' €', '', false, 'R', true);
+//
+//        $pdf->Write(0, number_format($invoice->getTotal(), 2, ',', '.').' €', '', false, 'R', true);
 
 //        $xc=100;
 //        $yc=100;

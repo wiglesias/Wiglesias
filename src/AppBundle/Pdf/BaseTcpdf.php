@@ -66,6 +66,7 @@ class BaseTcpdf extends \TCPDF
         $this->Line(94, 32, 114, 32, $styleWhite);
         $this->setFontStyle(null, '', 12);
         $this->SetTextColor(0, 0, 0);
+        $this->setCellPaddings(0, 0, 0, 3);
         $this->MultiCell(180, 0, 'Software Developer', 0, 'C', true, 1, '', '', true, 0, true, true, 0, 'T', false);
         $this->SetXY(self::PDF_MARGIN_LEFT, 55);
         $this->setFontStyle(null, 'I', 8);
