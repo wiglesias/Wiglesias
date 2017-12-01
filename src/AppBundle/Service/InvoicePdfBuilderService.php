@@ -143,35 +143,24 @@ class InvoicePdfBuilderService
             $pdf->MultiCell(25, 8, number_format($line->getPrice(), 2, ',', '.').' €', 1, 'R', false, 0, '', '', true, 0, true, true, 0, 'T', false);
             $pdf->MultiCell(30, 8, number_format($line->getTotal(), 2, ',', '.').' €', 1, 'R', false, 1, '', '', true, 0, true, true, 0, 'T', false);
         }
-        $pdf->setCellMargins(1, 0, 1, 0);
-        $pdf->setCellPaddings(0, 0, 0, 0);
+//        $pdf->setCellMargins(1, 0, 1, 0);
+//        $pdf->setCellPaddings(0, 0, 0, 0);
 
         // table footer
-        $pdf->Ln(BaseTcpdf::MARGIN_VERTICAL_BIG);
+        $pdf->SetY(195);
 
-//        $xc=100;
-//        $yc=100;
-//        $style = array('width' => 0.5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(3, 169, 244));
-//
-//        $pdf->Line($xc-85, $yc, $xc+95, $yc, $style);
-//
-//        $fy = $pdf->GetY();
-//        $pdf->SetY($fy);
+        $pdf->MultiCell(150, 8, 'Base imponible', 'T', 'R', false, 0, '', '', true, 0, true, true, 0, 'T', false);
+        $pdf->MultiCell(30, 8, number_format($invoice->getTaxableBase(), 2, ',', '.').' €', 'T', 'R', false, 1, '', '', true, 0, true, true, 0, 'T', false);
 
-//        $pdf->SetX(120);
         $pdf->setFontStyle(null, 'B', 11);
         $pdf->Write(0, 'Base imponible', '', false, 'L', true);
         $pdf->setFontStyle(null, 'B', 11);
-//        $pdf->SetX(120);
         $pdf->Write(0, 'IVA '.$invoice->getIva().' %', '', false, 'L', true);
         $pdf->setFontStyle(null, 'B', 11);
-//        $pdf->SetX(120);
         $pdf->Write(0, 'IRPF '.$invoice->getIrpf().' %', '', false, 'L', true);
         $pdf->setFontStyle(null, 'B', 11);
-//        $pdf->SetX(120);
         $pdf->Write(0, 'Total', '', false, 'L', true);
-//        $pdf->SetY($fy);
-//        $pdf->SetX(170);
+
         $pdf->Write(0, number_format($invoice->getTaxableBase(), 2, ',', '.').' €', '', false, 'R', true);
         $pdf->SetX(170);
         $pdf->Write(0, number_format($invoice->getCalculateIva(), 2, ',', '.').' €', '', false, 'R', true);

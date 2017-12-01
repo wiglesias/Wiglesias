@@ -52,6 +52,8 @@ class BaseTcpdf extends \TCPDF
      */
     public function header()
     {
+        $styleWhite = array('width' => 0, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(255, 255, 255));
+
         // logo
 //        $this->Image($this->ahs->getUrl('/bundles/app/img/logo-pdf.png'), 75, 20, 60);
         $this->SetXY(self::PDF_MARGIN_LEFT, 20);
@@ -61,6 +63,7 @@ class BaseTcpdf extends \TCPDF
         $this->setCellMargins(0, 0, 0, 0);
         $this->setCellPaddings(0, 3, 0, 3);
         $this->MultiCell(180, 0, 'IT CONSULTANT', 0, 'C', true, 1, '', '', true, 0, true, true, 0, 'T', false);
+        $this->Line(94, 32, 114, 32, $styleWhite);
         $this->setFontStyle(null, '', 12);
         $this->SetTextColor(0, 0, 0);
         $this->MultiCell(180, 0, 'Software Developer', 0, 'C', true, 1, '', '', true, 0, true, true, 0, 'T', false);
