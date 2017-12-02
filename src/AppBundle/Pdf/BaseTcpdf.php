@@ -52,7 +52,7 @@ class BaseTcpdf extends \TCPDF
      */
     public function header()
     {
-        $styleWhite = array('width' => 0, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(255, 255, 255));
+        $styleWhite = array('width' => 0.2, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(255, 255, 255));
 
         // logo
 //        $this->Image($this->ahs->getUrl('/bundles/app/img/logo-pdf.png'), 75, 20, 60);
@@ -79,7 +79,7 @@ class BaseTcpdf extends \TCPDF
     {
         $this->SetXY(self::PDF_MARGIN_LEFT, 280);
         $this->setFontStyle(null, 'I', 8);
-        $this->Cell(0, 0, 'website: www.wiglesias.com, email: info@gmail.com', 0, 0, 'C', 0, 'C');
+        $this->Cell(0, 0, 'website: www.wiglesias.com, email: info@wiglesias.com', 0, 0, 'C', 0, 'C');
     }
 
     /**

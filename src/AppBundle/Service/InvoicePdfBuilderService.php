@@ -133,8 +133,9 @@ class InvoicePdfBuilderService
         $pdf->SetTextColor(0, 0, 0);
 
         // table body
+//        $pdf->Ln(BaseTcpdf::MARGIN_VERTICAL_BIG);
         $pdf->setFontStyle(null, '', 10);
-        $pdf->setCellMargins(0, 0, 0, 2);
+        $pdf->setCellMargins(0, 0, 0, 0);
         $pdf->setCellPaddings(1, 2, 1, 2);
         /** @var InvoiceLine $line */
         foreach ($invoice->getLines() as $line) {
@@ -143,8 +144,6 @@ class InvoicePdfBuilderService
             $pdf->MultiCell(25, 8, number_format($line->getPrice(), 2, ',', '.').' €', 0, 'R', false, 0, '', '', true, 0, true, true, 0, 'T', false);
             $pdf->MultiCell(30, 8, number_format($line->getTotal(), 2, ',', '.').' €', 0, 'R', false, 1, '', '', true, 0, true, true, 0, 'T', false);
         }
-//        $pdf->setCellMargins(1, 0, 1, 0);
-//        $pdf->setCellPaddings(0, 0, 0, 0);
 
         // table footer
         $pdf->SetY(195);
@@ -165,14 +164,16 @@ class InvoicePdfBuilderService
         $pdf->MultiCell(30, 8, number_format($invoice->getCalculateIrpf(), 2, ',', '.').' €', 0, 'R', false, 1, '', '', true, 0, true, true, 0, 'T', false);
         $pdf->setFontStyle(null, 'B', 11);
         $pdf->MultiCell(150, 8, 'TOTAL', 0, 'R', false, 0, '', '', true, 0, true, true, 0, 'T', false);
+        $pdf->SetFillColor(3, 169, 244);
+        $pdf->SetTextColor(255, 255, 255);
+        $pdf->MultiCell(30, 8, number_format($invoice->getTotal(), 2, ',', '.').' €', 0, 'R', true, 1, '', '', true, 0, true, true, 0, 'T', false);
         $pdf->setFontStyle(null, '', 11);
-        $pdf->MultiCell(30, 8, number_format($invoice->getTotal(), 2, ',', '.').' €', 0, 'R', false, 1, '', '', true, 0, true, true, 0, 'T', false);
+        $pdf->SetTextColor(0, 0, 0);
 
         $pdf->setCellMargins(1, 0, 1, 0);
         $pdf->setCellPaddings(0, 0, 0, 0);
-
+        // description footer
         $pdf->SetY(255);
-
         $styleButtom = array('B' => array('width' => 0.5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(3, 169, 244)));
 
         $pdf->MultiCell(180, 8, 'Forma de pago', $styleButtom, 'L', false, 1, '', '', true, 0, true, true, 0, 'T', false);
@@ -182,10 +183,6 @@ class InvoicePdfBuilderService
 
         $pdf->setCellMargins(1, 0, 1, 0);
         $pdf->setCellPaddings(0, 0, 0, 0);
-
-//        $pdf->Write(0, 'Forma de pago', '', false, 'L', true);
-//        $style = array('width' => 0.5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(3, 169, 244));
-//        $pdf->Line(15, 255, 195, 255, $style);
 
 //        $xc=100;
 //        $yc=100;
