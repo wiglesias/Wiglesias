@@ -5,6 +5,7 @@ namespace AppBundle\Service;
 use AppBundle\Entity\Invoice;
 use AppBundle\Entity\InvoiceLine;
 use AppBundle\Entity\Setting;
+use AppBundle\Enum\InvoiceIvaTypeEnum;
 use AppBundle\Pdf\BaseTcpdf;
 use Symfony\Bundle\FrameworkBundle\Translation\Translator;
 use WhiteOctober\TCPDFBundle\Controller\TCPDFController;
@@ -91,8 +92,11 @@ class InvoicePdfBuilderService
 
         $pdf->SetXY(BaseTcpdf::PDF_MARGIN_LEFT, BaseTcpdf::PDF_MARGIN_TOP);
         // contact
-        $pdf->setFontStyle(null, '', 12);
+        $pdf->setFontStyle(null, 'B', 12);
+        $pdf->SetTextColor(3, 169, 244);
         $pdf->Write(0, 'FACTURA '.$invoice->getInvoiceNumber(), '', false, 'L', true);
+        $pdf->setFontStyle(null, '', 11);
+        $pdf->SetTextColor(0, 0, 0);
         $pdf->Write(0, 'Fecha: ', '', false, 'L', false);
         $pdf->setFontStyle(null, 'B', 11);
         $pdf->Write(0, $invoice->getDate()->format('d/m/Y'), '', false, 'L', true);
@@ -155,7 +159,7 @@ class InvoicePdfBuilderService
         $pdf->setFontStyle(null, '', 11);
         $pdf->MultiCell(30, 8, number_format($invoice->getTaxableBase(), 2, ',', '.').' €', $styleTop, 'R', false, 1, '', '', true, 0, true, true, 0, 'T', false);
         $pdf->setFontStyle(null, 'B', 11);
-        $pdf->MultiCell(150, 8, 'IVA '.$invoice->getIva().' %', 0, 'R', false, 0, '', '', true, 0, true, true, 0, 'T', false);
+        $pdf->MultiCell(150, 8, 'IVA '.InvoiceIvaTypeEnum::getEnumArray()[$invoice->getIva()].' %', 0, 'R', false, 0, '', '', true, 0, true, true, 0, 'T', false);
         $pdf->setFontStyle(null, '', 11);
         $pdf->MultiCell(30, 8, number_format($invoice->getTaxableBase(), 2, ',', '.').' €', 0, 'R', false, 1, '', '', true, 0, true, true, 0, 'T', false);
         $pdf->setFontStyle(null, 'B', 11);
