@@ -136,15 +136,15 @@ class InvoiceAdminController extends Controller
         if (!$object) {
             throw $this->createNotFoundException(sprintf('unable to find the object with id : %s', $id));
         }
-
-        $setting = $this->get('app.setting_repository')->getBySlug($this->getParameter('setting_slug'));
-        if (!$setting) {
-            throw $this->createNotFoundException('setting no found');
-        }
+//
+//        $setting = $this->get('app.setting_repository')->getBySlug($this->getParameter('setting_slug'));
+//        if (!$setting) {
+//            throw $this->createNotFoundException('setting no found');
+//        }
 
         /** @var InvoicePdfBuilderService $saps */
         $saps = $this->get('app.invoice_pdf_builder');
-        $pdf = $saps->build($object, $setting);
+        $pdf = $saps->build($object);
 
         return new Response($pdf->Output('invoice_'.$object->getId().'.pdf', 'I'), 200, array(
             'Content-type' => 'application/pdf',

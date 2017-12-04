@@ -2,6 +2,8 @@
 
 namespace AppBundle\Pdf;
 
+use AppBundle\Entity\Setting;
+use AppBundle\Repository\SettingRepository;
 use Symfony\Bundle\FrameworkBundle\Templating\Helper\AssetsHelper;
 use Symfony\Bundle\FrameworkBundle\Translation\Translator;
 
@@ -33,18 +35,36 @@ class BaseTcpdf extends \TCPDF
     private $translator;
 
     /**
+     * @var SettingRepository
+     */
+    private $srs;
+
+    /**
+     * @var Setting
+     */
+    private $setting;
+
+    /**
+     * @var string
+     */
+    private $slug;
+
+    /**
      * BaseTcpdf constructor.
      *
-     * @param AssetsHelper $ahs
-     * @param Translator   $translator
-     *
-     * @internal param Translator $ts
+     * @param AssetsHelper      $ahs
+     * @param Translator        $translator
+     * @param SettingRepository $srs
+     * @param string            $slug
      */
-    public function __construct(AssetsHelper $ahs, Translator $translator)
+    public function __construct(AssetsHelper $ahs, Translator $translator, SettingRepository $srs, $slug)
     {
         parent::__construct();
         $this->ahs = $ahs;
         $this->translator = $translator;
+        $this->srs = $srs;
+        $this->slug = $slug;
+        $this->setting = $this->srs->getBySlug($this->slug);
     }
 
     /**
@@ -62,7 +82,7 @@ class BaseTcpdf extends \TCPDF
         $this->setFontStyle(null, 'B', 18);
         $this->setCellMargins(0, 0, 0, 0);
         $this->setCellPaddings(0, 3, 0, 3);
-        $this->MultiCell(180, 0, 'IT CONSULTANT', 0, 'C', true, 1, '', '', true, 0, true, true, 0, 'T', false);
+        $this->MultiCell(180, 0, $this->setting->getCompany(), 0, 'C', true, 1, '', '', true, 0, true, true, 0, 'T', false);
         $this->Line(94, 32, 114, 32, $styleWhite);
         $this->setFontStyle(null, '', 12);
         $this->SetTextColor(0, 0, 0);
@@ -79,7 +99,7 @@ class BaseTcpdf extends \TCPDF
     {
         $this->SetXY(self::PDF_MARGIN_LEFT, 280);
         $this->setFontStyle(null, 'I', 8);
-        $this->Cell(0, 0, 'website: www.wiglesias.com, email: info@wiglesias.com', 0, 0, 'C', 0, 'C');
+        $this->Cell(0, 0, 'www.wiglesias.com | '.$this->setting->getEmail(), 0, 0, 'C', 0, 'C');
     }
 
     /**
@@ -93,5 +113,13 @@ class BaseTcpdf extends \TCPDF
         // print standard ASCII chars, you can use core fonts like
         // helvetica or times to reduce file size.
         $this->SetFont($font, $style, $size, '', true);
+    }
+
+    /**
+     * @return Setting
+     */
+    public function getSetting()
+    {
+        return $this->setting;
     }
 }

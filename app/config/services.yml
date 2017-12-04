@@ -93,6 +93,8 @@ services:
         arguments:
             - "@templating.helper.assets"
             - "@translator.default"
+            - "@app.setting_repository"
+            - "%setting_slug%"
     app.invoice_pdf_builder:
         class: AppBundle\Service\InvoicePdfBuilderService
         arguments:
@@ -100,6 +102,8 @@ services:
             - "@templating.helper.assets"
             - "@translator.default"
             - "%project_web_title%"
+            - "@app.setting_repository"
+            - "%setting_slug%"
 
 # Sitemap
     app.sitemap:

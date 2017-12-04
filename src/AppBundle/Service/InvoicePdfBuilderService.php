@@ -4,9 +4,9 @@ namespace AppBundle\Service;
 
 use AppBundle\Entity\Invoice;
 use AppBundle\Entity\InvoiceLine;
-use AppBundle\Entity\Setting;
 use AppBundle\Enum\InvoiceIvaTypeEnum;
 use AppBundle\Pdf\BaseTcpdf;
+use AppBundle\Repository\SettingRepository;
 use Symfony\Bundle\FrameworkBundle\Translation\Translator;
 use WhiteOctober\TCPDFBundle\Controller\TCPDFController;
 use Symfony\Bundle\FrameworkBundle\Templating\Helper\AssetsHelper;
@@ -41,33 +41,44 @@ class InvoicePdfBuilderService
     private $pwt;
 
     /**
+     * @var SettingRepository
+     */
+    private $srs;
+
+    /**
+     * @var string
+     */
+    private $slug;
+
+    /**
      * InvoicePdfBuilderService constructor.
      *
-     * @param TCPDFController $tcpdf
-     * @param AssetsHelper    $tha
-     * @param Translator      $translator
-     * @param string          $pwt
+     * @param TCPDFController   $tcpdf
+     * @param AssetsHelper      $tha
+     * @param Translator        $translator
+     * @param string            $pwt
+     * @param SettingRepository $srs
+     * @param $slug
      */
-    public function __construct(TCPDFController $tcpdf, AssetsHelper $tha, Translator $translator, $pwt)
+    public function __construct(TCPDFController $tcpdf, AssetsHelper $tha, Translator $translator, $pwt, SettingRepository $srs, $slug)
     {
         $this->tcpdf = $tcpdf;
         $this->tha = $tha;
         $this->translator = $translator;
         $this->pwt = $pwt;
+        $this->srs = $srs;
+        $this->slug = $slug;
     }
 
     /**
      * @param Invoice $invoice
-     * @param Setting $setting
      *
      * @return \TCPDF
      */
-    public function build(Invoice $invoice, Setting $setting)
+    public function build(Invoice $invoice)
     {
         /** @var BaseTcpdf $pdf */
-        $pdf = $this->tcpdf->create($this->tha, $this->translator);
-
-//        $maxCellWidth = BaseTcpdf::PDF_WIDTH - BaseTcpdf::PDF_MARGIN_LEFT - BaseTcpdf::PDF_MARGIN_RIGHT;
+        $pdf = $this->tcpdf->create($this->tha, $this->translator, $this->srs, $this->slug);
 
         // set document information
         $pdf->SetCreator(PDF_CREATOR);
@@ -104,12 +115,12 @@ class InvoicePdfBuilderService
 
         $y = $pdf->GetY();
 
-        $pdf->Write(0, $setting->getFullName(), '', false, 'L', true);
+        $pdf->Write(0, $pdf->getSetting()->getFullName(), '', false, 'L', true);
         $pdf->setFontStyle(null, '', 11);
-        $pdf->Write(0, $setting->getIdentityCard(), '', false, 'L', true);
-        $pdf->Write(0, $setting->getAddress(), '', false, 'L', true);
-        $pdf->Write(0, $setting->getCity().' ('.$setting->getCity()->getProvince()->getName().')', '', false, 'L', true);
-        $pdf->Write(0, $setting->getMobile().' - '.$setting->getEmail(), '', false, 'L', true);
+        $pdf->Write(0, $pdf->getSetting()->getIdentityCard(), '', false, 'L', true);
+        $pdf->Write(0, $pdf->getSetting()->getAddress(), '', false, 'L', true);
+        $pdf->Write(0, $pdf->getSetting()->getCity().' ('.$pdf->getSetting()->getCity()->getProvince()->getName().')', '', false, 'L', true);
+        $pdf->Write(0, $pdf->getSetting()->getMobile().' - '.$pdf->getSetting()->getEmail(), '', false, 'L', true);
 
         $pdf->SetY($y);
         $pdf->SetX(125);
@@ -183,7 +194,7 @@ class InvoicePdfBuilderService
         $pdf->MultiCell(180, 8, 'Forma de pago', $styleButtom, 'L', false, 1, '', '', true, 0, true, true, 0, 'T', false);
         $pdf->setCellPaddings(0, 1, 0, 0);
         $pdf->setCellMargins(1, 2, 1, 0);
-        $pdf->MultiCell(180, 14, 'Mediante transferencia bancaria al número de cuenta: <br>'.$setting->getBank()->getAccountNumber(), 0, 'L', false, 1, '', '', true, 0, true, true, 0, 'T', false);
+        $pdf->MultiCell(180, 14, 'Mediante transferencia bancaria al número de cuenta: <br>'.$pdf->getSetting()->getBank()->getAccountNumber(), 0, 'L', false, 1, '', '', true, 0, true, true, 0, 'T', false);
 
         $pdf->setCellMargins(1, 0, 1, 0);
         $pdf->setCellPaddings(0, 0, 0, 0);
