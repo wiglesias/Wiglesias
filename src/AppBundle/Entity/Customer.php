@@ -51,6 +51,13 @@ class Customer extends AbstractBase
     /**
      * @var string
      *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $website;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(type="string")
      */
     private $identityCard;
@@ -194,6 +201,26 @@ class Customer extends AbstractBase
     public function setCompany($company)
     {
         $this->company = $company;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getWebsite()
+    {
+        return $this->website;
+    }
+
+    /**
+     * @param string $website
+     *
+     * @return Customer
+     */
+    public function setWebsite($website)
+    {
+        $this->website = $website;
 
         return $this;
     }

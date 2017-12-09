@@ -51,6 +51,13 @@ class Setting extends AbstractBase
     /**
      * @var string
      *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $website;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(type="string", options={"unique"})
      */
     private $identityCard;
@@ -185,6 +192,26 @@ class Setting extends AbstractBase
     public function setCompany($company)
     {
         $this->company = $company;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getWebsite()
+    {
+        return $this->website;
+    }
+
+    /**
+     * @param string $website
+     *
+     * @return Setting
+     */
+    public function setWebsite($website)
+    {
+        $this->website = $website;
 
         return $this;
     }
