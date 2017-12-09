@@ -45,6 +45,7 @@ frontend:
     pagination:
         previous: anterior
         next: siguiente
+    category: Categoría
 backend:
     admin:
         actions: Acciones
@@ -118,6 +119,7 @@ backend:
             firstName: Nombre
             lastName: Apellidos
             company: Nombre empresa
+            website: Sitio web
             identityCard: DNI/NIF
             address: Dirección
             city: Ciudad
@@ -129,6 +131,7 @@ backend:
             name: Nombre
             surname: Apellidos
             company: Empresa
+            website: Sitio web
             identityCard: NIF/CIF
             address: Dirección
             province: Provincia
@@ -151,6 +154,7 @@ backend:
             iva_1: 4
             iva_2: 10
             iva_general: 21
+            description: Factura en pdf
         invoice_line:
             name: Concepto
             price: Precio

@@ -55,6 +55,14 @@ class CustomerAdmin extends AbstractBaseAdmin
                     'required' => false,
                 )
             )
+            ->add(
+                'website',
+                null,
+                array(
+                    'label' => 'backend.admin.customer.website',
+                    'required' => false,
+                )
+            )
             ->end()
             ->with('backend.admin.contact.contact', $this->getFormMdSuccessBoxArray(4))
             ->add(

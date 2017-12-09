@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Class Setting.
@@ -14,13 +15,14 @@ use Gedmo\Mapping\Annotation as Gedmo;
  *
  * @ORM\Entity(repositoryClass="AppBundle\Repository\SettingRepository")
  * @ORM\Table(name="setting")
+ * @UniqueEntity("slug")
  */
 class Setting extends AbstractBase
 {
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      * @Gedmo\Slug(fields={"name"})
      */
     private $slug;
@@ -45,6 +47,13 @@ class Setting extends AbstractBase
      * @ORM\Column(type="string", nullable=true)
      */
     private $company;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $website;
 
     /**
      * @var string
@@ -183,6 +192,26 @@ class Setting extends AbstractBase
     public function setCompany($company)
     {
         $this->company = $company;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getWebsite()
+    {
+        return $this->website;
+    }
+
+    /**
+     * @param string $website
+     *
+     * @return Setting
+     */
+    public function setWebsite($website)
+    {
+        $this->website = $website;
 
         return $this;
     }

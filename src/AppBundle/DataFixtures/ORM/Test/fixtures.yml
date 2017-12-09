@@ -82,6 +82,7 @@ AppBundle\Entity\Setting:
     name: <name()>
     surname: <lastname()>
     company: <company()>
+    website: <safeEmailDomain()>
     identityCard: <bothify('######?')>
     address: <streetAddress()>
     city: @city*
@@ -99,6 +100,7 @@ AppBundle\Entity\Customer:
     name: <name()>
     surname: <lastname()>
     company: <company()>
+    website: <safeEmailDomain()>
     identityCard: <bothify('######?')>
     address: <streetAddress()>
     city: @city*

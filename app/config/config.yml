@@ -43,7 +43,7 @@ twig:
         google_analytics_enabled: "%google_analytics_enabled%"
         google_analytics_account: "%google_analytics_account%"
         main_brand_title:         "%project_web_title%"
-        admin_tag_version:        "v1.0.35"
+        admin_tag_version:        "v1.0.36"
 
 # Assetic
 assetic:
@@ -78,13 +78,6 @@ doctrine:
         charset:  UTF8
         types:
             json: Sonata\Doctrine\Types\JsonType
-
-        # if using pdo_sqlite as your database driver:
-        #   1. add the path in parameters.yml
-        #     e.g. database_path: "%kernel.root_dir%/data/data.db3"
-        #   2. Uncomment database_path in parameters.yml.dist
-        #   3. Uncomment next line:
-        #     path:     "%database_path%"
 
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
