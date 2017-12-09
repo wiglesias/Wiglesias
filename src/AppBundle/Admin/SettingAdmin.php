@@ -55,6 +55,14 @@ class SettingAdmin extends AbstractBaseAdmin
                     'required' => false,
                 )
             )
+            ->add(
+                'website',
+                null,
+                array(
+                    'label' => 'backend.admin.setting.website',
+                    'required' => false,
+                )
+            )
             ->end()
             ->with('backend.admin.contact.contact', $this->getFormMdSuccessBoxArray(4))
             ->add(

@@ -119,6 +119,7 @@ backend:
             firstName: Nombre
             lastName: Apellidos
             company: Nombre empresa
+            website: Sitio web
             identityCard: DNI/NIF
             address: Dirección
             city: Ciudad
@@ -130,6 +131,7 @@ backend:
             name: Nombre
             surname: Apellidos
             company: Empresa
+            website: Sitio web
             identityCard: NIF/CIF
             address: Dirección
             province: Provincia
