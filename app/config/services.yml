@@ -49,7 +49,7 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, label: "Factura", group: "Billing", label_translator_strategy: "sonata.admin.label.strategy.noop" }
     admin.billing.invoice_line:
-        class: AppBundle\Admin\InvoiceLine
+        class: AppBundle\Admin\InvoiceLineAdmin
         arguments: [ ~, AppBundle\Entity\InvoiceLine, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager", "@app.repositories_manager" ]
         tags:
             - { name: sonata.admin, manager_type: orm, label: "Líneas", group: "Billing", label_translator_strategy: "sonata.admin.label.strategy.noop", show_in_dashboard: false }
