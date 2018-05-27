@@ -7,13 +7,13 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
 /**
- * Class InvoiceLine.
+ * Class InvoiceLineAdmin.
  *
  * @category Admin
  *
  * @author   Wils Iglesias <wiglesias83@gmail.com>
  */
-class InvoiceLine extends AbstractBaseAdmin
+class InvoiceLineAdmin extends AbstractBaseAdmin
 {
     protected $classnameLabel = 'Lines';
     protected $baseRoutePattern = 'facturacion/lines';
