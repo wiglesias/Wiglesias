@@ -9,8 +9,10 @@
 @wi-c-blue-grey-800:  #37474F;
 @wi-c-blue-grey-900:  #263238;
 @wi-c-green:          #FFEB3B;
+@wi-c-yellow:          #ffd343;
 @wi-c-green-wi:       #1fa67a;
 @wi-c-teal-400:       #26A69A;
+@wi-c-django:         #0C3C26;
 @wi-c-green-light:    #C7E7DC;
 @wi-c-orange:         #E27436;
 @wi-c-orange-500:     #FF9800;
@@ -20,6 +22,7 @@
 @wi-c-grey:           #808080;
 @wi-c-grey-wi:        #DDDDDD;
 @wi-c-ligth-grey:     #EEEEEE;
+@wi-c-blue-mysql:     #4479a1;
 
 .c-blue     { color: @wi-c-blue-bg; }
 .c-blue-wi  { color: @wi-c-blue-md-f}
@@ -27,6 +30,7 @@
 .c-white    { color: @wi-c-white;  }
 .c-green-md { color: @wi-c-green-wi;}
 .c-green    { color: @wi-c-green;  }
+.c-yellow   { color: @wi-c-yellow;  }
 .c-orange   { color: @wi-c-orange; }
 .c-orange-md{ color: @wi-c-orange-500; }
 .c-grey     { color: @wi-c-grey;   }
@@ -43,3 +47,8 @@
 .blue-background-light-md { background-color: lighten(@wi-c-light-blue-500, 35%); }
 .orange-background { background-color: @wi-c-orange; }
 .orange-md-background { background-color: @wi-c-orange-500; }
+
+// Progress bars
+.progress-bar-python { background-color: @wi-c-yellow }
+.progress-bar-mysql  { background-color: @wi-c-blue-mysql }
+.progress-bar-django  { background-color: @wi-c-django }
