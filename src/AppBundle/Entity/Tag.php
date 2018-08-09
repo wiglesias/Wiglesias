@@ -4,16 +4,13 @@ namespace AppBundle\Entity;
 
 use AppBundle\Entity\Traits\SlugTrait;
 use AppBundle\Entity\Traits\TitleTrait;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * Class Tag
- *
- * @category Entity
- * @package  AppBundle\Entity
  * @author   Wils Iglesias <wiglesias83@gmail.com>
  *
  * @ORM\Table()
@@ -22,8 +19,20 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 class Tag extends AbstractBase
 {
-    use TitleTrait;
-    use SlugTrait;
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, unique=true)
+     * @Gedmo\Slug(fields={"name"})
+     */
+    private $slug;
 
     /**
      * @var ArrayCollection
@@ -32,77 +41,68 @@ class Tag extends AbstractBase
      */
     private $posts;
 
-    /**
-     *
-     *
-     * Methods
-     *
-     *
-     */
-
-    /**
-     * Tag constructor
-     */
     public function __construct()
     {
         $this->posts = new ArrayCollection();
     }
 
     /**
-     * @return ArrayCollection
+     * @return string
      */
-    public function getPosts()
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Post[]
+     */
+    public function getPosts(): Collection
     {
         return $this->posts;
     }
 
-    /**
-     * @param ArrayCollection $posts
-     *
-     * @return $this
-     */
-    public function setPosts($posts)
+    public function addPost(Post $post): self
     {
-        $this->posts = $posts;
+        if (!$this->posts->contains($post)) {
+            $this->posts[] = $post;
+            $post->addTag($this);
+        }
 
         return $this;
     }
 
-    /**
-     * Add post
-     *
-     * @param Post $post
-     *
-     * @return $this
-     */
-    public function addPost(Post $post)
+    public function removePost(Post $post): self
     {
-        $this->posts[] = $post;
+        if ($this->posts->contains($post)) {
+            $this->posts->removeElement($post);
+            $post->removeTag($this);
+        }
 
         return $this;
     }
 
-    /**
-     * Remove post
-     *
-     * @param Post $post
-     *
-     * @return $this
-     */
-    public function removePost(Post $post)
-    {
-        $this->posts->removeElement($post);
-
-        return $this;
-    }
-
-    /**
-     * To string
-     *
-     * @return string
-     */
     public function __toString() {
 
-        return $this->getTitle() ? $this->getTitle() : '---';
+        return $this->getName() ? $this->getName() : '---';
     }
 }

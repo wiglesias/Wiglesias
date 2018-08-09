@@ -6,6 +6,7 @@ use AppBundle\Entity\Traits\DescriptionTrait;
 use AppBundle\Entity\Traits\SlugTrait;
 use AppBundle\Entity\Traits\TitleTrait;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\HttpFoundation\File\File;
@@ -14,10 +15,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
- * Post
- *
- * @category Entity
- * @package  AppBundle\Entity
  * @author   Wils Iglesias <wiglesias83@gmail.com>
  *
  * @ORM\Table()
@@ -93,52 +90,19 @@ class Post extends AbstractBase
      */
     private $author;
 
-    /**
-     *
-     *
-     * Methods
-     *
-     *
-     */
-
-    /**
-     * Post constructor
-     */
     public function __construct()
     {
         $this->tags = new ArrayCollection();
     }
 
-    /**
-     * Get slug
-     *
-     * @return string
-     */
-    public function getSlug()
-    {
-        return $this->slug;
-    }
-
-    /**
-     * Set publishedAt
-     *
-     * @param \DateTime $publishedAt
-     *
-     * @return Post
-     */
-    public function setPublishedAt(\DateTime $publishedAt)
+    public function setPublishedAt(?\DateTime $publishedAt): self
     {
         $this->publishedAt = $publishedAt;
 
         return $this;
     }
 
-    /**
-     * Get publishedAt
-     *
-     * @return \DateTime
-     */
-    public function getPublishedAt()
+    public function getPublishedAt(): ?\DateTime
     {
         return $this->publishedAt;
     }
@@ -172,86 +136,48 @@ class Post extends AbstractBase
         return $this->imageFile;
     }
 
-    /**
-     * Set imageName
-     *
-     * @param string $imageName
-     *
-     * @return $this
-     */
-    public function setImageName($imageName)
+    public function getImageName(): ?string
+    {
+        return $this->imageName;
+    }
+
+    public function setImageName(string $imageName): self
     {
         $this->imageName = $imageName;
 
         return $this;
     }
 
-    /**
-     * Get imageName
-     *
-     * @return string
-     */
-    public function getImageName()
-    {
-        return $this->imageName;
-    }
-
-    /**
-     * Get shortDescription
-     *
-     * @return string
-     */
-    public function getShortDescription()
+    public function getShortDescription(): ?string
     {
         return $this->shortDescription;
     }
 
-    /**
-     * Set shortDescription
-     *
-     * @param string $shortDescription
-     *
-     * @return $this
-     */
-    public function setShortDescription($shortDescription)
+    public function setShortDescription(string $shortDescription): self
     {
         $this->shortDescription = $shortDescription;
 
         return $this;
     }
 
-    /**
-     * Set MetaKeywords
-     *
-     * @param string $metaKeywords
-     *
-     * @return $this
-     */
-    public function setMetaKeywords($metaKeywords)
+    public function getMetaKeywords(): ?string
+    {
+        return $this->metaKeywords;
+    }
+
+    public function setMetaKeywords(string $metaKeywords): self
     {
         $this->metaKeywords = $metaKeywords;
 
         return $this;
     }
 
-    /**
-     * Get MetaKeywords
-     *
-     * @return string
-     */
-    public function getMetaKeywords()
+    public function getMetaDescription(): ?string
     {
-        return $this->metaKeywords;
+        return $this->metaDescription;
     }
 
-    /**
-     * Set MetaDescription
-     *
-     * @param string $metaDescription
-     *
-     * @return $this
-     */
-    public function setMetaDescription($metaDescription)
+    public function setMetaDescription(string $metaDescription): self
     {
         $this->metaDescription = $metaDescription;
 
@@ -259,91 +185,45 @@ class Post extends AbstractBase
     }
 
     /**
-     * Get MetaDescription
-     *
-     * @return string
+     * @return Collection|Tag[]
      */
-    public function getMetaDescription()
-    {
-        return $this->metaDescription;
-    }
-
-    /**
-     * Set tags
-     *
-     * @param ArrayCollection $tags
-     *
-     * @return $this
-     */
-    public function setTags($tags)
-    {
-        $this->tags = $tags;
-
-        return $this;
-    }
-
-    /**
-     * Get tags
-     *
-     * @return ArrayCollection
-     */
-    public function getTags()
+    public function getTags(): Collection
     {
         return $this->tags;
     }
 
-    /**
-     * Add tag
-     *
-     * @param Tag $tag
-     *
-     * @return $this
-     */
-    public function addTag(Tag $tag)
+    public function addTag(Tag $tag): self
     {
-        $tag->addPost($this);
-        $this->tags[] = $tag;
+        if (!$this->tags->contains($tag)) {
+            $this->tags[] = $tag;
+        }
 
         return $this;
     }
 
-    /**
-     * Remove tag
-     *
-     * @param Tag $tag
-     */
-    public function removeTag(Tag $tag)
+    public function removeTag(Tag $tag): self
     {
-        $this->tags->removeElement($tag);
+        if ($this->tags->contains($tag)) {
+            $this->tags->removeElement($tag);
+        }
+
+        return $this;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getAuthor()
+    public function getAuthor(): ?User
     {
         return $this->author;
     }
 
-    /**
-     * @param mixed $author
-     *
-     * @return Post
-     */
-    public function setAuthor($author)
+    public function setAuthor(?User $author): self
     {
         $this->author = $author;
 
         return $this;
     }
 
-    /**
-     * To string
-     *
-     * @return string
-     */
     public function __toString()
     {
-        return $this->id ? $this->getPublishedAt()->format('d/m/Y') . ' · ' . $this->getTitle() : '---';
+        return $this->id ? $this->getPublishedAt()->format('d/m/Y').' · '.$this->getTitle() : '---';
     }
 }
