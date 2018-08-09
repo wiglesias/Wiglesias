@@ -7,6 +7,7 @@ use AppBundle\Entity\Traits\DescriptionTrait;
 use AppBundle\Entity\Traits\SlugTrait;
 use AppBundle\Entity\Traits\TitleTrait;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -15,10 +16,6 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
- * Portafolio
- *
- * @category Entity
- * @package  AppBundle\Entity
  * @author   Wils Iglesias <wiglesias83@gmail.com>
  *
  * @ORM\Table()
@@ -66,36 +63,17 @@ class Portafolio extends AbstractBase
      */
     private $imageName;
 
-    /**
-     *
-     *
-     * Methods
-     *
-     *
-     */
-
-    /**
-     * Portafolio constructor.
-     */
     public function __construct()
     {
         $this->categories = new ArrayCollection();
     }
 
-    /**
-     * @return string
-     */
-    public function getShortDescription()
+    public function getShortDescription(): ?string
     {
         return $this->shortDescription;
     }
 
-    /**
-     * @param string $shortDescription
-     *
-     * @return Portafolio
-     */
-    public function setShortDescription($shortDescription)
+    public function setShortDescription(string $shortDescription): self
     {
         $this->shortDescription = $shortDescription;
 
@@ -103,57 +81,44 @@ class Portafolio extends AbstractBase
     }
 
     /**
-     * @return mixed
+     * @return Collection|PortfolioCategory[]
      */
-    public function getCategories()
+    public function getCategories(): Collection
     {
         return $this->categories;
     }
 
     /**
-     * @param mixed $categories
-     *
-     * @return Portafolio
-     */
-    public function setCategories($categories)
-    {
-        $this->categories = $categories;
-
-        return $this;
-    }
-
-    /**
      * @param PortfolioCategory $category
      *
      * @return $this
      */
-    public function addCategory(PortfolioCategory $category)
+    public function addCategory(PortfolioCategory $category): self
     {
-        $this->categories->add($category);
+        if (!$this->categories->contains($category)) {
+            $this->categories[] = $category;
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(PortfolioCategory $category): self
+    {
+        if ($this->categories->contains($category)) {
+            $this->categories->removeElement($category);
+        }
 
         return $this;
     }
 
     /**
-     * @param PortfolioCategory $category
+     * Get imageFile
      *
-     * @return $this
+     * @return File|UploadedFile
      */
-    public function removeCategory(PortfolioCategory $category)
+    public function getImageFile()
     {
-        $this->categories->removeElement($category);
-
-        return $this;
-    }
-
-    /**
-     * Get slug
-     *
-     * @return string
-     */
-    public function getSlug()
-    {
-        return $this->slug;
+        return $this->imageFile;
     }
 
     /**
@@ -175,47 +140,20 @@ class Portafolio extends AbstractBase
         return $this;
     }
 
-    /**
-     * Get imageFile
-     *
-     * @return File|UploadedFile
-     */
-    public function getImageFile()
+    public function getImageName(): ?string
     {
-        return $this->imageFile;
+        return $this->imageName;
     }
 
-    /**
-     * Set imageName
-     *
-     * @param string $imageName
-     *
-     * @return $this
-     */
-    public function setImageName($imageName)
+    public function setImageName(string $imageName): self
     {
         $this->imageName = $imageName;
 
         return $this;
     }
 
-    /**
-     * Get imageName
-     *
-     * @return string
-     */
-    public function getImageName()
-    {
-        return $this->imageName;
-    }
-
-    /**
-     * To string
-     *
-     * @return string
-     */
     public function __toString()
     {
-        return $this->id ? $this->getDate()->format('d/m/Y') . ' · ' . $this->getTitle() : '---';
+        return $this->id ? $this->getDate()->format('d/m/Y').' · '.$this->getTitle() : '---';
     }
 }

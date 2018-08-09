@@ -5,13 +5,10 @@ namespace AppBundle\Entity;
 use AppBundle\Entity\Traits\SlugTrait;
 use AppBundle\Entity\Traits\TitleTrait;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class PortfolioCategory
- *
- * @category Entity
- * @package  AppBundle\Entity
  * @author   Wils Iglesias <wiglesias83@gmail.com>
  *
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PortfolioCategoryRepository")
@@ -29,67 +26,39 @@ class PortfolioCategory extends AbstractBase
      */
     private $portfolios;
 
-    /**
-     *
-     * Methods
-     *
-     */
-
-    /**
-     * PortfolioCategory constructor.
-     */
     public function __construct()
     {
         $this->portfolios = new ArrayCollection();
     }
 
     /**
-     * @return ArrayCollection
+     * @return Collection|Portafolio[]
      */
-    public function getPortfolios()
+    public function getPortfolios(): Collection
     {
         return $this->portfolios;
     }
 
-    /**
-     * @param ArrayCollection $portfolios
-     *
-     * @return PortfolioCategory
-     */
-    public function setPortfolios($portfolios)
+    public function addPortfolio(Portafolio $portafolio): self
     {
-        $this->portfolios = $portfolios;
+        if ($this->portfolios->contains($portafolio)) {
+            $this->updatedAt[] = $portafolio;
+            $portafolio->addCategory($this);
+        }
 
         return $this;
     }
 
-    /**
-     * @param Portafolio $portafolio
-     *
-     * @return $this
-     */
-    public function addPortfolio(Portafolio $portafolio)
+    public function removePortfolio(Portafolio $portafolio): self
     {
-        $this->portfolios->add($portafolio);
+        if ($this->portfolios->contains($portafolio)) {
+            $this->portfolios->removeElement($portafolio);
+            $portafolio->removeCategory($this);
+        }
 
         return $this;
     }
 
-    /**
-     * @param Portafolio $portafolio
-     *
-     * @return $this
-     */
-    public function removePortfolio(Portafolio $portafolio)
-    {
-        $this->portfolios->removeElement($portafolio);
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
     public function __toString()
     {
         return $this->getTitle() ? $this->getTitle() : '---';

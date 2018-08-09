@@ -12,7 +12,7 @@ Trait DescriptionTrait
     /**
      * @var string
      *
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="text", length=4000, nullable=true)
      */
     private $description;
 
