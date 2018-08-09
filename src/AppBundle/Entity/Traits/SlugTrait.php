@@ -6,10 +6,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * Slug trait
- *
- * @category Trait
- * @package  AppBundle\Entity\Traits
  * @author   Wils Iglesias <wiglesias83@gmail.com>
  */
 Trait SlugTrait
@@ -17,32 +13,19 @@ Trait SlugTrait
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      * @Gedmo\Slug(fields={"title"})
      */
     private $slug;
 
-    /**
-     * Set slug
-     *
-     * @param string $slug
-     *
-     * @return $this
-     */
-    public function setSlug($slug)
-    {
-        $this->slug = $slug;
-
-        return $this;
-    }
-
-    /**
-     * Get slug
-     *
-     * @return string
-     */
-    public function getSlug()
+    public function getSlug(): ?string
     {
         return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+        return $this;
     }
 }

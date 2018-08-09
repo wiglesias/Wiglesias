@@ -3,19 +3,15 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**
- * Class AbstractBase
- *
- * @category Entity
- * @package  AppBundle\Entity
  * @author   Wils Iglesias <wiglesias83@gmail.com>
- *
- * @Gedmo\SoftDeleteable(fieldName="removedAt", timeAware=false)
  */
 abstract class AbstractBase
 {
+    use TimestampableEntity;
+
     /**
      * @var integer
      *
@@ -26,42 +22,11 @@ abstract class AbstractBase
     protected $id;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime")
-     * @Gedmo\Timestampable(on="create")
-     */
-    protected $createdAt;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime")
-     * @Gedmo\Timestampable(on="update")
-     */
-    protected $updatedAt;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    protected $removedAt;
-
-    /**
      * @var boolean
      *
      * @ORM\Column(type="boolean")
      */
     protected $enabled = true;
-
-    /**
-     *
-     *
-     * Methods
-     *
-     *
-     */
 
     /**
      * @return int
@@ -71,115 +36,12 @@ abstract class AbstractBase
         return $this->id;
     }
 
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return $this
-     */
-    public function setCreatedAt(\DateTime $createdAt)
-    {
-        $this->createdAt = $createdAt;
-        return $this;
-    }
-
-    /**
-     * Get updatedAt
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
-    }
-
-    /**
-     * Set updatedAt
-     *
-     * @param \DateTime $updatedAt
-     *
-     * @return $this
-     */
-    public function setUpdatedAt(\DateTime $updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-        return $this;
-    }
-
-    /**
-     * Get removedAt
-     *
-     * @return \DateTime
-     */
-    public function getRemovedAt()
-    {
-        return $this->removedAt;
-    }
-
-    /**
-     * Set removedAt
-     *
-     * @param \DateTime $removedAt
-     *
-     * @return $this
-     */
-    public function setRemovedAt(\DateTime $removedAt)
-    {
-        $this->removedAt = $removedAt;
-        return $this;
-    }
-
-    /**
-     * Remove (soft delete)
-     *
-     * @return $this
-     */
-    public function remove()
-    {
-        $this->setRemovedAt(new \DateTime());
-
-        return $this;
-    }
-
-    /**
-     * Is deleted?
-     *
-     * @return bool
-     */
-    public function isDeleted()
-    {
-        return $this->removedAt !== null;
-    }
-
-    /**
-     * Get Enabled
-     *
-     * @return boolean
-     */
-    public function getEnabled()
+    public function getEnabled(): ?bool
     {
         return $this->enabled;
     }
 
-    /**
-     * Set Enabled
-     *
-     * @param boolean $enabled
-     *
-     * @return $this
-     */
-    public function setEnabled($enabled)
+    public function setEnabled(bool $enabled): self
     {
         $this->enabled = $enabled;
 
@@ -188,6 +50,6 @@ abstract class AbstractBase
 
     public function __toString()
     {
-        return $this->id ? $this->getId() . ' · ' . $this->getCreatedAt()->format('d/m/Y') : '---';
+        return $this->id ? $this->getId().' · '.$this->getCreatedAt()->format('d/m/Y') : '---';
     }
 }

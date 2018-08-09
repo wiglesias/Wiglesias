@@ -5,10 +5,6 @@ namespace AppBundle\Entity\Traits;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Title Trait
- *
- * @category trait
- * @package  AppBundle\Entity\Traits
  * @author   Wils Iglesias <wiglesias83@gmail.com>
  */
 Trait TitleTrait
@@ -20,24 +16,12 @@ Trait TitleTrait
      */
     private $title;
 
-    /**
-     * Get title
-     *
-     * @return string
-     */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
-    /**
-     * Set title
-     *
-     * @param string $title
-     *
-     * @return $this
-     */
-    public function setTitle($title)
+    public function setTitle(string $title): self
     {
         $this->title = $title;
 
